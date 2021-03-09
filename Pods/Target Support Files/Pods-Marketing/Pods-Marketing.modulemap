@@ -1,0 +1,6 @@
+framework module Pods_Marketing {
+  umbrella header "Pods-Marketing-umbrella.h"
+
+  export *
+  module * { export * }
+}
