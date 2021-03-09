@@ -26,15 +26,15 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    if ([PreHelper isLogin]) {
+//    if ([PreHelper isLogin]) {
         MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
         self.window.rootViewController = tabbar;
-    }else{
-        LoginViewController * login = [[LoginViewController alloc] init];
-        CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
-        nav.navigationBar.hidden = true;
-        self.window.rootViewController = nav;
-    }
+//    }else{
+//        LoginViewController * login = [[LoginViewController alloc] init];
+//        CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
+//        nav.navigationBar.hidden = true;
+//        self.window.rootViewController = nav;
+//    }
     
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
         [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:@"9a36d88e4c646b80f6870e4e1cf0c165" universalLink:@"https://oxqkw.share2dlink.com"];

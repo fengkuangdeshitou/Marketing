@@ -55,17 +55,18 @@
         userInfo.title = @"我的个人名片";
         userInfo.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:userInfo animated:true];
-    }
-    if (indexPath.row == 0) {
-        AddValueServicesController * services = [[AddValueServicesController alloc] init];
-        services.title = @"增值服务";
-        services.hidesBottomBarWhenPushed = true;
-        [self.navigationController pushViewController:services animated:true];
-    }
-    if (indexPath.row == 5) {
-        SettingViewController * setting = [[SettingViewController alloc] init];
-        setting.hidesBottomBarWhenPushed = true;
-        [self.navigationController pushViewController:setting animated:true];
+    }else{
+        if (indexPath.row == 0) {
+            AddValueServicesController * services = [[AddValueServicesController alloc] init];
+            services.title = @"增值服务";
+            services.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:services animated:true];
+        }else if (indexPath.row == 5) {
+            SettingViewController * setting = [[SettingViewController alloc] init];
+            setting.title = @"设置";
+            setting.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:setting animated:true];
+        }
     }
 }
 

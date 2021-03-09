@@ -8,6 +8,8 @@
 #import "ProfitableViewController.h"
 #import "ProfitHeaderCell.h"
 #import "ProfitShareCell.h"
+#import "DrawAmountViewController.h"
+#import "InvitationViewController.h"
 
 @interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -37,6 +39,23 @@
     
 }
 
+/// 提现
+/// @param sender 按钮
+- (IBAction)drawAmount:(UIButton *)sender{
+    DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
+    drawAmount.title = @"提现";
+    drawAmount.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:drawAmount animated:true];
+}
+
+/// 邀请记录
+/// @param sender 按钮
+- (IBAction)InvitationAction:(UIButton *)sender{
+    InvitationViewController * invitation = [[InvitationViewController alloc] init];
+    invitation.title = @"邀请记录";
+    invitation.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:invitation animated:true];
+}
 - (void)addShadowWithView:(UIView *)view{
     view.layer.shadowColor = [UIColor colorWithRed:177/255.0 green:177/255.0 blue:177/255.0 alpha:0.35].CGColor;
     view.layer.shadowOffset = CGSizeMake(0,0);

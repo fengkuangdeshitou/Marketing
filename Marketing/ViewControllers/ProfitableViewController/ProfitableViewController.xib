@@ -104,6 +104,9 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="drawAmount:" destination="-1" eventType="touchUpInside" id="g1a-NE-5MX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,17 +228,27 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profit_header_invitation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-cr-Nrw">
                                         <rect key="frame" x="291.5" y="17.5" width="76.5" height="37.5"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRM-Nk-MwS">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="55"/>
+                                        <connections>
+                                            <action selector="InvitationAction:" destination="-1" eventType="touchUpInside" id="Clv-rP-bz4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="yRM-Nk-MwS" firstAttribute="leading" secondItem="hZQ-YH-14X" secondAttribute="leading" id="3qr-Dv-qrb"/>
                                     <constraint firstItem="Akg-MP-Pii" firstAttribute="leading" secondItem="HZD-wq-yYW" secondAttribute="trailing" constant="10" id="Boo-sc-qot"/>
+                                    <constraint firstAttribute="trailing" secondItem="yRM-Nk-MwS" secondAttribute="trailing" id="FHd-hg-OGN"/>
                                     <constraint firstItem="GkP-Sx-3A3" firstAttribute="leading" secondItem="IAY-lb-l5E" secondAttribute="trailing" constant="12.5" id="KLw-pt-cfE"/>
+                                    <constraint firstItem="yRM-Nk-MwS" firstAttribute="top" secondItem="hZQ-YH-14X" secondAttribute="top" id="NJ6-kg-Pim"/>
                                     <constraint firstItem="GkP-Sx-3A3" firstAttribute="centerY" secondItem="hZQ-YH-14X" secondAttribute="centerY" id="NxS-pk-Ybu"/>
                                     <constraint firstItem="Akg-MP-Pii" firstAttribute="centerY" secondItem="hZQ-YH-14X" secondAttribute="centerY" id="aSg-lc-l7L"/>
                                     <constraint firstItem="IAY-lb-l5E" firstAttribute="centerY" secondItem="hZQ-YH-14X" secondAttribute="centerY" id="fcM-nY-YeO"/>
                                     <constraint firstItem="GkP-Sx-3A3" firstAttribute="leading" secondItem="Ocu-cr-Nrw" secondAttribute="trailing" id="hTQ-I0-Ud0"/>
                                     <constraint firstItem="HZD-wq-yYW" firstAttribute="centerY" secondItem="hZQ-YH-14X" secondAttribute="centerY" id="kGi-W8-t9a"/>
                                     <constraint firstAttribute="bottom" secondItem="Ocu-cr-Nrw" secondAttribute="bottom" id="kKp-OY-hGc"/>
+                                    <constraint firstAttribute="bottom" secondItem="yRM-Nk-MwS" secondAttribute="bottom" id="l2S-f9-u1U"/>
                                     <constraint firstAttribute="trailing" secondItem="GkP-Sx-3A3" secondAttribute="trailing" constant="10" id="nq7-Pa-y2V"/>
                                     <constraint firstItem="HZD-wq-yYW" firstAttribute="leading" secondItem="hZQ-YH-14X" secondAttribute="leading" constant="14" id="o0y-uN-QWD"/>
                                     <constraint firstAttribute="height" constant="55" id="rQE-h7-r91"/>

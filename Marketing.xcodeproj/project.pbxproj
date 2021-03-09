@@ -10,6 +10,16 @@
 		0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A29925F7421D0001B38E /* AddValueServicesController.m */; };
 		0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
+		BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */; };
+		BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */; };
+		BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC1025F7AD48005A8FE4 /* DrawAmountListViewController.m */; };
+		BD06EC1325F7AD48005A8FE4 /* DrawAmountListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC1125F7AD48005A8FE4 /* DrawAmountListViewController.xib */; };
+		BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC1825F7ADEE005A8FE4 /* DrawAmountListCell.m */; };
+		BD06EC1B25F7ADEE005A8FE4 /* DrawAmountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC1925F7ADEE005A8FE4 /* DrawAmountListCell.xib */; };
+		BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC2025F7C247005A8FE4 /* InvitationViewController.m */; };
+		BD06EC2325F7C247005A8FE4 /* InvitationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC2125F7C247005A8FE4 /* InvitationViewController.xib */; };
+		BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC2725F7C6C6005A8FE4 /* InvitationListCell.m */; };
+		BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC2825F7C6C6005A8FE4 /* InvitationListCell.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -100,6 +110,21 @@
 		0F28A29825F7421D0001B38E /* AddValueServicesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddValueServicesController.h; sourceTree = "<group>"; };
 		0F28A29925F7421D0001B38E /* AddValueServicesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddValueServicesController.m; sourceTree = "<group>"; };
 		0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddValueServicesController.xib; sourceTree = "<group>"; };
+		BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountViewController.h; sourceTree = "<group>"; };
+		BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountViewController.m; sourceTree = "<group>"; };
+		BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountViewController.xib; sourceTree = "<group>"; };
+		BD06EC0F25F7AD48005A8FE4 /* DrawAmountListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountListViewController.h; sourceTree = "<group>"; };
+		BD06EC1025F7AD48005A8FE4 /* DrawAmountListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountListViewController.m; sourceTree = "<group>"; };
+		BD06EC1125F7AD48005A8FE4 /* DrawAmountListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountListViewController.xib; sourceTree = "<group>"; };
+		BD06EC1725F7ADEE005A8FE4 /* DrawAmountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountListCell.h; sourceTree = "<group>"; };
+		BD06EC1825F7ADEE005A8FE4 /* DrawAmountListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountListCell.m; sourceTree = "<group>"; };
+		BD06EC1925F7ADEE005A8FE4 /* DrawAmountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountListCell.xib; sourceTree = "<group>"; };
+		BD06EC1F25F7C247005A8FE4 /* InvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationViewController.h; sourceTree = "<group>"; };
+		BD06EC2025F7C247005A8FE4 /* InvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationViewController.m; sourceTree = "<group>"; };
+		BD06EC2125F7C247005A8FE4 /* InvitationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationViewController.xib; sourceTree = "<group>"; };
+		BD06EC2625F7C6C6005A8FE4 /* InvitationListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationListCell.h; sourceTree = "<group>"; };
+		BD06EC2725F7C6C6005A8FE4 /* InvitationListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationListCell.m; sourceTree = "<group>"; };
+		BD06EC2825F7C6C6005A8FE4 /* InvitationListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationListCell.xib; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -290,6 +315,59 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BD06EC0625F7A3B6005A8FE4 /* DrawAmountViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */,
+				BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */,
+				BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */,
+				BD06EC0E25F7AD3A005A8FE4 /* DrawAmountListViewController */,
+			);
+			path = DrawAmountViewController;
+			sourceTree = "<group>";
+		};
+		BD06EC0E25F7AD3A005A8FE4 /* DrawAmountListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD06EC0F25F7AD48005A8FE4 /* DrawAmountListViewController.h */,
+				BD06EC1025F7AD48005A8FE4 /* DrawAmountListViewController.m */,
+				BD06EC1125F7AD48005A8FE4 /* DrawAmountListViewController.xib */,
+				BD06EC1625F7ADDE005A8FE4 /* View */,
+			);
+			path = DrawAmountListViewController;
+			sourceTree = "<group>";
+		};
+		BD06EC1625F7ADDE005A8FE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD06EC1725F7ADEE005A8FE4 /* DrawAmountListCell.h */,
+				BD06EC1825F7ADEE005A8FE4 /* DrawAmountListCell.m */,
+				BD06EC1925F7ADEE005A8FE4 /* DrawAmountListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD06EC1E25F7C22B005A8FE4 /* InvitationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD06EC1F25F7C247005A8FE4 /* InvitationViewController.h */,
+				BD06EC2025F7C247005A8FE4 /* InvitationViewController.m */,
+				BD06EC2125F7C247005A8FE4 /* InvitationViewController.xib */,
+				BD06EC2525F7C6B7005A8FE4 /* View */,
+			);
+			path = InvitationViewController;
+			sourceTree = "<group>";
+		};
+		BD06EC2525F7C6B7005A8FE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD06EC2625F7C6C6005A8FE4 /* InvitationListCell.h */,
+				BD06EC2725F7C6C6005A8FE4 /* InvitationListCell.m */,
+				BD06EC2825F7C6C6005A8FE4 /* InvitationListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BDC2657B25EBD4B300DBAA64 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +418,8 @@
 				BDC265C325ED2A7000DBAA64 /* ProfitableViewController.m */,
 				BDC265C425ED2A7000DBAA64 /* ProfitableViewController.xib */,
 				BDC265CC25EE5B5900DBAA64 /* View */,
+				BD06EC0625F7A3B6005A8FE4 /* DrawAmountViewController */,
+				BD06EC1E25F7C22B005A8FE4 /* InvitationViewController */,
 			);
 			path = ProfitableViewController;
 			sourceTree = "<group>";
@@ -680,6 +760,8 @@
 				BDC265D125EE5BB100DBAA64 /* ImageOrVideoCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
 				BDC585AB25EB58500021F808 /* UserViewController.xib in Resources */,
+				BD06EC2325F7C247005A8FE4 /* InvitationViewController.xib in Resources */,
+				BD06EC1B25F7ADEE005A8FE4 /* DrawAmountListCell.xib in Resources */,
 				BDDEFB0D25EB6E9400D7A5D7 /* UserInfoViewController.xib in Resources */,
 				BDC2659625EBEBED00DBAA64 /* CircleHeaderCell.xib in Resources */,
 				BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */,
@@ -691,6 +773,7 @@
 				BDC2658F25EBDA0600DBAA64 /* ComplaintImageCell.xib in Resources */,
 				BDC5853B25EB473A0021F808 /* Assets.xcassets in Resources */,
 				BDDEFB0625EB647300D7A5D7 /* SettingCell.xib in Resources */,
+				BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */,
 				BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */,
 				BDC5853925EB47370021F808 /* Main.storyboard in Resources */,
 				BDDEFB2925EB7B1900D7A5D7 /* CircleViewController.xib in Resources */,
@@ -701,7 +784,9 @@
 				BDDEFB3F25EB834F00D7A5D7 /* MobileLoginViewController.xib in Resources */,
 				BDC265DE25EE5EEB00DBAA64 /* ProfitShareCell.xib in Resources */,
 				BDDEFB3125EB7BB600D7A5D7 /* ComplaintsViewController.xib in Resources */,
+				BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */,
 				BDDEFB3925EB803100D7A5D7 /* LoginViewController.xib in Resources */,
+				BD06EC1325F7AD48005A8FE4 /* DrawAmountListViewController.xib in Resources */,
 				BDDEFB1525EB700500D7A5D7 /* UserHeaderCell.xib in Resources */,
 				BDC265B825ED09EF00DBAA64 /* CircleNineImageCell.xib in Resources */,
 				0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */,
@@ -784,8 +869,10 @@
 				BDC265B725ED09EF00DBAA64 /* CircleNineImageCell.m in Sources */,
 				BDC5859A25EB57180021F808 /* UIControl+Button.m in Sources */,
 				BDC585B825EB5C590021F808 /* UserCell.m in Sources */,
+				BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */,
 				BDC5859E25EB57180021F808 /* NSDictionary+MyDictionary.m in Sources */,
 				BDC585A225EB57180021F808 /* UIImage+YYCompress.m in Sources */,
+				BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */,
 				BDC265C525ED2A7000DBAA64 /* ProfitableViewController.m in Sources */,
 				BDC5855D25EB4C4E0021F808 /* NetworkUrlGetter.m in Sources */,
 				BDDEFB1C25EB761600D7A5D7 /* UserInfoHeaderCell.m in Sources */,
@@ -802,7 +889,9 @@
 				BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */,
 				BDC585B225EB5A1E0021F808 /* HomeViewController.m in Sources */,
 				BDC265D725EE5D4F00DBAA64 /* ProfitHeaderCell.m in Sources */,
+				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
+				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
 				BDC5854125EB473A0021F808 /* main.m in Sources */,
@@ -820,6 +909,7 @@
 				BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */,
 				BDC585A325EB57180021F808 /* UIColor+HexString.m in Sources */,
 				BDC5859C25EB57180021F808 /* UITextView+ZWPlaceHolder.m in Sources */,
+				BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */,
 				BDC265F625EE79B600DBAA64 /* DetailViewController.m in Sources */,
 				BDC265B125EBF66400DBAA64 /* CircleBaseCell.m in Sources */,
 				BDC5857425EB50260021F808 /* PreHelper.m in Sources */,
