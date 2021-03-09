@@ -37,7 +37,7 @@
     }
     
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
-        [platformsRegister setupWeChatWithAppId:@"" appSecret:@"" universalLink:nil];
+        [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:@"9a36d88e4c646b80f6870e4e1cf0c165" universalLink:@"https://oxqkw.share2dlink.com"];
     }];
     
     
@@ -62,9 +62,9 @@
                 //获取标题
                 NSString *title = [params objectForKey:@"$og_title"];
                 NSString *tag = params[@"$control"][@"View"];
-    
+
                 if (title.length >0 && tag.length >0) {
-                    
+
                     //[自动跳转]使用自动跳转
                     //SDK提供的跳转方法
                     /**
@@ -79,13 +79,13 @@
                     //[LinkedME pushViewController:title storyBoardID:@"detailView" animated:YES customValue:@{@"tag":tag} completion:^{
 
                     //}];
-                    
+
                     //自定义跳转
                     detail.openUrl = params[@"$control"][@"ViewId"];
                     [[LinkedME getViewController] showViewController:detail sender:nil];
-                    
+
                 }
-                
+
             } @catch (NSException *exception) {
 
             } @finally {

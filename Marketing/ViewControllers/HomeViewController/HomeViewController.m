@@ -9,7 +9,9 @@
 
 @interface HomeViewController ()
 
+@property(nonatomic,strong)NSArray * dataArray;
 @property(nonatomic,weak)IBOutlet UIButton * beforeButton;
+@property(nonatomic,weak)IBOutlet UIButton * nextButton;
 @property(nonatomic,weak)IBOutlet UILabel * contentLabel;
 @property(nonatomic,weak)IBOutlet UILabel * pageLabel;
 @property(nonatomic,weak)IBOutlet UIImageView * icon;
@@ -32,6 +34,14 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     NSLog(@"%@",change);
+    if (self.currentFlag == 0) {
+        self.beforeButton.enabled = NO;
+    }else if (self.currentFlag == self.dataArray.count) {
+        self.nextButton.enabled = NO;
+    }else{
+        self.beforeButton.enabled = YES;
+        self.nextButton.enabled = YES;
+    }
 }
 
 - (IBAction)beforeAction:(id)sender{
@@ -41,7 +51,9 @@
 }
 
 - (IBAction)nextAction:(id)sender{
-    self.currentFlag ++;
+    if (self.currentFlag < self.dataArray.count) {
+        self.currentFlag ++;
+    }
 }
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A29925F7421D0001B38E /* AddValueServicesController.m */; };
+		0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
@@ -95,6 +97,9 @@
 
 /* Begin PBXFileReference section */
 		020E5BABD4149E16ACF46846 /* Pods-Marketing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketing.release.xcconfig"; path = "Target Support Files/Pods-Marketing/Pods-Marketing.release.xcconfig"; sourceTree = "<group>"; };
+		0F28A29825F7421D0001B38E /* AddValueServicesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddValueServicesController.h; sourceTree = "<group>"; };
+		0F28A29925F7421D0001B38E /* AddValueServicesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddValueServicesController.m; sourceTree = "<group>"; };
+		0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddValueServicesController.xib; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -253,6 +258,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F28A29725F7420D0001B38E /* AddValueServicesController */ = {
+			isa = PBXGroup;
+			children = (
+				0F28A29825F7421D0001B38E /* AddValueServicesController.h */,
+				0F28A29925F7421D0001B38E /* AddValueServicesController.m */,
+				0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */,
+			);
+			path = AddValueServicesController;
+			sourceTree = "<group>";
+		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +505,7 @@
 				BDC585A825EB58500021F808 /* UserViewController.m */,
 				BDC585A925EB58500021F808 /* UserViewController.xib */,
 				BDDEFB1025EB6FE800D7A5D7 /* View */,
+				0F28A29725F7420D0001B38E /* AddValueServicesController */,
 				BDDEFB4125EBA6E400D7A5D7 /* MembersViewController */,
 				BDDEFB0825EB6E8300D7A5D7 /* UserInfoViewController */,
 				BDDEFAFA25EB63BA00D7A5D7 /* SettingViewController */,
@@ -688,6 +704,7 @@
 				BDDEFB3925EB803100D7A5D7 /* LoginViewController.xib in Resources */,
 				BDDEFB1525EB700500D7A5D7 /* UserHeaderCell.xib in Resources */,
 				BDC265B825ED09EF00DBAA64 /* CircleNineImageCell.xib in Resources */,
+				0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +790,7 @@
 				BDC5855D25EB4C4E0021F808 /* NetworkUrlGetter.m in Sources */,
 				BDDEFB1C25EB761600D7A5D7 /* UserInfoHeaderCell.m in Sources */,
 				BDDEFB0C25EB6E9400D7A5D7 /* UserInfoViewController.m in Sources */,
+				0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */,
 				BDC585AA25EB58500021F808 /* UserViewController.m in Sources */,
 				BDC585A125EB57180021F808 /* UIView+Extension.m in Sources */,
 				BDC265BC25ED0C3900DBAA64 /* CircleMoreActionAlertView.m in Sources */,
@@ -955,7 +973,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/huangjing/Desktop/Marketing/Marketing/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = $SRCROOT/Marketing/PrefixHeader.pch;
 				INFOPLIST_FILE = Marketing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -979,7 +997,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/huangjing/Desktop/Marketing/Marketing/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = $SRCROOT/Marketing/PrefixHeader.pch;
 				INFOPLIST_FILE = Marketing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

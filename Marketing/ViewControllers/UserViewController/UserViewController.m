@@ -8,6 +8,7 @@
 #import "UserViewController.h"
 #import "UserHeaderCell.h"
 #import "UserCell.h"
+#import "AddValueServicesController.h"
 #import "UserInfoViewController.h"
 #import "SettingViewController.h"
 #import "MembersViewController.h"
@@ -54,6 +55,12 @@
         userInfo.title = @"我的个人名片";
         userInfo.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:userInfo animated:true];
+    }
+    if (indexPath.row == 0) {
+        AddValueServicesController * services = [[AddValueServicesController alloc] init];
+        services.title = @"增值服务";
+        services.hidesBottomBarWhenPushed = true;
+        [self.navigationController pushViewController:services animated:true];
     }
     if (indexPath.row == 5) {
         SettingViewController * setting = [[SettingViewController alloc] init];

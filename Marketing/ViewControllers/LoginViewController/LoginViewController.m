@@ -49,6 +49,7 @@
         switch (state) {
            case SSDKResponseStateSuccess:
                 NSLog(@"%@",[user.credential rawData]);
+                [PreHelper pushToTabbarController];
                 break;
            case SSDKResponseStateFail:
                  {
