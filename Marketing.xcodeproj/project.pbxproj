@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A29925F7421D0001B38E /* AddValueServicesController.m */; };
 		0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */; };
+		0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A2C825F88B500001B38E /* AuthenticationViewController.m */; };
+		0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A2C925F88B500001B38E /* AuthenticationViewController.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */; };
 		BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */; };
@@ -110,6 +112,9 @@
 		0F28A29825F7421D0001B38E /* AddValueServicesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddValueServicesController.h; sourceTree = "<group>"; };
 		0F28A29925F7421D0001B38E /* AddValueServicesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddValueServicesController.m; sourceTree = "<group>"; };
 		0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddValueServicesController.xib; sourceTree = "<group>"; };
+		0F28A2C725F88B500001B38E /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		0F28A2C825F88B500001B38E /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
+		0F28A2C925F88B500001B38E /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountViewController.h; sourceTree = "<group>"; };
 		BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountViewController.m; sourceTree = "<group>"; };
 		BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountViewController.xib; sourceTree = "<group>"; };
@@ -291,6 +296,16 @@
 				0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */,
 			);
 			path = AddValueServicesController;
+			sourceTree = "<group>";
+		};
+		0F28A2C625F88B3A0001B38E /* AuthenticationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0F28A2C725F88B500001B38E /* AuthenticationViewController.h */,
+				0F28A2C825F88B500001B38E /* AuthenticationViewController.m */,
+				0F28A2C925F88B500001B38E /* AuthenticationViewController.xib */,
+			);
+			path = AuthenticationViewController;
 			sourceTree = "<group>";
 		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
@@ -587,6 +602,7 @@
 				BDDEFB1025EB6FE800D7A5D7 /* View */,
 				0F28A29725F7420D0001B38E /* AddValueServicesController */,
 				BDDEFB4125EBA6E400D7A5D7 /* MembersViewController */,
+				0F28A2C625F88B3A0001B38E /* AuthenticationViewController */,
 				BDDEFB0825EB6E8300D7A5D7 /* UserInfoViewController */,
 				BDDEFAFA25EB63BA00D7A5D7 /* SettingViewController */,
 			);
@@ -779,6 +795,7 @@
 				BDDEFB2925EB7B1900D7A5D7 /* CircleViewController.xib in Resources */,
 				BDC265A925EBF13100DBAA64 /* CircleMoreCell.xib in Resources */,
 				BDC265BF25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib in Resources */,
+				0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */,
 				BDC2659D25EBEE2A00DBAA64 /* CircleContentCell.xib in Resources */,
 				BDC2658825EBD66600DBAA64 /* ComplaintReasonCell.xib in Resources */,
 				BDDEFB3F25EB834F00D7A5D7 /* MobileLoginViewController.xib in Resources */,
@@ -911,6 +928,7 @@
 				BDC5859C25EB57180021F808 /* UITextView+ZWPlaceHolder.m in Sources */,
 				BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */,
 				BDC265F625EE79B600DBAA64 /* DetailViewController.m in Sources */,
+				0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */,
 				BDC265B125EBF66400DBAA64 /* CircleBaseCell.m in Sources */,
 				BDC5857425EB50260021F808 /* PreHelper.m in Sources */,
 				BDC265D025EE5BB100DBAA64 /* ImageOrVideoCell.m in Sources */,

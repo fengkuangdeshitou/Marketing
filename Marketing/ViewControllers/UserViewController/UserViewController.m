@@ -9,6 +9,7 @@
 #import "UserHeaderCell.h"
 #import "UserCell.h"
 #import "AddValueServicesController.h"
+#import "AuthenticationViewController.h"
 #import "UserInfoViewController.h"
 #import "SettingViewController.h"
 #import "MembersViewController.h"
@@ -61,6 +62,11 @@
             services.title = @"增值服务";
             services.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:services animated:true];
+        }else if (indexPath.row == 2){
+            AuthenticationViewController * authentication = [[AuthenticationViewController alloc] init];
+            authentication.title = @"实名认证";
+            authentication.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:authentication animated:true];
         }else if (indexPath.row == 5) {
             SettingViewController * setting = [[SettingViewController alloc] init];
             setting.title = @"设置";
