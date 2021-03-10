@@ -11,6 +11,16 @@
 		0F28A29C25F7421D0001B38E /* AddValueServicesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A29A25F7421D0001B38E /* AddValueServicesController.xib */; };
 		0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A2C825F88B500001B38E /* AuthenticationViewController.m */; };
 		0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A2C925F88B500001B38E /* AuthenticationViewController.xib */; };
+		0F28A2EF25F891BB0001B38E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A2EE25F891BB0001B38E /* WebKit.framework */; };
+		0F28A2F125F891CC0001B38E /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A2F025F891CC0001B38E /* libc++.1.tbd */; };
+		0F28A2F425F891E70001B38E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A2F325F891E70001B38E /* CoreMotion.framework */; };
+		0F28A2F625F891F00001B38E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A2F525F891F00001B38E /* Accelerate.framework */; };
+		0F28A32225F895D10001B38E /* ToygerService.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31D25F895CC0001B38E /* ToygerService.bundle */; };
+		0F28A32325F895D10001B38E /* AliyunIdentityManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A31E25F895D00001B38E /* AliyunIdentityManager.framework */; };
+		0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */; };
+		0F28A32525F895D10001B38E /* EsandZim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A32025F895D10001B38E /* EsandZim.framework */; };
+		0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A32125F895D10001B38E /* BioAuthEngine.bundle */; };
+		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */; };
 		BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */; };
@@ -115,6 +125,17 @@
 		0F28A2C725F88B500001B38E /* AuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
 		0F28A2C825F88B500001B38E /* AuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		0F28A2C925F88B500001B38E /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
+		0F28A2EE25F891BB0001B38E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0F28A2F025F891CC0001B38E /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		0F28A2F325F891E70001B38E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		0F28A2F525F891F00001B38E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0F28A31D25F895CC0001B38E /* ToygerService.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ToygerService.bundle; sourceTree = "<group>"; };
+		0F28A31E25F895D00001B38E /* AliyunIdentityManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunIdentityManager.framework; sourceTree = "<group>"; };
+		0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = APBToygerFacade.bundle; sourceTree = "<group>"; };
+		0F28A32025F895D10001B38E /* EsandZim.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EsandZim.framework; sourceTree = "<group>"; };
+		0F28A32125F895D10001B38E /* BioAuthEngine.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BioAuthEngine.bundle; sourceTree = "<group>"; };
+		0F28A32D25F89EF20001B38E /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		0F28A32E25F89EF20001B38E /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountViewController.h; sourceTree = "<group>"; };
 		BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountViewController.m; sourceTree = "<group>"; };
 		BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountViewController.xib; sourceTree = "<group>"; };
@@ -277,10 +298,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F28A2F625F891F00001B38E /* Accelerate.framework in Frameworks */,
+				0F28A2F425F891E70001B38E /* CoreMotion.framework in Frameworks */,
+				0F28A32525F895D10001B38E /* EsandZim.framework in Frameworks */,
+				0F28A2F125F891CC0001B38E /* libc++.1.tbd in Frameworks */,
+				0F28A2EF25F891BB0001B38E /* WebKit.framework in Frameworks */,
 				BDC265E925EE695700DBAA64 /* CoreTelephony.framework in Frameworks */,
 				BDC265E525EE694600DBAA64 /* Security.framework in Frameworks */,
 				BDC265E325EE693E00DBAA64 /* SystemConfiguration.framework in Frameworks */,
 				BDC265E125EE693500DBAA64 /* CoreSpotlight.framework in Frameworks */,
+				0F28A32325F895D10001B38E /* AliyunIdentityManager.framework in Frameworks */,
 				B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,9 +335,27 @@
 			path = AuthenticationViewController;
 			sourceTree = "<group>";
 		};
+		0F28A2CE25F891620001B38E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0F28A32D25F89EF20001B38E /* HttpClient.h */,
+				0F28A32E25F89EF20001B38E /* HttpClient.m */,
+				0F28A31E25F895D00001B38E /* AliyunIdentityManager.framework */,
+				0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */,
+				0F28A32125F895D10001B38E /* BioAuthEngine.bundle */,
+				0F28A32025F895D10001B38E /* EsandZim.framework */,
+				0F28A31D25F895CC0001B38E /* ToygerService.bundle */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F28A2F525F891F00001B38E /* Accelerate.framework */,
+				0F28A2F325F891E70001B38E /* CoreMotion.framework */,
+				0F28A2F025F891CC0001B38E /* libc++.1.tbd */,
+				0F28A2EE25F891BB0001B38E /* WebKit.framework */,
 				BDC265E825EE695700DBAA64 /* CoreTelephony.framework */,
 				BDC265E625EE694D00DBAA64 /* AdSupport.framework */,
 				BDC265E425EE694600DBAA64 /* Security.framework */,
@@ -529,6 +574,7 @@
 		BDC5856325EB4D240021F808 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				0F28A2CE25F891620001B38E /* Authentication */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -782,6 +828,7 @@
 				BDC2659625EBEBED00DBAA64 /* CircleHeaderCell.xib in Resources */,
 				BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */,
 				BDC585B925EB5C590021F808 /* UserCell.xib in Resources */,
+				0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */,
 				BDC585B325EB5A1E0021F808 /* HomeViewController.xib in Resources */,
 				BDC265D825EE5D4F00DBAA64 /* ProfitHeaderCell.xib in Resources */,
 				BDDEFB1D25EB761600D7A5D7 /* UserInfoHeaderCell.xib in Resources */,
@@ -792,9 +839,11 @@
 				BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */,
 				BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */,
 				BDC5853925EB47370021F808 /* Main.storyboard in Resources */,
+				0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */,
 				BDDEFB2925EB7B1900D7A5D7 /* CircleViewController.xib in Resources */,
 				BDC265A925EBF13100DBAA64 /* CircleMoreCell.xib in Resources */,
 				BDC265BF25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib in Resources */,
+				0F28A32225F895D10001B38E /* ToygerService.bundle in Resources */,
 				0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */,
 				BDC2659D25EBEE2A00DBAA64 /* CircleContentCell.xib in Resources */,
 				BDC2658825EBD66600DBAA64 /* ComplaintReasonCell.xib in Resources */,
@@ -920,6 +969,7 @@
 				BDDEFB1425EB700500D7A5D7 /* UserHeaderCell.m in Sources */,
 				BDC5857825EB50740021F808 /* Color.m in Sources */,
 				BDC585A025EB57180021F808 /* NSString+MD5.m in Sources */,
+				0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */,
 				BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */,
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,
 				BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */,
@@ -1080,6 +1130,11 @@
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VA4HD34922;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Marketing/Lib/Authentication",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/Marketing/PrefixHeader.pch;
 				INFOPLIST_FILE = Marketing/Info.plist;
@@ -1088,9 +1143,71 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"WeChatSDK\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreSpotlight\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"LinkedME_iOS\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MOBFoundationEx\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"ShareSDK\"",
+					"-framework",
+					"\"ShareSDKConnector\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+					"-framework",
+					"\"WechatConnector\"",
+					"-lxml2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wecein.weshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -1104,6 +1221,11 @@
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VA4HD34922;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Marketing/Lib/Authentication",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/Marketing/PrefixHeader.pch;
 				INFOPLIST_FILE = Marketing/Info.plist;
@@ -1112,9 +1234,71 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"WeChatSDK\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreSpotlight\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"LinkedME_iOS\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MOBFoundationEx\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"ShareSDK\"",
+					"-framework",
+					"\"ShareSDKConnector\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebKit\"",
+					"-framework",
+					"\"WechatConnector\"",
+					"-lxml2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wecein.weshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};

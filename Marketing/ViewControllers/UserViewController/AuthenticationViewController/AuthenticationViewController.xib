@@ -85,49 +85,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkZ-bi-hsP">
                     <rect key="frame" x="30" y="370" width="354" height="59"/>
                     <attributedString key="attributedText">
-                        <fragment content="1.">
-                            <attributes>
-                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" metaFont="cellTitle"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="请使用真实姓名及有效身份证进行实名认证">
-                            <attributes>
-                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
                         <fragment>
-                            <string key="content">
-2.</string>
+                            <string key="content">1.请使用真实姓名及有效身份证进行实名认证
+2.实名认证信息提交认证成功后不可修改
+3.实名认证后您可在本平台发布信息</string>
                             <attributes>
                                 <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" metaFont="cellTitle"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="实名认证信息提交认证成功后不可修改">
-                            <attributes>
-                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">
-3.</string>
-                            <attributes>
-                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" metaFont="cellTitle"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="实名认证后您可在本平台发布信息">
-                            <attributes>
-                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
