@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleMoreCell : CircleBaseCell
 
+@property(nonatomic,weak)IBOutlet UIButton * addFriendButton;
 @property(nonatomic,weak)IBOutlet UIButton * moreButton;
 
 @end

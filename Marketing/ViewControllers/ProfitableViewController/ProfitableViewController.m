@@ -8,6 +8,7 @@
 #import "ProfitableViewController.h"
 #import "ProfitHeaderCell.h"
 #import "ProfitShareCell.h"
+#import "BindingAliViewController.h"
 #import "DrawAmountViewController.h"
 #import "InvitationViewController.h"
 
@@ -42,10 +43,15 @@
 /// 提现
 /// @param sender 按钮
 - (IBAction)drawAmount:(UIButton *)sender{
-    DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
-    drawAmount.title = @"提现";
-    drawAmount.hidesBottomBarWhenPushed = true;
-    [self.navigationController pushViewController:drawAmount animated:true];
+    BindingAliViewController * binding = [[BindingAliViewController alloc] init];
+    binding.title = @"绑定支付宝";
+    binding.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:binding animated:true];
+    
+//    DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
+//    drawAmount.title = @"提现";
+//    drawAmount.hidesBottomBarWhenPushed = true;
+//    [self.navigationController pushViewController:drawAmount animated:true];
 }
 
 /// 邀请记录

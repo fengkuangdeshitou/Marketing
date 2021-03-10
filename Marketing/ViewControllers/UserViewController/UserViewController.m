@@ -9,6 +9,7 @@
 #import "UserHeaderCell.h"
 #import "UserCell.h"
 #import "AddValueServicesController.h"
+#import "BindingMobileViewController.h"
 #import "AuthenticationViewController.h"
 #import "UserInfoViewController.h"
 #import "SettingViewController.h"
@@ -67,6 +68,11 @@
             authentication.title = @"实名认证";
             authentication.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:authentication animated:true];
+        }else if (indexPath.row == 3){
+            BindingMobileViewController * binding = [[BindingMobileViewController alloc] init];
+            binding.title = @"绑定手机";
+            binding.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:binding animated:true];
         }else if (indexPath.row == 5) {
             SettingViewController * setting = [[SettingViewController alloc] init];
             setting.title = @"设置";

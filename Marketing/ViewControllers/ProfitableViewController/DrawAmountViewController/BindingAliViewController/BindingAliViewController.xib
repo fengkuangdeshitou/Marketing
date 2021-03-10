@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindingAliViewController">
+            <connections>
+                <outlet property="accountTextField" destination="wJs-n1-8hW" id="9wj-yK-DAh"/>
+                <outlet property="nameTextField" destination="qcS-wm-YKb" id="ahn-qA-Otl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcR-iu-CMP">
+                    <rect key="frame" x="0.0" y="65" width="414" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-92-ryn">
+                            <rect key="frame" x="15" y="21.5" width="87" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入支付宝账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJs-n1-8hW">
+                            <rect key="frame" x="116" y="0.0" width="283" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="wJs-n1-8hW" firstAttribute="top" secondItem="UcR-iu-CMP" secondAttribute="top" id="1vT-Pb-pwB"/>
+                        <constraint firstItem="QGo-92-ryn" firstAttribute="leading" secondItem="UcR-iu-CMP" secondAttribute="leading" constant="15" id="AMb-5a-Msx"/>
+                        <constraint firstAttribute="bottom" secondItem="wJs-n1-8hW" secondAttribute="bottom" id="KLE-De-ZFY"/>
+                        <constraint firstItem="QGo-92-ryn" firstAttribute="centerY" secondItem="UcR-iu-CMP" secondAttribute="centerY" id="Zxi-HL-JYT"/>
+                        <constraint firstItem="wJs-n1-8hW" firstAttribute="leading" secondItem="QGo-92-ryn" secondAttribute="trailing" constant="14" id="mL9-Cg-etu"/>
+                        <constraint firstAttribute="trailing" secondItem="wJs-n1-8hW" secondAttribute="trailing" constant="15" id="qxa-EO-6K7"/>
+                        <constraint firstAttribute="height" constant="64" id="wqx-oS-xxc"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcX-W9-epI">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8y-WB-jIj">
+                            <rect key="frame" x="15" y="21.5" width="70" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账户姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qcS-wm-YKb">
+                            <rect key="frame" x="115" y="0.0" width="284" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="qcS-wm-YKb" firstAttribute="top" secondItem="OcX-W9-epI" secondAttribute="top" id="DYV-kW-new"/>
+                        <constraint firstItem="Q8y-WB-jIj" firstAttribute="centerY" secondItem="OcX-W9-epI" secondAttribute="centerY" id="DmV-RJ-dV8"/>
+                        <constraint firstAttribute="trailing" secondItem="qcS-wm-YKb" secondAttribute="trailing" constant="15" id="SD9-ee-b3g"/>
+                        <constraint firstItem="Q8y-WB-jIj" firstAttribute="leading" secondItem="OcX-W9-epI" secondAttribute="leading" constant="15" id="f5W-PF-Vmt"/>
+                        <constraint firstItem="qcS-wm-YKb" firstAttribute="leading" secondItem="Q8y-WB-jIj" secondAttribute="trailing" constant="30" id="gWT-fV-iTB"/>
+                        <constraint firstAttribute="bottom" secondItem="qcS-wm-YKb" secondAttribute="bottom" id="onB-dy-K9l"/>
+                        <constraint firstAttribute="height" constant="64" id="uKT-W4-JQV"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1h-bk-lpJ">
+                    <rect key="frame" x="15" y="159" width="384" height="49"/>
+                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="AaZ-zG-weX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <state key="normal" title="确定"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="24.5"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="doneAction:" destination="-1" eventType="touchUpInside" id="lMA-Ad-OgR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="R1h-bk-lpJ" firstAttribute="top" secondItem="UcR-iu-CMP" secondAttribute="bottom" constant="30" id="7OZ-BO-xUC"/>
+                <constraint firstItem="OcX-W9-epI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="H1N-e6-pg8"/>
+                <constraint firstItem="UcR-iu-CMP" firstAttribute="top" secondItem="OcX-W9-epI" secondAttribute="bottom" constant="1" id="Nwv-5Z-0aS"/>
+                <constraint firstItem="R1h-bk-lpJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="UGe-1I-R7v"/>
+                <constraint firstItem="OcX-W9-epI" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="bPk-zp-BMs"/>
+                <constraint firstItem="UcR-iu-CMP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="f1o-0z-w22"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="R1h-bk-lpJ" secondAttribute="trailing" constant="15" id="gcx-99-xIy"/>
+                <constraint firstItem="OcX-W9-epI" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="pYE-NS-daQ"/>
+                <constraint firstItem="UcR-iu-CMP" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="xVk-VB-uTp"/>
+            </constraints>
+            <point key="canvasLocation" x="63.768115942028992" y="75.669642857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

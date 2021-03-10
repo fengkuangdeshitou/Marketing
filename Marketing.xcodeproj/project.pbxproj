@@ -18,7 +18,6 @@
 		0F28A32225F895D10001B38E /* ToygerService.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31D25F895CC0001B38E /* ToygerService.bundle */; };
 		0F28A32325F895D10001B38E /* AliyunIdentityManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A31E25F895D00001B38E /* AliyunIdentityManager.framework */; };
 		0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */; };
-		0F28A32525F895D10001B38E /* EsandZim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A32025F895D10001B38E /* EsandZim.framework */; };
 		0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A32125F895D10001B38E /* BioAuthEngine.bundle */; };
 		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
@@ -32,6 +31,15 @@
 		BD06EC2325F7C247005A8FE4 /* InvitationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC2125F7C247005A8FE4 /* InvitationViewController.xib */; };
 		BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC2725F7C6C6005A8FE4 /* InvitationListCell.m */; };
 		BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC2825F7C6C6005A8FE4 /* InvitationListCell.xib */; };
+		BD410C7C25F8E468007A1D5E /* EsandZim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F28A32025F895D10001B38E /* EsandZim.framework */; };
+		BD410C8325F8F117007A1D5E /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C8125F8F116007A1D5E /* Toast+UIView.m */; };
+		BD410C8925F8F78A007A1D5E /* BindingMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C8725F8F78A007A1D5E /* BindingMobileViewController.m */; };
+		BD410C8A25F8F78A007A1D5E /* BindingMobileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C8825F8F78A007A1D5E /* BindingMobileViewController.xib */; };
+		BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C8F25F8FD2E007A1D5E /* BindingAliViewController.m */; };
+		BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */; };
+		BD410C9725F903CC007A1D5E /* AddFriendAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */; };
+		BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */; };
+		BD410C9E25F9218F007A1D5E /* CNContactViewController+Cancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -151,6 +159,19 @@
 		BD06EC2625F7C6C6005A8FE4 /* InvitationListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationListCell.h; sourceTree = "<group>"; };
 		BD06EC2725F7C6C6005A8FE4 /* InvitationListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationListCell.m; sourceTree = "<group>"; };
 		BD06EC2825F7C6C6005A8FE4 /* InvitationListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationListCell.xib; sourceTree = "<group>"; };
+		BD410C8125F8F116007A1D5E /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		BD410C8225F8F116007A1D5E /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		BD410C8625F8F78A007A1D5E /* BindingMobileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingMobileViewController.h; sourceTree = "<group>"; };
+		BD410C8725F8F78A007A1D5E /* BindingMobileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingMobileViewController.m; sourceTree = "<group>"; };
+		BD410C8825F8F78A007A1D5E /* BindingMobileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingMobileViewController.xib; sourceTree = "<group>"; };
+		BD410C8E25F8FD2E007A1D5E /* BindingAliViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingAliViewController.h; sourceTree = "<group>"; };
+		BD410C8F25F8FD2E007A1D5E /* BindingAliViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingAliViewController.m; sourceTree = "<group>"; };
+		BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingAliViewController.xib; sourceTree = "<group>"; };
+		BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddFriendAlertView.h; sourceTree = "<group>"; };
+		BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddFriendAlertView.m; sourceTree = "<group>"; };
+		BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendAlertView.xib; sourceTree = "<group>"; };
+		BD410C9C25F9218F007A1D5E /* CNContactViewController+Cancel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNContactViewController+Cancel.h"; sourceTree = "<group>"; };
+		BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+Cancel.m"; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -300,7 +321,7 @@
 			files = (
 				0F28A2F625F891F00001B38E /* Accelerate.framework in Frameworks */,
 				0F28A2F425F891E70001B38E /* CoreMotion.framework in Frameworks */,
-				0F28A32525F895D10001B38E /* EsandZim.framework in Frameworks */,
+				BD410C7C25F8E468007A1D5E /* EsandZim.framework in Frameworks */,
 				0F28A2F125F891CC0001B38E /* libc++.1.tbd in Frameworks */,
 				0F28A2EF25F891BB0001B38E /* WebKit.framework in Frameworks */,
 				BDC265E925EE695700DBAA64 /* CoreTelephony.framework in Frameworks */,
@@ -381,6 +402,7 @@
 				BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */,
 				BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */,
 				BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */,
+				BD410C8D25F8FD1B007A1D5E /* BindingAliViewController */,
 				BD06EC0E25F7AD3A005A8FE4 /* DrawAmountListViewController */,
 			);
 			path = DrawAmountViewController;
@@ -428,6 +450,35 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BD410C8025F8F116007A1D5E /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				BD410C8125F8F116007A1D5E /* Toast+UIView.m */,
+				BD410C8225F8F116007A1D5E /* Toast+UIView.h */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		BD410C8525F8F777007A1D5E /* BindingMobileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD410C8625F8F78A007A1D5E /* BindingMobileViewController.h */,
+				BD410C8725F8F78A007A1D5E /* BindingMobileViewController.m */,
+				BD410C8825F8F78A007A1D5E /* BindingMobileViewController.xib */,
+			);
+			path = BindingMobileViewController;
+			sourceTree = "<group>";
+		};
+		BD410C8D25F8FD1B007A1D5E /* BindingAliViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD410C8E25F8FD2E007A1D5E /* BindingAliViewController.h */,
+				BD410C8F25F8FD2E007A1D5E /* BindingAliViewController.m */,
+				BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */,
+			);
+			path = BindingAliViewController;
+			sourceTree = "<group>";
+		};
 		BDC2657B25EBD4B300DBAA64 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +518,11 @@
 				BDC265BA25ED0C3900DBAA64 /* CircleMoreActionAlertView.h */,
 				BDC265BB25ED0C3900DBAA64 /* CircleMoreActionAlertView.m */,
 				BDC265BE25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib */,
+				BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */,
+				BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */,
+				BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */,
+				BD410C9C25F9218F007A1D5E /* CNContactViewController+Cancel.h */,
+				BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -574,6 +630,7 @@
 		BDC5856325EB4D240021F808 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				BD410C8025F8F116007A1D5E /* Toast */,
 				0F28A2CE25F891620001B38E /* Authentication */,
 			);
 			path = Lib;
@@ -648,6 +705,7 @@
 				BDDEFB1025EB6FE800D7A5D7 /* View */,
 				0F28A29725F7420D0001B38E /* AddValueServicesController */,
 				BDDEFB4125EBA6E400D7A5D7 /* MembersViewController */,
+				BD410C8525F8F777007A1D5E /* BindingMobileViewController */,
 				0F28A2C625F88B3A0001B38E /* AuthenticationViewController */,
 				BDDEFB0825EB6E8300D7A5D7 /* UserInfoViewController */,
 				BDDEFAFA25EB63BA00D7A5D7 /* SettingViewController */,
@@ -818,7 +876,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDC265C625ED2A7000DBAA64 /* ProfitableViewController.xib in Resources */,
+				BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */,
 				BDDEFAFF25EB63CF00D7A5D7 /* SettingViewController.xib in Resources */,
+				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
 				BDC265D125EE5BB100DBAA64 /* ImageOrVideoCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
 				BDC585AB25EB58500021F808 /* UserViewController.xib in Resources */,
@@ -835,6 +895,7 @@
 				BDC265A325EBEFF000DBAA64 /* CircleStatusCell.xib in Resources */,
 				BDC2658F25EBDA0600DBAA64 /* ComplaintImageCell.xib in Resources */,
 				BDC5853B25EB473A0021F808 /* Assets.xcassets in Resources */,
+				BD410C8A25F8F78A007A1D5E /* BindingMobileViewController.xib in Resources */,
 				BDDEFB0625EB647300D7A5D7 /* SettingCell.xib in Resources */,
 				BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */,
 				BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */,
@@ -930,11 +991,13 @@
 				BDC265A825EBF13100DBAA64 /* CircleMoreCell.m in Sources */,
 				BDC5855E25EB4C4E0021F808 /* ImageLoader.mm in Sources */,
 				BDDEFB2225EB77BD00D7A5D7 /* CustomNavagationController.m in Sources */,
+				BD410C8325F8F117007A1D5E /* Toast+UIView.m in Sources */,
 				BDC2659C25EBEE2A00DBAA64 /* CircleContentCell.m in Sources */,
 				BDC5853625EB47370021F808 /* ViewController.m in Sources */,
 				BDC265B725ED09EF00DBAA64 /* CircleNineImageCell.m in Sources */,
 				BDC5859A25EB57180021F808 /* UIControl+Button.m in Sources */,
 				BDC585B825EB5C590021F808 /* UserCell.m in Sources */,
+				BD410C9725F903CC007A1D5E /* AddFriendAlertView.m in Sources */,
 				BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */,
 				BDC5859E25EB57180021F808 /* NSDictionary+MyDictionary.m in Sources */,
 				BDC585A225EB57180021F808 /* UIImage+YYCompress.m in Sources */,
@@ -945,6 +1008,7 @@
 				BDDEFB0C25EB6E9400D7A5D7 /* UserInfoViewController.m in Sources */,
 				0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */,
 				BDC585AA25EB58500021F808 /* UserViewController.m in Sources */,
+				BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */,
 				BDC585A125EB57180021F808 /* UIView+Extension.m in Sources */,
 				BDC265BC25ED0C3900DBAA64 /* CircleMoreActionAlertView.m in Sources */,
 				BDDEFB0525EB647300D7A5D7 /* SettingCell.m in Sources */,
@@ -958,6 +1022,7 @@
 				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
+				BD410C9E25F9218F007A1D5E /* CNContactViewController+Cancel.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
 				BDC5854125EB473A0021F808 /* main.m in Sources */,
@@ -966,6 +1031,7 @@
 				BDDEFB3825EB803100D7A5D7 /* LoginViewController.m in Sources */,
 				BDC5859F25EB57180021F808 /* UIButton+ImageTitleSpacing.m in Sources */,
 				BDC5855C25EB4C4E0021F808 /* NetworkUrl.m in Sources */,
+				BD410C8925F8F78A007A1D5E /* BindingMobileViewController.m in Sources */,
 				BDDEFB1425EB700500D7A5D7 /* UserHeaderCell.m in Sources */,
 				BDC5857825EB50740021F808 /* Color.m in Sources */,
 				BDC585A025EB57180021F808 /* NSString+MD5.m in Sources */,

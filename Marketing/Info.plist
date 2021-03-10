@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
+	<key>NSContactsUsageDescription</key>
+	<string>营销工具需要访问你的通讯录来新建联系人</string>
 	<key>NSCameraUsageDescription</key>
 	<string>营销工具需要访问你的相机来实现认证功能</string>
 	<key>CFBundleDevelopmentRegion</key>

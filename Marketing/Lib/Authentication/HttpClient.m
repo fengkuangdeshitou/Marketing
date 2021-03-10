@@ -22,7 +22,7 @@
     [request setHTTPMethod:@"POST"];
     //把bodyString转换为NSData数据
     bodyString = [bodyString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-    NSData *bodyData =  [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *bodyData = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     [request addValue:@"application/x-www-form-urlencoded ;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     //防重放
     NSDate *date = [NSDate date];
@@ -32,17 +32,18 @@
     [request setValue:dateStr forHTTPHeaderField:@"X-Ca-Nonce"];
     //APPCODE
     //TODO 替换成自己的appCode
-    [request setValue:@"68b291c8c4874247ae3ef17988d2e4a8" forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"APPCODE 68b291c8c4874247ae3ef17988d2e4a8" forHTTPHeaderField:@"Authorization"];
+    
     //测试环境
-    [request addValue:@"TEST" forHTTPHeaderField:@"X-Ca-Stage"];
+//    [request addValue:@"TEST" forHTTPHeaderField:@"X-Ca-Stage"];
     //body 数据
     [request setHTTPBody:bodyData];
     //创建任务
     NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"%@",((NSHTTPURLResponse*)response).allHeaderFields);
-            NSLog(@"%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
-            NSLog(@"%@", error);
+            NSLog(@"header=%@",((NSHTTPURLResponse*)response).allHeaderFields);
+            NSLog(@"data=%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+            NSLog(@"error=%@", error);
             NSString* resultStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             clientCallback(resultStr);
         }else{

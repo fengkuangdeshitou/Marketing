@@ -13,6 +13,7 @@
 #import "CircleMoreCell.h"
 #import "CircleNineImageCell.h"
 #import "CircleMoreActionAlertView.h"
+#import "AddFriendAlertView.h"
 
 @interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
@@ -84,9 +85,15 @@
     
     else{
         CircleMoreCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleMoreCell class]) forIndexPath:indexPath];
+        [cell.addFriendButton addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreButton addTarget:self action:@selector(circleMoreAction:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
+}
+
+- (void)addFriendAction:(UIButton *)btn{
+    CircleMoreCell * cell = (CircleMoreCell *)[[btn superview] superview];
+    AddFriendAlertView * alertView = [[AddFriendAlertView alloc] init];
 }
 
 - (void)circleMoreAction:(UIButton *)btn{

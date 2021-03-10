@@ -36,31 +36,46 @@
         
         NSString* bodyString = [NSString stringWithFormat:@"identityParam=%@&packageId=%@&platform=%@&bizId=%@&packageName=%@&appName=%@&metaInfo=%@&businessId=%@",
                                 dict[@"identityParam"],dict[@"packageId"],dict[@"platform"],dict[@"bizId"],dict[@"packageId"],dict[@"appName"],dict[@"metaInfo"],dict[@"businessId"]];
-        [client requestSync:@"http://ediszim.market.alicloudapi.com/zoloz/zim/init" bodyString: bodyString  clientCallback:^(NSString *resultStr) {
-            // 调用校验函数
-             [zolozManager auth: resultStr zolozCallback:^(ZolozResult *zolozResult) {
-                 if (zolozResult.code!=ZOLOZ_SUCCESS) {
-                     [self logError: [NSString stringWithFormat:@"认证失败 : code = %d  data=%@ msg= %@", zolozResult.code, zolozResult.data, zolozResult.msg]];
-                     return;
-                 }
-                 
-                 [self logMsg: [[NSString alloc] initWithFormat:@"认证完成: %@", zolozResult.msg]];
-                 [self logMsg: @"3. 获取认证结果"];
-        
-                 NSError *error;
-                 NSData *jsonData = [zolozResult.data dataUsingEncoding:NSUTF8StringEncoding];
-                 NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-                 NSString * req = [NSString stringWithFormat:@"bizId=%@&certifyId=%@",[jsonDict objectForKey:@"bizid"],[jsonDict objectForKey:@"certifyId"]];
-                 //校验成功 从服务器获取认证结果
-                 [client requestSync:@"https://ediszim.market.alicloudapi.com/zoloz/zim/getResult" bodyString:req clientCallback:^(NSString *resultStr) {
-                     if (!resultStr) {
-                         [self logMsg: @"网络请求失败"];
-                     }else{
-                         [self logMsg: resultStr];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [client requestSync:@"http://ediszim.market.alicloudapi.com/zoloz/zim/init" bodyString: bodyString  clientCallback:^(NSString *resultStr) {
+                // 调用校验函数
+                 [zolozManager auth: resultStr zolozCallback:^(ZolozResult *zolozResult) {
+                     if (zolozResult.code!=ZOLOZ_SUCCESS) {
+                         [self logError: [NSString stringWithFormat:@"认证失败 : code = %d  data=%@ msg= %@", zolozResult.code, zolozResult.data, zolozResult.msg]];
+                         NSDictionary * errorResult = [NSJSONSerialization JSONObjectWithData:[zolozResult.msg dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             [self.view makeToast:errorResult[@"msg"]];
+                         });
+                         return;
                      }
+                     
+                     [self logMsg: [[NSString alloc] initWithFormat:@"认证完成: %@", zolozResult.msg]];
+                     [self logMsg: @"3. 获取认证结果"];
+            
+                     NSError *error;
+                     NSData *jsonData = [zolozResult.data dataUsingEncoding:NSUTF8StringEncoding];
+                     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+                     NSString * req = [NSString stringWithFormat:@"bizId=%@&certifyId=%@",[jsonDict objectForKey:@"bizid"],[jsonDict objectForKey:@"certifyId"]];
+                     //校验成功 从服务器获取认证结果
+                     [client requestSync:@"https://ediszim.market.alicloudapi.com/zoloz/zim/getResult" bodyString:req clientCallback:^(NSString *resultStr) {
+                         if (!resultStr) {
+                             [self logMsg: @"网络请求失败"];
+                         }else{
+                             NSDictionary * result = [NSJSONSerialization JSONObjectWithData:[resultStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 if ([[result objectForKey:@"resultCode"] isEqualToString:@"OK"]) {
+                                     [self.view makeToast:@"认证成功"];
+                                 }else{
+                                     NSLog(@"result=%@",result);
+                                     [self.view makeToast:result[@"msg"]];
+                                 }
+                             });                             
+                         }
+                     }];
                  }];
-             }];
-        }];
+            }];
+        });
+        
     }
 }
 
