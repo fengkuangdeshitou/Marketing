@@ -202,25 +202,6 @@
     return [dateFormatter stringFromDate:date];
 }
 
-
-+(int)sinaCountWord:(NSString *)word
-{
-    int i,n=[word length],l=0,a=0,b=0;
-    unichar c;
-    for(i=0;i<n;i++){
-        c=[word characterAtIndex:i];
-        if(isblank(c)){
-            b++;
-        }else if(isascii(c)){
-            a++;
-        }else{
-            l++;
-        }
-    }
-    if(a==0 && l==0) return 0;
-    return l+(int)ceilf((float)(a+b)/2.0);
-}
-
 + (NSData *)toJSONData:(id)theData{
       
     NSError *error = nil;
@@ -249,8 +230,8 @@
     return [dateFormatter dateFromString:dateString];
 }
 
-+ (NSString *)newCompareCurrentTime:(long long)time {
-    NSDate * timeDate = [NSDate dateWithTimeIntervalSince1970:time / 1000];
++ (NSString *)compareCurrentTime:(long long)time {
+    NSDate * timeDate = [NSDate dateWithTimeIntervalSince1970:time];
     
     NSDate *currentDate = [NSDate date];
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:timeDate];
@@ -275,36 +256,6 @@
     else{
         temp = temp/12;
         result = [NSString stringWithFormat:@"%ld年前",temp];
-    }
-    return  result;
-}
-
-+ (NSString *)newEnglishCompareCurrentTime:(long long)time {
-    NSDate * timeDate = [NSDate dateWithTimeIntervalSince1970:time / 1000];
-    
-    NSDate *currentDate = [NSDate date];
-    NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:timeDate];
-    long temp = 0;
-    NSString *result;
-    if (timeInterval/60 < 1)
-    {
-        result = [NSString stringWithFormat:@"just"];
-    }
-    else if((temp = timeInterval/60) <60){
-        result = [NSString stringWithFormat:@"%ld minutes ago",temp];
-    }
-    else if((temp = temp/60) <24){
-        result = [NSString stringWithFormat:@"%ld hour ago",temp];
-    }
-    else if((temp = temp/24) <30){
-        result = [NSString stringWithFormat:@"%ld day ago",temp];
-    }
-    else if((temp = temp/30) <12){
-        result = [NSString stringWithFormat:@"%ld months ago",temp];
-    }
-    else{
-        temp = temp/12;
-        result = [NSString stringWithFormat:@"%ld year ago",temp];
     }
     return  result;
 }
@@ -382,41 +333,10 @@
     return [date timeIntervalSince1970] * 1000;
 }
 
-+ (void)setTableViewAnimation:(UITableView *)currentTableView{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3]; //动画的内容
-    currentTableView.frame = CGRectMake(currentTableView.frame.origin.x, -200, currentTableView.frame.size.width, currentTableView.frame.size.height);
-    [UIView commitAnimations]; //动画结束
-}
-
-+ (void)setTableViewReduction:(UITableView *)currentTableView{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3];
-    currentTableView.frame =CGRectMake(currentTableView.frame.origin.x, 0, currentTableView.frame.size.width, currentTableView.frame.size.height);
-    [UIView commitAnimations];
-}
-
-+ (NSInteger)getLines:(NSArray *)imageArray {
-    if (imageArray.count % 3 == 0) {
-        return imageArray.count / 3;
-    }
-    return imageArray.count / 3 + 1;
-}
-
 + (CGFloat)getLineHeights:(NSString *)content {
     UIFont *font = [UIFont systemFontOfSize:15];
     CGRect rect = [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 104, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil] context:nil];
     return rect.size.height;
-}
-
-//计算行
-+ (NSInteger)returnRowNum:(int)num {
-    return num % 3; //一行可添加5张图片
-}
-
-//计算列
-+ (NSInteger)returnLineNum:(int)num {
-    return num / 3;
 }
 
 + (void)resetTableViewFrame:(UITableView *)tableView {
@@ -448,36 +368,6 @@
     NSDate * localeDate = [dateFormatter dateFromString:dateStr];
     return [localeDate timeIntervalSince1970] * 1000;
 }
-
-+(CGSize)CalculationLbWidthSizefor:(NSString*)TextStr textfontSize:(float)fontSize NumberOfLines:(int)num Width:(float)_width{
-    //初始化label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,_width,30)];
-    
-    
-    //设置自动行数与字符换行
-    [label setNumberOfLines:num];
-    [label setLineBreakMode:NSLineBreakByWordWrapping];
-    
- 
-    UIFont *font = [UIFont systemFontOfSize:fontSize];
-    //设置一个行高上限
-    CGSize size = CGSizeMake(_width,2000);
-    //计算实际frame大小，并将label的frame变成实际大小
-    CGSize labelsize = [TextStr sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
-    
-    labelsize.height =[TextStr boundingRectWithSize:
-                       CGSizeMake(_width, CGFLOAT_MAX)
-                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:label.font,NSFontAttributeName, nil] context:nil].size.height;
-    
-
-    
-    
-    
-    return labelsize;
-    
-}
-
 
 //读取Data文件转字典行 返回来
 +(NSDictionary*)ReadDocmentsTempFile :(NSString*)_Name{

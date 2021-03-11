@@ -13,6 +13,7 @@
 #import "GlobalDefine.h"
 #import "GlobalState.h"
 #import "PreHelper.h"
+#import "ImageLoader.h"
 #import "Toast+UIView.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.

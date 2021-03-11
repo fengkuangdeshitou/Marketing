@@ -29,19 +29,11 @@
 
 + (UIImage *)imageWithImageSimple:(UIImage *)image scaledToSize:(CGSize)newSize;
 
-+ (NSString *)getImageUrlByName:(NSString *)imageName;
-
-+ (NSString *)getUserAvatarUrlById:(NSString *)userId;
-
 + (NSString *)getCreateImageName:(NSString *)userId;
 
 + (void)praiseAnimationsWithView:(UIView *)pariseview;
 
 + (NSString *)getYMD:(long long)time;
-
-+ (UIView *)noMoreViewWithFrame:(CGRect)frame;
-
-+ (NSString *)SignatureVerificationWithText:(NSString *)text;
 
 + (NSString *)md5:(NSString *)input;
 

@@ -15,11 +15,6 @@
 #import "UIButton+WebCache.h"
 #import "AFNetworkReachabilityManager.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "GlobalDefine.h"
-#import "GlobalState.h"
-#import "NetworkWorker.h"
-#import "PreHelper.h"
-#import "Color.h"
 
 @implementation ImageLoader
 
@@ -137,24 +132,6 @@
     return newImage;
 }
 
-+ (NSString *)getImageUrlByName:(NSString *)imageName {
-    if (imageName) {
-        NSString *avatarHeaderUrl = [NetworkUrlGetter getUrlAvatarHeader];
-        return [avatarHeaderUrl stringByAppendingString:imageName];
-    } else {
-        return @"";
-    }
-}
-
-+ (NSString *)getUserAvatarUrlById:(NSString *)userId {
-    if (userId) {
-        NSString *avatarHeaderUrl = [NetworkUrlGetter getUrlAvatarHeader];
-        return [[avatarHeaderUrl stringByAppendingString:userId] stringByAppendingString:@".jpg"];
-    } else {
-        return @"";
-    }
-}
-
 + (NSString *)getCreateImageName:(NSString *)userId {
     if (userId) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -223,30 +200,6 @@
         //return hoursandSec;
         return [NSString stringWithFormat:@"%@ %@",createDate,hoursandSec];
     }
-}
-
-+(UIView *)noMoreViewWithFrame:(CGRect)frame
-{
-    UIView *view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [PreHelper colorWithHexString:COLOR_COMMON_DEFOUT_BARKGROUND alpha:1];
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width-178)/2, (frame.size.height - 166)/2, 178, 166)];
-    imgView.userInteractionEnabled = YES;
-    imgView.image = [UIImage imageNamed:@"meiyou"];
-    [view addSubview:imgView];
-    return view;
-}
-
-+ (NSString *)SignatureVerificationWithText:(NSString *)text
-{
-    NSString *SignStr = @"";
-
-    NSString * string = [NSString stringWithFormat:@"%@huyiquantuan",text];
-    NSString * SignStr2 = [ImageLoader md5:string];
-    for(int i=0;i<SignStr2.length;i+=2){
-        NSString * str = [SignStr2 substringWithRange:NSMakeRange(i, 2)];
-        SignStr = [NSString stringWithFormat:@"%@%@%d",SignStr,str,arc4random() % 9];
-    }
-    return [NSString stringWithFormat:@"%@%d%d",SignStr,arc4random() % 9,arc4random() % 9];
 }
 
 + (NSString *) md5:(NSString *) input {

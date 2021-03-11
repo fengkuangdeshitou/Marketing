@@ -19,6 +19,8 @@
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
+@property(nonatomic,strong) UIImageView * coverImageView;
+@property(nonatomic,strong) UIImageView * avatarImageView;
 
 @end
 
@@ -27,6 +29,24 @@
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     BOOL hidden = [viewController isKindOfClass:[self class]];
     [self.navigationController setNavigationBarHidden:hidden animated:NO];
+}
+
+- (UIImageView *)coverImageView{
+    if (!_coverImageView) {
+        _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 330)];
+        _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _coverImageView;
+}
+
+- (UIImageView *)avatarImageView{
+    if (!_avatarImageView) {
+        _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-85, 278, 70, 70)];
+        _avatarImageView.layer.cornerRadius = 8;
+        _avatarImageView.layer.masksToBounds = true;
+        _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _avatarImageView;
 }
 
 - (void)viewDidLoad {
@@ -58,12 +78,14 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleMoreCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleMoreCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleNineImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleNineImageCell class])];
     
-    
-    
-    
     UIView * headerView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
-    headerView.backgroundColor = UIColor.grayColor;
+    headerView.backgroundColor = UIColor.whiteColor;
+    [headerView addSubview:self.coverImageView];
+    [headerView addSubview:self.avatarImageView];
     self.tableView.tableHeaderView = headerView;
+    
+    [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
+    [ImageLoader loadImage:self.avatarImageView url:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg" placeholder:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

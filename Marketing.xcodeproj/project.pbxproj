@@ -21,6 +21,8 @@
 		0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A32125F895D10001B38E /* BioAuthEngine.bundle */; };
 		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
+		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
+		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
 		BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */; };
 		BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */; };
 		BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC1025F7AD48005A8FE4 /* DrawAmountListViewController.m */; };
@@ -39,6 +41,10 @@
 		BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */; };
 		BD410C9725F903CC007A1D5E /* AddFriendAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */; };
 		BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */; };
+		BD410CA525FA4379007A1D5E /* SearchItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410CA325FA4379007A1D5E /* SearchItemCollectionCell.m */; };
+		BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */; };
+		BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410CAB25FA539B007A1D5E /* SearchViewController.m */; };
+		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -143,6 +149,9 @@
 		0F28A32125F895D10001B38E /* BioAuthEngine.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BioAuthEngine.bundle; sourceTree = "<group>"; };
 		0F28A32D25F89EF20001B38E /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		0F28A32E25F89EF20001B38E /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
+		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
+		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
 		BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountViewController.h; sourceTree = "<group>"; };
 		BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountViewController.m; sourceTree = "<group>"; };
 		BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountViewController.xib; sourceTree = "<group>"; };
@@ -169,6 +178,12 @@
 		BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddFriendAlertView.h; sourceTree = "<group>"; };
 		BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddFriendAlertView.m; sourceTree = "<group>"; };
 		BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendAlertView.xib; sourceTree = "<group>"; };
+		BD410CA225FA4379007A1D5E /* SearchItemCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchItemCollectionCell.h; sourceTree = "<group>"; };
+		BD410CA325FA4379007A1D5E /* SearchItemCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchItemCollectionCell.m; sourceTree = "<group>"; };
+		BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCollectionCell.xib; sourceTree = "<group>"; };
+		BD410CAA25FA539B007A1D5E /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BD410CAB25FA539B007A1D5E /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BD410CAC25FA539B007A1D5E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -393,6 +408,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BD06B55825FA605A0051F873 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */,
+				BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */,
+				BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BD06EC0625F7A3B6005A8FE4 /* DrawAmountViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +499,27 @@
 				BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */,
 			);
 			path = BindingAliViewController;
+			sourceTree = "<group>";
+		};
+		BD410CA125FA4327007A1D5E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD410CA225FA4379007A1D5E /* SearchItemCollectionCell.h */,
+				BD410CA325FA4379007A1D5E /* SearchItemCollectionCell.m */,
+				BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD410CA925FA5388007A1D5E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD410CAA25FA539B007A1D5E /* SearchViewController.h */,
+				BD410CAB25FA539B007A1D5E /* SearchViewController.m */,
+				BD410CAC25FA539B007A1D5E /* SearchViewController.xib */,
+				BD410CA125FA4327007A1D5E /* View */,
+			);
+			path = SearchViewController;
 			sourceTree = "<group>";
 		};
 		BDC2657B25EBD4B300DBAA64 /* View */ = {
@@ -598,8 +644,6 @@
 		BDC5855025EB4C4D0021F808 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
-				BDC5855525EB4C4D0021F808 /* ImageLoader.h */,
-				BDC5855925EB4C4D0021F808 /* ImageLoader.mm */,
 				BDC5855825EB4C4D0021F808 /* NetworkUrl.h */,
 				BDC5855325EB4C4D0021F808 /* NetworkUrl.m */,
 				BDC5855125EB4C4D0021F808 /* NetworkUrlGetter.h */,
@@ -641,6 +685,8 @@
 				BDC5857225EB50260021F808 /* PreHelper.m */,
 				BDC5857625EB50740021F808 /* Color.h */,
 				BDC5857725EB50740021F808 /* Color.m */,
+				BDC5855525EB4C4D0021F808 /* ImageLoader.h */,
+				BDC5855925EB4C4D0021F808 /* ImageLoader.mm */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -714,6 +760,8 @@
 				BDC585AF25EB5A1E0021F808 /* HomeViewController.h */,
 				BDC585B025EB5A1E0021F808 /* HomeViewController.m */,
 				BDC585B125EB5A1E0021F808 /* HomeViewController.xib */,
+				BD06B55825FA605A0051F873 /* View */,
+				BD410CA925FA5388007A1D5E /* SearchViewController */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -874,6 +922,7 @@
 				BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */,
 				BDDEFAFF25EB63CF00D7A5D7 /* SettingViewController.xib in Resources */,
 				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
+				BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */,
 				BDC265D125EE5BB100DBAA64 /* ImageOrVideoCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
 				BDC585AB25EB58500021F808 /* UserViewController.xib in Resources */,
@@ -888,6 +937,7 @@
 				BDC265D825EE5D4F00DBAA64 /* ProfitHeaderCell.xib in Resources */,
 				BDDEFB1D25EB761600D7A5D7 /* UserInfoHeaderCell.xib in Resources */,
 				BDC265A325EBEFF000DBAA64 /* CircleStatusCell.xib in Resources */,
+				BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */,
 				BDC2658F25EBDA0600DBAA64 /* ComplaintImageCell.xib in Resources */,
 				BDC5853B25EB473A0021F808 /* Assets.xcassets in Resources */,
 				BD410C8A25F8F78A007A1D5E /* BindingMobileViewController.xib in Resources */,
@@ -898,6 +948,7 @@
 				0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */,
 				BDDEFB2925EB7B1900D7A5D7 /* CircleViewController.xib in Resources */,
 				BDC265A925EBF13100DBAA64 /* CircleMoreCell.xib in Resources */,
+				BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */,
 				BDC265BF25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib in Resources */,
 				0F28A32225F895D10001B38E /* ToygerService.bundle in Resources */,
 				0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */,
@@ -987,6 +1038,7 @@
 				BDC5855E25EB4C4E0021F808 /* ImageLoader.mm in Sources */,
 				BDDEFB2225EB77BD00D7A5D7 /* CustomNavagationController.m in Sources */,
 				BD410C8325F8F117007A1D5E /* Toast+UIView.m in Sources */,
+				BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */,
 				BDC2659C25EBEE2A00DBAA64 /* CircleContentCell.m in Sources */,
 				BDC5853625EB47370021F808 /* ViewController.m in Sources */,
 				BDC265B725ED09EF00DBAA64 /* CircleNineImageCell.m in Sources */,
@@ -996,6 +1048,7 @@
 				BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */,
 				BDC5859E25EB57180021F808 /* NSDictionary+MyDictionary.m in Sources */,
 				BDC585A225EB57180021F808 /* UIImage+YYCompress.m in Sources */,
+				BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */,
 				BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */,
 				BDC265C525ED2A7000DBAA64 /* ProfitableViewController.m in Sources */,
 				BDC5855D25EB4C4E0021F808 /* NetworkUrlGetter.m in Sources */,
@@ -1040,6 +1093,7 @@
 				BDC265F625EE79B600DBAA64 /* DetailViewController.m in Sources */,
 				0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */,
 				BDC265B125EBF66400DBAA64 /* CircleBaseCell.m in Sources */,
+				BD410CA525FA4379007A1D5E /* SearchItemCollectionCell.m in Sources */,
 				BDC5857425EB50260021F808 /* PreHelper.m in Sources */,
 				BDC265D025EE5BB100DBAA64 /* ImageOrVideoCell.m in Sources */,
 				BDDEFB2825EB7B1900D7A5D7 /* CircleViewController.m in Sources */,

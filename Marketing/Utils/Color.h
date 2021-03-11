@@ -23,21 +23,3 @@ extern NSString * const COLOR_TABBAR_TOPLINE_COLOR;
 /**navagitionBar 文字颜色*/
 extern NSString * const COLOR_NAVIGATION_TITLE_COLOR;
 
-
-extern NSString * const COLOR_COMMON_RED_TEXTCOLOR;
-
-extern NSString * const COLOR_COMMON_TABLE_BGCOLOR;
-
-extern NSString * const COLOR_COMMON_TABBAR_DARKCOLOR;
-
-extern NSString * const COLOR_COMMON_PURPLE_COLOR;
-
-extern NSString * const COLOR_COMMON_TABBAR_WHITE;
-
-extern NSString * const COLOR_COMMON_TABBAR_DEFOUT;
-
-extern NSString * const COLOR_COMMON_DEFOUT_BARKGROUND;
-
-extern NSString * const COLOR_COMMON_TABBAR_BARKGROUND;
-
-extern NSString * const COLOR_COMMON_FINDLOVE_BACKGROUND;

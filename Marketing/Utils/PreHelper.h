@@ -33,13 +33,9 @@
 
 + (NSString *)stringFormatDateMin:(NSDate *)date;
 
-+(int)sinaCountWord:(NSString *)word;
-
 + (NSData *)toJSONData:(id)theData;
 
-+ (NSString *)newCompareCurrentTime:(long long)time;
-
-+ (NSString *)newEnglishCompareCurrentTime:(long long)time;
++ (NSString *)compareCurrentTime:(long long)time;
 
 + (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
 
@@ -49,19 +45,7 @@
 
 +(long long)longLongFromDate:(NSDate*)date;
 
-+ (void)setTableViewAnimation:(UITableView *)currentTableView;
-
-+(void)setTableViewReduction:(UITableView *)currentTableView;
-
-+ (NSInteger)getLines:(NSArray *)imageArray;
-
 + (CGFloat)getLineHeights:(NSString *)content;
-
-//计算行
-+ (NSInteger)returnRowNum:(int)num ;
-
-//计算列
-+ (NSInteger)returnLineNum:(int)num ;
 
 + (void)resetTableViewFrame:(UITableView *)tableView;
 
@@ -80,8 +64,6 @@
 + (long long)getTimeSince1970InMsLongLong;
 
 + (long long)getTimeWithDateStr:(NSString *)dateStr;
-
-+(CGSize)CalculationLbWidthSizefor:(NSString*)TextStr textfontSize:(float)fontSize NumberOfLines:(int)num Width:(float)_width;
 
 +(BOOL)DocumentFilePaht:(NSString*)fileName requestUrl:(NSString*)URl;
 

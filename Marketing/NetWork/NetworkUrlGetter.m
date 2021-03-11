@@ -8,6 +8,7 @@
 
 #import "NetworkUrlGetter.h"
 #import "NetworkUrl.h"
+
 @implementation NetworkUrlGetter
 
 + (NSString *)getHost {
