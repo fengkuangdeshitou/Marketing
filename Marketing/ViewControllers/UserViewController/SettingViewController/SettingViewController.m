@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleArray = @[@"关于我们",@"支持微信版本",@"版本更新",@"用户协议",@"隐私政策",@"注销账户"];
+    self.titleArray = @[@"关于我们",@"版本更新",@"用户协议",@"隐私政策",@"注销账户"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SettingCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SettingCell class])];
     self.tableView.tableFooterView = [self tableFooterView];
     
@@ -44,11 +44,7 @@
     SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SettingCell class]) forIndexPath:indexPath];
     cell.titleLabel.text = self.titleArray[indexPath.row];
     cell.detailIcon.image = [UIImage imageNamed:@"setting_cell_more"];
-    if (indexPath.row == 1) {
-        cell.detailIconWidth.constant = 0;
-    }else{
-        cell.detailIconWidth.constant = 5.5;
-    }
+    cell.detailIconWidth.constant = 5.5;
     return cell;
 }
 

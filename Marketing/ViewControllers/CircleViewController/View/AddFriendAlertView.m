@@ -7,7 +7,6 @@
 
 #import "AddFriendAlertView.h"
 #import <ContactsUI/ContactsUI.h>
-//#import "CNContactViewController+Cancel.h"
 
 @interface AddFriendAlertView ()<CNContactViewControllerDelegate>
 
@@ -54,23 +53,50 @@
 /// @param sender 按钮
 - (IBAction)addAddressBook:(UIButton *)sender{
     [self dismiss];
+    
+    switch ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts])
+        {
+                //存在权限
+            case CNAuthorizationStatusAuthorized:
+                break;
+                
+                //权限未知
+            case CNAuthorizationStatusNotDetermined:
+                //请求权限
+                break;
+                
+                //如果没有权限
+            case CNAuthorizationStatusRestricted:
+            case CNAuthorizationStatusDenied://需要提示
+                break;
+        }
+    
     CNMutableContact * contack = [[CNMutableContact alloc] init];
     contack.nickname = @"啦啦啦";
     CNPhoneNumber * number = [CNPhoneNumber phoneNumberWithStringValue:@"18700850373"];
     CNLabeledValue * value = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberiPhone value:number];
     contack.phoneNumbers = @[value];
-    _controller = [CNContactViewController viewControllerForNewContact:contack];
-//    _controller.allowsActions = NO;
-//    _controller.allowsEditing = NO;
-    _controller.contactStore = [[CNContactStore alloc] init];
-    _controller.delegate = self;
-//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:_controller];
+    
+    
+    
+//    //初始化方法
+//    CNSaveRequest * saveRequest = [[CNSaveRequest alloc]init];
+//    //添加联系人
+//    [saveRequest addContact:contack toContainerWithIdentifier:nil];
+//
+//    CNContactStore * store = [[CNContactStore alloc]init];
+//    [store executeSaveRequest:saveRequest error:nil];
+    
+//    CNContactViewController * contackController = [CNContactViewController viewControllerForNewContact:contack];
+//    contackController.contactStore = [[CNContactStore alloc] init];
+//    contackController.delegate = self;
+//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:contackController];
 //    nav.navigationBar.barTintColor = [UIColor whiteColor];
 //    [[PreHelper getCurrentVC] presentViewController:nav animated:true completion:^{
 //
 //    }];
-    _controller.hidesBottomBarWhenPushed = true;
-    [[PreHelper getCurrentVC].navigationController pushViewController:_controller animated:true];
+//    _controller.hidesBottomBarWhenPushed = true;
+//    [[PreHelper getCurrentVC].navigationController pushViewController:_controller animated:true];
 }
 
 /// 发送到微信
@@ -85,13 +111,13 @@
 }
 
 - (void)contactViewController:(CNContactViewController *)viewController didCompleteWithContact:(CNContact *)contact{
-//    if (contact) {
-//        NSLog(@"保存成功");
-//    }else{
-//        NSLog(@"点击了取消，保存失败");
-//    }
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-    [[PreHelper getCurrentVC].navigationController popViewControllerAnimated:true];
+    if (contact) {
+        NSLog(@"保存成功");
+    }else{
+        NSLog(@"点击了取消，保存失败");
+    }
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+//    [[PreHelper getCurrentVC].navigationController popViewControllerAnimated:true];
 }
 
 - (void)dismiss{

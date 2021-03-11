@@ -39,7 +39,6 @@
 		BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9025F8FD2E007A1D5E /* BindingAliViewController.xib */; };
 		BD410C9725F903CC007A1D5E /* AddFriendAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */; };
 		BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */; };
-		BD410C9E25F9218F007A1D5E /* CNContactViewController+Cancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -170,8 +169,6 @@
 		BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddFriendAlertView.h; sourceTree = "<group>"; };
 		BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddFriendAlertView.m; sourceTree = "<group>"; };
 		BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendAlertView.xib; sourceTree = "<group>"; };
-		BD410C9C25F9218F007A1D5E /* CNContactViewController+Cancel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNContactViewController+Cancel.h"; sourceTree = "<group>"; };
-		BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+Cancel.m"; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -521,8 +518,6 @@
 				BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */,
 				BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */,
 				BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */,
-				BD410C9C25F9218F007A1D5E /* CNContactViewController+Cancel.h */,
-				BD410C9D25F9218F007A1D5E /* CNContactViewController+Cancel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1022,7 +1017,6 @@
 				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
-				BD410C9E25F9218F007A1D5E /* CNContactViewController+Cancel.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
 				BDC5854125EB473A0021F808 /* main.m in Sources */,
