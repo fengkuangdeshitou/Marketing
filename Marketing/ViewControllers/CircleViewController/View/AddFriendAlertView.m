@@ -87,14 +87,14 @@
 //    CNContactStore * store = [[CNContactStore alloc]init];
 //    [store executeSaveRequest:saveRequest error:nil];
     
-//    CNContactViewController * contackController = [CNContactViewController viewControllerForNewContact:contack];
-//    contackController.contactStore = [[CNContactStore alloc] init];
-//    contackController.delegate = self;
-//    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:contackController];
-//    nav.navigationBar.barTintColor = [UIColor whiteColor];
-//    [[PreHelper getCurrentVC] presentViewController:nav animated:true completion:^{
-//
-//    }];
+    CNContactViewController * contackController = [CNContactViewController viewControllerForNewContact:contack];
+    contackController.contactStore = [[CNContactStore alloc] init];
+    contackController.delegate = self;
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:contackController];
+    nav.navigationBar.barTintColor = [UIColor whiteColor];
+    [[PreHelper getCurrentVC] presentViewController:nav animated:true completion:^{
+
+    }];
 //    _controller.hidesBottomBarWhenPushed = true;
 //    [[PreHelper getCurrentVC].navigationController pushViewController:_controller animated:true];
 }
@@ -107,7 +107,17 @@
 
 /// 保存到相册
 - (void)saveToPhoto{
-    
+    UIImageWriteToSavedPhotosAlbum(self.avatarImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    NSString *msg = nil ;
+    if(error){
+        msg = @"保存图片失败";
+    }else{
+        msg = @"保存图片成功";
+    }
+    [self makeToast:msg];
 }
 
 - (void)contactViewController:(CNContactViewController *)viewController didCompleteWithContact:(CNContact *)contact{

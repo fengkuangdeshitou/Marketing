@@ -22,7 +22,7 @@
             failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
 
 + (void)newNetworkPost:(NSString *)URLString
-           formJson:(NSDictionary *)dictionary
+             params:(NSDictionary *)dictionary
             success:(void (^)(NSDictionary *dictionary))success
             failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
 

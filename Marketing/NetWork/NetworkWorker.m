@@ -12,8 +12,36 @@
 #import "GlobalDefine.h"
 #import "GlobalState.h"
 
+@interface NetworkWorker ()
+
+@property(nonatomic,strong) AFHTTPSessionManager *manager;
+
+@end
+
 @implementation NetworkWorker
-static AFHTTPSessionManager *manager = nil;
+
+static NetworkWorker * networkWorker = nil;
+
++ (instancetype)shareInstance{
+    if (!networkWorker) {
+        networkWorker = [[NetworkWorker alloc] init];
+    }
+    return networkWorker;
+}
+
+- (AFHTTPSessionManager *)manager{
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    _manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    _manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [_manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    return _manager;
+}
 
 + (void)showNetworkActivityIndicatorVisible{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -30,13 +58,10 @@ static AFHTTPSessionManager *manager = nil;
 + (void)networkGet:(NSString *)URLString
            success:(void (^)(NSDictionary *dictionary))success
            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
-    if (!manager) {
-        manager = [AFHTTPSessionManager manager];
-    }
     [self showNetworkActivityIndicatorVisible];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@",[dictionary objectForKey:@"message"]);
         if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
@@ -53,18 +78,13 @@ static AFHTTPSessionManager *manager = nil;
 }
 
 + (void)newNetworkPost:(NSString *)URLString
-              formJson:(NSDictionary *)jsonString
+                params:(NSDictionary *)jsonString
                success:(void (^)(NSDictionary *dictionary))success
                failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
-    
     [self showNetworkActivityIndicatorVisible];
-    if (!manager) {
-        manager = [AFHTTPSessionManager manager];
-    }
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:URLString parameters:jsonString progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager POST:URLString parameters:jsonString progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@",[dictionary objectForKey:@"message"]);
         if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
@@ -85,13 +105,9 @@ static AFHTTPSessionManager *manager = nil;
             success:(void (^)(NSDictionary *dictionary))success
             failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
     [self showNetworkActivityIndicatorVisible];
-    if (!manager) {
-        manager = [AFHTTPSessionManager manager];
-    }
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager POST:URLString parameters:jsonString constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager POST:URLString parameters:jsonString constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         if (jsonString) {
             NSData *postData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
             [formData appendPartWithFormData:postData name:@"data"];
@@ -119,19 +135,13 @@ static AFHTTPSessionManager *manager = nil;
         andFileName:(NSString *)fileName
             success:(void (^)(NSDictionary *dictionary))success
             failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
-
     [self showNetworkActivityIndicatorVisible];
-    if (!manager) {
-        manager = [AFHTTPSessionManager manager];
-    }
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:fileName forKey:@"name"];
     //NSDictionary *dictionary = [NSDictionary dictionaryWithObject:fileName forKey:@"name"];
-    
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager POST:URLString parameters:dictionary constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager POST:URLString parameters:dictionary constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:postData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
@@ -151,15 +161,8 @@ static AFHTTPSessionManager *manager = nil;
 + (void)networkForContentTypePost:(NSString *)URLString formPostDict:(NSDictionary *)dict success:(void (^)(NSDictionary *dictionary))success failure:(void (^)(NSError * error))failure
 {
     [self showNetworkActivityIndicatorVisible];
-    if(!manager){
-        manager = [AFHTTPSessionManager manager];
-    }
-    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [manager POST:URLString parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager POST:URLString parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([[responseObject objectForKey:@"success"] intValue] == requestSuccess) {
             success(responseObject);
         } else {
@@ -175,13 +178,9 @@ static AFHTTPSessionManager *manager = nil;
 + (void)networkDelete:(NSString *)URLString parameters:(NSDictionary *)dictData success:(void (^)(NSDictionary *))success failure:(void (^)(NSString *, NSDictionary *))failure
 {
     [self showNetworkActivityIndicatorVisible];
-    if (!manager) {
-        manager = [AFHTTPSessionManager manager];
-    }
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager DELETE:URLString parameters:dictData success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager DELETE:URLString parameters:dictData success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@",[dictionary objectForKey:@"message"]);
         if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
@@ -201,13 +200,9 @@ static AFHTTPSessionManager *manager = nil;
            success:(void(^)(NSDictionary * dictionary))success
            failure:(void(^)(NSString * errar,NSDictionary * dictionary))failure{
     [self showNetworkActivityIndicatorVisible];
-    if(!manager){
-        manager = [AFHTTPSessionManager manager];
-    }
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    [network.manager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@",[dictionary objectForKey:@"message"]);
         if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
@@ -223,7 +218,8 @@ static AFHTTPSessionManager *manager = nil;
 }
 
 + (void)networkOperationCancel {
-    NSOperationQueue *operationQueue = manager.operationQueue;
+    NetworkWorker * network = [NetworkWorker shareInstance];
+    NSOperationQueue *operationQueue = network.manager.operationQueue;
     if (operationQueue.operations.count > 0) {
         NSOperation *operation = [operationQueue.operations objectAtIndex:0];
         [operation cancel];
