@@ -6,12 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleBaseCell : UITableViewCell
 
-+ (CGFloat)cellHeightWithIndexPath:(NSIndexPath *)indexPath dataModel:(id)model;
+@property(nonatomic,strong)CircleModel * model;
+
++ (CGFloat)cellHeightWithIndexPath:(NSIndexPath *)indexPath dataModel:(CircleModel *)model;
 
 @end
 

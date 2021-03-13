@@ -45,7 +45,7 @@
 
 +(long long)longLongFromDate:(NSDate*)date;
 
-+ (CGFloat)getLineHeights:(NSString *)content;
++ (CGFloat)getCircleContentHeight:(NSString *)content;
 
 + (void)resetTableViewFrame:(UITableView *)tableView;
 

@@ -13,6 +13,7 @@
 #import "AuthenticationViewController.h"
 #import "UserInfoViewController.h"
 #import "SettingViewController.h"
+#import "CustomerServiceViewController.h"
 #import "MembersViewController.h"
 
 @interface UserViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -73,6 +74,10 @@
             binding.title = @"绑定手机";
             binding.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:binding animated:true];
+        }else if (indexPath.row == 4){
+            CustomerServiceViewController * server = [[CustomerServiceViewController alloc] init];
+            server.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:server animated:true];
         }else if (indexPath.row == 5) {
             SettingViewController * setting = [[SettingViewController alloc] init];
             setting.title = @"设置";

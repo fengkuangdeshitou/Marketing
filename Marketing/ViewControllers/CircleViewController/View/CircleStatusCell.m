@@ -14,10 +14,12 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (IBAction)cellHeightChangeAction:(UIButton *)sender{
+    self.model.isOpen = !self.model.isOpen;
+    [sender setTitle:self.model.isOpen ? @"收起" : @"全文" forState:UIControlStateNormal];
+    if (self.cellHeightChangeBlock) {
+        self.cellHeightChangeBlock();
+    }
 }
 
 @end

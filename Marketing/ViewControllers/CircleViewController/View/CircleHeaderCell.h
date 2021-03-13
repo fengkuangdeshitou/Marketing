@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleBaseCell.h"
+#import "CircleModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

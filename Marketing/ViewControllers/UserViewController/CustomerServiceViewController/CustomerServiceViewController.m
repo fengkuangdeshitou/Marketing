@@ -8,7 +8,7 @@
 #import "CustomerServiceViewController.h"
 #import "CustomerServiceCell.h"
 
-@interface CustomerServiceViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CustomerServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
 @property (nonatomic, strong) NSArray * dataArray;
@@ -18,9 +18,20 @@
 
 @implementation CustomerServiceViewController
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    BOOL hidden = [viewController isKindOfClass:[self class]];
+    [self.navigationController setNavigationBarHidden:hidden animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.delegate = self;
+    
+    self.dataArray = @[@{@"title":@" 1、我已经买了会员，为什么还提示要开通会员？",@"content":@"会员等级不同对应的权限不同，请在会员中心查看不同会员对应的功能权限 。"}];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CustomerServiceCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CustomerServiceCell class])];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -40,6 +51,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    [self.navigationController popViewControllerAnimated:true];
     if (self.selectedIndex == indexPath.row){
 //            MyServiceDetailController * detail = [MyServiceDetailController new];
 //            detail.dataDic = self.dataArray[indexPath.row];
@@ -51,47 +63,37 @@
     }
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    if (section == 1)
-//    {
-//        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 44)];
-//        view.backgroundColor = [UIColor whiteColor];
-//
-//        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, kScreenW - 30, view.height)];
-//        label.text = @"常见问题";
-//        label.textColor = FontColor28;
-//        label.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
-//        [view addSubview:label];
-//
-//        return view;
-//    }
-//    return [UIView new];
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+    view.backgroundColor = [PreHelper colorWithHexString:@"#F6F6F6"];
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, view.height)];
+    label.text = @"常见问题";
+    label.textColor = [PreHelper colorWithHexString:COLOR_NAVIGATION_TITLE_COLOR];
+    label.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+    [view addSubview:label];
+
+    return view;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return section == 0 ? 0.001 : 44;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 44;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.001;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0)
-    {
-        return 52;
-    }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return self.selectedIndex == indexPath.row ? 100 : 44;
 }
 
 /*

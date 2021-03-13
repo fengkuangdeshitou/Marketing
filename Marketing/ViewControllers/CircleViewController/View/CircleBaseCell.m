@@ -9,17 +9,31 @@
 
 @implementation CircleBaseCell
 
-+ (CGFloat)cellHeightWithIndexPath:(NSIndexPath *)indexPath dataModel:(id)model{
++ (CGFloat)cellHeightWithIndexPath:(NSIndexPath *)indexPath dataModel:(CircleModel *)model{
     if (indexPath.row == 0) {
         return 76;
     }else if(indexPath.row == 1){
-        return UITableViewAutomaticDimension;
+        CGFloat contentHeight = [PreHelper getCircleContentHeight:model.content];
+        if (model.isOpen) {
+            return UITableViewAutomaticDimension;
+        }else{
+            return contentHeight > 61 ? 61 :  UITableViewAutomaticDimension;
+        }
     }else if(indexPath.row == 2){
-        NSString * content = model[@"content"];
-        CGFloat heigit = [content boundingRectWithSize:CGSizeMake((SCREEN_WIDTH-64.5-15), CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size.height;
-        return heigit > 60 ? 40 : 0.001;
+        CGFloat heigit = [PreHelper getCircleContentHeight:model.content];
+        return heigit > 61 ? 30 : 0.001;
     }else if(indexPath.row == 3){
-        return 250;
+        if (model.images.count == 0) {
+            return 0.001;
+        }else if (model.images.count == 1){
+            return 180;
+        }else if (model.images.count > 1 && model.images.count < 4){
+            return 95;
+        }else if (model.images.count > 3 && model.images.count < 7){
+            return 180;
+        }else{
+            return 250;
+        }
     }else{
         return 61;
     }

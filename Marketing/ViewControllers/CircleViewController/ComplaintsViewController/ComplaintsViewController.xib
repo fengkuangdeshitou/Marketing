@@ -19,9 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JJW-cl-EwQ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JJW-cl-EwQ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableFooterView" contentMode="scaleToFill" id="wrj-NU-LCZ">
                         <rect key="frame" x="0.0" y="768" width="414" height="75"/>
@@ -56,6 +55,12 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JJW-cl-EwQ" secondAttribute="trailing" id="3RN-52-ksC"/>
+                <constraint firstItem="JJW-cl-EwQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hXb-W9-AI4"/>
+                <constraint firstAttribute="bottom" secondItem="JJW-cl-EwQ" secondAttribute="bottom" id="hg0-ad-LkD"/>
+                <constraint firstItem="JJW-cl-EwQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oAn-rE-Pv7"/>
+            </constraints>
             <point key="canvasLocation" x="-197.10144927536234" y="101.78571428571428"/>
         </view>
     </objects>

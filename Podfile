@@ -8,6 +8,7 @@ target 'Marketing' do
   # Pods for Marketing
 
 pod 'AFNetworking'
+pod 'MJExtension'
 pod 'Masonry'
 pod 'SDWebImage'
 pod 'MBProgressHUD'

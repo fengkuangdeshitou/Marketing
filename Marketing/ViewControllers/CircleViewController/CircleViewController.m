@@ -14,6 +14,7 @@
 #import "CircleNineImageCell.h"
 #import "CircleMoreActionAlertView.h"
 #import "AddFriendAlertView.h"
+#import "CircleModel.h"
 
 @interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
@@ -49,16 +50,29 @@
     return _avatarImageView;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+   {
+
+       CGFloat offsetToShow = 200.0;//滑动多少就完全显示
+
+       CGFloat alpha = 1 - (offsetToShow - scrollView.contentOffset.y) / offsetToShow;
+
+       [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha = alpha;
+
+   }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationController.delegate = self;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        // Fallback on earlier versions
-    }
+//    self.navigationController.delegate = self;
+//    self.navigationController.navigationBar.alpha = 0;
+//    self.navigationController.navigationBar.barTintColor = [UIColor.whiteColor colorWithAlphaComponent:0.2];
+//    self.navigationController.navigationBar.backgroundColor = UIColor.orangeColor;
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    
     self.dataArray = [[NSMutableArray alloc] init];
     self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     NSDictionary * dict = @{
@@ -66,12 +80,29 @@
     };
     [self.dataArray addObject:dict];
     
-    NSDictionary * dict2 = @{
-        @"content":@"拉库房阿里积分垃圾了法律上垃圾垃圾房间爱了就垃圾阿拉基垃圾平均分假发票忘记放设计费配偶无分机安静泡脚搜啊就撒;就是解放路卡解放啦撒酒疯拉进来看家里放假拉丝机弗兰克斯家乐福阿里积分放假阿里"
-    };
-    [self.dataArray addObject:dict];
-    [self.dataArray addObject:dict2];
     
+    NSArray * array = @[
+    @{
+        @"title":@"张三",
+        @"content":@"拉库房阿里积分垃圾了法律上垃圾垃圾房间爱了就垃圾阿拉基垃圾平均分假发票忘记放设计费配偶无分机安静泡脚搜啊就撒;就是解放路卡解放啦撒酒疯拉进来看家里放假拉丝机弗兰克斯家乐福阿里积分放假阿里",
+        @"time":@"123212323",
+        @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg",
+        @"images":@[@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2005235653,1742582269&fm=26&gp=0.jpg"]
+    },
+        @{
+            @"title":@"瑞文",
+            @"content":@"圣诞节啦了垃圾垃圾假两件阿拉基倒垃圾老孔",
+            @"time":@"123242323",
+            @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg",
+            @"images":@[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg"]
+        },
+        @{
+            @"title":@"卡特琳娜",
+            @"content":@"陪我皮卡OK 排污口破我拉了打卡磕碰 OK颇为考完;奥施康定安监局撒世纪大劫案解放军按实际福利假按揭捡垃圾安静安静多少级阿拉斯加放辣椒垃圾恐龙当家安吉莉卡圣诞节拉进来卡",
+            @"time":@"123212323",
+            @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg"},
+    ];
+    self.dataArray = [CircleModel mj_objectArrayWithKeyValuesArray:array];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleContentCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleStatusCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleStatusCell class])];
@@ -89,19 +120,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary * object = self.dataArray[indexPath.section];
+    CircleModel * model = self.dataArray[indexPath.section];
     if (indexPath.row == 0) {
         CircleHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleHeaderCell class]) forIndexPath:indexPath];
+        cell.model = model;
         return cell;
     }else if(indexPath.row == 1){
         CircleContentCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleContentCell class]) forIndexPath:indexPath];
-        cell.contentLabel.text = object[@"content"];
+        cell.contentLabel.text = model.content;
         return cell;
     }else if(indexPath.row == 2){
         CircleStatusCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleStatusCell class]) forIndexPath:indexPath];
+        cell.model = model;
+        cell.cellHeightChangeBlock = ^{
+            [UIView performWithoutAnimation:^{
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }];
+        };
         return cell;
     }else if(indexPath.row == 3){
         CircleNineImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleNineImageCell class]) forIndexPath:indexPath];
+        cell.model = model;
         return cell;
     }
     
@@ -131,8 +170,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id object = [self.dataArray objectAtIndex:indexPath.section];
-    return [CircleBaseCell cellHeightWithIndexPath:indexPath dataModel:object];;
+    CircleModel * model = [self.dataArray objectAtIndex:indexPath.section];
+    return [CircleBaseCell cellHeightWithIndexPath:indexPath dataModel:model];;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

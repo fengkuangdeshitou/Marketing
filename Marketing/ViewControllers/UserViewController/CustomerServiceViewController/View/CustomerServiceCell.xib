@@ -20,30 +20,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7R-3T-Di7">
                         <rect key="frame" x="15" y="0.0" width="290" height="160"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-am-GmH">
-                                <rect key="frame" x="10" y="14" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="4zd-EZ-PJ0"/>
-                                    <constraint firstAttribute="height" constant="20" id="fLH-6r-ReX"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平台问题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEL-kX-ggj">
-                                <rect key="frame" x="40" y="15" width="61.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="平台问题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEL-kX-ggj">
+                                <rect key="frame" x="15" y="15" width="244" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="service_dotted_line" translatesAutoresizingMaskIntoConstraints="NO" id="n5M-Kt-Csi">
-                                <rect key="frame" x="0.0" y="47" width="290" height="0.5"/>
+                                <rect key="frame" x="0.0" y="50" width="290" height="0.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="69A-SU-d2b"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rebate_down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hMu-7k-SkZ">
-                                <rect key="frame" x="270" y="19" width="10" height="10"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profit_header_invitation_more" translatesAutoresizingMaskIntoConstraints="NO" id="hMu-7k-SkZ">
+                                <rect key="frame" x="274" y="19" width="6" height="10"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwT-NV-hIb">
-                                <rect key="frame" x="15" y="62.5" width="260" height="84.5"/>
+                                <rect key="frame" x="15" y="65.5" width="260" height="81.5"/>
                                 <string key="text">账号绑定手机有什么用？
 
 我要如何保证账号安全？
@@ -55,27 +48,28 @@
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-Fu-5W0">
-                                <rect key="frame" x="0.0" y="0.0" width="290" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-Fu-5W0">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="t1T-Ye-cky"/>
+                                </constraints>
                                 <connections>
                                     <action selector="moreBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zvv-zp-Dm6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="cEL-kX-ggj" firstAttribute="leading" secondItem="WD7-am-GmH" secondAttribute="trailing" constant="10" id="9gc-nk-7Fy"/>
                             <constraint firstAttribute="trailing" secondItem="hMu-7k-SkZ" secondAttribute="trailing" constant="10" id="ACi-Jp-Zco"/>
                             <constraint firstItem="cwT-NV-hIb" firstAttribute="leading" secondItem="t7R-3T-Di7" secondAttribute="leading" constant="15" id="Cft-ch-XLw"/>
                             <constraint firstAttribute="trailing" secondItem="n5M-Kt-Csi" secondAttribute="trailing" id="MJE-xf-Bx6"/>
+                            <constraint firstItem="hMu-7k-SkZ" firstAttribute="leading" secondItem="cEL-kX-ggj" secondAttribute="trailing" constant="15" id="PM6-a9-h7V"/>
                             <constraint firstItem="n5M-Kt-Csi" firstAttribute="top" secondItem="mXT-Fu-5W0" secondAttribute="bottom" id="QXc-fK-h4z"/>
-                            <constraint firstItem="n5M-Kt-Csi" firstAttribute="top" secondItem="WD7-am-GmH" secondAttribute="bottom" constant="13" id="ULL-0z-bHN"/>
                             <constraint firstItem="mXT-Fu-5W0" firstAttribute="top" secondItem="t7R-3T-Di7" secondAttribute="top" id="aAM-q6-ntR"/>
                             <constraint firstAttribute="bottom" secondItem="cwT-NV-hIb" secondAttribute="bottom" constant="13" id="aPs-yO-Bdb"/>
                             <constraint firstItem="n5M-Kt-Csi" firstAttribute="leading" secondItem="t7R-3T-Di7" secondAttribute="leading" id="dz4-kq-H1G"/>
-                            <constraint firstItem="WD7-am-GmH" firstAttribute="top" secondItem="t7R-3T-Di7" secondAttribute="top" constant="14" id="eZx-a1-Kem"/>
-                            <constraint firstItem="WD7-am-GmH" firstAttribute="leading" secondItem="t7R-3T-Di7" secondAttribute="leading" constant="10" id="g3O-i9-gwg"/>
-                            <constraint firstItem="cEL-kX-ggj" firstAttribute="centerY" secondItem="WD7-am-GmH" secondAttribute="centerY" id="i8l-5w-Smd"/>
+                            <constraint firstItem="cEL-kX-ggj" firstAttribute="leading" secondItem="t7R-3T-Di7" secondAttribute="leading" constant="15" id="exY-BE-tTL"/>
+                            <constraint firstItem="cEL-kX-ggj" firstAttribute="top" secondItem="t7R-3T-Di7" secondAttribute="top" constant="15" id="kqL-HQ-Bg1"/>
                             <constraint firstItem="cwT-NV-hIb" firstAttribute="top" secondItem="n5M-Kt-Csi" secondAttribute="bottom" constant="15" id="lAF-po-9Bk"/>
                             <constraint firstAttribute="trailing" secondItem="cwT-NV-hIb" secondAttribute="trailing" constant="15" id="lSr-xf-c8m"/>
                             <constraint firstItem="mXT-Fu-5W0" firstAttribute="leading" secondItem="t7R-3T-Di7" secondAttribute="leading" id="lzB-um-DIg"/>
@@ -94,6 +88,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="t7R-3T-Di7" secondAttribute="trailing" constant="15" id="9gf-JR-Vqw"/>
                     <constraint firstItem="t7R-3T-Di7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KqR-yY-bca"/>
@@ -102,11 +97,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="titleLabel" destination="cEL-kX-ggj" id="kqC-UO-cPT"/>
+            </connections>
             <point key="canvasLocation" x="71.014492753623188" y="79.6875"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="rebate_down_icon" width="10" height="10"/>
+        <image name="profit_header_invitation_more" width="6" height="10.5"/>
         <image name="service_dotted_line" width="343.5" height="0.5"/>
     </resources>
 </document>

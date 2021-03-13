@@ -27,6 +27,7 @@
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
 		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
+		BD06B56625FBB6400051F873 /* CircleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B56525FBB6400051F873 /* CircleModel.m */; };
 		BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */; };
 		BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */; };
 		BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06EC1025F7AD48005A8FE4 /* DrawAmountListViewController.m */; };
@@ -162,6 +163,8 @@
 		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
 		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
 		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
+		BD06B56425FBB6400051F873 /* CircleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleModel.h; sourceTree = "<group>"; };
+		BD06B56525FBB6400051F873 /* CircleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleModel.m; sourceTree = "<group>"; };
 		BD06EC0725F7A3D6005A8FE4 /* DrawAmountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawAmountViewController.h; sourceTree = "<group>"; };
 		BD06EC0825F7A3D6005A8FE4 /* DrawAmountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawAmountViewController.m; sourceTree = "<group>"; };
 		BD06EC0925F7A3D6005A8FE4 /* DrawAmountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawAmountViewController.xib; sourceTree = "<group>"; };
@@ -447,6 +450,15 @@
 				BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BD06B56325FBB6290051F873 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD06B56425FBB6400051F873 /* CircleModel.h */,
+				BD06B56525FBB6400051F873 /* CircleModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BD06EC0625F7A3B6005A8FE4 /* DrawAmountViewController */ = {
@@ -851,6 +863,7 @@
 				BDDEFB2525EB7B1900D7A5D7 /* CircleViewController.h */,
 				BDDEFB2625EB7B1900D7A5D7 /* CircleViewController.m */,
 				BDDEFB2725EB7B1900D7A5D7 /* CircleViewController.xib */,
+				BD06B56325FBB6290051F873 /* Model */,
 				BDC2659125EBEBD000DBAA64 /* View */,
 				BDDEFB2C25EB7BA800D7A5D7 /* ComplaintsViewController */,
 			);
@@ -1073,6 +1086,7 @@
 				BDDEFB2225EB77BD00D7A5D7 /* CustomNavagationController.m in Sources */,
 				BD410C8325F8F117007A1D5E /* Toast+UIView.m in Sources */,
 				BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */,
+				BD06B56625FBB6400051F873 /* CircleModel.m in Sources */,
 				BDC2659C25EBEE2A00DBAA64 /* CircleContentCell.m in Sources */,
 				BDC5853625EB47370021F808 /* ViewController.m in Sources */,
 				BDC265B725ED09EF00DBAA64 /* CircleNineImageCell.m in Sources */,

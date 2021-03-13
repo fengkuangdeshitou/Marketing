@@ -333,9 +333,9 @@
     return [date timeIntervalSince1970] * 1000;
 }
 
-+ (CGFloat)getLineHeights:(NSString *)content {
-    UIFont *font = [UIFont systemFontOfSize:15];
-    CGRect rect = [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 104, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil] context:nil];
++ (CGFloat)getCircleContentHeight:(NSString *)content {
+    UIFont *font = [UIFont systemFontOfSize:17];
+    CGRect rect = [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 83, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil] context:nil];
     return rect.size.height;
 }
 

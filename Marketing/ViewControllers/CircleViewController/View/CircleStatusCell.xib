@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CircleStatusCell" id="KGk-i7-Jjw" customClass="CircleStatusCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CircleStatusCell" id="KGk-i7-Jjw" customClass="CircleStatusCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTY-z3-kCI">
-                        <rect key="frame" x="64.5" y="15" width="31" height="15"/>
+                        <rect key="frame" x="64.5" y="10" width="31" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="P0l-LE-Csm"/>
                         </constraints>
@@ -26,11 +26,14 @@
                         <state key="normal" title="全文">
                             <color key="titleColor" red="0.20784313725490194" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="cellHeightChangeAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ukd-3u-oEk"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QTY-z3-kCI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="64.5" id="BbY-sk-EOl"/>
-                    <constraint firstItem="QTY-z3-kCI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="G1L-pQ-A1f"/>
+                    <constraint firstItem="QTY-z3-kCI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="G1L-pQ-A1f"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

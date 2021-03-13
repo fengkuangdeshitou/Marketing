@@ -6,12 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleBaseCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CircleNineImageCell : UITableViewCell
-
-@property(nonatomic,weak)IBOutlet UIView * imagesView;
+@interface CircleNineImageCell : CircleBaseCell
 
 @end
 

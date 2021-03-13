@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleStatusCell : CircleBaseCell
 
+@property(nonatomic,copy) void(^cellHeightChangeBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END
