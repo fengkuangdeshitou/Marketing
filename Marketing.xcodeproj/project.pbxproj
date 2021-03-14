@@ -50,6 +50,8 @@
 		BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */; };
 		BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410CAB25FA539B007A1D5E /* SearchViewController.m */; };
 		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
+		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
+		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -197,6 +199,9 @@
 		BD410CAA25FA539B007A1D5E /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		BD410CAB25FA539B007A1D5E /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		BD410CAC25FA539B007A1D5E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateCircleCiewController.h; sourceTree = "<group>"; };
+		BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateCircleCiewController.m; sourceTree = "<group>"; };
+		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -565,6 +570,16 @@
 			path = SearchViewController;
 			sourceTree = "<group>";
 		};
+		BD6C922825FC74F5009C5D1F /* CreateCircleCiewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */,
+				BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */,
+				BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */,
+			);
+			path = CreateCircleCiewController;
+			sourceTree = "<group>";
+		};
 		BDC2657B25EBD4B300DBAA64 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +880,7 @@
 				BDDEFB2725EB7B1900D7A5D7 /* CircleViewController.xib */,
 				BD06B56325FBB6290051F873 /* Model */,
 				BDC2659125EBEBD000DBAA64 /* View */,
+				BD6C922825FC74F5009C5D1F /* CreateCircleCiewController */,
 				BDDEFB2C25EB7BA800D7A5D7 /* ComplaintsViewController */,
 			);
 			path = CircleViewController;
@@ -996,6 +1012,7 @@
 				BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */,
 				BDC265BF25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib in Resources */,
 				0F28A32225F895D10001B38E /* ToygerService.bundle in Resources */,
+				BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */,
 				0F03F04925FB72790044C8BA /* CustomerServiceCell.xib in Resources */,
 				0F28A2CB25F88B500001B38E /* AuthenticationViewController.xib in Resources */,
 				BDC2659D25EBEE2A00DBAA64 /* CircleContentCell.xib in Resources */,
@@ -1132,6 +1149,7 @@
 				BDC5857825EB50740021F808 /* Color.m in Sources */,
 				BDC585A025EB57180021F808 /* NSString+MD5.m in Sources */,
 				0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */,
+				BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */,
 				BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */,
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,
 				BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */,

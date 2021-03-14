@@ -8,9 +8,9 @@
 
 #define kDuration 0.25
 
-#define StatusBarHeight         [UIApplication sharedApplication].statusBarFrame.size.height
+#define StatusBarHeight   [UIApplication sharedApplication].statusBarFrame.size.height
 
-#define iosVersion              [[[UIDevice currentDevice] systemVersion] floatValue]
+#define NavagationHeight StatusBarHeight + NavagationBarHeight
 
 #define requestSuccess                                 1
 #define requestFail                                    0

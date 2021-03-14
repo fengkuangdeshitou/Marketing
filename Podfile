@@ -14,7 +14,7 @@ pod 'SDWebImage'
 pod 'MBProgressHUD'
 pod 'IQKeyboardManager'
 pod 'LinkedME_LinkPage'
-
+pod 'HXPhotoPicker'
 pod 'mob_sharesdk'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'  
 
