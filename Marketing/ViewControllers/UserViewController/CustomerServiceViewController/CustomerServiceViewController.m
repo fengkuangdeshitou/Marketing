@@ -7,9 +7,11 @@
 
 #import "CustomerServiceViewController.h"
 #import "CustomerServiceCell.h"
+#import "ServiceAlertView.h"
 
 @interface CustomerServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * backButtonTopConstraint;
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
 @property (nonatomic, strong) NSArray * dataArray;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -29,11 +31,22 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.delegate = self;
-    
+    self.backButtonTopConstraint.constant = StatusBarHeight;
     self.dataArray = @[@{@"title":@" 1、我已经买了会员，为什么还提示要开通会员？",@"content":@"会员等级不同对应的权限不同，请在会员中心查看不同会员对应的功能权限 。"}];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CustomerServiceCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CustomerServiceCell class])];
 }
 
+- (IBAction)backViewController:(id)sender{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+/// 联系客服弹框
+/// @param sender 点击手势
+- (IBAction)showServiceAlert:(UITapGestureRecognizer *)sender{
+    [ServiceAlertView showServiceAlertView];
+}
+
+#pragma mark - UITableViewDelegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CustomerServiceCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CustomerServiceCell class]) forIndexPath:indexPath];
     

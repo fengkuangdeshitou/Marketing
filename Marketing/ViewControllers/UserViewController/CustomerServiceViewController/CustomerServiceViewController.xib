@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerServiceViewController">
             <connections>
+                <outlet property="backButtonTopConstraint" destination="xbZ-6E-lU7" id="soZ-sF-LLA"/>
                 <outlet property="tableView" destination="HVJ-K3-r7b" id="67G-Xo-9Mk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,14 +27,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="server_header" translatesAutoresizingMaskIntoConstraints="NO" id="un2-Uc-Zxj">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="server_header" translatesAutoresizingMaskIntoConstraints="NO" id="un2-Uc-Zxj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="204"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="qUi-jb-yQN"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVW-g8-FwW">
-                                <rect key="frame" x="15" y="80" width="173.5" height="49"/>
+                                <rect key="frame" x="15" y="80" width="221" height="49"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">在使用中遇到任何问题
@@ -117,6 +118,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="ZJu-fw-ZBm" firstAttribute="top" secondItem="1Th-Ps-bx8" secondAttribute="bottom" constant="8" id="4qk-p2-QWn"/>
                                     <constraint firstItem="dUa-JI-bRg" firstAttribute="top" secondItem="ZJu-fw-ZBm" secondAttribute="bottom" constant="5" id="Eia-hD-tEF"/>
@@ -138,17 +140,32 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.borderWidth" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nfP-Wa-TwV" appends="YES" id="O3j-RE-uTe"/>
+                                </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线时间：09:30-23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-pf-HP5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="在线时间：09:30-23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-pf-HP5">
                                 <rect key="frame" x="244" y="110" width="155" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZz-el-zLD">
+                                <rect key="frame" x="0.0" y="44" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LOf-BZ-iNV"/>
+                                    <constraint firstAttribute="width" constant="44" id="WdF-7C-N3V"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="back.png"/>
+                                <connections>
+                                    <action selector="backViewController:" destination="-1" eventType="touchUpInside" id="1jL-KR-TOn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pMi-pf-HP5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XVW-g8-FwW" secondAttribute="trailing" constant="8" symbolic="YES" id="6Ua-eW-NT2"/>
+                            <constraint firstItem="pMi-pf-HP5" firstAttribute="leading" secondItem="XVW-g8-FwW" secondAttribute="trailing" constant="8" symbolic="YES" id="6Ua-eW-NT2"/>
                             <constraint firstItem="un2-Uc-Zxj" firstAttribute="leading" secondItem="ga3-T8-CCc" secondAttribute="leading" id="6sx-Zq-iVT"/>
                             <constraint firstAttribute="trailing" secondItem="97U-3D-TEf" secondAttribute="trailing" constant="15" id="8xr-jX-W7J"/>
                             <constraint firstItem="XVW-g8-FwW" firstAttribute="top" secondItem="ga3-T8-CCc" secondAttribute="top" constant="80" id="90d-ns-Gd7"/>
@@ -159,10 +176,12 @@
                             <constraint firstAttribute="trailing" secondItem="pMi-pf-HP5" secondAttribute="trailing" constant="15" id="Tvf-eV-xsJ"/>
                             <constraint firstItem="97U-3D-TEf" firstAttribute="height" secondItem="F0a-bc-Zfi" secondAttribute="height" id="UXe-zm-IiU"/>
                             <constraint firstItem="97U-3D-TEf" firstAttribute="centerY" secondItem="F0a-bc-Zfi" secondAttribute="centerY" id="UjI-pa-Nyb"/>
+                            <constraint firstItem="kZz-el-zLD" firstAttribute="leading" secondItem="ga3-T8-CCc" secondAttribute="leading" id="Xrh-xZ-Dsd"/>
                             <constraint firstItem="F0a-bc-Zfi" firstAttribute="leading" secondItem="ga3-T8-CCc" secondAttribute="leading" constant="15" id="eJA-eL-VJo"/>
                             <constraint firstAttribute="trailing" secondItem="un2-Uc-Zxj" secondAttribute="trailing" id="mF5-Qg-fN7"/>
                             <constraint firstItem="XVW-g8-FwW" firstAttribute="leading" secondItem="ga3-T8-CCc" secondAttribute="leading" constant="15" id="mug-jJ-e17"/>
                             <constraint firstItem="97U-3D-TEf" firstAttribute="width" secondItem="F0a-bc-Zfi" secondAttribute="width" id="n0F-Tg-52a"/>
+                            <constraint firstItem="kZz-el-zLD" firstAttribute="top" secondItem="ga3-T8-CCc" secondAttribute="top" constant="44" id="xbZ-6E-lU7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -180,8 +199,14 @@
             </constraints>
             <point key="canvasLocation" x="71.014492753623188" y="79.6875"/>
         </view>
+        <tapGestureRecognizer id="nfP-Wa-TwV">
+            <connections>
+                <action selector="showServiceAlert:" destination="-1" id="w1S-88-zeV"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="back.png" width="26" height="40"/>
         <image name="server_header" width="375" height="224"/>
         <image name="server_open" width="30" height="30"/>
         <image name="server_wechat" width="30" height="30"/>

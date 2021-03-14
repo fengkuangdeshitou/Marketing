@@ -52,6 +52,8 @@
 		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
+		BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD98699F25FE49F300C5177A /* ServiceAlertView.m */; };
+		BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
 		BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */; };
 		BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2658525EBD66600DBAA64 /* ComplaintReasonCell.m */; };
@@ -202,6 +204,9 @@
 		BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateCircleCiewController.h; sourceTree = "<group>"; };
 		BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateCircleCiewController.m; sourceTree = "<group>"; };
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
+		BD98699E25FE49F300C5177A /* ServiceAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceAlertView.h; sourceTree = "<group>"; };
+		BD98699F25FE49F300C5177A /* ServiceAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceAlertView.m; sourceTree = "<group>"; };
+		BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceAlertView.xib; sourceTree = "<group>"; };
 		BDC2657C25EBD50600DBAA64 /* ComplaintReasonHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintReasonHeaderCell.h; sourceTree = "<group>"; };
 		BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintReasonHeaderCell.m; sourceTree = "<group>"; };
 		BDC2657E25EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComplaintReasonHeaderCell.xib; sourceTree = "<group>"; };
@@ -383,6 +388,9 @@
 				0F03F04525FB72790044C8BA /* CustomerServiceCell.h */,
 				0F03F04625FB72790044C8BA /* CustomerServiceCell.m */,
 				0F03F04725FB72790044C8BA /* CustomerServiceCell.xib */,
+				BD98699E25FE49F300C5177A /* ServiceAlertView.h */,
+				BD98699F25FE49F300C5177A /* ServiceAlertView.m */,
+				BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1022,6 +1030,7 @@
 				BDDEFB3125EB7BB600D7A5D7 /* ComplaintsViewController.xib in Resources */,
 				BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */,
 				BDDEFB3925EB803100D7A5D7 /* LoginViewController.xib in Resources */,
+				BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */,
 				BD06EC1325F7AD48005A8FE4 /* DrawAmountListViewController.xib in Resources */,
 				BDDEFB1525EB700500D7A5D7 /* UserHeaderCell.xib in Resources */,
 				BDC265B825ED09EF00DBAA64 /* CircleNineImageCell.xib in Resources */,
@@ -1143,6 +1152,7 @@
 				BDDEFAFE25EB63CF00D7A5D7 /* SettingViewController.m in Sources */,
 				BDDEFB3825EB803100D7A5D7 /* LoginViewController.m in Sources */,
 				BDC5859F25EB57180021F808 /* UIButton+ImageTitleSpacing.m in Sources */,
+				BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */,
 				BDC5855C25EB4C4E0021F808 /* NetworkUrl.m in Sources */,
 				BD410C8925F8F78A007A1D5E /* BindingMobileViewController.m in Sources */,
 				BDDEFB1425EB700500D7A5D7 /* UserHeaderCell.m in Sources */,

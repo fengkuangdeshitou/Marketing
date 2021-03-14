@@ -6,9 +6,6 @@
 //  Copyright (c) 2021年 apple. All rights reserved.
 //
 #import <AVFoundation/AVFoundation.h>
-#import "PreHelper.h"
-#import "GlobalState.h"
-#import "GlobalDefine.h"
 #import "MyTabbarViewController.h"
 #import "LoginViewController.h"
 #import "CustomNavagationController.h"

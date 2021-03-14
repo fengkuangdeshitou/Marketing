@@ -23,6 +23,7 @@
 }
 
 - (void)setModel:(CircleModel *)model{
+    [super setModel:model];
     self.titleLabel.text = model.title;
     self.timeLabel.text = [PreHelper compareCurrentTime:model.title.longLongValue];
     [ImageLoader loadImage:self.avararImageView url:model.avatar placeholder:nil];

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ServiceAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKD-fj-VJx">
+                    <rect key="frame" x="45" y="276" width="324" height="344"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="hSI-pv-kCo">
+                            <rect key="frame" x="0.0" y="0.0" width="324" height="80"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14W-EQ-SRC">
+                            <rect key="frame" x="0.0" y="80" width="324" height="264"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E3I-e3-GD2">
+                                    <rect key="frame" x="97" y="16" width="130" height="130"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="130" id="cg0-nv-2LH"/>
+                                        <constraint firstAttribute="height" constant="130" id="svf-1z-lMA"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信扫码保存到手机相册后打开微信扫一扫" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WR6-T1-943">
+                                    <rect key="frame" x="26" y="153" width="272" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTd-Od-Nuj">
+                                    <rect key="frame" x="102" y="190" width="120" height="40"/>
+                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="ZMz-Wx-YtB"/>
+                                        <constraint firstAttribute="height" constant="40" id="tfQ-Lf-PXv"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="保存到手机">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="saveToPhoto:" destination="iN0-l3-epB" eventType="touchUpInside" id="s1Y-he-i5h"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="WTd-Od-Nuj" firstAttribute="centerX" secondItem="14W-EQ-SRC" secondAttribute="centerX" id="2NJ-ud-XQM"/>
+                                <constraint firstItem="E3I-e3-GD2" firstAttribute="centerX" secondItem="14W-EQ-SRC" secondAttribute="centerX" id="6hh-Wj-1nb"/>
+                                <constraint firstItem="E3I-e3-GD2" firstAttribute="top" secondItem="14W-EQ-SRC" secondAttribute="top" constant="16" id="Ptz-cV-Qd9"/>
+                                <constraint firstItem="WTd-Od-Nuj" firstAttribute="top" secondItem="WR6-T1-943" secondAttribute="bottom" constant="20" id="QFU-wY-Kqn"/>
+                                <constraint firstItem="WR6-T1-943" firstAttribute="top" secondItem="E3I-e3-GD2" secondAttribute="bottom" constant="7" id="gHV-et-VFV"/>
+                                <constraint firstItem="WR6-T1-943" firstAttribute="centerX" secondItem="14W-EQ-SRC" secondAttribute="centerX" id="rLg-JY-miU"/>
+                                <constraint firstAttribute="bottom" secondItem="WTd-Od-Nuj" secondAttribute="bottom" constant="34" id="tEL-Qd-dCP"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加客服微信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-l1-C4I">
+                            <rect key="frame" x="107" y="29.5" width="110.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="hSI-pv-kCo" firstAttribute="leading" secondItem="UKD-fj-VJx" secondAttribute="leading" id="4tw-ZX-gBp"/>
+                        <constraint firstItem="hSI-pv-kCo" firstAttribute="top" secondItem="UKD-fj-VJx" secondAttribute="top" id="KuS-ib-U2x"/>
+                        <constraint firstItem="vwS-l1-C4I" firstAttribute="centerY" secondItem="hSI-pv-kCo" secondAttribute="centerY" id="M5Y-Pd-cQS"/>
+                        <constraint firstItem="14W-EQ-SRC" firstAttribute="leading" secondItem="UKD-fj-VJx" secondAttribute="leading" id="N0t-bP-A7j"/>
+                        <constraint firstAttribute="trailing" secondItem="hSI-pv-kCo" secondAttribute="trailing" id="TXT-bq-0yg"/>
+                        <constraint firstItem="14W-EQ-SRC" firstAttribute="top" secondItem="hSI-pv-kCo" secondAttribute="bottom" id="V22-ht-poU"/>
+                        <constraint firstAttribute="trailing" secondItem="14W-EQ-SRC" secondAttribute="trailing" id="Wrl-0c-Euz"/>
+                        <constraint firstItem="vwS-l1-C4I" firstAttribute="centerX" secondItem="hSI-pv-kCo" secondAttribute="centerX" id="x9W-e3-OUl"/>
+                        <constraint firstAttribute="bottom" secondItem="14W-EQ-SRC" secondAttribute="bottom" id="zdo-Np-FPx"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="UKD-fj-VJx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="915-Ve-hN3"/>
+                <constraint firstItem="UKD-fj-VJx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PSU-GV-cg0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UKD-fj-VJx" secondAttribute="trailing" constant="45" id="col-OT-bEn"/>
+                <constraint firstItem="UKD-fj-VJx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="45" id="har-PE-Ibq"/>
+            </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="cHC-gR-puZ" appends="YES" id="G9v-9E-Cde"/>
+            </connections>
+            <point key="canvasLocation" x="-33.333333333333336" y="82.366071428571431"/>
+        </view>
+        <tapGestureRecognizer id="cHC-gR-puZ">
+            <connections>
+                <action selector="dismiss:" destination="iN0-l3-epB" id="8j7-gO-l7K"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="alert_header_bg" width="285" height="80"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
