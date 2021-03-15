@@ -137,6 +137,7 @@
 		BDDEFB3F25EB834F00D7A5D7 /* MobileLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDEFB3D25EB834F00D7A5D7 /* MobileLoginViewController.xib */; };
 		BDDEFB4525EBA6F500D7A5D7 /* MembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDEFB4325EBA6F500D7A5D7 /* MembersViewController.m */; };
 		BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDEFB4425EBA6F500D7A5D7 /* MembersViewController.xib */; };
+		BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE0A07225FF797700F40684 /* PhotoManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -345,6 +346,8 @@
 		BDDEFB4225EBA6F500D7A5D7 /* MembersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersViewController.h; sourceTree = "<group>"; };
 		BDDEFB4325EBA6F500D7A5D7 /* MembersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersViewController.m; sourceTree = "<group>"; };
 		BDDEFB4425EBA6F500D7A5D7 /* MembersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembersViewController.xib; sourceTree = "<group>"; };
+		BDE0A07125FF797700F40684 /* PhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
+		BDE0A07225FF797700F40684 /* PhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
 		D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marketing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F30598FE1410F84634F9EB /* Pods-Marketing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketing.debug.xcconfig"; path = "Target Support Files/Pods-Marketing/Pods-Marketing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -753,6 +756,8 @@
 				BDC5857725EB50740021F808 /* Color.m */,
 				BDC5855525EB4C4D0021F808 /* ImageLoader.h */,
 				BDC5855925EB4C4D0021F808 /* ImageLoader.mm */,
+				BDE0A07125FF797700F40684 /* PhotoManager.h */,
+				BDE0A07225FF797700F40684 /* PhotoManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1122,6 +1127,7 @@
 				BD06EC1225F7AD48005A8FE4 /* DrawAmountListViewController.m in Sources */,
 				BDC5859E25EB57180021F808 /* NSDictionary+MyDictionary.m in Sources */,
 				BDC585A225EB57180021F808 /* UIImage+YYCompress.m in Sources */,
+				BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */,
 				BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */,
 				BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */,
 				BDC265C525ED2A7000DBAA64 /* ProfitableViewController.m in Sources */,

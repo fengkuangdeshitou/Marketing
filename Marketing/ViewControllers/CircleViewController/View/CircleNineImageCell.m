@@ -73,7 +73,7 @@
         [imageModelArray addObject:assetModel];
     }
     [self.photoManager addCustomAssetModel:imageModelArray];
-    [[PreHelper getCurrentVC] hx_presentPreviewPhotoControllerWithManager:self.photoManager previewStyle:HXPhotoViewPreViewShowStyleDefault showBottomPageControl:NO currentIndex:sender.view.tag-10];
+    [[PreHelper getCurrentVC] hx_presentPreviewPhotoControllerWithManager:self.photoManager previewStyle:HXPhotoViewPreViewShowStyleDark showBottomPageControl:NO currentIndex:sender.view.tag-10];
     
 }
 

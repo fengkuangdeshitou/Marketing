@@ -7,8 +7,7 @@
 //
 
 #import "ImageLoader.h"
-#import "SDWebImage.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImage.h>
 #import "NetworkUrlGetter.h"
 #import "AFNetworkReachabilityManager.h"
 #import <CommonCrypto/CommonDigest.h>

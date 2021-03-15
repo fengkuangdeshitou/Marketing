@@ -10,11 +10,11 @@ target 'Marketing' do
 pod 'AFNetworking'
 pod 'MJExtension'
 pod 'Masonry'
+pod 'HXPhotoPicker'
 pod 'SDWebImage'
 pod 'MBProgressHUD'
 pod 'IQKeyboardManager'
 pod 'LinkedME_LinkPage'
-pod 'HXPhotoPicker'
 pod 'mob_sharesdk'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'  
 
