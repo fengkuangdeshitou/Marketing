@@ -24,6 +24,7 @@
 		0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */; };
 		0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A32125F895D10001B38E /* BioAuthEngine.bundle */; };
 		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
+		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
 		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
@@ -165,6 +166,7 @@
 		0F28A32125F895D10001B38E /* BioAuthEngine.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BioAuthEngine.bundle; sourceTree = "<group>"; };
 		0F28A32D25F89EF20001B38E /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		0F28A32E25F89EF20001B38E /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		0F67410D26007EEA00BF7315 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
 		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
 		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				0F28A2F625F891F00001B38E /* Accelerate.framework in Frameworks */,
 				0F28A2F425F891E70001B38E /* CoreMotion.framework in Frameworks */,
 				BD410C7C25F8E468007A1D5E /* EsandZim.framework in Frameworks */,
+				0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */,
 				0F28A2F125F891CC0001B38E /* libc++.1.tbd in Frameworks */,
 				0F28A2EF25F891BB0001B38E /* WebKit.framework in Frameworks */,
 				BDC265E925EE695700DBAA64 /* CoreTelephony.framework in Frameworks */,
@@ -435,6 +438,7 @@
 		97D523F2151D7882F0982376 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F67410D26007EEA00BF7315 /* StoreKit.framework */,
 				0F28A2F525F891F00001B38E /* Accelerate.framework */,
 				0F28A2F325F891E70001B38E /* CoreMotion.framework */,
 				0F28A2F025F891CC0001B38E /* libc++.1.tbd */,
