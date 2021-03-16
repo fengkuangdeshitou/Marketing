@@ -8,6 +8,7 @@
 #import "UserViewController.h"
 #import "UserHeaderCell.h"
 #import "UserCell.h"
+#import "CircleViewController.h"
 #import "AddValueServicesController.h"
 #import "BindingMobileViewController.h"
 #import "AuthenticationViewController.h"
@@ -64,6 +65,11 @@
             services.title = @"增值服务";
             services.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:services animated:true];
+        }else if(indexPath.row == 1){
+            CircleViewController * circle = [[CircleViewController alloc] initWithUserId:@"11"];
+            circle.title = @"我的发布";
+            circle.hidesBottomBarWhenPushed = true;
+            [self.navigationController pushViewController:circle animated:true];
         }else if (indexPath.row == 2){
             AuthenticationViewController * authentication = [[AuthenticationViewController alloc] init];
             authentication.title = @"实名认证";

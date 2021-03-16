@@ -23,3 +23,5 @@ extern NSString * const COLOR_TABBAR_TOPLINE_COLOR;
 /**navagitionBar 文字颜色*/
 extern NSString * const COLOR_NAVIGATION_TITLE_COLOR;
 
+/**圆角边框颜色*/
+extern NSString * const COLOR_ROUND_LINE_COLOR;

@@ -26,6 +26,8 @@
 		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
+		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
+		BD0543772600CEC200DEF83F /* EditUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */; };
 		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
 		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
 		BD06B56625FBB6400051F873 /* CircleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B56525FBB6400051F873 /* CircleModel.m */; };
@@ -167,6 +169,9 @@
 		0F28A32D25F89EF20001B38E /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		0F28A32E25F89EF20001B38E /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		0F67410D26007EEA00BF7315 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
+		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
+		BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUserInfoViewController.xib; sourceTree = "<group>"; };
 		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
 		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
 		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
@@ -460,6 +465,16 @@
 				020E5BABD4149E16ACF46846 /* Pods-Marketing.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BD0543722600CEAD00DEF83F /* EditUserInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */,
+				BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */,
+				BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */,
+			);
+			path = EditUserInfoViewController;
 			sourceTree = "<group>";
 		};
 		BD06B55825FA605A0051F873 /* View */ = {
@@ -862,6 +877,7 @@
 				BDDEFB0A25EB6E9400D7A5D7 /* UserInfoViewController.m */,
 				BDDEFB0B25EB6E9400D7A5D7 /* UserInfoViewController.xib */,
 				BDDEFB1825EB75FE00D7A5D7 /* View */,
+				BD0543722600CEAD00DEF83F /* EditUserInfoViewController */,
 			);
 			path = UserInfoViewController;
 			sourceTree = "<group>";
@@ -1041,6 +1057,7 @@
 				BDDEFB3925EB803100D7A5D7 /* LoginViewController.xib in Resources */,
 				BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */,
 				BD06EC1325F7AD48005A8FE4 /* DrawAmountListViewController.xib in Resources */,
+				BD0543772600CEC200DEF83F /* EditUserInfoViewController.xib in Resources */,
 				BDDEFB1525EB700500D7A5D7 /* UserHeaderCell.xib in Resources */,
 				BDC265B825ED09EF00DBAA64 /* CircleNineImageCell.xib in Resources */,
 				0F03F04225FB71BC0044C8BA /* CustomerServiceViewController.xib in Resources */,
@@ -1169,6 +1186,7 @@
 				BDC5857825EB50740021F808 /* Color.m in Sources */,
 				BDC585A025EB57180021F808 /* NSString+MD5.m in Sources */,
 				0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */,
+				BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */,
 				BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */,
 				BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */,
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,

@@ -20,8 +20,9 @@
 #import "HXPhotoPicker.h"
 #import "HXPhotoCustomNavigationBar.h"
 
-@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
+@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,copy)NSString * userId;
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,weak)IBOutlet NSLayoutConstraint * navigationBarHeight;
@@ -40,9 +41,20 @@
 
 @implementation CircleViewController
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    BOOL hidden = [viewController isKindOfClass:[self class]];
-    [self.navigationController setNavigationBarHidden:hidden animated:NO];
+- (instancetype)initWithUserId:(NSString *)userId
+{
+    self = [super init];
+    if (self) {
+        self.userId = userId;
+    }
+    return self;
+}
+
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc] init];
+    }
+    return _dataArray;
 }
 
 - (UIImageView *)coverImageView{
@@ -71,7 +83,7 @@
         _photoManager.configuration.showOriginalBytes = YES;
         _photoManager.configuration.showOriginalBytesLoading = YES;
 //        _photoManager.configuration.clarityScale = 2.f;
-#if HasSDWebImage
+//#if HasSDWebImage
         // 先导入了SDWebImage
         _photoManager.configuration.photoEditConfigur.requestChartletModels = ^(void (^ _Nonnull chartletModels)(NSArray<HXPhotoEditChartletTitleModel *> * _Nonnull)) {
             
@@ -87,7 +99,7 @@
                 chartletModels(@[netModel]);
             }
         };
-#endif
+//#endif
     }
     return _photoManager;
 }
@@ -153,28 +165,38 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    if (!self.userId) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (!self.userId) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    self.navigationController.delegate = self;
-    self.navigationBarHeight.constant = NavagationHeight;
-//    [self.view addSubview:self.customNavigationBar];
-    
-    [self.view addSubview:self.topView];
-    [self.view addSubview:self.customNavBar];
-    
-    self.dataArray = [[NSMutableArray alloc] init];
-    self.tableView.contentInset = UIEdgeInsetsMake(-UIApplication.sharedApplication.statusBarFrame.size.height - 44, 0, 0, 0);
+    if (!self.userId) {
+        self.navigationBarHeight.constant = NavagationHeight;
+        [self.view addSubview:self.topView];
+        [self.view addSubview:self.customNavBar];
+        self.tableView.contentInset = UIEdgeInsetsMake(-UIApplication.sharedApplication.statusBarFrame.size.height - 44, 0, 0, 0);
+        UIView * headerView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
+        headerView.backgroundColor = UIColor.whiteColor;
+        [headerView addSubview:self.coverImageView];
+        [headerView addSubview:self.avatarImageView];
+        self.tableView.tableHeaderView = headerView;
+        
+        [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
+        [ImageLoader loadImage:self.avatarImageView url:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg" placeholder:nil];
+    }
+
     NSDictionary * dict = @{
         @"content":@"拉库房阿里积分垃圾了法律上看见放辣椒拉减肥垃圾垃圾"
     };
@@ -209,14 +231,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleMoreCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleMoreCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleNineImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleNineImageCell class])];
     
-    UIView * headerView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
-    headerView.backgroundColor = UIColor.whiteColor;
-    [headerView addSubview:self.coverImageView];
-    [headerView addSubview:self.avatarImageView];
-    self.tableView.tableHeaderView = headerView;
-    
-    [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
-    [ImageLoader loadImage:self.avatarImageView url:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg" placeholder:nil];
 }
 
 /// 发布

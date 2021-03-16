@@ -12,6 +12,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    if (![PreHelper isLogin]) {
+        self.titleLabel.text = @"未登录";
+    }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleViewController : UIViewController
 
+- (instancetype)initWithUserId:(NSString *)userId;
+
 @end
 
 NS_ASSUME_NONNULL_END

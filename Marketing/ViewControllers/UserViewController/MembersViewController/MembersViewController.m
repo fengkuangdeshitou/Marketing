@@ -14,6 +14,12 @@
 @property(nonatomic,strong)IBOutlet UITableViewCell * interestsCell;
 @property(nonatomic,strong)IBOutlet UIView * interestsView;
 
+@property(nonatomic,strong)IBOutlet UIImageView * avararImageView;
+@property(nonatomic,strong)IBOutlet UILabel * userNameLabel;
+@property(nonatomic,strong)IBOutlet UILabel * userStatusLabel;
+@property(nonatomic,strong)IBOutlet UIView * memberBackgroundView;
+@property(nonatomic,assign)NSInteger flag;
+
 @end
 
 @implementation MembersViewController
@@ -32,7 +38,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = UIColor.blackColor;
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName:[UIColor blackColor]
     };
@@ -58,8 +64,22 @@
         
         [self.interestsView addSubview:contentView];
     }
-    
+ 
+    [self exchangeMemberTime:[self.memberBackgroundView viewWithTag:10].gestureRecognizers.firstObject];
 }
+
+/// 切换会员时间
+/// @param sender 手势
+- (IBAction)exchangeMemberTime:(UITapGestureRecognizer *)sender{
+    for (UIView * subview in self.memberBackgroundView.subviews) {
+        subview.layer.borderWidth = 0;
+    }
+    sender.view.layer.borderWidth = 2;
+    sender.view.layer.borderColor = [PreHelper colorWithHexString:COLOR_ROUND_LINE_COLOR].CGColor;
+    self.flag = sender.view.tag - 10;
+}
+
+#pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -82,13 +102,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return section == 0 ? 5 : 0.0001;
+    return section == 0 ? 5 : 25;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView * footer = [[UIView alloc] init];
-    footer.backgroundColor = [PreHelper colorWithHexString:@"#F6F5FA"];
+    footer.backgroundColor = section == 0 ? [PreHelper colorWithHexString:@"#F6F5FA"] : UIColor.clearColor;
     return footer;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.001;
 }
 
 // 根据颜色生成UIImage

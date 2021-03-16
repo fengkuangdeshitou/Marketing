@@ -20,7 +20,7 @@
     self.navigationBar.translucent = false;
     self.navigationBar.tintColor = [PreHelper colorWithHexString:COLOR_NAVIGATION_TITLE_COLOR];
 
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-100, 0) forBarMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, 0) forBarMetrics:UIBarMetricsDefault];
 
     self.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName:[PreHelper colorWithHexString:COLOR_NAVIGATION_TITLE_COLOR],

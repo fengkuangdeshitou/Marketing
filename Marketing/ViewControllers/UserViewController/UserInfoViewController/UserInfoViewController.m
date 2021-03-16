@@ -8,6 +8,7 @@
 #import "UserInfoViewController.h"
 #import "UserInfoHeaderCell.h"
 #import "SettingCell.h"
+#import "EditUserInfoViewController.h"
 
 @interface UserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -47,6 +48,31 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
+            NSLog(@"%@",value);
+        }];
+    }else if (indexPath.section == 1 && indexPath.row == 1) {
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
+            NSLog(@"%@",value);
+        }];
+    }else if (indexPath.section == 1 && indexPath.row == 2) {
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
+            NSLog(@"%@",value);
+        }];
+    }
+}
+
+- (void)updateUserInfoWithTitle:(NSString *)title Completiion:(void(^)(NSString *))completion{
+    EditUserInfoViewController * editUserInfo = [[EditUserInfoViewController alloc] init];
+    editUserInfo.title = title;
+    editUserInfo.editBlock = ^(NSString * _Nonnull value) {
+        completion(value);
+    };
+    [self.navigationController pushViewController:editUserInfo animated:true];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -67,7 +93,9 @@
     return [[UIView alloc] init];
 }
 
-
+- (void)dealloc{
+    NSLog(@"%s",__func__);
+}
 /*
 #pragma mark - Navigation
 
