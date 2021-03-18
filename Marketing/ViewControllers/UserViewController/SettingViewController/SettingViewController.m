@@ -36,8 +36,14 @@
     exitButton.layer.cornerRadius = 5;
     exitButton.layer.masksToBounds = true;
     exitButton.titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+    [exitButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     [footerView addSubview:exitButton];
     return footerView;
+}
+
+- (void)logout{
+    [UserManager deleteUser];
+    [PreHelper pushToTabbarController];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobileLoginViewController">
             <connections>
+                <outlet property="codeTextfield" destination="bAY-MA-Qup" id="1n2-bE-f3Z"/>
                 <outlet property="sendCodeButton" destination="575-rN-m1F" id="lRH-Yq-ufB"/>
+                <outlet property="tellTextfield" destination="upQ-gk-OrM" id="bqj-va-iMc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

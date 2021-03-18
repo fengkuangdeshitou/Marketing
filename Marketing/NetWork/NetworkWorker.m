@@ -42,12 +42,10 @@ static NetworkWorker * networkWorker = nil;
         _manager = [AFHTTPSessionManager manager];
     }
     _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    _manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    _manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [_manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    _manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+//    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [_manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     return _manager;
 }
 
@@ -64,22 +62,20 @@ static NetworkWorker * networkWorker = nil;
 }
 
 + (void)networkGet:(NSString *)URLString
-           success:(void (^)(NSDictionary *dictionary))success
-           failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
+           success:(RequestSuccessCompletion)success
+           failure:(RequestFailureCompletion)failure {
     [self showNetworkActivityIndicatorVisible];
     URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NetworkWorker * network = [NetworkWorker shareInstance];
     [network.manager GET:URLString parameters:nil headers:network.headers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"message"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            success(dictionary);
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        if ([[result objectForKey:@"code"] intValue] == requestSuccess) {
+            success(result);
+        }else{
+            failure(result[@"msg"]);
         }
         [self dismissNetworkActivityIndicatorVisible];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(@"", nil);
         [self dismissNetworkActivityIndicatorVisible];
     }];
     
@@ -87,22 +83,21 @@ static NetworkWorker * networkWorker = nil;
 
 + (void)newNetworkPost:(NSString *)URLString
                 params:(NSDictionary *)jsonString
-               success:(void (^)(NSDictionary *dictionary))success
-               failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
+               success:(RequestSuccessCompletion)success
+               failure:(RequestFailureCompletion)failure {
     [self showNetworkActivityIndicatorVisible];
     URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NetworkWorker * network = [NetworkWorker shareInstance];
     [network.manager POST:URLString parameters:jsonString headers:network.headers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"message"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            failure([dictionary objectForKey:@"result"], dictionary);
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"result=%@",result);
+        if ([[result objectForKey:@"code"] intValue] == requestSuccess) {
+            success(result);
+        }else{
+            failure(result[@"msg"]);
         }
         [self dismissNetworkActivityIndicatorVisible];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(@"", nil);
         [self dismissNetworkActivityIndicatorVisible];
     }];
 }

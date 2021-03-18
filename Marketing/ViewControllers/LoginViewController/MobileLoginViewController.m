@@ -9,7 +9,11 @@
 
 @interface MobileLoginViewController ()
 
+@property(nonatomic,weak)IBOutlet UITextField * tellTextfield;
+@property(nonatomic,weak)IBOutlet UITextField * codeTextfield;
 @property(nonatomic,weak)IBOutlet UIButton * sendCodeButton;
+@property(nonatomic,assign)NSInteger timeNumber;
+@property(nonatomic,strong)NSTimer * timer;
 
 @end
 
@@ -19,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.timeNumber = 60;
     self.sendCodeButton.layer.borderWidth = 1;
     self.sendCodeButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.sendCodeButton.layer.cornerRadius = 14.5;
@@ -26,16 +31,73 @@
     
 }
 
+- (void)dealloc{
+    [self.timer invalidate];
+}
+
 /// 发送验证码
 /// @param sender 按钮
 - (IBAction)sendVerificationCode:(UIButton *)sender{
+    if (self.tellTextfield.text == 0) {
+        [self.view makeToast:@"请输入手机号"];
+        return;
+    }
+    if (self.tellTextfield.text.length != 11) {
+        [self.view makeToast:@"请输入正确的手机号"];
+        return;
+    }
+    sender.userInteractionEnabled = NO;
     
+    [NetworkWorker networkGet:[NetworkUrlGetter getVerificationCodeUrlWithTell:self.tellTextfield.text] success:^(NSDictionary *result) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeChange) userInfo:nil repeats:YES];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+}
+
+/// 短信倒计时
+- (void)timeChange{
+    if (self.timeNumber > 1) {
+        self.timeNumber --;
+        self.sendCodeButton.userInteractionEnabled = NO;
+        [self.sendCodeButton setTitle:[NSString stringWithFormat:@"%ld秒",self.timeNumber] forState:UIControlStateNormal];
+    }else{
+        [self.timer invalidate];
+        [self.sendCodeButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+        self.timeNumber = 60;
+        self.sendCodeButton.userInteractionEnabled = YES;
+    }
 }
 
 /// 账号密码登录
 /// @param sender 按钮
 - (IBAction)login:(UIButton *)sender{
-    [PreHelper pushToTabbarController];
+    if (self.tellTextfield.text.length == 0) {
+        [self.view makeToast:@"请输入手机号"];
+        return;
+    }
+    if (self.tellTextfield.text.length != 11) {
+        [self.view makeToast:@"请输入正确的手机号"];
+        return;
+    }
+    if (self.codeTextfield.text.length == 0) {
+        [self.view makeToast:@"请输入验证码"];
+        return;
+    }
+    
+    NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:[[DeviceTool shareInstance] mj_JSONObject]];
+    [params setValue:self.codeTextfield.text forKey:@"code"];
+    [params setValue:self.tellTextfield.text forKey:@"phone"];
+    [params setValue:@"" forKey:@"sceneParams"];/// 深度链参数
+    [NetworkWorker newNetworkPost:[NetworkUrlGetter getCodeLoginUrl] params:params success:^(NSDictionary *result) {
+        UserModel * model = [UserModel mj_objectWithKeyValues:result[@"member"]];
+        model.token = result[@"token"];
+        [UserManager saveUser:model];
+        [PreHelper pushToTabbarController];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+    
 }
 
 /// 返回三方登录

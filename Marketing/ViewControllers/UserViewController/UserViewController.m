@@ -21,6 +21,7 @@
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,strong) NSArray * titleArray;
+@property(nonatomic,strong) UserModel * userModel;
 
 @end
 
@@ -35,7 +36,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserCell class])];
-    
+    self.userModel = [UserManager getUser];
+    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -43,6 +45,7 @@
         UserHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserHeaderCell class]) forIndexPath:indexPath];
 //        cell.titleLabel.text = self.titleArray[indexPath.row];
 //        cell.icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"user_title_%ld",indexPath.row]];
+        cell.model = self.userModel;
         [cell.memberButton addTarget:self action:@selector(membersAction) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else{

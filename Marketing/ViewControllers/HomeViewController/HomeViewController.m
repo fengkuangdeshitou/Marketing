@@ -126,7 +126,9 @@
     }
 }
 
-
+- (void)dealloc{
+    [self removeObserver:self forKeyPath:@"currentFlag"];
+}
 /*
 #pragma mark - Navigation
 

@@ -45,11 +45,17 @@
 /// 微信登录
 /// @param sender 按钮
 - (IBAction)wechatLogin:(UIButton *)sender{
+    if (![ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
+        NSLog(@"已授权");
+    }else{
+        NSLog(@"未授权");
+    }
+    
     [ShareSDK authorize:SSDKPlatformTypeWechat settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         switch (state) {
            case SSDKResponseStateSuccess:
-                NSLog(@"%@",[user.credential rawData]);
-                [PreHelper pushToTabbarController];
+//                NSLog(@"登录数据:%@",[user.credential rawData]);
+                [self login];
                 break;
            case SSDKResponseStateFail:
                  {
@@ -64,7 +70,11 @@
                 break;
         }
     }];
-//    [PreHelper pushToTabbarController];
+}
+
+- (void)login{
+    NSLog(@"url=%@",[NetworkUrlGetter getWechatLoginWithCode:K_UD_READ(@"WechatCode") sceneParams:@"" channel:[DeviceTool shareInstance].getChannel deviceId:[DeviceTool shareInstance].deviceId brand:[DeviceTool shareInstance].brand model:[DeviceTool shareInstance].model]);
+    
 }
 
 /*

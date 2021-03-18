@@ -12,8 +12,8 @@
 
 #define NavagationHeight StatusBarHeight + NavagationBarHeight
 
-#define requestSuccess                                 1
-#define requestFail                                    0
+#define requestSuccess                                 0
+#define requestFail                                    1
 
 #define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT    [[UIScreen mainScreen] bounds].size.height

@@ -9,6 +9,8 @@
 #define PrefixHeader_pch
 
 #import "NetworkWorker.h"
+#import "NetworkUrlGetter.h"
+#import "DeviceTool.h"
 #import "MJExtension.h"
 #import "Color.h"
 #import "GlobalDefine.h"
@@ -17,6 +19,7 @@
 #import "ImageLoader.h"
 #import "Toast+UIView.h"
 #import "UIView+Extension.h"
+#import "UserManager.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

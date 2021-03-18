@@ -10,22 +10,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^RequestSuccessCompletion)(NSDictionary *result);
+typedef void(^RequestFailureCompletion)(NSString *errorMessage);
+
 @interface NetworkWorker : NSObject
 
 + (void)networkGet:(NSString *)URLString
-           success:(void (^)(NSDictionary *dictionary))success
-           failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
+           success:(RequestSuccessCompletion)success
+           failure:(RequestFailureCompletion)failure;
+
++ (void)newNetworkPost:(NSString *)URLString
+             params:(NSDictionary *)dictionary
+            success:(RequestSuccessCompletion)success
+            failure:(RequestFailureCompletion)failure;
 
 + (void)networkPost:(NSString *)URLString
            formJson:(NSString *)jsonString
             success:(void (^)(NSDictionary *dictionary))success
             failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
-
-+ (void)newNetworkPost:(NSString *)URLString
-             params:(NSDictionary *)dictionary
-            success:(void (^)(NSDictionary *dictionary))success
-            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
-
 
 + (void)networkPost:(NSString *)URLString
            formPostData:(NSData *)paostData

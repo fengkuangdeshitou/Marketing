@@ -13,10 +13,18 @@
     [super awakeFromNib];
     // Initialization code
     
+    
+    
+}
+
+- (void)setModel:(UserModel *)model{
+    _model = model;
+    NSLog(@"user=%@",[model mj_keyValues]);
     if (![PreHelper isLogin]) {
         self.titleLabel.text = @"未登录";
+    }else{
+        self.titleLabel.text = model.nickname;
     }
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

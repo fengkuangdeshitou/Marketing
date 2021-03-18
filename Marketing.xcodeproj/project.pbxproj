@@ -28,6 +28,9 @@
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
 		BD0543772600CEC200DEF83F /* EditUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */; };
+		BD05437B26039D1100DEF83F /* DeviceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BD05437A26039D1100DEF83F /* DeviceTool.m */; };
+		BD0543822603AC4100DEF83F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543812603AC4100DEF83F /* UserModel.m */; };
+		BD0543862603AE0C00DEF83F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543852603AE0C00DEF83F /* UserManager.m */; };
 		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
 		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
 		BD06B56625FBB6400051F873 /* CircleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B56525FBB6400051F873 /* CircleModel.m */; };
@@ -172,6 +175,12 @@
 		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
 		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUserInfoViewController.xib; sourceTree = "<group>"; };
+		BD05437926039D1100DEF83F /* DeviceTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceTool.h; sourceTree = "<group>"; };
+		BD05437A26039D1100DEF83F /* DeviceTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTool.m; sourceTree = "<group>"; };
+		BD0543802603AC4100DEF83F /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		BD0543812603AC4100DEF83F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		BD0543842603AE0C00DEF83F /* UserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		BD0543852603AE0C00DEF83F /* UserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
 		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
 		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
@@ -477,6 +486,17 @@
 			path = EditUserInfoViewController;
 			sourceTree = "<group>";
 		};
+		BD05437F2603AB6A00DEF83F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD0543802603AC4100DEF83F /* UserModel.h */,
+				BD0543812603AC4100DEF83F /* UserModel.m */,
+				BD0543842603AE0C00DEF83F /* UserManager.h */,
+				BD0543852603AE0C00DEF83F /* UserManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BD06B55825FA605A0051F873 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +797,8 @@
 				BDC5855925EB4C4D0021F808 /* ImageLoader.mm */,
 				BDE0A07125FF797700F40684 /* PhotoManager.h */,
 				BDE0A07225FF797700F40684 /* PhotoManager.m */,
+				BD05437926039D1100DEF83F /* DeviceTool.h */,
+				BD05437A26039D1100DEF83F /* DeviceTool.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -833,6 +855,7 @@
 				BDC585A725EB58500021F808 /* UserViewController.h */,
 				BDC585A825EB58500021F808 /* UserViewController.m */,
 				BDC585A925EB58500021F808 /* UserViewController.xib */,
+				BD05437F2603AB6A00DEF83F /* Model */,
 				BDDEFB1025EB6FE800D7A5D7 /* View */,
 				0F28A29725F7420D0001B38E /* AddValueServicesController */,
 				BDDEFB4125EBA6E400D7A5D7 /* MembersViewController */,
@@ -1157,6 +1180,7 @@
 				BDDEFB0C25EB6E9400D7A5D7 /* UserInfoViewController.m in Sources */,
 				0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */,
 				BDC585AA25EB58500021F808 /* UserViewController.m in Sources */,
+				BD0543822603AC4100DEF83F /* UserModel.m in Sources */,
 				BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */,
 				BDC585A125EB57180021F808 /* UIView+Extension.m in Sources */,
 				BDC265BC25ED0C3900DBAA64 /* CircleMoreActionAlertView.m in Sources */,
@@ -1167,12 +1191,14 @@
 				BDC2659525EBEBED00DBAA64 /* CircleHeaderCell.m in Sources */,
 				BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */,
 				BDC585B225EB5A1E0021F808 /* HomeViewController.m in Sources */,
+				BD0543862603AE0C00DEF83F /* UserManager.m in Sources */,
 				BDC265D725EE5D4F00DBAA64 /* ProfitHeaderCell.m in Sources */,
 				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
+				BD05437B26039D1100DEF83F /* DeviceTool.m in Sources */,
 				0F03F04125FB71BC0044C8BA /* CustomerServiceViewController.m in Sources */,
 				BDC5854125EB473A0021F808 /* main.m in Sources */,
 				BDC265DD25EE5EEB00DBAA64 /* ProfitShareCell.m in Sources */,
@@ -1349,6 +1375,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1363,6 +1390,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1440,6 +1468,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1454,6 +1483,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

@@ -63,7 +63,12 @@
 }
 
 + (BOOL)isLogin{
-    return K_UD_READ(USER_LOGIN);
+    UserModel * model = [UserManager getUser];
+    if (model) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 + (void)pushToTabbarController{
