@@ -168,7 +168,7 @@
     if (!self.userId) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated {

@@ -12,7 +12,7 @@
 
 + (NSString *)getHost;
 
-+ (NSString *)getWechatLoginWithCode:(NSString *)code sceneParams:(NSString *)scene channel:(NSString *)channel deviceId:(NSString *)deviceId brand:(NSString *)brand model:(NSString *)model;
++ (NSString *)getWechatLoginWithCode:(NSString *)code sceneParams:(NSString *)scene;
 
 + (NSString *)getVerificationCodeUrlWithTell:(NSString *)tell;
 

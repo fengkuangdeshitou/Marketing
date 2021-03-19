@@ -43,8 +43,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         UserHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserHeaderCell class]) forIndexPath:indexPath];
-//        cell.titleLabel.text = self.titleArray[indexPath.row];
-//        cell.icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"user_title_%ld",indexPath.row]];
         cell.model = self.userModel;
         [cell.memberButton addTarget:self action:@selector(membersAction) forControlEvents:UIControlEventTouchUpInside];
         return cell;

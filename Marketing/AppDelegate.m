@@ -12,7 +12,6 @@
 #import <LinkedME_iOS/LinkedME.h>
 #import "DetailViewController.h"
 #import <ShareSDK/ShareSDK.h>
-#import <WechatConnector/WechatConnector.h>
 
 @interface AppDelegate ()
 
@@ -41,20 +40,6 @@
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
         [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com"];
     }];
-    
-    [WeChatConnector setRequestAuthTokenOperation:^(NSString *authCode, void (^getUserinfo)(NSString *uid, NSString *token)) {
-        NSLog(@"WeChatConnector=%@",authCode);
-        [NetworkWorker networkGet:[NetworkUrlGetter getWechatLoginWithCode:authCode sceneParams:@"" channel:[DeviceTool shareInstance].getChannel deviceId:[DeviceTool shareInstance].deviceId brand:[DeviceTool shareInstance].brand model:[DeviceTool shareInstance].model] success:^(NSDictionary *dictionary) {
-            NSLog(@"===%@",dictionary);
-            UserModel * model = [UserModel mj_objectWithKeyValues:dictionary[@"member"]];
-            model.token = dictionary[@"token"];
-            [UserManager saveUser:model];
-            [PreHelper pushToTabbarController];
-        } failure:^(NSString *errorMessage) {
-            [self.window makeToast:errorMessage];
-        }];
-    }];
-    
     
 //    LinkedME* linkedme = [LinkedME getInstance];
     //设置重试次数
@@ -137,16 +122,11 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
     NSLog(@"opened app from URL %@", [url description]);
-    NSString * paramsUrl = [url description];
-    if ([paramsUrl compare:@"code="]) {
-        NSString * string = [paramsUrl componentsSeparatedByString:@"code="].lastObject;
-        NSString * code = [string componentsSeparatedByString:@"&"].firstObject;
-        K_UD_SAVE(code, @"WechatCode");
-    }
+    
     //判断是否是通过LinkedME的UrlScheme唤起App
-//    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
-//        return [[LinkedME getInstance] handleDeepLink:url];
-//    }
+    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
+        return [[LinkedME getInstance] handleDeepLink:url];
+    }
     return YES;
 }
 

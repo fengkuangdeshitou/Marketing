@@ -83,11 +83,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-9h-AhZ">
                                 <rect key="frame" x="0.0" y="13" width="320" height="55"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEM-Up-gGb">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEM-Up-gGb">
                                         <rect key="frame" x="19" y="0.0" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="StM-w8-DJq"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="27.5"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2g-AT-Wdz">
                                         <rect key="frame" x="89" y="7" width="0.0" height="0.0"/>
@@ -145,6 +148,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="descLabel" destination="o5p-Z2-IqY" id="q2c-IX-iKE"/>
+                <outlet property="headerImageView" destination="uEM-Up-gGb" id="He5-xE-uhD"/>
                 <outlet property="memberButton" destination="TRq-sg-Ecq" id="QfG-dv-msF"/>
                 <outlet property="titleLabel" destination="p2g-AT-Wdz" id="SVI-vM-fel"/>
             </connections>

@@ -7,6 +7,14 @@
 
 #import "UserHeaderCell.h"
 
+@interface UserHeaderCell ()
+
+@property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
+@property(nonatomic,weak)IBOutlet UILabel * titleLabel;
+@property(nonatomic,weak)IBOutlet UILabel * descLabel;
+
+@end
+
 @implementation UserHeaderCell
 
 - (void)awakeFromNib {
@@ -25,6 +33,7 @@
     }else{
         self.titleLabel.text = model.nickname;
     }
+    [ImageLoader loadImage:self.headerImageView url:self.model.headimgurl placeholder:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

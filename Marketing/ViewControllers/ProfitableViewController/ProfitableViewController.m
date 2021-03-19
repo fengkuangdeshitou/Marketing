@@ -14,11 +14,17 @@
 
 @interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,strong)UserModel * userModel;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,weak)IBOutlet UIView * todayView;
 @property(nonatomic,weak)IBOutlet UIView * totalView;
 @property(nonatomic,weak)IBOutlet UIView * invitationView;
 @property(nonatomic,strong) NSArray * titleArray;
+
+@property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
+@property(nonatomic,weak)IBOutlet UILabel * userNameLabel;
+@property(nonatomic,weak)IBOutlet UILabel * userIdLabel;
+
 
 @end
 
@@ -29,6 +35,11 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"赚钱";
+    
+    self.userModel = [UserManager getUser];
+    [ImageLoader loadImage:self.headerImageView url:self.userModel.headimgurl placeholder:nil];
+    self.userNameLabel.text = self.userModel.nickname;
+    
     [self addShadowWithView:self.todayView];
     [self addShadowWithView:self.totalView];
     [self addShadowWithView:self.invitationView];

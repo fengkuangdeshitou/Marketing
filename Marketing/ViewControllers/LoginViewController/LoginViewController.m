@@ -8,6 +8,7 @@
 #import "LoginViewController.h"
 #import "MobileLoginViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import <WechatConnector/WechatConnector.h>
 
 @interface LoginViewController ()
 
@@ -32,6 +33,10 @@
     self.wechatLoginButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.wechatLoginButton.layer.borderWidth = 1;
     
+    [WeChatConnector setRequestAuthTokenOperation:^(NSString *authCode, void (^getUserinfo)(NSString *uid, NSString *token)) {
+        [self loginWithCode:authCode];
+    }];
+    
 }
 
 
@@ -45,17 +50,10 @@
 /// 微信登录
 /// @param sender 按钮
 - (IBAction)wechatLogin:(UIButton *)sender{
-    if (![ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
-        NSLog(@"已授权");
-    }else{
-        NSLog(@"未授权");
-    }
-    
     [ShareSDK authorize:SSDKPlatformTypeWechat settings:nil onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         switch (state) {
            case SSDKResponseStateSuccess:
-//                NSLog(@"登录数据:%@",[user.credential rawData]);
-                [self login];
+                NSLog(@"登录数据:%@",[user.credential rawData]);
                 break;
            case SSDKResponseStateFail:
                  {
@@ -72,9 +70,16 @@
     }];
 }
 
-- (void)login{
-    NSLog(@"url=%@",[NetworkUrlGetter getWechatLoginWithCode:K_UD_READ(@"WechatCode") sceneParams:@"" channel:[DeviceTool shareInstance].getChannel deviceId:[DeviceTool shareInstance].deviceId brand:[DeviceTool shareInstance].brand model:[DeviceTool shareInstance].model]);
-    
+- (void)loginWithCode:(NSString *)code{
+    [NetworkWorker networkGet:[NetworkUrlGetter getWechatLoginWithCode:code sceneParams:@""] success:^(NSDictionary *dictionary) {
+        NSLog(@"===%@",dictionary);
+        UserModel * model = [UserModel mj_objectWithKeyValues:dictionary[@"member"]];
+        model.token = dictionary[@"token"];
+        [UserManager saveUser:model];
+        [PreHelper pushToTabbarController];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /*
