@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol BindingAliViewControllerDelegate <NSObject>
+
+- (void)onBindAliSuccess;
+
+@end
+
 @interface BindingAliViewController : UIViewController
+
+@property(nonatomic,weak)id<BindingAliViewControllerDelegate>delegate;
 
 @end
 

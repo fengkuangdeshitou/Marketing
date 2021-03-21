@@ -13,6 +13,7 @@ typedef void(^EditUserInfoBlock)(NSString * value);
 
 @interface EditUserInfoViewController : UIViewController
 
+@property(nonatomic,copy)NSString * key;
 @property(nonatomic,copy)EditUserInfoBlock editBlock;
 
 @end

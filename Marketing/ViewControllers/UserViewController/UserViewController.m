@@ -58,6 +58,10 @@
     if (indexPath.section == 0) {
         UserInfoViewController * userInfo = [[UserInfoViewController alloc] init];
         userInfo.title = @"我的个人名片";
+        userInfo.reloadUserInfo = ^{
+            self.userModel = [UserManager getUser];
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        };
         userInfo.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:userInfo animated:true];
     }else{

@@ -31,6 +31,7 @@
 		BD05437B26039D1100DEF83F /* DeviceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BD05437A26039D1100DEF83F /* DeviceTool.m */; };
 		BD0543822603AC4100DEF83F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543812603AC4100DEF83F /* UserModel.m */; };
 		BD0543862603AE0C00DEF83F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543852603AE0C00DEF83F /* UserManager.m */; };
+		BD05438A260714B100DEF83F /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BD054389260714B100DEF83F /* UIViewController+HUD.m */; };
 		BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */; };
 		BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */; };
 		BD06B56625FBB6400051F873 /* CircleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD06B56525FBB6400051F873 /* CircleModel.m */; };
@@ -58,6 +59,7 @@
 		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
+		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
 		BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD98699F25FE49F300C5177A /* ServiceAlertView.m */; };
 		BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
@@ -181,6 +183,8 @@
 		BD0543812603AC4100DEF83F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		BD0543842603AE0C00DEF83F /* UserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		BD0543852603AE0C00DEF83F /* UserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		BD054388260714B100DEF83F /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		BD054389260714B100DEF83F /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAlertView.h; sourceTree = "<group>"; };
 		BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAlertView.m; sourceTree = "<group>"; };
 		BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadAlertView.xib; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 		BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateCircleCiewController.h; sourceTree = "<group>"; };
 		BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateCircleCiewController.m; sourceTree = "<group>"; };
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
+		BD73BCDE26079B3F00ADD55F /* BankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
+		BD73BCDF26079B3F00ADD55F /* BankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
 		BD98699E25FE49F300C5177A /* ServiceAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceAlertView.h; sourceTree = "<group>"; };
 		BD98699F25FE49F300C5177A /* ServiceAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceAlertView.m; sourceTree = "<group>"; };
 		BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceAlertView.xib; sourceTree = "<group>"; };
@@ -630,6 +636,15 @@
 			path = CreateCircleCiewController;
 			sourceTree = "<group>";
 		};
+		BD73BCDD26079B2D00ADD55F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD73BCDE26079B3F00ADD55F /* BankModel.h */,
+				BD73BCDF26079B3F00ADD55F /* BankModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BDC2657B25EBD4B300DBAA64 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +697,7 @@
 				BDC265C225ED2A7000DBAA64 /* ProfitableViewController.h */,
 				BDC265C325ED2A7000DBAA64 /* ProfitableViewController.m */,
 				BDC265C425ED2A7000DBAA64 /* ProfitableViewController.xib */,
+				BD73BCDD26079B2D00ADD55F /* Model */,
 				BDC265CC25EE5B5900DBAA64 /* View */,
 				BD06EC0625F7A3B6005A8FE4 /* DrawAmountViewController */,
 				BD06EC1E25F7C22B005A8FE4 /* InvitationViewController */,
@@ -835,6 +851,8 @@
 				BDC5859625EB57180021F808 /* UIImage+YYCompress.m */,
 				BDC5858B25EB57180021F808 /* UIView+Extension.h */,
 				BDC5859525EB57180021F808 /* UIView+Extension.m */,
+				BD054388260714B100DEF83F /* UIViewController+HUD.h */,
+				BD054389260714B100DEF83F /* UIViewController+HUD.m */,
 				BDC5858825EB57180021F808 /* ZWPlaceHolder */,
 			);
 			path = Category;
@@ -1195,6 +1213,7 @@
 				BDC265D725EE5D4F00DBAA64 /* ProfitHeaderCell.m in Sources */,
 				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
+				BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
@@ -1216,6 +1235,7 @@
 				BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */,
 				BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */,
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,
+				BD05438A260714B100DEF83F /* UIViewController+HUD.m in Sources */,
 				BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */,
 				BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */,
 				BDC585A325EB57180021F808 /* UIColor+HexString.m in Sources */,

@@ -22,10 +22,19 @@
 }
 
 - (IBAction)updateUserInfo:(UIButton*)sender{
-    if (self.editBlock) {
-        self.editBlock(self.textField.text);
+    if (self.textField.text.length == 0) {
+        [self.view makeToast:self.textField.placeholder];
+        return;
     }
-    [self.navigationController popViewControllerAnimated:true];
+    [NetworkWorker networkPost:[NetworkUrlGetter getUpdateMemberInfoUrl] params:@{self.key:self.textField.text} success:^(NSDictionary *result) {
+        if (self.editBlock) {
+            self.editBlock(self.textField.text);
+        }
+        [self.navigationController popViewControllerAnimated:true];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+    
 }
 
 /*

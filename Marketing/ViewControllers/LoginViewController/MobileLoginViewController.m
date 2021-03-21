@@ -89,7 +89,7 @@
     [params setValue:self.codeTextfield.text forKey:@"code"];
     [params setValue:self.tellTextfield.text forKey:@"phone"];
     [params setValue:@"" forKey:@"sceneParams"];/// 深度链参数
-    [NetworkWorker newNetworkPost:[NetworkUrlGetter getCodeLoginUrl] params:params success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getCodeLoginUrl] params:params success:^(NSDictionary *result) {
         UserModel * model = [UserModel mj_objectWithKeyValues:result[@"member"]];
         model.token = result[@"token"];
         [UserManager saveUser:model];

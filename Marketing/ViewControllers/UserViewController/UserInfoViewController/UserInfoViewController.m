@@ -9,11 +9,14 @@
 #import "UserInfoHeaderCell.h"
 #import "SettingCell.h"
 #import "EditUserInfoViewController.h"
+#import "MobileLoginViewController.h"
 
 @interface UserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,strong) NSArray * titleArray;
+@property(nonatomic,strong)NSMutableArray * valueArray;
+@property(nonatomic,strong) UserModel * userModel;
 
 @end
 
@@ -22,8 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.userModel = [UserManager getUser];
     self.titleArray = @[@"名称",@"微信号",@"微信绑定手机号",@"微信二维码"];
-    
+    self.valueArray = [[NSMutableArray alloc] initWithArray:@[self.userModel.nickname,self.userModel.nickname,self.userModel.tell ?: @"",self.userModel.tell?:@""]];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserInfoHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserInfoHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SettingCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SettingCell class])];
     self.tableView.tableFooterView = [UIView new];
@@ -33,7 +37,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         UserInfoHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserInfoHeaderCell class]) forIndexPath:indexPath];
-//        cell.detailIcon.image = [UIImage imageNamed:@"setting_cell_more"];
+        cell.model = self.userModel;
+        cell.headerImageReloadCompletion = ^{
+            if (self.reloadUserInfo) {
+                self.reloadUserInfo();
+            }
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        };
         return cell;
     }else{
         SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SettingCell class]) forIndexPath:indexPath];
@@ -44,29 +54,49 @@
         }else{
             cell.detailIconWidth.constant = 5.5;
         }
+        cell.descLabel.text = self.valueArray[indexPath.row];
         return cell;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1 && indexPath.row == 0) {
-        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"nickname" completiion:^(NSString * value) {
             NSLog(@"%@",value);
+            self.userModel.nickname = value;
+            [self reloadIndexPath:indexPath forValue:value];
         }];
     }else if (indexPath.section == 1 && indexPath.row == 1) {
-        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"" completiion:^(NSString * value) {
             NSLog(@"%@",value);
         }];
     }else if (indexPath.section == 1 && indexPath.row == 2) {
-        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] Completiion:^(NSString * value) {
-            NSLog(@"%@",value);
-        }];
+        MobileLoginViewController * mobile = [[MobileLoginViewController alloc] init];
+        mobile.title = @"绑定手机";
+        [self.navigationController pushViewController:mobile animated:true];
     }
 }
 
-- (void)updateUserInfoWithTitle:(NSString *)title Completiion:(void(^)(NSString *))completion{
+/// 更新数据和刷新页面
+/// @param indexPath indexPath
+/// @param value value
+- (void)reloadIndexPath:(NSIndexPath *)indexPath forValue:(NSString *)value{
+    [UserManager saveUser:self.userModel];
+    [self.valueArray replaceObjectAtIndex:indexPath.row withObject:value];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    if (self.reloadUserInfo) {
+        self.reloadUserInfo();
+    }
+}
+
+/// 跳转编辑用户信息页面
+/// @param title title
+/// @param key key
+/// @param completion 回调
+- (void)updateUserInfoWithTitle:(NSString *)title key:(NSString *)key completiion:(void(^)(NSString *))completion{
     EditUserInfoViewController * editUserInfo = [[EditUserInfoViewController alloc] init];
     editUserInfo.title = title;
+    editUserInfo.key = key;
     editUserInfo.editBlock = ^(NSString * _Nonnull value) {
         completion(value);
     };

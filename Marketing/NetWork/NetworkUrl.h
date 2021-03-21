@@ -12,10 +12,40 @@
 
 extern NSString * const hostUrl;
 
+extern NSString * const ApplePayUrl;
+
 extern NSString * const wechatLoginUrl;
 
 extern NSString * const verificationCodeUrl;
 
 extern NSString * const codeLoginUrl;
+
+/// 赚钱
+
+extern NSString * const myMoneyUrl;
+
+extern NSString * const myShareRecordUrl;
+
+extern NSString * const addBankUrl;
+
+extern NSString * const myBankUrl;
+
+extern NSString * const myDrawRecordUrl;
+
+extern NSString * const myDrawUrl;
+
+/// 个人中心
+
+extern NSString * const myGroupDownUrl;
+
+extern NSString * const livenessCheckUrl;
+
+extern NSString * const applyPayNotifyUrl;
+
+extern NSString * const updateMemberInfoUrl;
+
+extern NSString * const uploadImgUrl;
+
+extern NSString * const bindPhoneUrl;
 
 @end

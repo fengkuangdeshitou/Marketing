@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserInfoHeaderCell : UITableViewCell
 
-@property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
+@property(nonatomic,strong)UserModel * model;
+@property(nonatomic,copy)void(^headerImageReloadCompletion)(void);
 
 @end
 

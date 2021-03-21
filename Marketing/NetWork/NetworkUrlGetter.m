@@ -14,7 +14,7 @@
 + (NSString *)getHost {
     return hostUrl;
 }
-// @"http://yinxiao-api.wecein.com:8033/yinxiao-server/app/member/weixinuserinfo?code=021DiTkl2OOAH64LANkl2MDTjI0DiTks&sceneParams=snsapi_userinfo&getChannel=MOREN&deviceId=29518120-D65B-4BD0-9228-68F4F119CED8&brand=iPhones&model=iPhone8,4"
+
 + (NSString *)getWechatLoginWithCode:(NSString *)code sceneParams:(NSString *)scene;{
     return [NSString stringWithFormat:@"%@/%@?code=%@&sceneParams=%@&getChannel=%@&deviceId=%@&brand=%@&model=%@",hostUrl,wechatLoginUrl,code,scene,[DeviceTool shareInstance].getChannel,[DeviceTool shareInstance].deviceId,[DeviceTool shareInstance].brand,[DeviceTool shareInstance].model];
 }
@@ -25,6 +25,54 @@
 
 + (NSString *)getCodeLoginUrl{
     return [hostUrl stringByAppendingPathComponent:codeLoginUrl];
+}
+
++ (NSString *)getMyGroupDownUrl{
+    return [hostUrl stringByAppendingPathComponent:myGroupDownUrl];
+}
+
++ (NSString *)getLivenessCheckUrl{
+    return [hostUrl stringByAppendingPathComponent:livenessCheckUrl];
+}
+
++ (NSString *)getApplyPayNotifyUrl{
+    return [hostUrl stringByAppendingPathComponent:applyPayNotifyUrl];
+}
+
++ (NSString *)getUpdateMemberInfoUrl{
+    return [hostUrl stringByAppendingPathComponent:updateMemberInfoUrl];
+}
+
++ (NSString *)getUploadImgUrl{
+    return [hostUrl stringByAppendingPathComponent:uploadImgUrl];
+}
+
++ (NSString *)getMyShareRecordUrl{
+    return [hostUrl stringByAppendingPathComponent:myShareRecordUrl];
+}
+
++ (NSString *)getMyMoneyUrl{
+    return [hostUrl stringByAppendingPathComponent:myMoneyUrl];
+}
+
++ (NSString *)getBindPhoneUrl{
+    return [hostUrl stringByAppendingPathComponent:bindPhoneUrl];
+}
+
++ (NSString *)getAddBankUrl{
+    return [hostUrl stringByAppendingPathComponent:addBankUrl];
+}
+
++ (NSString *)getMyBankUrl{
+    return [hostUrl stringByAppendingPathComponent:myBankUrl];
+}
+
++ (NSString *)getMyDrawRecordUrl{
+    return [hostUrl stringByAppendingPathComponent:myDrawRecordUrl];
+}
+
++ (NSString *)getMyDrawUrlWithMbBankId:(NSString *)mbBankId money:(NSString *)money{
+    return [[[[[hostUrl stringByAppendingPathComponent:myDrawUrl] stringByAppendingString:@"?mbBankId="] stringByAppendingString:mbBankId] stringByAppendingString:@"&money="] stringByAppendingString:money];
 }
 
 @end

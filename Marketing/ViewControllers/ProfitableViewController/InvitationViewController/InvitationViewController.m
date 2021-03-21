@@ -12,6 +12,11 @@
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,strong) NSArray * dataArray;
+@property(nonatomic,assign) NSInteger page;
+
+@property(nonatomic,weak)IBOutlet UILabel * monthMoneyLabel;
+@property(nonatomic,weak)IBOutlet UILabel * totalMoneyLabel;
+@property(nonatomic,weak)IBOutlet UILabel * myShareCountLabel;
 
 @end
 
@@ -21,9 +26,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.page = 0;
+    self.monthMoneyLabel.text = self.monthMoney;
+    self.totalMoneyLabel.text = self.totalMoney;
+    self.myShareCountLabel.text = self.myShareCount;
     self.tableView.rowHeight = 68;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([InvitationListCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([InvitationListCell class])];
-    
+    [self isBuyAction:nil];
+}
+
+- (void)loadDataWithParams:(NSDictionary *)params{
+    [NetworkWorker networkPost:[NetworkUrlGetter getMyShareRecordUrl] params:params success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+- (IBAction)isBuyAction:(UIButton *)sender{
+    self.page = 1;
+    [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15",@"isBuy":@"y"}];
+}
+
+- (IBAction)isLoginAction:(UIButton *)sender{
+    self.page = 1;
+    [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15"}];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

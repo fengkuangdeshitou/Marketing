@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawAmountViewController">
             <connections>
                 <outlet property="balanceLabel" destination="0b3-E9-2tA" id="MZ0-ma-7jY"/>
+                <outlet property="bankNameLabel" destination="8Cv-gc-lF7" id="fhX-Ql-sn9"/>
                 <outlet property="textfield" destination="usK-P2-3QK" id="xkZ-t7-tcl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -104,20 +105,11 @@
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">提现规则:
+1.提现金额需大于100元方可提现
 </string>
                             <attributes>
                                 <color key="NSBackgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="14" name="PingFangSC-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" lineHeightMultiple="1" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                            </attributes>
-                        </fragment>
-                        <fragment>
-                            <string key="content">1.提现金额需大于100元方可提现
-</string>
-                            <attributes>
-                                <color key="NSBackgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="14" name="PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" lineHeightMultiple="1" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                             </attributes>

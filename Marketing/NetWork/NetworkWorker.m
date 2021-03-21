@@ -34,6 +34,7 @@ static NetworkWorker * networkWorker = nil;
     if (!_headers) {
         _headers = [[NSMutableDictionary alloc] init];
     }
+    [_headers setValue:[UserManager getUser].token forKey:@"token"];
     return _headers;
 }
 
@@ -69,6 +70,7 @@ static NetworkWorker * networkWorker = nil;
     NetworkWorker * network = [NetworkWorker shareInstance];
     [network.manager GET:URLString parameters:nil headers:network.headers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"result=%@",result);
         if ([[result objectForKey:@"code"] intValue] == requestSuccess) {
             success(result);
         }else{
@@ -81,7 +83,7 @@ static NetworkWorker * networkWorker = nil;
     
 }
 
-+ (void)newNetworkPost:(NSString *)URLString
++ (void)networkPost:(NSString *)URLString
                 params:(NSDictionary *)jsonString
                success:(RequestSuccessCompletion)success
                failure:(RequestFailureCompletion)failure {
@@ -102,61 +104,28 @@ static NetworkWorker * networkWorker = nil;
     }];
 }
 
- 
-+ (void)networkPost:(NSString *)URLString
-           formJson:(NSString *)jsonString
-            success:(void (^)(NSDictionary *dictionary))success
-            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
-    [self showNetworkActivityIndicatorVisible];
-    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NetworkWorker * network = [NetworkWorker shareInstance];
-    [network.manager POST:URLString parameters:jsonString headers:network.headers constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        if (jsonString) {
-            NSData *postData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-            [formData appendPartWithFormData:postData name:@"data"];
-        }
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"message"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            failure([dictionary objectForKey:@"data"], dictionary);
-        }
-        [self dismissNetworkActivityIndicatorVisible];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(REQUEST_FAIL, nil);
-        [self dismissNetworkActivityIndicatorVisible];
-    }];
-
-}
-
 + (void)networkPost:(NSString *)URLString
            formPostData:(NSData *)postData
         andFileName:(NSString *)fileName
-            success:(void (^)(NSDictionary *dictionary))success
-            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure {
+            success:(RequestSuccessCompletion)success
+            failure:(RequestFailureCompletion)failure {
     [self showNetworkActivityIndicatorVisible];
     NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:fileName forKey:@"name"];
-    //NSDictionary *dictionary = [NSDictionary dictionaryWithObject:fileName forKey:@"name"];
+    [dictionary setObject:fileName forKey:@"parts"];
     URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NetworkWorker * network = [NetworkWorker shareInstance];
     [network.manager POST:URLString parameters:dictionary headers:network.headers constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:postData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"success"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            failure([dictionary objectForKey:@"data"], dictionary);
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"result=%@",result);
+        if ([[result objectForKey:@"code"] intValue] == requestSuccess) {
+            success(result);
+        }else{
+            failure(result[@"msg"]);
         }
         [self dismissNetworkActivityIndicatorVisible];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(REQUEST_FAIL, nil);
         [self dismissNetworkActivityIndicatorVisible];
     }];
 }

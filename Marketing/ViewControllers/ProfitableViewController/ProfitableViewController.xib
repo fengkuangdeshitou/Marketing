@@ -12,8 +12,11 @@
             <connections>
                 <outlet property="headerImageView" destination="5MC-aS-3WP" id="FNP-5T-iwm"/>
                 <outlet property="invitationView" destination="hZQ-YH-14X" id="j3S-jC-KN4"/>
+                <outlet property="moneyLabel" destination="dyS-PK-u0t" id="Hrw-bB-WoD"/>
+                <outlet property="myShareCountLabel" destination="IAY-lb-l5E" id="deW-V7-hc0"/>
                 <outlet property="tableView" destination="g5a-50-cwc" id="pYa-Pv-lK8"/>
                 <outlet property="todayView" destination="cue-Z6-69i" id="bBu-N9-szt"/>
+                <outlet property="totalMoneyLabel" destination="8NX-AI-hLL" id="rbq-W1-b2j"/>
                 <outlet property="totalView" destination="9iS-G7-4b0" id="Iji-vu-YaW"/>
                 <outlet property="userIdLabel" destination="oYM-4t-hRY" id="Iw1-7d-4OJ"/>
                 <outlet property="userNameLabel" destination="cGF-R5-sld" id="K1W-cH-bvG"/>
@@ -54,8 +57,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3002.07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyS-PK-u0t">
-                                        <rect key="frame" x="288.5" y="40" width="80.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyS-PK-u0t">
+                                        <rect key="frame" x="355.5" y="40" width="13.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="QnC-nl-DyS"/>
                                         </constraints>
@@ -166,8 +169,8 @@
                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3002.07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NX-AI-hLL">
-                                        <rect key="frame" x="10" y="38" width="80.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NX-AI-hLL">
+                                        <rect key="frame" x="10" y="38" width="13.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="sNS-FP-0WR"/>
                                         </constraints>
@@ -201,7 +204,7 @@
                                         <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-lb-l5E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-lb-l5E">
                                         <rect key="frame" x="332.5" y="19" width="23" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

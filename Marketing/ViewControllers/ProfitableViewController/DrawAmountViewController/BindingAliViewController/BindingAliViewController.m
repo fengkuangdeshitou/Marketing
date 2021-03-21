@@ -22,7 +22,17 @@
 }
 
 - (IBAction)doneAction:(UIButton *)sender{
-    
+    [NetworkWorker networkPost:[NetworkUrlGetter getAddBankUrl] params:@{@"bankName":@"支付宝",@"bankNo":self.accountTextField.text,@"bankUser":self.nameTextField.text} success:^(NSDictionary *result) {
+        [self.view makeToast:@"绑定成功"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onBindAliSuccess)]) {
+            [self.delegate onBindAliSuccess];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /*

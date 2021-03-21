@@ -18,4 +18,38 @@
 
 + (NSString *)getCodeLoginUrl;
 
++ (NSString *)getMyGroupDownUrl;
+
++ (NSString *)getLivenessCheckUrl;
+
++ (NSString *)getApplyPayNotifyUrl;
+
++ (NSString *)getUpdateMemberInfoUrl;
+
++ (NSString *)getUploadImgUrl;
+
++ (NSString *)getMyShareRecordUrl;
+
++ (NSString *)getMyMoneyUrl;
+
++ (NSString *)getBindPhoneUrl;
+
++ (NSString *)getAddBankUrl;
+
++ (NSString *)getMyBankUrl;
+
++ (NSString *)getMyDrawRecordUrl;
+
++ (NSString *)getMyDrawUrlWithMbBankId:(NSString *)mbBankId money:(NSString *)money;
+
+
+
+
+
+
+
+
+
+
+
 @end

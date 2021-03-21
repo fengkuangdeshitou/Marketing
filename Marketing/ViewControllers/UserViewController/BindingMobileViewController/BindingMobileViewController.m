@@ -12,6 +12,8 @@
 @property(nonatomic,strong)NSTimer * timer;
 @property(nonatomic,assign)NSInteger time;
 @property(nonatomic,weak)IBOutlet UIButton * codeButton;
+@property(nonatomic,weak)IBOutlet UITextField * mobileTextfield;
+@property(nonatomic,weak)IBOutlet UITextField * codeTextfield;
 
 @end
 
@@ -27,7 +29,21 @@
 }
 
 - (IBAction)sendCode:(UIButton *)sender{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeChange) userInfo:nil repeats:true];
+    if (self.mobileTextfield.text.length == 0) {
+        [self.view makeToast:@"请输入手机号码"];
+        return;
+    }
+    
+    if (self.mobileTextfield.text.length != 11) {
+        [self.view makeToast:@"请输入正确的手机号码"];
+        return;
+    }
+    [NetworkWorker networkGet:[NetworkUrlGetter getVerificationCodeUrlWithTell:self.mobileTextfield.text] success:^(NSDictionary *result) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeChange) userInfo:nil repeats:true];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+    
 }
 
 - (void)timeChange{
@@ -44,7 +60,28 @@
 }
 
 - (IBAction)doneAction:(UIButton *)sender{
+    if (self.mobileTextfield.text.length == 0) {
+        [self.view makeToast:@"请输入手机号码"];
+        return;
+    }
     
+    if (self.mobileTextfield.text.length != 11) {
+        [self.view makeToast:@"请输入正确的手机号码"];
+        return;
+    }
+    
+    if (self.codeTextfield.text.length == 0) {
+        [self.view makeToast:@"请输入验证码"];
+        return;
+    }
+    [NetworkWorker networkPost:[NetworkUrlGetter getBindPhoneUrl] params:@{@"phone":self.mobileTextfield.text,@"code":self.codeTextfield.text} success:^(NSDictionary *result) {
+        [self.view makeToast:@"绑定成功" duration:2 position:@"bottom"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:true];
+        });
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /*

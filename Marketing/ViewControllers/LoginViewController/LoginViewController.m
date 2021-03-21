@@ -74,6 +74,7 @@
     [NetworkWorker networkGet:[NetworkUrlGetter getWechatLoginWithCode:code sceneParams:@""] success:^(NSDictionary *dictionary) {
         NSLog(@"===%@",dictionary);
         UserModel * model = [UserModel mj_objectWithKeyValues:dictionary[@"member"]];
+        NSLog(@"user=%@",[model mj_keyValues]);
         model.token = dictionary[@"token"];
         [UserManager saveUser:model];
         [PreHelper pushToTabbarController];

@@ -12,6 +12,7 @@
 
 @property(nonatomic,weak)IBOutlet UITextField * textfield;
 @property(nonatomic,weak)IBOutlet UILabel * balanceLabel;
+@property(nonatomic,weak)IBOutlet UILabel * bankNameLabel;
 
 @end
 
@@ -21,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
+    self.bankNameLabel.text = [NSString stringWithFormat:@"%@  %@",self.model.bank_user,self.model.bank_no];
     UIBarButtonItem * history = [[UIBarButtonItem alloc] initWithTitle:@"提现记录" style:UIBarButtonItemStylePlain target:self action:@selector(drawAmountHistory)];
     self.navigationItem.rightBarButtonItem = history;
     
@@ -33,7 +36,11 @@
 }
 
 - (IBAction)drawAction:(UIButton *)sender{
-    
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyDrawUrlWithMbBankId:self.model.mb_bank_id money:self.textfield.text] success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /*

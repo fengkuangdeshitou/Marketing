@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DrawAmountViewController : UIViewController
+
+@property(nonatomic,strong)BankModel * model;
 
 @end
 

@@ -62,9 +62,10 @@
                              [self logMsg: @"网络请求失败"];
                          }else{
                              NSDictionary * result = [NSJSONSerialization JSONObjectWithData:[resultStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                             NSLog(@"result=%@",result);
                              dispatch_async(dispatch_get_main_queue(), ^{
                                  if ([[result objectForKey:@"resultCode"] isEqualToString:@"OK"]) {
-                                     [self.view makeToast:@"认证成功"];
+                                     [self authWithCertifyId:[jsonDict objectForKey:@"certifyId"]];
                                  }else{
                                      NSLog(@"result=%@",result);
                                      [self.view makeToast:result[@"msg"]];
@@ -77,6 +78,14 @@
         });
         
     }
+}
+
+- (void)authWithCertifyId:(NSString *)certifyId{
+    [NetworkWorker networkPost:[NetworkUrlGetter getLivenessCheckUrl] params:@{@"certifyId":certifyId,@"mCertNo":self.numberTextField.text,@"mCertName":self.nameTextField.text} success:^(NSDictionary *result) {
+        [self.view makeToast:@"认证成功"];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (void)logMsg:(NSString*) content

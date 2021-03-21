@@ -23,6 +23,15 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DrawAmountListCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([DrawAmountListCell class])];
     self.tableView.rowHeight = 50;
+    [self getDrawRecord];
+}
+
+- (void)getDrawRecord{
+    [NetworkWorker networkPost:[NetworkUrlGetter getMyDrawRecordUrl] params:@{@"page":@"1",@"limit":@"20"} success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

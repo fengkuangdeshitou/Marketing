@@ -19,6 +19,7 @@
 @property(nonatomic,strong)IBOutlet UILabel * userStatusLabel;
 @property(nonatomic,strong)IBOutlet UIView * memberBackgroundView;
 @property(nonatomic,assign)NSInteger flag;
+@property(nonatomic,strong)UserModel * userModel;
 
 @end
 
@@ -66,6 +67,9 @@
     }
  
     [self exchangeMemberTime:[self.memberBackgroundView viewWithTag:10].gestureRecognizers.firstObject];
+    
+    self.userModel = [UserManager getUser];
+    [ImageLoader loadImage:self.avararImageView url:self.userModel.headimgurl placeholder:nil];
 }
 
 /// 切换会员时间
@@ -85,6 +89,7 @@
     if (indexPath.section == 0) {
         return self.headerCell;
     }else{
+        self.userNameLabel.text = self.userModel.nickname;
         return self.interestsCell;
     }
 }

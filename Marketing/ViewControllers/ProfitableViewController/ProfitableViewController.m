@@ -11,8 +11,9 @@
 #import "BindingAliViewController.h"
 #import "DrawAmountViewController.h"
 #import "InvitationViewController.h"
+#import "BankModel.h"
 
-@interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource,BindingAliViewControllerDelegate>
 
 @property(nonatomic,strong)UserModel * userModel;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
@@ -24,7 +25,13 @@
 @property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
 @property(nonatomic,weak)IBOutlet UILabel * userNameLabel;
 @property(nonatomic,weak)IBOutlet UILabel * userIdLabel;
+@property(nonatomic,weak)IBOutlet UILabel * moneyLabel;
+@property(nonatomic,weak)IBOutlet UILabel * totalMoneyLabel;
+@property(nonatomic,weak)IBOutlet UILabel * myShareCountLabel;
 
+@property(nonatomic,strong)NSDictionary * dataDictionary;
+@property(nonatomic,assign)BOOL isBindAli;
+@property(nonatomic,strong)BankModel * model;
 
 @end
 
@@ -47,22 +54,56 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitShareCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitShareCell class])];
     
+    [self loadData];
+    [self getMyBankType];
     
-    
+}
+
+/// 请求数据
+- (void)loadData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyMoneyUrl] success:^(NSDictionary *result) {
+        self.dataDictionary = result;
+        self.moneyLabel.text = [NSString stringWithFormat:@"%@",result[@"myMoney"]];
+        self.totalMoneyLabel.text = [NSString stringWithFormat:@"%@",result[@"totalMoney"]];
+        self.myShareCountLabel.text = [NSString stringWithFormat:@"%@人",result[@"myShareCount"]];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+
+/// 查找我的提现方式
+- (void)getMyBankType{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyBankUrl] success:^(NSDictionary *result) {
+        self.isBindAli = [result[@"List"] count] > 0;
+        if (self.isBindAli) {
+            self.model = [BankModel mj_objectArrayWithKeyValuesArray:result[@"List"]].firstObject;
+        }
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 /// 提现
 /// @param sender 按钮
 - (IBAction)drawAmount:(UIButton *)sender{
-    BindingAliViewController * binding = [[BindingAliViewController alloc] init];
-    binding.title = @"绑定支付宝";
-    binding.hidesBottomBarWhenPushed = true;
-    [self.navigationController pushViewController:binding animated:true];
-    
-//    DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
-//    drawAmount.title = @"提现";
-//    drawAmount.hidesBottomBarWhenPushed = true;
-//    [self.navigationController pushViewController:drawAmount animated:true];
+    if (self.isBindAli) {
+        DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
+        drawAmount.title = @"提现";
+        drawAmount.model = self.model;
+        drawAmount.hidesBottomBarWhenPushed = true;
+        [self.navigationController pushViewController:drawAmount animated:true];
+    }else{
+        BindingAliViewController * binding = [[BindingAliViewController alloc] init];
+        binding.title = @"绑定支付宝";
+        binding.delegate = self;
+        binding.hidesBottomBarWhenPushed = true;
+        [self.navigationController pushViewController:binding animated:true];
+    }
+}
+
+- (void)onBindAliSuccess{
+    self.isBindAli = YES;
 }
 
 /// 邀请记录
@@ -70,6 +111,9 @@
 - (IBAction)InvitationAction:(UIButton *)sender{
     InvitationViewController * invitation = [[InvitationViewController alloc] init];
     invitation.title = @"邀请记录";
+    invitation.monthMoney = [NSString stringWithFormat:@"%@",self.dataDictionary[@"monthMoney"]];
+    invitation.myShareCount = [NSString stringWithFormat:@"%@",self.dataDictionary[@"myShareCount"]];
+    invitation.totalMoney = [NSString stringWithFormat:@"%@",self.dataDictionary[@"totalMoney"]];
     invitation.hidesBottomBarWhenPushed = true;
     [self.navigationController pushViewController:invitation animated:true];
 }

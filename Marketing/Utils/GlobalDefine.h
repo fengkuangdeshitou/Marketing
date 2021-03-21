@@ -10,7 +10,7 @@
 
 #define StatusBarHeight   [UIApplication sharedApplication].statusBarFrame.size.height
 
-#define NavagationHeight StatusBarHeight + NavagationBarHeight
+#define NavagationHeight (StatusBarHeight + NavagationBarHeight)
 
 #define requestSuccess                                 0
 #define requestFail                                    1

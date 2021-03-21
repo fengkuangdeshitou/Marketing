@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindingMobileViewController">
             <connections>
                 <outlet property="codeButton" destination="lDo-K9-GkO" id="NDe-6F-SHc"/>
+                <outlet property="codeTextfield" destination="HGX-Rm-xep" id="pq6-lr-ELz"/>
+                <outlet property="mobileTextfield" destination="Z5Z-kp-Eyt" id="P2r-Wh-Fkf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -19,21 +19,16 @@ typedef void(^RequestFailureCompletion)(NSString *errorMessage);
            success:(RequestSuccessCompletion)success
            failure:(RequestFailureCompletion)failure;
 
-+ (void)newNetworkPost:(NSString *)URLString
++ (void)networkPost:(NSString *)URLString
              params:(NSDictionary *)dictionary
             success:(RequestSuccessCompletion)success
             failure:(RequestFailureCompletion)failure;
 
 + (void)networkPost:(NSString *)URLString
-           formJson:(NSString *)jsonString
-            success:(void (^)(NSDictionary *dictionary))success
-            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
-
-+ (void)networkPost:(NSString *)URLString
            formPostData:(NSData *)paostData
         andFileName:(NSString *)fileName
-            success:(void (^)(NSDictionary *dictionary))success
-            failure:(void (^)(NSString *error, NSDictionary *dictionary))failure;
+            success:(RequestSuccessCompletion)success
+            failure:(RequestFailureCompletion)failure;
 
 
 + (void)networkForContentTypePost:(NSString *)URLString

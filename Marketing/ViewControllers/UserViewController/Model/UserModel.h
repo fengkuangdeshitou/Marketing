@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserModel : NSObject
 
-@property(nonatomic,copy)NSString * user_name;
+@property(nonatomic,copy)NSString * mb_no;
+@property(nonatomic,copy)NSString * tell;
 @property(nonatomic,copy)NSString * nickname;
 @property(nonatomic,copy)NSString * headimgurl;
 @property(nonatomic,copy)NSString * token;

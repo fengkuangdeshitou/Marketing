@@ -32,6 +32,7 @@
         self.titleLabel.text = @"未登录";
     }else{
         self.titleLabel.text = model.nickname;
+        self.descLabel.text = [NSString stringWithFormat:@"ID:%@",self.model.mb_no];
     }
     [ImageLoader loadImage:self.headerImageView url:self.model.headimgurl placeholder:nil];
 }
