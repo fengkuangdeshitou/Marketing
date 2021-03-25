@@ -18,6 +18,9 @@ NSString * const hostUrl = @"http://yinxiao-api.wecein.com:8033/yinxiao-server";
 NSString * const ApplePayUrl = @"https://buy.itunes.apple.com/verifyReceipt";
 #endif
 
+/// 系统配置
+NSString * const configUrl = @"/app/member/getConfig";
+
 /// 微信登录
 NSString * const wechatLoginUrl = @"app/member/weixinuserinfo";
 /// 获取验证码
@@ -39,8 +42,8 @@ NSString * const myBankUrl = @"app/bank/myBank";
 NSString * const myDrawRecordUrl = @"app/member/myDrawRecord";
 /// 提现
 NSString * const myDrawUrl = @"app/bank/tixian";
-
-
+/// 价目表
+NSString * const dicPriceListUrl = @"/app/pay/getDicPriceList";
 
 
 /// 剩余下载

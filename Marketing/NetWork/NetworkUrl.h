@@ -12,6 +12,8 @@
 
 extern NSString * const hostUrl;
 
+extern NSString * const configUrl;
+
 extern NSString * const ApplePayUrl;
 
 extern NSString * const wechatLoginUrl;
@@ -33,6 +35,8 @@ extern NSString * const myBankUrl;
 extern NSString * const myDrawRecordUrl;
 
 extern NSString * const myDrawUrl;
+
+extern NSString * const dicPriceListUrl;
 
 /// 个人中心
 

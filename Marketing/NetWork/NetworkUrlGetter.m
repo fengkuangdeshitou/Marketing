@@ -75,4 +75,32 @@
     return [[[[[hostUrl stringByAppendingPathComponent:myDrawUrl] stringByAppendingString:@"?mbBankId="] stringByAppendingString:mbBankId] stringByAppendingString:@"&money="] stringByAppendingString:money];
 }
 
++ (NSString *)getConfigUrlWithKey:(NSString *)key{
+    return [[[hostUrl stringByAppendingPathComponent:configUrl] stringByAppendingString:@"?key="] stringByAppendingString:key];
+}
+
++ (NSString *)getDicPriceListUrl{
+    return [hostUrl stringByAppendingPathComponent:dicPriceListUrl];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

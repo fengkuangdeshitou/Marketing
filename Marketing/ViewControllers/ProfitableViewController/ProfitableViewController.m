@@ -90,6 +90,7 @@
     if (self.isBindAli) {
         DrawAmountViewController * drawAmount = [[DrawAmountViewController alloc] init];
         drawAmount.title = @"提现";
+        self.model.myMoney = self.moneyLabel.text;
         drawAmount.model = self.model;
         drawAmount.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:drawAmount animated:true];

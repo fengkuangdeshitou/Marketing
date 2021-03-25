@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BankModel : NSObject
 
+@property(nonatomic,copy)NSString * myMoney;
 @property(nonatomic,copy)NSString * bank_name;
 @property(nonatomic,copy)NSString * bank_no;
 @property(nonatomic,copy)NSString * bank_user;

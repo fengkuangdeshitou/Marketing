@@ -42,9 +42,9 @@
 
 + (NSString *)getMyDrawUrlWithMbBankId:(NSString *)mbBankId money:(NSString *)money;
 
++ (NSString *)getConfigUrlWithKey:(NSString *)key;
 
-
-
++ (NSString *)getDicPriceListUrl;
 
 
 

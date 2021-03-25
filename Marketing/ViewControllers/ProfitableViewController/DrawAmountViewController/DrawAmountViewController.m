@@ -36,6 +36,16 @@
 }
 
 - (IBAction)drawAction:(UIButton *)sender{
+    
+    if (self.model.myMoney.intValue == 0) {
+        [self.view makeToast:@"余额不足"];
+        return;
+    }
+    
+    if (self.textfield.text.length == 0) {
+        [self.view makeToast:@"请输入提现金额"];
+        return;
+    }
     [NetworkWorker networkGet:[NetworkUrlGetter getMyDrawUrlWithMbBankId:self.model.mb_bank_id money:self.textfield.text] success:^(NSDictionary *result) {
             
     } failure:^(NSString *errorMessage) {

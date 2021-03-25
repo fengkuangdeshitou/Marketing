@@ -23,6 +23,7 @@
 @property(nonatomic,strong)NSArray * downloadNumberArray;
 @property(nonatomic,strong)NSArray * createNumberArray;
 @property(nonatomic,copy)NSString * requestId;
+@property(nonatomic,strong)NSDictionary * priceDictionary;
 
 @end
 
@@ -46,7 +47,7 @@
     [self exchangeMemberTime:[self.memberBackgroundView viewWithTag:10].gestureRecognizers.firstObject];
     
     [self loadData];
-    
+    [self getDicPriceList];
     
     
 //    NSArray* transactions = [SKPaymentQueue defaultQueue].transactions;
@@ -65,6 +66,7 @@
 - (void)loadData{
     [NetworkWorker networkGet:[NetworkUrlGetter getMyGroupDownUrl] success:^(NSDictionary *result) {
         self.remainingDownloadLabel.text = [NSString stringWithFormat:@"%@次",result[@"downCount"]];
+        self.remainingCreateLabel.text = [NSString stringWithFormat:@"%@次",result[@"topCount"]];
     } failure:^(NSString *errorMessage) {
         
     }];
@@ -129,6 +131,15 @@
     }
 }
 
+/// 价目表
+- (void)getDicPriceList{
+    [NetworkWorker networkGet:[NetworkUrlGetter getDicPriceListUrl] success:^(NSDictionary *result) {
+        self.priceDictionary = result;
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+}
+
 /// 微信支付
 /// @param sender 按钮
 - (IBAction)wechatAction:(UIButton *)sender{
@@ -183,7 +194,12 @@
 /// @param response response
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     NSArray * productsArray = response.products;
-    [self hideHud];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+    });
+    
     if (productsArray.count == 0) {
         [self.view makeToast:@"查找不到商品信息"];
         return;
@@ -196,7 +212,11 @@
         NSLog(@"%@", [product price]);
         NSLog(@"%@", [product productIdentifier]);
         if([product.productIdentifier isEqualToString:self.requestId]){
-            [self showHudInView:self.view hint:@"正在发起支付"];
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showHudInView:self.view hint:@"正在发起支付"];
+                });
+            });
             SKPayment * payment = [SKPayment paymentWithProduct:product];
             [[SKPaymentQueue defaultQueue] addPayment:payment];
         }
@@ -211,6 +231,11 @@
         NSLog(@"state=%ld",transaction.transactionState);
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchased:{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideHud];
+                    });
+                });
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [self verifyPurchaseWithPaymentTransaction:transaction];
             }
@@ -226,7 +251,11 @@
                 break;
             case SKPaymentTransactionStateFailed:{
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                [self hideHud];
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideHud];
+                    });
+                });
                 [self.view makeToast:@"购买失败"];
             }
                 break;
@@ -247,13 +276,14 @@
 //}
 
 - (void)verifyPurchaseWithPaymentTransaction:(SKPaymentTransaction*)transaction{
-    [self showHudInView:self.view hint:@"获取支付结果"];
+    [self showHudInView:self.view hint:@"验证支付结果"];
     
     NSURL * receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
     NSData * receiptData = [NSData dataWithContentsOfURL:receiptURL];
 
     
     NSString *receiptString = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    NSLog(@"receiptString=%@",receiptString);
     NSString*bodyString = [NSString stringWithFormat:@"{\"receipt-data\":\"%@\"}", receiptString];//拼接请求数据
     NSData *bodyData = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -268,12 +298,16 @@
         if(jsonResponse !=nil) {
             if([[jsonResponse objectForKey:@"status"]intValue] == 0){
                 //通常需要校验：bid，product_id，purchase_date，status
-                [self hideHud];
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideHud];
+                    });
+                });
                 NSDictionary *receipt = jsonResponse[@"receipt"];
                 NSDictionary *in_app = [receipt[@"in_app"] firstObject];
                 
-                NSString *productId = in_app[@"product_id"];
-                NSString *transactionId = in_app[@"transaction_id"];
+//                NSString *productId = in_app[@"product_id"];
+//                NSString *transactionId = in_app[@"transaction_id"];
                 //如果是消耗品则记录购买数量，非消耗品则记录是否购买过
     //            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     //            if ([productIdentifier isEqualToString:@"123"]) {
