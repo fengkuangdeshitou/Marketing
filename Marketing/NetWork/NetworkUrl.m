@@ -58,9 +58,10 @@ NSString * const updateMemberInfoUrl = @"/app/member/updateMemberInfo";
 NSString * const uploadImgUrl = @"sys/oss/uploadImg";
 /// 绑定手机号
 NSString * const bindPhoneUrl = @"app/member/bindPhone";
-
-
-
+/// VIP信息
+NSString * const myVipUrl = @"/app/member/myVip";
+/// VIP 价格表
+NSString * const priceListUrl = @"/app/member/priceList";
 
 
 @end

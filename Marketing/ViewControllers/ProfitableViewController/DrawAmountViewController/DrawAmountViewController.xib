@@ -23,26 +23,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8S-MP-7ae">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Pz-22-3WE">
-                            <rect key="frame" x="15" y="12" width="44" height="44"/>
+                            <rect key="frame" x="15" y="9.5" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="1gD-SB-R8h"/>
-                                <constraint firstAttribute="width" constant="44" id="q9N-zH-dj1"/>
+                                <constraint firstAttribute="height" constant="30" id="1gD-SB-R8h"/>
+                                <constraint firstAttribute="width" constant="30" id="q9N-zH-dj1"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王大锤  17191819117" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cv-gc-lF7">
-                            <rect key="frame" x="69" y="23.5" width="164.5" height="21.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <rect key="frame" x="55" y="15" width="147.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_cell_more" translatesAutoresizingMaskIntoConstraints="NO" id="qUg-m3-2Km">
-                            <rect key="frame" x="391" y="27" width="8" height="14"/>
+                            <rect key="frame" x="391" y="17.5" width="8" height="14"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="8Cv-gc-lF7" firstAttribute="centerY" secondItem="O8S-MP-7ae" secondAttribute="centerY" id="3Uc-Hi-ciY"/>
                         <constraint firstAttribute="trailing" secondItem="qUg-m3-2Km" secondAttribute="trailing" constant="15" id="6ay-Qm-0RQ"/>
@@ -50,23 +51,26 @@
                         <constraint firstItem="8Cv-gc-lF7" firstAttribute="leading" secondItem="9Pz-22-3WE" secondAttribute="trailing" constant="10" id="NfP-aA-lfa"/>
                         <constraint firstItem="9Pz-22-3WE" firstAttribute="centerY" secondItem="O8S-MP-7ae" secondAttribute="centerY" id="inz-pE-f8s"/>
                         <constraint firstItem="qUg-m3-2Km" firstAttribute="centerY" secondItem="O8S-MP-7ae" secondAttribute="centerY" id="y8F-qd-bmz"/>
-                        <constraint firstAttribute="height" constant="68" id="zGo-di-bii"/>
+                        <constraint firstAttribute="height" constant="49" id="zGo-di-bii"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="TXb-bD-ODh" appends="YES" id="Ssz-kS-9eK"/>
+                    </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可提现金额:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es3-4M-5Ga">
-                    <rect key="frame" x="15" y="80" width="75.5" height="17"/>
+                    <rect key="frame" x="15" y="61" width="75.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b3-E9-2tA">
-                    <rect key="frame" x="95.5" y="80" width="9" height="17"/>
+                    <rect key="frame" x="95.5" y="61" width="9" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sm-ve-VsP">
-                    <rect key="frame" x="15" y="109" width="384" height="50"/>
+                    <rect key="frame" x="15" y="90" width="384" height="50"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入提现金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="usK-P2-3QK">
                             <rect key="frame" x="5" y="0.0" width="374" height="50"/>
@@ -84,7 +88,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeZ-XH-qvv">
-                    <rect key="frame" x="15" y="184" width="384" height="49"/>
+                    <rect key="frame" x="15" y="165" width="384" height="49"/>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="pij-oK-aMv"/>
@@ -101,7 +105,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzM-AR-05c">
-                    <rect key="frame" x="15" y="258" width="384" height="114"/>
+                    <rect key="frame" x="15" y="239" width="384" height="114"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">提现规则:
@@ -129,7 +133,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIj-3a-e0e">
-                    <rect key="frame" x="109.5" y="80" width="14.5" height="17"/>
+                    <rect key="frame" x="109.5" y="61" width="14.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -159,6 +163,11 @@
             </constraints>
             <point key="canvasLocation" x="-49.275362318840585" y="82.366071428571431"/>
         </view>
+        <tapGestureRecognizer id="TXb-bD-ODh">
+            <connections>
+                <action selector="addAliAmount:" destination="-1" id="Tna-SR-JOx"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="user_cell_more" width="7.5" height="13.5"/>

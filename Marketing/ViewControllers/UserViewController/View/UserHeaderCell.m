@@ -6,12 +6,14 @@
 //
 
 #import "UserHeaderCell.h"
+#import "GlobalNotification.h"
 
 @interface UserHeaderCell ()
 
 @property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
 @property(nonatomic,weak)IBOutlet UILabel * titleLabel;
 @property(nonatomic,weak)IBOutlet UILabel * descLabel;
+@property(nonatomic,weak)IBOutlet UILabel * VIPInfoLabel;
 
 @end
 
@@ -21,8 +23,22 @@
     [super awakeFromNib];
     // Initialization code
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyVIPInfo) name:NOTIFICATION_VIP_CHANGE object:nil];
+    [self getMyVIPInfo];
     
-    
+}
+
+/// 获取 VIP 信息
+- (void)getMyVIPInfo{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyVipUrl] success:^(NSDictionary *result) {
+        if ([result[@"vip"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary * level = result[@"vip"][@"level"];
+            self.VIPInfoLabel.text = [NSString stringWithFormat:@"%@ %@",level[@"level_name"],result[@"vip"][@"expire_time"]];
+            [self.memberButton setTitle:@"立即续费" forState:UIControlStateNormal];
+        }
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (void)setModel:(UserModel *)model{

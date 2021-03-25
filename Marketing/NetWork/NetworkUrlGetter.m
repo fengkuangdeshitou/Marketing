@@ -83,9 +83,13 @@
     return [hostUrl stringByAppendingPathComponent:dicPriceListUrl];
 }
 
++ (NSString *)getMyVipUrl{
+    return [hostUrl stringByAppendingPathComponent:myVipUrl];
+}
 
-
-
++ (NSString *)getPriceListUrl{
+    return [[[[hostUrl stringByAppendingPathComponent:priceListUrl] stringByAppendingString:@"?appVersion="] stringByAppendingString:[DeviceTool shareInstance].appVersion] stringByAppendingString:@"&plat=ios"];
+}
 
 
 

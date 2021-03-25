@@ -52,4 +52,8 @@ extern NSString * const uploadImgUrl;
 
 extern NSString * const bindPhoneUrl;
 
+extern NSString * const myVipUrl;
+
+extern NSString * const priceListUrl;
+
 @end

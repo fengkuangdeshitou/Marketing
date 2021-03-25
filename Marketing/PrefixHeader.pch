@@ -12,7 +12,7 @@
 #import "NetworkUrlGetter.h"
 #import "DeviceTool.h"
 #import "MJExtension.h"
-#import "Color.h"
+#import "GlobalColor.h"
 #import "GlobalDefine.h"
 #import "GlobalState.h"
 #import "PreHelper.h"

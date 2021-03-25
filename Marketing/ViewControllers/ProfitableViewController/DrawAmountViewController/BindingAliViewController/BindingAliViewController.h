@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol BindingAliViewControllerDelegate <NSObject>
 
-- (void)onBindAliSuccess;
+- (void)onBindAliSuccessWithModel:(BankModel *)model;
 
 @end
 

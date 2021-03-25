@@ -22,10 +22,22 @@
 }
 
 - (IBAction)doneAction:(UIButton *)sender{
+    if (self.nameTextField.text.length == 0) {
+        [self.view makeToast:@"请输入账号"];
+        return;
+    }
+    if (self.accountTextField.text.length == 0) {
+        [self.view makeToast:@"请输入账号"];
+        return;
+    }
     [NetworkWorker networkPost:[NetworkUrlGetter getAddBankUrl] params:@{@"bankName":@"支付宝",@"bankNo":self.accountTextField.text,@"bankUser":self.nameTextField.text} success:^(NSDictionary *result) {
         [self.view makeToast:@"绑定成功"];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(onBindAliSuccess)]) {
-            [self.delegate onBindAliSuccess];
+        BankModel * model = [[BankModel alloc] init];
+        model.bank_user = self.nameTextField.text;
+        model.bank_no = self.accountTextField.text;
+        model.mb_bank_id = result[@"mbBankId"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onBindAliSuccessWithModel:)]) {
+            [self.delegate onBindAliSuccessWithModel:model];
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];

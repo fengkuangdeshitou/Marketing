@@ -46,9 +46,9 @@
 
 + (NSString *)getDicPriceListUrl;
 
++ (NSString *)getMyVipUrl;
 
-
-
++ (NSString *)getPriceListUrl;
 
 
 

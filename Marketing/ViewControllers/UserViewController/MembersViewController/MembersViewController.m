@@ -6,8 +6,11 @@
 //
 
 #import "MembersViewController.h"
+#import <StoreKit/StoreKit.h>
+#import "NetworkUrl.h"
+#import "GlobalNotification.h"
 
-@interface MembersViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MembersViewController ()<UITableViewDelegate,UITableViewDataSource,SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,strong)IBOutlet UITableViewCell * headerCell;
@@ -20,6 +23,7 @@
 @property(nonatomic,strong)IBOutlet UIView * memberBackgroundView;
 @property(nonatomic,assign)NSInteger flag;
 @property(nonatomic,strong)UserModel * userModel;
+@property(nonatomic,copy)NSString * requestId;
 
 @end
 
@@ -70,6 +74,20 @@
     
     self.userModel = [UserManager getUser];
     [ImageLoader loadImage:self.avararImageView url:self.userModel.headimgurl placeholder:nil];
+    [self getMyVIPInfo];
+    [self getPriceList];
+}
+
+/// 获取会员信息
+- (void)getMyVIPInfo{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyVipUrl] success:^(NSDictionary *result) {
+        if ([result[@"vip"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary * level = result[@"vip"][@"level"];
+            self.userStatusLabel.text = [NSString stringWithFormat:@"%@ %@",level[@"level_name"],result[@"vip"][@"expire_time"]];
+        }
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /// 切换会员时间
@@ -81,6 +99,198 @@
     sender.view.layer.borderWidth = 2;
     sender.view.layer.borderColor = [PreHelper colorWithHexString:COLOR_ROUND_LINE_COLOR].CGColor;
     self.flag = sender.view.tag - 10;
+    if (self.flag == 0) {
+        self.requestId = @"com.wecein.weshop_monthMember";
+    }else if(self.flag == 1){
+        self.requestId = @"com.wecein.weshop_quarterMember";
+    }else{
+        self.requestId = @"com.wecein.weshop_oneyearMember";
+    }
+}
+
+/// 会员价格表
+- (void)getPriceList{
+    [NetworkWorker networkGet:[NetworkUrlGetter getPriceListUrl] success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+/// 内购
+/// @param sender 按钮
+- (IBAction)payAction:(UIButton *)sender{
+    [self showHudInView:self.view hint:@"正在请求商品信息"];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    if ([SKPaymentQueue canMakePayments]) {
+        [self requestProductData:self.requestId];
+    }else{
+        [self hideHud];
+        [self.view makeToast:@"暂无付费信息"];
+    }
+}
+
+/// 到苹果服务器请求商品
+/// @param data 商品
+- (void)requestProductData:(NSString *)data{
+    NSArray * dataArray = [[NSArray alloc] initWithObjects:data, nil];
+    NSSet * set = [NSSet setWithArray:dataArray];
+    SKProductsRequest * request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
+    request.delegate = self;
+    [request start];
+}
+
+/// 请求完成
+/// @param request 支付请求
+- (void)requestDidFinish:(SKRequest *)request{
+
+}
+
+/// 支付失败
+/// @param request 支付请求
+/// @param error 错误
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
+    [self hideHud];
+    [self.view makeToast:@"请求失败"];
+}
+
+/// 收到返回产品信息
+/// @param request request
+/// @param response response
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+    NSArray * productsArray = response.products;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+    });
+    
+    if (productsArray.count == 0) {
+        [self.view makeToast:@"查找不到商品信息"];
+        return;
+    }
+    
+    for (SKProduct * product in productsArray) {
+        NSLog(@"%@", [product description]);
+        NSLog(@"%@", [product localizedTitle]);
+        NSLog(@"%@", [product localizedDescription]);
+        NSLog(@"%@", [product price]);
+        NSLog(@"%@", [product productIdentifier]);
+        if([product.productIdentifier isEqualToString:self.requestId]){
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showHudInView:self.view hint:@"正在发起支付"];
+                });
+            });
+            SKPayment * payment = [SKPayment paymentWithProduct:product];
+            [[SKPaymentQueue defaultQueue] addPayment:payment];
+        }
+    }
+}
+
+/// 监听购买结果
+/// @param queue queue
+/// @param transactions transactions
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideHud];
+        });
+    });
+    for (SKPaymentTransaction * transaction in transactions) {
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchased:{
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [self verifyPurchaseWithPaymentTransaction:transaction];
+            }
+                break;
+            case SKPaymentTransactionStatePurchasing:{
+                NSLog(@"商品添加进列表");
+            }
+                break;
+            case SKPaymentTransactionStateRestored:{
+                NSLog(@"已经购买过商品");
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            }
+                break;
+            case SKPaymentTransactionStateFailed:{
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [self.view makeToast:@"购买失败"];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+//交易结束
+- (void)completeTransaction:(SKPaymentTransaction *)transaction{
+    NSLog(@"交易结束");
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+}
+
+- (void)verifyPurchaseWithPaymentTransaction:(SKPaymentTransaction*)transaction{
+    [self showHudInView:self.view hint:@"验证支付结果"];
+    
+    NSURL * receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData * receiptData = [NSData dataWithContentsOfURL:receiptURL];
+
+    
+    NSString *receiptString = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    NSLog(@"receiptString=%@",receiptString);
+    NSString*bodyString = [NSString stringWithFormat:@"{\"receipt-data\":\"%@\"}", receiptString];//拼接请求数据
+    NSData *bodyData = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url = [NSURL URLWithString:ApplePayUrl];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPBody = bodyData;
+    [request setHTTPMethod:@"POST"];
+    
+    NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data   options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"jsonResponse=%@",jsonResponse);
+        if(jsonResponse !=nil) {
+            if([[jsonResponse objectForKey:@"status"]intValue] == 0){
+                //通常需要校验：bid，product_id，purchase_date，status
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideHud];
+                    });
+                });
+                NSDictionary *receipt = jsonResponse[@"receipt"];
+                NSDictionary *in_app = [receipt[@"in_app"] firstObject];
+                
+//                NSString *productId = in_app[@"product_id"];
+//                NSString *transactionId = in_app[@"transaction_id"];
+                //如果是消耗品则记录购买数量，非消耗品则记录是否购买过
+    //            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    //            if ([productIdentifier isEqualToString:@"123"]) {
+    //                int purchasedCount=[defaults integerForKey:productIdentifier];//已购买数量
+    //                [[NSUserDefaults standardUserDefaults] setInteger:(purchasedCount+1) forKey:productIdentifier];
+    //            }else{
+    //                [defaults setBool:YES forKey:productIdentifier];
+    //            }
+                [self applyPayNotifyWithReceipt:receiptString];
+            }else{
+                //验证失败，检查你的机器是否越狱
+            }
+        }
+    }];
+    
+    [task resume];
+}
+
+- (void)applyPayNotifyWithReceipt:(NSString *)receipt{
+    [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":@"4",@"productId":self.requestId} success:^(NSDictionary *result) {
+        [self hideHud];
+        [self.view makeToast:@"支付成功"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VIP_CHANGE object:nil];
+        [self getMyVIPInfo];
+    } failure:^(NSString *errorMessage) {
+        [self hideHud];
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 #pragma mark - UITableViewDelegate

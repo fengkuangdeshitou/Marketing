@@ -69,12 +69,15 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_member_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="XJh-W8-JXr">
                                         <rect key="frame" x="0.0" y="0.0" width="385" height="148"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-6E-8og">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-6E-8og">
                                         <rect key="frame" x="21" y="21" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="7Gs-d8-YEh"/>
                                             <constraint firstAttribute="width" constant="44" id="C49-x6-AxC"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTR-M2-rLX">
                                         <rect key="frame" x="21" y="84" width="46" height="21"/>
@@ -82,8 +85,8 @@
                                         <color key="textColor" red="0.27450980392156865" green="0.1803921568627451" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ4-wj-isM">
-                                        <rect key="frame" x="21" y="112" width="31" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您当前还未开通 VIP会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJ4-wj-isM">
+                                        <rect key="frame" x="21" y="112" width="133" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.74117647058823533" green="0.63137254901960782" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -146,7 +149,7 @@
                                         <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-gJ-82a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-gJ-82a">
                                         <rect key="frame" x="37" y="41.5" width="48" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="F7D-Ge-IrE"/>
@@ -197,7 +200,7 @@
                             <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLG-IL-clP">
                                 <rect key="frame" x="131.5" y="0.0" width="122" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSa-Yx-cnj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="季会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSa-Yx-cnj">
                                         <rect key="frame" x="39.5" y="19" width="43" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="yg4-ZC-lF9"/>
@@ -263,7 +266,7 @@
                             <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTS-xH-gaq">
                                 <rect key="frame" x="263.5" y="0.0" width="121.5" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDd-de-fpH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDd-de-fpH">
                                         <rect key="frame" x="39" y="19" width="43" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="l9E-dW-C8Y"/>
@@ -273,13 +276,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6i7-GD-vGS">
-                                        <rect key="frame" x="16.5" y="43.5" width="10" height="18"/>
+                                        <rect key="frame" x="18" y="43.5" width="10" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="268.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7y-bB-hin">
-                                        <rect key="frame" x="29.5" y="41.5" width="62" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="198.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7y-bB-hin">
+                                        <rect key="frame" x="31" y="41.5" width="59" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="dcQ-ZQ-7J2"/>
                                         </constraints>
@@ -345,7 +348,7 @@
                             <constraint firstItem="PLG-IL-clP" firstAttribute="width" secondItem="lHy-cu-ZtQ" secondAttribute="width" id="qGF-xB-5aS"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-02-5Mp">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-02-5Mp">
                         <rect key="frame" x="22" y="361" width="168.5" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="e2V-5b-zck"/>
@@ -357,7 +360,7 @@
                             <color key="titleColor" red="0.27450980392156865" green="0.1803921568627451" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-KI-zou">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-KI-zou">
                         <rect key="frame" x="240.5" y="361" width="168.5" height="45"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <inset key="contentEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -366,13 +369,25 @@
                             <color key="titleColor" red="0.27450980392156865" green="0.1803921568627451" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqO-Bo-djf">
+                        <rect key="frame" x="142" y="361" width="145.5" height="45"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="立即购买" backgroundImage="user_member_bg">
+                            <color key="titleColor" red="0.27450980392156865" green="0.1803921568627451" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="payAction:" destination="-1" eventType="touchUpInside" id="JAQ-KV-ZYW"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="VqO-Bo-djf" secondAttribute="bottom" constant="17" id="2NB-tf-cTZ"/>
                     <constraint firstItem="Re4-KI-zou" firstAttribute="width" secondItem="KD6-02-5Mp" secondAttribute="width" id="3dm-qh-FSO"/>
                     <constraint firstItem="xon-zt-UCr" firstAttribute="leading" secondItem="Zzd-lU-ID5" secondAttribute="leading" id="7oe-aG-E8y"/>
                     <constraint firstItem="pUj-Dx-MiS" firstAttribute="top" secondItem="xon-zt-UCr" secondAttribute="bottom" id="A7m-gQ-NNn"/>
                     <constraint firstItem="KD6-02-5Mp" firstAttribute="top" secondItem="pUj-Dx-MiS" secondAttribute="bottom" constant="20" id="GlQ-Wo-9hE"/>
+                    <constraint firstItem="VqO-Bo-djf" firstAttribute="centerX" secondItem="bKN-HF-Ya0" secondAttribute="centerX" id="InJ-8w-Kb4"/>
                     <constraint firstItem="D7A-Ol-X7Q" firstAttribute="leading" secondItem="bKN-HF-Ya0" secondAttribute="leading" id="OEs-lk-3J6"/>
                     <constraint firstItem="KD6-02-5Mp" firstAttribute="leading" secondItem="pUj-Dx-MiS" secondAttribute="leading" id="Sxg-6H-duh"/>
                     <constraint firstItem="Re4-KI-zou" firstAttribute="leading" secondItem="KD6-02-5Mp" secondAttribute="trailing" constant="50" id="V8z-St-Nxf"/>

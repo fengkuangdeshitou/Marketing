@@ -41,7 +41,7 @@
         [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com"];
     }];
     
-//    LinkedME* linkedme = [LinkedME getInstance];
+    LinkedME* linkedme = [LinkedME getInstance];
     //设置重试次数
 //    [linkedme setMaxRetries:60];
     //设置重试间隔时间

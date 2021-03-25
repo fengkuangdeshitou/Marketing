@@ -147,6 +147,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="VIPInfoLabel" destination="Fu3-2C-Ncv" id="Pf3-oJ-bWb"/>
                 <outlet property="descLabel" destination="o5p-Z2-IqY" id="q2c-IX-iKE"/>
                 <outlet property="headerImageView" destination="uEM-Up-gGb" id="He5-xE-uhD"/>
                 <outlet property="memberButton" destination="TRq-sg-Ecq" id="QfG-dv-msF"/>

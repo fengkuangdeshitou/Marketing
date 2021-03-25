@@ -9,7 +9,7 @@
 #import "UserInfoHeaderCell.h"
 #import "SettingCell.h"
 #import "EditUserInfoViewController.h"
-#import "MobileLoginViewController.h"
+#import "PhotoManager.h"
 
 @interface UserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -27,7 +27,7 @@
     
     self.userModel = [UserManager getUser];
     self.titleArray = @[@"名称",@"微信号",@"微信绑定手机号",@"微信二维码"];
-    self.valueArray = [[NSMutableArray alloc] initWithArray:@[self.userModel.nickname,self.userModel.nickname,self.userModel.tell ?: @"",self.userModel.tell?:@""]];
+    self.valueArray = [[NSMutableArray alloc] initWithArray:@[self.userModel.nickname,self.userModel.wechatNum?:@"暂未填写",self.userModel.contact ?: @"暂无绑定",@""]];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserInfoHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserInfoHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SettingCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SettingCell class])];
     self.tableView.tableFooterView = [UIView new];
@@ -48,11 +48,13 @@
     }else{
         SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SettingCell class]) forIndexPath:indexPath];
         cell.titleLabel.text = self.titleArray[indexPath.row];
-        cell.detailIcon.image = [UIImage imageNamed:@"setting_cell_more"];
+        
         if (indexPath.row == self.titleArray.count-1) {
-            cell.detailIconWidth.constant = 0;
+            cell.detailIconWidth.constant = 30;
+            [ImageLoader loadImage:cell.detailIcon url:self.userModel.wechatErCode placeholder:nil];
         }else{
             cell.detailIconWidth.constant = 5.5;
+            cell.detailIcon.image = [UIImage imageNamed:@"setting_cell_more"];
         }
         cell.descLabel.text = self.valueArray[indexPath.row];
         return cell;
@@ -62,19 +64,54 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1 && indexPath.row == 0) {
         [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"nickname" completiion:^(NSString * value) {
-            NSLog(@"%@",value);
             self.userModel.nickname = value;
             [self reloadIndexPath:indexPath forValue:value];
         }];
     }else if (indexPath.section == 1 && indexPath.row == 1) {
-        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"" completiion:^(NSString * value) {
-            NSLog(@"%@",value);
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"wechatNum" completiion:^(NSString * value) {
+            self.userModel.wechatNum = value;
+            [self reloadIndexPath:indexPath forValue:value];
         }];
     }else if (indexPath.section == 1 && indexPath.row == 2) {
-        MobileLoginViewController * mobile = [[MobileLoginViewController alloc] init];
-        mobile.title = @"绑定手机";
-        [self.navigationController pushViewController:mobile animated:true];
+        [self updateUserInfoWithTitle:self.titleArray[indexPath.row] key:@"contact" completiion:^(NSString * value) {
+            self.userModel.contact = value;
+            [self reloadIndexPath:indexPath forValue:value];
+        }];
+    }else if (indexPath.section == 1 && indexPath.row == 3) {
+        PhotoManager.shareInstance.manager.type = HXPhotoManagerSelectedTypePhoto;
+        PhotoManager.shareInstance.manager.configuration.maxNum = 1;
+        PhotoManager.shareInstance.manager.configuration.photoMaxNum = 1;
+        PhotoManager.shareInstance.manager.configuration.videoMaxNum = 0;
+        [self uploadWechatCode];
     }
+}
+
+- (void)uploadWechatCode{
+    [[PreHelper getCurrentVC] hx_presentSelectPhotoControllerWithManager:PhotoManager.shareInstance.manager didDone:^(NSArray<HXPhotoModel *> * _Nullable allList, NSArray<HXPhotoModel *> * _Nullable photoList, NSArray<HXPhotoModel *> * _Nullable videoList, BOOL isOriginal, UIViewController * _Nullable viewController, HXPhotoManager * _Nullable manager) {
+        [photoList hx_requestImageWithOriginal:NO completion:^(NSArray<UIImage *> * _Nullable imageArray, NSArray<HXPhotoModel *> * _Nullable errorArray) {
+            [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:UIImageJPEGRepresentation(imageArray.firstObject, 0.3) andFileName:[ImageLoader getCreateImageName:[UserManager getUser].mb_no] success:^(NSDictionary *result) {
+                NSLog(@"relu=%@",result);
+                [self uploadImageWithUrl:result[@"url"]];
+            } failure:^(NSString *errorMessage) {
+                [self.view makeToast:errorMessage];
+            }];
+        }];
+        
+    } cancel:^(UIViewController * _Nullable viewController, HXPhotoManager * _Nullable manager) {
+        
+    }];
+}
+
+/// 上传微信二维码
+/// @param url 微信二维码
+- (void)uploadImageWithUrl:(NSString *)url{
+    [NetworkWorker networkPost:[NetworkUrlGetter getUpdateMemberInfoUrl] params:@{@"wechatErCode":url} success:^(NSDictionary *result) {
+        self.userModel.wechatErCode = url;
+        [UserManager saveUser:self.userModel];
+        [self.tableView reloadData];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
 }
 
 /// 更新数据和刷新页面

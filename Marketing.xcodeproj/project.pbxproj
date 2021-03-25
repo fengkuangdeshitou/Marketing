@@ -60,6 +60,7 @@
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
+		BD835F7F260CEAD800ADCDBD /* GlobalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */; };
 		BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD98699F25FE49F300C5177A /* ServiceAlertView.m */; };
 		BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
@@ -106,7 +107,7 @@
 		BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5855A25EB4C4D0021F808 /* NetworkWorker.m */; };
 		BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5856F25EB4EE20021F808 /* GlobalState.m */; };
 		BDC5857425EB50260021F808 /* PreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5857225EB50260021F808 /* PreHelper.m */; };
-		BDC5857825EB50740021F808 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5857725EB50740021F808 /* Color.m */; };
+		BDC5857825EB50740021F808 /* GlobalColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5857725EB50740021F808 /* GlobalColor.m */; };
 		BDC5857D25EB531D0021F808 /* MyTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5857C25EB531D0021F808 /* MyTabbarViewController.m */; };
 		BDC5859A25EB57180021F808 /* UIControl+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5858625EB57180021F808 /* UIControl+Button.m */; };
 		BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5858725EB57180021F808 /* NSDate+Additions.m */; };
@@ -227,6 +228,8 @@
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
 		BD73BCDE26079B3F00ADD55F /* BankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
 		BD73BCDF26079B3F00ADD55F /* BankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
+		BD835F7D260CEAD800ADCDBD /* GlobalNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalNotification.h; sourceTree = "<group>"; };
+		BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalNotification.m; sourceTree = "<group>"; };
 		BD98699E25FE49F300C5177A /* ServiceAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceAlertView.h; sourceTree = "<group>"; };
 		BD98699F25FE49F300C5177A /* ServiceAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceAlertView.m; sourceTree = "<group>"; };
 		BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceAlertView.xib; sourceTree = "<group>"; };
@@ -302,8 +305,8 @@
 		BDC5856F25EB4EE20021F808 /* GlobalState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalState.m; sourceTree = "<group>"; };
 		BDC5857225EB50260021F808 /* PreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreHelper.m; sourceTree = "<group>"; };
 		BDC5857325EB50260021F808 /* PreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreHelper.h; sourceTree = "<group>"; };
-		BDC5857625EB50740021F808 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		BDC5857725EB50740021F808 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		BDC5857625EB50740021F808 /* GlobalColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalColor.h; sourceTree = "<group>"; };
+		BDC5857725EB50740021F808 /* GlobalColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalColor.m; sourceTree = "<group>"; };
 		BDC5857B25EB531D0021F808 /* MyTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTabbarViewController.h; sourceTree = "<group>"; };
 		BDC5857C25EB531D0021F808 /* MyTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTabbarViewController.m; sourceTree = "<group>"; };
 		BDC5858125EB56500021F808 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -805,10 +808,12 @@
 				BDC5856C25EB4E750021F808 /* GlobalDefine.h */,
 				BDC5856E25EB4EE20021F808 /* GlobalState.h */,
 				BDC5856F25EB4EE20021F808 /* GlobalState.m */,
+				BD835F7D260CEAD800ADCDBD /* GlobalNotification.h */,
+				BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */,
 				BDC5857325EB50260021F808 /* PreHelper.h */,
 				BDC5857225EB50260021F808 /* PreHelper.m */,
-				BDC5857625EB50740021F808 /* Color.h */,
-				BDC5857725EB50740021F808 /* Color.m */,
+				BDC5857625EB50740021F808 /* GlobalColor.h */,
+				BDC5857725EB50740021F808 /* GlobalColor.m */,
 				BDC5855525EB4C4D0021F808 /* ImageLoader.h */,
 				BDC5855925EB4C4D0021F808 /* ImageLoader.mm */,
 				BDE0A07125FF797700F40684 /* PhotoManager.h */,
@@ -1177,6 +1182,7 @@
 				BDC265A825EBF13100DBAA64 /* CircleMoreCell.m in Sources */,
 				BDC5855E25EB4C4E0021F808 /* ImageLoader.mm in Sources */,
 				BDDEFB2225EB77BD00D7A5D7 /* CustomNavagationController.m in Sources */,
+				BD835F7F260CEAD800ADCDBD /* GlobalNotification.m in Sources */,
 				BD410C8325F8F117007A1D5E /* Toast+UIView.m in Sources */,
 				BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */,
 				BD06B56625FBB6400051F873 /* CircleModel.m in Sources */,
@@ -1228,7 +1234,7 @@
 				BDC5855C25EB4C4E0021F808 /* NetworkUrl.m in Sources */,
 				BD410C8925F8F78A007A1D5E /* BindingMobileViewController.m in Sources */,
 				BDDEFB1425EB700500D7A5D7 /* UserHeaderCell.m in Sources */,
-				BDC5857825EB50740021F808 /* Color.m in Sources */,
+				BDC5857825EB50740021F808 /* GlobalColor.m in Sources */,
 				BDC585A025EB57180021F808 /* NSString+MD5.m in Sources */,
 				0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */,
 				BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */,
@@ -1410,7 +1416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1503,7 +1509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
