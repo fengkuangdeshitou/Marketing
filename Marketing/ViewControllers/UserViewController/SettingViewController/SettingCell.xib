@@ -32,6 +32,7 @@
                         <rect key="frame" x="299.5" y="17.5" width="5.5" height="9.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="5.5" id="6e3-Ue-lQi"/>
+                            <constraint firstAttribute="height" constant="9.5" id="ecS-8v-ZQM"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -47,6 +48,8 @@
             <connections>
                 <outlet property="descLabel" destination="9aI-im-yo1" id="A53-uL-HhO"/>
                 <outlet property="detailIcon" destination="xfh-Wd-Zcw" id="d2r-wR-ksP"/>
+                <outlet property="detailIconHeight" destination="ecS-8v-ZQM" id="E6H-y7-TPg"/>
+                <outlet property="detailIconLeft" destination="lSH-pL-06D" id="qto-wD-VQD"/>
                 <outlet property="detailIconWidth" destination="6e3-Ue-lQi" id="D0C-O4-zce"/>
                 <outlet property="titleLabel" destination="5VX-Gh-k42" id="wqv-SA-mBN"/>
             </connections>

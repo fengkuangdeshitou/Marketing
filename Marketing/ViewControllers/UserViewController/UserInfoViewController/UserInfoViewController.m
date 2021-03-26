@@ -48,9 +48,11 @@
     }else{
         SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SettingCell class]) forIndexPath:indexPath];
         cell.titleLabel.text = self.titleArray[indexPath.row];
-        
+        cell.detailIconLeft.constant = 5;
         if (indexPath.row == self.titleArray.count-1) {
+            cell.detailIcon.clipsToBounds = YES;
             cell.detailIconWidth.constant = 30;
+            cell.detailIconHeight.constant = 30;
             [ImageLoader loadImage:cell.detailIcon url:self.userModel.wechatErCode placeholder:nil];
         }else{
             cell.detailIconWidth.constant = 5.5;

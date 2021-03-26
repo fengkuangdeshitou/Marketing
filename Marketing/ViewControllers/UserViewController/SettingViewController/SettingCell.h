@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,weak)IBOutlet UILabel * titleLabel;
 @property(nonatomic,weak)IBOutlet UILabel * descLabel;
 @property(nonatomic,weak)IBOutlet UIImageView * detailIcon;
-@property(nonatomic,weak)IBOutlet NSLayoutConstraint * detailIconWidth;
 
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * detailIconLeft;
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * detailIconWidth;
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * detailIconHeight;
 
 @end
 
