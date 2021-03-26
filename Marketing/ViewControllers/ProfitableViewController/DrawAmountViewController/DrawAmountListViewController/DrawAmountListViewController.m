@@ -11,6 +11,8 @@
 @interface DrawAmountListViewController ()<UITableViewDelegate>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
+@property(nonatomic,weak)IBOutlet UILabel * availableLabel;
+@property(nonatomic,weak)IBOutlet UILabel * alreadyLabel;
 @property(nonatomic,strong)NSArray * dataArray;
 
 @end
@@ -24,13 +26,25 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DrawAmountListCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([DrawAmountListCell class])];
     self.tableView.rowHeight = 50;
     [self getDrawRecord];
+    [self getMymoney];
 }
 
+/// 提现记录
 - (void)getDrawRecord{
     [NetworkWorker networkPost:[NetworkUrlGetter getMyDrawRecordUrl] params:@{@"page":@"1",@"limit":@"20"} success:^(NSDictionary *result) {
             
     } failure:^(NSString *errorMessage) {
         
+    }];
+}
+
+/// 查询余额
+- (void)getMymoney{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyMoneyUrl] success:^(NSDictionary *result) {
+        self.availableLabel.text = [NSString stringWithFormat:@"%@",result[@"myMoney"]];
+        self.alreadyLabel.text = [NSString stringWithFormat:@"%@",result[@"myDraw"]];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
     }];
 }
 

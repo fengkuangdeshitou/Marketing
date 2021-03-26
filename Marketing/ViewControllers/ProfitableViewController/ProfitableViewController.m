@@ -13,7 +13,7 @@
 #import "InvitationViewController.h"
 #import "BankModel.h"
 
-@interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource,BindingAliViewControllerDelegate>
+@interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource,BindingAliViewControllerDelegate,DrawAmountViewControllerDelegate>
 
 @property(nonatomic,strong)UserModel * userModel;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
@@ -92,6 +92,7 @@
         drawAmount.title = @"提现";
         self.model.myMoney = self.moneyLabel.text;
         drawAmount.model = self.model;
+        drawAmount.delegate = self;
         drawAmount.hidesBottomBarWhenPushed = true;
         [self.navigationController pushViewController:drawAmount animated:true];
     }else{
@@ -103,8 +104,14 @@
     }
 }
 
+/// 绑定回调
 - (void)onBindAliSuccess{
     self.isBindAli = YES;
+}
+
+/// 提现成功回调
+- (void)onDeawAmountSuccess{
+    [self loadData];
 }
 
 /// 邀请记录

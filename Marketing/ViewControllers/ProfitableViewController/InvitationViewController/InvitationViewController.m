@@ -11,8 +11,10 @@
 @interface InvitationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
+@property(nonatomic,weak)IBOutlet UIButton * hasPaymentButton;
 @property(nonatomic,strong) NSArray * dataArray;
 @property(nonatomic,assign) NSInteger page;
+@property(nonatomic,strong) UIView * flagView;
 
 @property(nonatomic,weak)IBOutlet UILabel * monthMoneyLabel;
 @property(nonatomic,weak)IBOutlet UILabel * totalMoneyLabel;
@@ -21,6 +23,14 @@
 @end
 
 @implementation InvitationViewController
+
+- (UIView *)flagView{
+    if (!_flagView) {
+        _flagView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/4-25, 40, 50, 1)];
+        _flagView.backgroundColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR];
+    }
+    return _flagView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +42,7 @@
     self.myShareCountLabel.text = self.myShareCount;
     self.tableView.rowHeight = 68;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([InvitationListCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([InvitationListCell class])];
-    [self isBuyAction:nil];
+    [self isBuyAction:self.hasPaymentButton];
 }
 
 - (void)loadDataWithParams:(NSDictionary *)params{
@@ -43,12 +53,18 @@
     }];
 }
 
+/// 购买数据
+/// @param sender 按钮
 - (IBAction)isBuyAction:(UIButton *)sender{
+    [sender addSubview:self.flagView];
     self.page = 1;
     [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15",@"isBuy":@"y"}];
 }
 
+/// 注册数据
+/// @param sender 按钮
 - (IBAction)isLoginAction:(UIButton *)sender{
+    [sender addSubview:self.flagView];
     self.page = 1;
     [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15"}];
 }

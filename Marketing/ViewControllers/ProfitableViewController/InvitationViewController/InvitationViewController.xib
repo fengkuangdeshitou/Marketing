@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvitationViewController">
             <connections>
+                <outlet property="hasPaymentButton" destination="O1T-lN-v18" id="9rc-uu-ZGN"/>
                 <outlet property="monthMoneyLabel" destination="fwu-Sk-1eh" id="Gk1-Bs-5PL"/>
                 <outlet property="myShareCountLabel" destination="eJ0-7C-TGd" id="ad2-p1-Mh9"/>
                 <outlet property="tableView" destination="nMg-uT-1NC" id="cwc-WI-ryl"/>
@@ -34,16 +35,16 @@
                                 <rect key="frame" x="15" y="15" width="384" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的邀请人：暂无邀请人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdi-6k-KNM">
-                                        <rect key="frame" x="15" y="8" width="157.5" height="17"/>
+                                        <rect key="frame" x="15" y="10" width="157.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.89411764705882346" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHd-4M-ZnB">
-                                        <rect key="frame" x="15" y="35" width="354" height="55"/>
+                                        <rect key="frame" x="15" y="29" width="354" height="61"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yg5-4A-q70">
-                                                <rect key="frame" x="0.0" y="0.0" width="118" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="61"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ0-7C-TGd">
                                                         <rect key="frame" x="53.5" y="8" width="11" height="21"/>
@@ -54,7 +55,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员数量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPO-ql-0st">
                                                         <rect key="frame" x="34" y="33" width="50" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdz-9W-AHG">
@@ -75,7 +76,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhJ-jr-utl">
-                                                <rect key="frame" x="118" y="0.0" width="118" height="55"/>
+                                                <rect key="frame" x="118" y="0.0" width="118" height="61"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwu-Sk-1eh">
                                                         <rect key="frame" x="53.5" y="8" width="11" height="21"/>
@@ -107,7 +108,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hb5-km-r5f">
-                                                <rect key="frame" x="236" y="0.0" width="118" height="55"/>
+                                                <rect key="frame" x="236" y="0.0" width="118" height="61"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6l-JN-NHQ">
                                                         <rect key="frame" x="53.5" y="8" width="11" height="21"/>
@@ -156,14 +157,14 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="kdi-6k-KNM" firstAttribute="top" secondItem="kd8-n8-NL8" secondAttribute="top" constant="8" id="GXO-xw-pfO"/>
+                                    <constraint firstItem="kdi-6k-KNM" firstAttribute="top" secondItem="kd8-n8-NL8" secondAttribute="top" constant="10" id="GXO-xw-pfO"/>
                                     <constraint firstItem="JHd-4M-ZnB" firstAttribute="leading" secondItem="kd8-n8-NL8" secondAttribute="leading" constant="15" id="Qpa-Fd-RU4"/>
                                     <constraint firstAttribute="trailing" secondItem="JHd-4M-ZnB" secondAttribute="trailing" constant="15" id="W1T-fQ-KFQ"/>
                                     <constraint firstItem="kdi-6k-KNM" firstAttribute="leading" secondItem="kd8-n8-NL8" secondAttribute="leading" constant="15" id="Wkz-yI-QgY"/>
                                     <constraint firstAttribute="bottom" secondItem="JHd-4M-ZnB" secondAttribute="bottom" id="bPW-4L-QKv"/>
-                                    <constraint firstItem="JHd-4M-ZnB" firstAttribute="top" secondItem="kdi-6k-KNM" secondAttribute="bottom" constant="10" id="dbr-jZ-31p"/>
+                                    <constraint firstItem="JHd-4M-ZnB" firstAttribute="top" secondItem="kdi-6k-KNM" secondAttribute="bottom" constant="2" id="dbr-jZ-31p"/>
                                     <constraint firstAttribute="height" constant="90" id="qEl-Ws-SFH"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -175,7 +176,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1T-lN-v18">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="已支付">
                                             <color key="titleColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -185,7 +186,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTe-fo-UcS">
                                         <rect key="frame" x="207" y="0.0" width="207" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="未支付">
                                             <color key="titleColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>

@@ -69,7 +69,9 @@
         return;
     }
     [NetworkWorker networkGet:[NetworkUrlGetter getMyDrawUrlWithMbBankId:self.model.mb_bank_id money:self.textfield.text] success:^(NSDictionary *result) {
-            
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onDeawAmountSuccess)]) {
+            [self.delegate onDeawAmountSuccess];
+        }
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
     }];

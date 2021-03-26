@@ -49,18 +49,6 @@
     [self loadData];
     [self getDicPriceList];
     
-    
-//    NSArray* transactions = [SKPaymentQueue defaultQueue].transactions;
-//    if (transactions.count > 0) {
-//        //检测是否有未完成的交易
-//
-//        SKPaymentTransaction* transaction = [transactions firstObject];
-//        if (transaction.transactionState ==     SKPaymentTransactionStatePurchased) {
-//            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-//            return;
-//        }
-//   }
-    
 }
 
 - (void)loadData{
@@ -113,6 +101,14 @@
         }else{
             self.requestId = @"com.wecein.weshop_create500";
         }
+    }
+    NSString * comboPriceId = nil;
+    NSArray * createPriceList = self.priceDictionary[@"createPriceList"];
+    NSArray * downPriceList = self.priceDictionary[@"downPriceList"];
+    if (self.typeFlag == 0) {
+        comboPriceId = [NSString stringWithFormat:@"%@",downPriceList[self.flag][@"id"]];
+    }else{
+        comboPriceId = [NSString stringWithFormat:@"%@",createPriceList[self.flag][@"id"]];;
     }
 }
 
@@ -212,11 +208,6 @@
         NSLog(@"%@", [product price]);
         NSLog(@"%@", [product productIdentifier]);
         if([product.productIdentifier isEqualToString:self.requestId]){
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self showHudInView:self.view hint:@"正在发起支付"];
-                });
-            });
             SKPayment * payment = [SKPayment paymentWithProduct:product];
             [[SKPaymentQueue defaultQueue] addPayment:payment];
         }
@@ -327,9 +318,18 @@
 }
 
 - (void)applyPayNotifyWithReceipt:(NSString *)receipt{
-    [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":@"97",@"productId":self.requestId} success:^(NSDictionary *result) {
+    NSString * comboPriceId = nil;
+    NSArray * createPriceList = self.priceDictionary[@"createPriceList"];
+    NSArray * downPriceList = self.priceDictionary[@"downPriceList"];
+    if (self.typeFlag == 0) {
+        comboPriceId = [NSString stringWithFormat:@"%@",downPriceList[self.flag][@"id"]];
+    }else{
+        comboPriceId = [NSString stringWithFormat:@"%@",createPriceList[self.flag][@"id"]];;
+    }
+    [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":comboPriceId,@"productId":self.requestId} success:^(NSDictionary *result) {
         [self hideHud];
         [self.view makeToast:@"支付成功"];
+        [self loadData];
     } failure:^(NSString *errorMessage) {
         [self hideHud];
         [self.view makeToast:errorMessage];
