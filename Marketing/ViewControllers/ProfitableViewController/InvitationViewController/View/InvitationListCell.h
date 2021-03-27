@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InvitationModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InvitationListCell : UITableViewCell
+
+@property(nonatomic,strong)InvitationModel * model;
 
 @end
 

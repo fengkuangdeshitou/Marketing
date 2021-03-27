@@ -50,6 +50,9 @@
 
 + (NSString *)getPriceListUrl;
 
++ (NSString *)getFindGroupListUrl;
+
++ (NSString *)getHotSearchUrl;
 
 
 @end

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationViewController">
             <connections>
+                <outlet property="autheticationButton" destination="Fh0-q5-XkF" id="3bU-a4-yo4"/>
                 <outlet property="nameTextField" destination="jgm-b1-k7t" id="S6n-LJ-1U9"/>
                 <outlet property="numberTextField" destination="33q-au-0EY" id="3rM-I8-PzR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -72,7 +73,7 @@
                         <constraint firstAttribute="width" constant="200" id="K5B-IF-X1v"/>
                         <constraint firstAttribute="height" constant="50" id="Ons-mT-13q"/>
                     </constraints>
-                    <state key="normal" title="下一步">
+                    <state key="normal" title="开始认证">
                         <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>

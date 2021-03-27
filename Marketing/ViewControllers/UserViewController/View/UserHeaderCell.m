@@ -43,7 +43,6 @@
 
 - (void)setModel:(UserModel *)model{
     _model = model;
-    NSLog(@"user=%@",[model mj_keyValues]);
     if (![PreHelper isLogin]) {
         self.titleLabel.text = @"未登录";
     }else{

@@ -91,9 +91,13 @@
     return [[[[hostUrl stringByAppendingPathComponent:priceListUrl] stringByAppendingString:@"?appVersion="] stringByAppendingString:[DeviceTool shareInstance].appVersion] stringByAppendingString:@"&plat=ios"];
 }
 
++ (NSString *)getFindGroupListUrl{
+    return findGroupListUrl;
+}
 
-
-
++ (NSString *)getHotSearchUrl{
+    return hotSearchUrl;
+}
 
 
 

@@ -21,6 +21,12 @@ NSString * const ApplePayUrl = @"https://buy.itunes.apple.com/verifyReceipt";
 /// 系统配置
 NSString * const configUrl = @"/app/member/getConfig";
 
+///  首页
+NSString * const findGroupListUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/pageFindGroupList";
+/// 热门分类
+NSString * const hotSearchUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/hotSearch?wxgType=group";
+
+
 /// 微信登录
 NSString * const wechatLoginUrl = @"app/member/weixinuserinfo";
 /// 获取验证码

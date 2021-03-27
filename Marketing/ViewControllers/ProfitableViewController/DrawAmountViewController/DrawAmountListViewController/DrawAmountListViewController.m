@@ -7,13 +7,15 @@
 
 #import "DrawAmountListViewController.h"
 #import "DrawAmountListCell.h"
+#import "BankModel.h"
 
-@interface DrawAmountListViewController ()<UITableViewDelegate>
+@interface DrawAmountListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,weak)IBOutlet UILabel * availableLabel;
 @property(nonatomic,weak)IBOutlet UILabel * alreadyLabel;
-@property(nonatomic,strong)NSArray * dataArray;
+@property(nonatomic,assign)NSInteger page;
+@property(nonatomic,strong)NSMutableArray * dataArray;
 
 @end
 
@@ -23,18 +25,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.page = 1;
+    self.dataArray = [[NSMutableArray alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DrawAmountListCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([DrawAmountListCell class])];
     self.tableView.rowHeight = 50;
     [self getDrawRecord];
     [self getMymoney];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.page++;
+        [self getDrawRecord];
+    }];
 }
 
 /// 提现记录
 - (void)getDrawRecord{
-    [NetworkWorker networkPost:[NetworkUrlGetter getMyDrawRecordUrl] params:@{@"page":@"1",@"limit":@"20"} success:^(NSDictionary *result) {
-            
+    [NetworkWorker networkPost:[NetworkUrlGetter getMyDrawRecordUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"10"} success:^(NSDictionary *result) {
+        NSArray * list = result[@"page"][@"list"];
+        [self.dataArray addObjectsFromArray:[BankModel mj_objectArrayWithKeyValuesArray:list]];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     } failure:^(NSString *errorMessage) {
-        
+        [self.view makeToast:errorMessage];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     }];
 }
 
@@ -50,11 +64,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DrawAmountListCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DrawAmountListCell class]) forIndexPath:indexPath];
+    BankModel * model = self.dataArray[indexPath.section];
+    cell.model = model;
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

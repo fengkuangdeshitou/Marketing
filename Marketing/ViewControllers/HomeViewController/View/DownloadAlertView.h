@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DownloadAlertView : UIView
 
-+ (void)showDownloadAlertViewWithUrl:(NSString *)url;
++ (void)showDownloadAlertView;
 
 @end
 

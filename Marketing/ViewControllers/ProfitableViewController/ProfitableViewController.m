@@ -26,6 +26,7 @@
 @property(nonatomic,weak)IBOutlet UILabel * userNameLabel;
 @property(nonatomic,weak)IBOutlet UILabel * userIdLabel;
 @property(nonatomic,weak)IBOutlet UILabel * moneyLabel;
+@property(nonatomic,weak)IBOutlet UILabel * todayMoneyLabel;
 @property(nonatomic,weak)IBOutlet UILabel * totalMoneyLabel;
 @property(nonatomic,weak)IBOutlet UILabel * myShareCountLabel;
 
@@ -66,6 +67,7 @@
         self.moneyLabel.text = [NSString stringWithFormat:@"%@",result[@"myMoney"]];
         self.totalMoneyLabel.text = [NSString stringWithFormat:@"%@",result[@"totalMoney"]];
         self.myShareCountLabel.text = [NSString stringWithFormat:@"%@人",result[@"myShareCount"]];
+        self.todayMoneyLabel.text = [NSString stringWithFormat:@"%@",result[@"todayMoney"]];
     } failure:^(NSString *errorMessage) {
         
     }];

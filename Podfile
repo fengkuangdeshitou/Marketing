@@ -9,6 +9,7 @@ target 'Marketing' do
 
 pod 'AFNetworking'
 pod 'MJExtension'
+pod 'MJRefresh'
 pod 'Masonry'
 pod 'HXPhotoPicker'
 pod 'SDWebImage'

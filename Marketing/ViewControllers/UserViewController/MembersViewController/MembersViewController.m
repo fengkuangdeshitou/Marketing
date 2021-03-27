@@ -13,6 +13,7 @@
 @interface MembersViewController ()<UITableViewDelegate,UITableViewDataSource,SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
+@property(nonatomic,strong)NSArray * list;
 @property(nonatomic,strong)IBOutlet UITableViewCell * headerCell;
 @property(nonatomic,strong)IBOutlet UITableViewCell * interestsCell;
 @property(nonatomic,strong)IBOutlet UIView * interestsView;
@@ -74,6 +75,7 @@
     
     self.userModel = [UserManager getUser];
     [ImageLoader loadImage:self.avararImageView url:self.userModel.headimgurl placeholder:nil];
+    [self getConfig];
     [self getMyVIPInfo];
     [self getPriceList];
 }
@@ -108,10 +110,34 @@
     }
 }
 
+- (void)getConfig{
+    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:@"ios_audit_state_APP"] success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+}
+
 /// 会员价格表
 - (void)getPriceList{
     [NetworkWorker networkGet:[NetworkUrlGetter getPriceListUrl] success:^(NSDictionary *result) {
-            
+        NSInteger buyCount = [result[@"buyCount"] integerValue];
+        self.list = result[@"list"];
+        for (int i=0; i<self.list.count; i++) {
+            NSDictionary * item = self.list[i];
+            for (UIView * view in self.memberBackgroundView.subviews) {
+                UIView * contentView = [view viewWithTag:i+10];
+                UILabel * nowPriceLabel = [contentView viewWithTag:1001];
+                UILabel * oldPriceLabel = [contentView viewWithTag:1002];
+                if (buyCount == 0) {
+                    nowPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"sell_price"]];
+                    oldPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"old_price"]];
+                }else{
+                    nowPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"frist_price"]];
+                    oldPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"old_price"]];
+                }
+            }
+        }
     } failure:^(NSString *errorMessage) {
         
     }];
@@ -258,19 +284,6 @@
                         [self hideHud];
                     });
                 });
-                NSDictionary *receipt = jsonResponse[@"receipt"];
-                NSDictionary *in_app = [receipt[@"in_app"] firstObject];
-                
-//                NSString *productId = in_app[@"product_id"];
-//                NSString *transactionId = in_app[@"transaction_id"];
-                //如果是消耗品则记录购买数量，非消耗品则记录是否购买过
-    //            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    //            if ([productIdentifier isEqualToString:@"123"]) {
-    //                int purchasedCount=[defaults integerForKey:productIdentifier];//已购买数量
-    //                [[NSUserDefaults standardUserDefaults] setInteger:(purchasedCount+1) forKey:productIdentifier];
-    //            }else{
-    //                [defaults setBool:YES forKey:productIdentifier];
-    //            }
                 [self applyPayNotifyWithReceipt:receiptString];
             }else{
                 //验证失败，检查你的机器是否越狱
@@ -282,7 +295,9 @@
 }
 
 - (void)applyPayNotifyWithReceipt:(NSString *)receipt{
-    [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":@"4",@"productId":self.requestId} success:^(NSDictionary *result) {
+    NSDictionary * item = self.list[self.flag];
+    NSString * combo_price_id = [NSString stringWithFormat:@"%@",item[@"combo_price_id"]];
+    [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":combo_price_id,@"productId":self.requestId} success:^(NSDictionary *result) {
         [self hideHud];
         [self.view makeToast:@"支付成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VIP_CHANGE object:nil];

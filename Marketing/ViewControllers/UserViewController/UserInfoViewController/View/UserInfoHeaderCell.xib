@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hyL-jT-8jW">
-                        <rect key="frame" x="245.5" y="7.5" width="49" height="49"/>
+                        <rect key="frame" x="242.5" y="7.5" width="49" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49" id="piE-R1-9R5"/>
                             <constraint firstAttribute="height" constant="49" id="vxh-2O-3Ry"/>
@@ -44,7 +44,7 @@
                     <constraint firstItem="pVL-N2-I3c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="eK7-nB-5t1"/>
                     <constraint firstItem="hyL-jT-8jW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mCG-oe-xhD"/>
                     <constraint firstItem="4KX-iw-PNV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rzN-8d-UkH"/>
-                    <constraint firstItem="4KX-iw-PNV" firstAttribute="leading" secondItem="hyL-jT-8jW" secondAttribute="trailing" constant="5" id="tMe-sm-5IC"/>
+                    <constraint firstItem="4KX-iw-PNV" firstAttribute="leading" secondItem="hyL-jT-8jW" secondAttribute="trailing" constant="8" id="tMe-sm-5IC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

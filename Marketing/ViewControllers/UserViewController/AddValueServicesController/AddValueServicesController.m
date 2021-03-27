@@ -54,7 +54,7 @@
 - (void)loadData{
     [NetworkWorker networkGet:[NetworkUrlGetter getMyGroupDownUrl] success:^(NSDictionary *result) {
         self.remainingDownloadLabel.text = [NSString stringWithFormat:@"%@次",result[@"downCount"]];
-        self.remainingCreateLabel.text = [NSString stringWithFormat:@"%@次",result[@"topCount"]];
+        self.remainingCreateLabel.text = [NSString stringWithFormat:@"%@次",result[@"createCount"]];
     } failure:^(NSString *errorMessage) {
         
     }];

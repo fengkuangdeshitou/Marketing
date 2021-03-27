@@ -6,21 +6,25 @@
 //
 
 #import "DownloadAlertView.h"
+#import "AddValueServicesController.h"
 
 @interface DownloadAlertView ()
 
+@property(nonatomic,assign)NSInteger count;
+@property(nonatomic,weak)IBOutlet UILabel * titleLabel;
 @property(nonatomic,weak)IBOutlet UILabel * urlLabel;
+@property(nonatomic,weak)IBOutlet UIButton * actionButton;
 
 @end
 
 @implementation DownloadAlertView
 
-+ (void)showDownloadAlertViewWithUrl:(NSString *)url{
-    DownloadAlertView * alertView = [[DownloadAlertView alloc] initWithUrl:url];
-    [alertView show];
++ (void)showDownloadAlertView{
+    DownloadAlertView * alertView = [[DownloadAlertView alloc] init];
+    [alertView getDownloadUrl];
 }
 
-- (instancetype)initWithUrl:(NSString *)url
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -28,16 +32,38 @@
         self.frame = UIScreen.mainScreen.bounds;
         self.alpha = 0;
         [UIApplication.sharedApplication.keyWindow addSubview:self];
-        
-        self.urlLabel.text = url;
     }
     return self;
 }
 
+- (void)getDownloadUrl{
+    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:@"DOWN_PACK_URL"] success:^(NSDictionary *result) {
+        self.count = [result[@"count"] integerValue];
+        if (self.count > 0) {
+            [self.actionButton setTitle:@"复制链接" forState:UIControlStateNormal];
+        }else{
+            [self.actionButton setTitle:@"立即购买" forState:UIControlStateNormal];
+        }
+        self.titleLabel.text = [NSString stringWithFormat:@"您的下载次数为%ld",self.count];
+        self.urlLabel.text = result[@"str"];
+        [self show];
+    } failure:^(NSString *errorMessage) {
+        [self makeToast:errorMessage];
+    }];
+}
+
 - (IBAction)copyUrl:(UIButton *)sender{
-    UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.urlLabel.text;
-    [self makeToast:@"已复制到剪贴板" duration:2 position:@"center"];
+    if (self.count > 0) {
+        UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.urlLabel.text;
+        [self makeToast:@"已复制到剪贴板" duration:2 position:@"center"];
+    }else{
+        [self removeFromSuperview];
+        AddValueServicesController * services = [[AddValueServicesController alloc] init];
+        services.title = @"增值服务";
+        services.hidesBottomBarWhenPushed = true;
+        [[PreHelper getCurrentVC].navigationController pushViewController:services animated:YES];
+    }
 }
 
 - (void)show{

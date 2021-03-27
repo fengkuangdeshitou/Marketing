@@ -61,6 +61,8 @@
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
 		BD835F7F260CEAD800ADCDBD /* GlobalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */; };
+		BD835F95260E379000ADCDBD /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F94260E379000ADCDBD /* InvitationModel.m */; };
+		BD835F9B260E44FC00ADCDBD /* GroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F9A260E44FC00ADCDBD /* GroupModel.m */; };
 		BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD98699F25FE49F300C5177A /* ServiceAlertView.m */; };
 		BD9869A325FE49FB00C5177A /* ServiceAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */; };
 		BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC2657D25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m */; };
@@ -230,6 +232,10 @@
 		BD73BCDF26079B3F00ADD55F /* BankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
 		BD835F7D260CEAD800ADCDBD /* GlobalNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalNotification.h; sourceTree = "<group>"; };
 		BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalNotification.m; sourceTree = "<group>"; };
+		BD835F93260E379000ADCDBD /* InvitationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationModel.h; sourceTree = "<group>"; };
+		BD835F94260E379000ADCDBD /* InvitationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationModel.m; sourceTree = "<group>"; };
+		BD835F99260E44FC00ADCDBD /* GroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupModel.h; sourceTree = "<group>"; };
+		BD835F9A260E44FC00ADCDBD /* GroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupModel.m; sourceTree = "<group>"; };
 		BD98699E25FE49F300C5177A /* ServiceAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceAlertView.h; sourceTree = "<group>"; };
 		BD98699F25FE49F300C5177A /* ServiceAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceAlertView.m; sourceTree = "<group>"; };
 		BD9869A225FE49FB00C5177A /* ServiceAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceAlertView.xib; sourceTree = "<group>"; };
@@ -564,6 +570,7 @@
 				BD06EC1F25F7C247005A8FE4 /* InvitationViewController.h */,
 				BD06EC2025F7C247005A8FE4 /* InvitationViewController.m */,
 				BD06EC2125F7C247005A8FE4 /* InvitationViewController.xib */,
+				BD835F92260E378300ADCDBD /* Model */,
 				BD06EC2525F7C6B7005A8FE4 /* View */,
 			);
 			path = InvitationViewController;
@@ -644,6 +651,24 @@
 			children = (
 				BD73BCDE26079B3F00ADD55F /* BankModel.h */,
 				BD73BCDF26079B3F00ADD55F /* BankModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BD835F92260E378300ADCDBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD835F93260E379000ADCDBD /* InvitationModel.h */,
+				BD835F94260E379000ADCDBD /* InvitationModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BD835F98260E44C800ADCDBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD835F99260E44FC00ADCDBD /* GroupModel.h */,
+				BD835F9A260E44FC00ADCDBD /* GroupModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -897,6 +922,7 @@
 				BDC585AF25EB5A1E0021F808 /* HomeViewController.h */,
 				BDC585B025EB5A1E0021F808 /* HomeViewController.m */,
 				BDC585B125EB5A1E0021F808 /* HomeViewController.xib */,
+				BD835F98260E44C800ADCDBD /* Model */,
 				BD06B55825FA605A0051F873 /* View */,
 				BD410CA925FA5388007A1D5E /* SearchViewController */,
 			);
@@ -1198,6 +1224,7 @@
 				BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */,
 				BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */,
 				BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */,
+				BD835F9B260E44FC00ADCDBD /* GroupModel.m in Sources */,
 				BDC265C525ED2A7000DBAA64 /* ProfitableViewController.m in Sources */,
 				BDC5855D25EB4C4E0021F808 /* NetworkUrlGetter.m in Sources */,
 				BDDEFB1C25EB761600D7A5D7 /* UserInfoHeaderCell.m in Sources */,
@@ -1229,6 +1256,7 @@
 				BDC265DD25EE5EEB00DBAA64 /* ProfitShareCell.m in Sources */,
 				BDDEFAFE25EB63CF00D7A5D7 /* SettingViewController.m in Sources */,
 				BDDEFB3825EB803100D7A5D7 /* LoginViewController.m in Sources */,
+				BD835F95260E379000ADCDBD /* InvitationModel.m in Sources */,
 				BDC5859F25EB57180021F808 /* UIButton+ImageTitleSpacing.m in Sources */,
 				BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */,
 				BDC5855C25EB4C4E0021F808 /* NetworkUrl.m in Sources */,

@@ -12,6 +12,7 @@
 #import "NetworkUrlGetter.h"
 #import "DeviceTool.h"
 #import "MJExtension.h"
+#import "MJRefresh.h"
 #import "GlobalColor.h"
 #import "GlobalDefine.h"
 #import "GlobalState.h"

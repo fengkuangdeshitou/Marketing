@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString * nickname;
 @property(nonatomic,copy)NSString * headimgurl;
 @property(nonatomic,copy)NSString * token;
+@property(nonatomic,copy)NSString * cert_name;
+@property(nonatomic,copy)NSString * cert_no;
 @property(nonatomic,copy)NSString * wechatNum;
 @property(nonatomic,copy)NSString * wechatErCode;
 

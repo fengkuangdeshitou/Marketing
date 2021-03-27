@@ -10,16 +10,23 @@
 #import "SearchViewController.h"
 #import "CustomNavagationController.h"
 #import "DownloadAlertView.h"
+#import "GroupModel.h"
 
 @interface HomeViewController ()<UISearchBarDelegate>
 
-@property(nonatomic,strong)NSArray * dataArray;
+@property(nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,weak)IBOutlet UIButton * beforeButton;
 @property(nonatomic,weak)IBOutlet UIButton * nextButton;
+@property(nonatomic,weak)IBOutlet UIButton * todayButton;
+@property(nonatomic,weak)IBOutlet UIButton * yesterdayButton;
+@property(nonatomic,weak)IBOutlet UIButton * moreButton;
 @property(nonatomic,weak)IBOutlet UILabel * contentLabel;
 @property(nonatomic,weak)IBOutlet UILabel * timeLabel;
 @property(nonatomic,weak)IBOutlet UILabel * pageLabel;
 @property(nonatomic,weak)IBOutlet UIImageView * icon;
+@property(nonatomic,assign)NSInteger page;
+/// 1:今天,2:昨天,3:更早
+@property(nonatomic,assign)NSInteger time;
 @property(nonatomic,assign)NSInteger currentFlag;
 @property(nonatomic,strong)UIView * flagView;
 @property(nonatomic,weak)IBOutlet UIView * segmentView;
@@ -41,6 +48,9 @@
     // Do any additional setup after loading the view from its nib.
     
     self.currentFlag = 0;
+    self.page = 1;
+    self.time = 1;
+    
     self.beforeButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.beforeButton.layer.borderWidth = 1;
     
@@ -65,11 +75,21 @@
     
     [[self.segmentView viewWithTag:10] addSubview:self.flagView];
     
-    self.contentLabel.text = @"Peachcon元宵节特惠活动图版任选两副¥188，活动时间：2月19日~3月5日晚17点结束";
-    [ImageLoader loadImage:self.icon url:@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1760198708,397765846&fm=26&gp=0.jpg" placeholder:nil];
-    self.timeLabel.text = [NSString stringWithFormat:@"木木 发表于%@",[PreHelper compareCurrentTime:1615476018]];
+    [self getFindGroupList];
 }
 
+- (void)getFindGroupList{
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"50",@"wxgType":@"group",@"direction":@"random",@"time":[NSString stringWithFormat:@"%ld",self.time]} success:^(NSDictionary *result) {
+        if (self.page == 1) {
+            self.dataArray = [[NSMutableArray alloc] init];
+        }
+        NSArray * list = result[@"page"][@"list"];
+        [self.dataArray addObjectsFromArray:[GroupModel mj_objectArrayWithKeyValuesArray:list]];
+        self.currentFlag ++;
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+}
 
 /// 日期切换
 /// @param sender 按钮
@@ -83,10 +103,21 @@
     [sender setTitleColor:[PreHelper colorWithHexString:COLOR_MAIN_COLOR] forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
     [sender addSubview:self.flagView];
+    if (sender == self.todayButton) {
+        self.time = 1;
+    }else if(sender == self.yesterdayButton){
+        self.time = 2;
+    }else{
+        self.time = 3;
+    }
+    self.page = 1;
+    self.currentFlag = 0;
+    [self getFindGroupList];
 }
 
+/// 下载
 - (void)rightItemClick{
-    [DownloadAlertView showDownloadAlertViewWithUrl:@"htto"];
+    [DownloadAlertView showDownloadAlertView];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -102,28 +133,47 @@
     return NO;
 }
 
+/// 观察者
+/// @param keyPath currentFlag
+/// @param object object
+/// @param change change
+/// @param context context
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    [ImageLoader loadImage:self.icon url:@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1760198708,397765846&fm=26&gp=0.jpg" placeholder:nil];
+    
     if (self.currentFlag == 0) {
-        self.beforeButton.enabled = NO;
-    }else if (self.currentFlag == self.dataArray.count) {
-        self.nextButton.enabled = NO;
-    }else{
-        self.beforeButton.enabled = YES;
-        self.nextButton.enabled = YES;
+        return;
     }
+    
+    if (self.currentFlag <= self.dataArray.count) {
+        GroupModel * model = self.dataArray[self.currentFlag-1];
+        [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
+        self.contentLabel.text = model.wxg_desc;
+        self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+        self.pageLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentFlag,self.dataArray.count];
+    }
+    
 }
 
+/// 上一张
+/// @param sender 按钮
 - (IBAction)beforeAction:(id)sender{
-    if (self.currentFlag > 0) {
+    if (self.currentFlag > 1) {
         self.currentFlag--;
     }
 }
 
+/// 下一张
+/// @param sender 按钮
 - (IBAction)nextAction:(id)sender{
-    if (self.currentFlag < self.dataArray.count) {
-        self.currentFlag ++;
+    
+    if (self.currentFlag == self.dataArray.count-1) {
+        self.page += 1;
+        [self getFindGroupList];
+        return;
     }
+    
+    self.currentFlag ++;
+    
 }
 
 - (void)dealloc{

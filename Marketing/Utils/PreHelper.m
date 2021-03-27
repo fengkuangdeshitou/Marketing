@@ -147,7 +147,7 @@
 
 + (NSString *)getDays:(NSString *)dateStr {
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:DATE_FORMAT_MIN];
     
     NSDate * date2 = [NSDate dateWithTimeIntervalSince1970:[dateStr longLongValue] / 1000];
     //创建了两个日期对象
@@ -218,18 +218,19 @@
     }
 }
 
-+ (long long)getTimeSince1970InMsLongLong {
-    NSDate *dateNow = [NSDate date];
++ (long long)getTimeSinceWithDate:(NSDate *)date {
     NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSInteger interval = [zone secondsFromGMTForDate:dateNow];
-    NSDate *localeDate = [dateNow dateByAddingTimeInterval:interval];
-    return (long long) [localeDate timeIntervalSince1970] * 1000;
+    NSInteger interval = [zone secondsFromGMTForDate:date];
+    NSDate *localeDate = [date dateByAddingTimeInterval:interval];
+    return (long long) [localeDate timeIntervalSince1970];
 }
 
-+(NSDate*)dateFromString:(NSString*)dateString {
++(NSString*)dateFromString:(NSString*)dateString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
-    return [dateFormatter dateFromString:dateString];
+    [dateFormatter setDateFormat:DATE_FORMAT_MIN];
+    NSDate * date = [dateFormatter dateFromString:dateString];
+    long long time = [self getTimeSinceWithDate:date];
+    return [self compareCurrentTime:time];
 }
 
 + (NSString *)compareCurrentTime:(long long)time {

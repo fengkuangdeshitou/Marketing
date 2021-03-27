@@ -23,8 +23,6 @@
 
 + (UIViewController *)getCurrentVC;
 
-+ (NSString *)dateToString:(NSDate *)date;
-
 + (NSString *)setCreateTime:(NSString *)createTime;
 
 + (NSString *)getHourAndMinute:(NSDate *)date;
@@ -35,15 +33,11 @@
 
 + (NSData *)toJSONData:(id)theData;
 
-+ (NSString *)compareCurrentTime:(long long)time;
-
 + (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
 
 + (NSString *)getCurrentDataAndTime;
 
-+(NSDate*)dateFromString:(NSString*)dateString;
-
-+(long long)longLongFromDate:(NSDate*)date;
++ (NSString *)dateFromString:(NSString*)dateString;
 
 + (CGFloat)getCircleContentHeight:(NSString *)content;
 
@@ -61,7 +55,7 @@
 
 + (NSString *)getSubmitDays:(long long)submitTime;
 
-+ (long long)getTimeSince1970InMsLongLong;
++ (long long)getTimeSinceWithDate:(NSDate *)date;
 
 + (long long)getTimeWithDateStr:(NSString *)dateStr;
 

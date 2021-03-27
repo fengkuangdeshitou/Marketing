@@ -7,12 +7,13 @@
 
 #import "InvitationViewController.h"
 #import "InvitationListCell.h"
+#import "InvitationModel.h"
 
 @interface InvitationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,weak)IBOutlet UIButton * hasPaymentButton;
-@property(nonatomic,strong) NSArray * dataArray;
+@property(nonatomic,strong) NSMutableArray * dataArray;
 @property(nonatomic,assign) NSInteger page;
 @property(nonatomic,strong) UIView * flagView;
 
@@ -36,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.page = 0;
+    self.page = 1;
     self.monthMoneyLabel.text = self.monthMoney;
     self.totalMoneyLabel.text = self.totalMoney;
     self.myShareCountLabel.text = self.myShareCount;
@@ -46,10 +47,21 @@
 }
 
 - (void)loadDataWithParams:(NSDictionary *)params{
-    [NetworkWorker networkPost:[NetworkUrlGetter getMyShareRecordUrl] params:params success:^(NSDictionary *result) {
-            
+    NSMutableDictionary * mutablePatams = [NSMutableDictionary dictionaryWithDictionary:params];
+    [mutablePatams setValue:[NSString stringWithFormat:@"%ld",self.page] forKey:@"page"];
+    [mutablePatams setValue:@"10" forKey:@"limit"];
+    [NetworkWorker networkPost:[NetworkUrlGetter getMyShareRecordUrl] params:mutablePatams success:^(NSDictionary *result) {
+        if (self.page == 1){
+            self.dataArray = [[NSMutableArray alloc] init];
+        }
+        NSArray * list = result[@"page"][@"list"];
+        [self.dataArray addObjectsFromArray:[InvitationModel mj_objectArrayWithKeyValuesArray:list]];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     } failure:^(NSString *errorMessage) {
-        
+        [self.view makeToast:errorMessage];
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     }];
 }
 
@@ -58,7 +70,16 @@
 - (IBAction)isBuyAction:(UIButton *)sender{
     [sender addSubview:self.flagView];
     self.page = 1;
-    [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15",@"isBuy":@"y"}];
+    NSDictionary * params = @{@"isBuy":@"y"};
+    [self loadDataWithParams:params];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.page = 1;
+        [self loadDataWithParams:params];
+    }];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.page ++;
+        [self loadDataWithParams:params];
+    }];
 }
 
 /// 注册数据
@@ -66,11 +87,21 @@
 - (IBAction)isLoginAction:(UIButton *)sender{
     [sender addSubview:self.flagView];
     self.page = 1;
-    [self loadDataWithParams:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"15"}];
+    [self loadDataWithParams:@{}];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.page = 1;
+        [self loadDataWithParams:@{}];
+    }];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.page ++;
+        [self loadDataWithParams:@{}];
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     InvitationListCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([InvitationListCell class]) forIndexPath:indexPath];
+    InvitationModel * model = self.dataArray[indexPath.row];
+    cell.model = model;
     return cell;
 }
 

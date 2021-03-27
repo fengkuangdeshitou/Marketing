@@ -11,6 +11,7 @@
 
 @interface AuthenticationViewController ()
 
+@property(nonatomic,weak)IBOutlet UIButton * autheticationButton;
 @property(nonatomic,weak)IBOutlet UITextField * nameTextField;
 @property(nonatomic,weak)IBOutlet UITextField * numberTextField;
 
@@ -21,6 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UserModel * model = [UserManager getUser];
+    if (model.cert_no) {
+        [self.autheticationButton setTitle:@"已认证" forState:UIControlStateNormal];
+        self.nameTextField.text = model.cert_name;
+        self.numberTextField.text = model.cert_no;
+        self.nameTextField.userInteractionEnabled = NO;
+        self.numberTextField.userInteractionEnabled = NO;
+    }else{
+        [self.autheticationButton setTitle:@"开始认证" forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)nextAction:(UIButton *)sender{

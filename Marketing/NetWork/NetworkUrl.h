@@ -22,6 +22,13 @@ extern NSString * const verificationCodeUrl;
 
 extern NSString * const codeLoginUrl;
 
+/// 首页
+
+extern NSString * const findGroupListUrl;
+
+extern NSString * const hotSearchUrl;
+
+
 /// 赚钱
 
 extern NSString * const myMoneyUrl;

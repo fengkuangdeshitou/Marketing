@@ -49,10 +49,9 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyb-jS-fxK">
-                                    <rect key="frame" x="62" y="151" width="200" height="40"/>
+                                    <rect key="frame" x="30" y="151" width="264" height="40"/>
                                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="200" id="Vox-U1-OtK"/>
                                         <constraint firstAttribute="height" constant="40" id="hsG-f0-jMO"/>
                                     </constraints>
                                     <state key="normal" title="复制链接"/>
@@ -69,7 +68,9 @@
                                 <constraint firstItem="JvD-Wq-5Iy" firstAttribute="leading" secondItem="Y0J-C4-IBw" secondAttribute="leading" constant="30" id="BUi-qy-lGm"/>
                                 <constraint firstItem="Hyb-jS-fxK" firstAttribute="centerX" secondItem="Y0J-C4-IBw" secondAttribute="centerX" id="DT5-fP-fuF"/>
                                 <constraint firstAttribute="trailing" secondItem="I1u-Sx-47a" secondAttribute="trailing" constant="30" id="JeC-O6-Bsk"/>
+                                <constraint firstAttribute="trailing" secondItem="Hyb-jS-fxK" secondAttribute="trailing" constant="30" id="SEV-HF-0eN"/>
                                 <constraint firstItem="JvD-Wq-5Iy" firstAttribute="top" secondItem="I1u-Sx-47a" secondAttribute="bottom" constant="8" id="Xfh-He-zjz"/>
+                                <constraint firstItem="Hyb-jS-fxK" firstAttribute="leading" secondItem="Y0J-C4-IBw" secondAttribute="leading" constant="30" id="cbZ-pc-eMG"/>
                                 <constraint firstAttribute="trailing" secondItem="JvD-Wq-5Iy" secondAttribute="trailing" constant="30" id="e1b-Jh-yAO"/>
                                 <constraint firstItem="I1u-Sx-47a" firstAttribute="top" secondItem="Y0J-C4-IBw" secondAttribute="top" constant="10" id="guq-q8-sgH"/>
                                 <constraint firstItem="Hyb-jS-fxK" firstAttribute="top" secondItem="JvD-Wq-5Iy" secondAttribute="bottom" constant="16" id="iuq-gC-fAy"/>
@@ -111,6 +112,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NVJ-V5-Dpi" secondAttribute="trailing" constant="45" id="y4F-6v-aPk"/>
             </constraints>
             <connections>
+                <outlet property="actionButton" destination="Hyb-jS-fxK" id="B8v-Wa-3cJ"/>
+                <outlet property="titleLabel" destination="GQn-ft-enh" id="Nxv-ig-jTM"/>
                 <outlet property="urlLabel" destination="Vdn-JQ-kcZ" id="Rmj-Vq-9pU"/>
                 <outletCollection property="gestureRecognizers" destination="i8Q-5B-vUk" appends="YES" id="hkw-Gq-4sj"/>
             </connections>

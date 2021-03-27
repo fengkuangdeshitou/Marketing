@@ -14,10 +14,13 @@
                 <outlet property="beforeButton" destination="Kea-dN-icI" id="Rsb-sR-Jcd"/>
                 <outlet property="contentLabel" destination="nLB-lj-bCT" id="Dl3-eO-w1w"/>
                 <outlet property="icon" destination="faZ-wJ-WrP" id="KJ4-mQ-hBM"/>
+                <outlet property="moreButton" destination="eEd-x5-fph" id="fVr-Jf-jih"/>
                 <outlet property="pageLabel" destination="lR0-pD-sOK" id="3bc-Pe-Izm"/>
                 <outlet property="segmentView" destination="aaL-RP-Ydk" id="XAK-ti-YYj"/>
                 <outlet property="timeLabel" destination="KjC-vs-lj0" id="gZa-CV-pmk"/>
+                <outlet property="todayButton" destination="D6x-6V-iVp" id="aNg-17-djV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yesterdayButton" destination="Yrw-oT-39x" id="dxB-HV-nJK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

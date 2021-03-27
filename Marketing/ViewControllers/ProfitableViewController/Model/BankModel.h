@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString * bank_user;
 @property(nonatomic,copy)NSString * mb_bank_id;
 
+@property(nonatomic,copy)NSString * draw_money;
+@property(nonatomic,copy)NSString * draw_state;
+@property(nonatomic,copy)NSString * draw_time;
+
 @end
 
 NS_ASSUME_NONNULL_END
