@@ -85,10 +85,11 @@
 
 /// 获取热门分类
 - (void)getHotSearch{
-    [NetworkWorker networkGet:[NetworkUrlGetter getHotSearchUrl] success:^(NSDictionary *result) {
-            
+    [NetworkWorker networkPost:[NetworkUrlGetter getHotSearchUrl] params:@{} success:^(NSDictionary *result) {
+        self.dataArray = result[@"list"];
+        [self.collectionView reloadData];
     } failure:^(NSString *errorMessage) {
-        [self.view makeToast:errorMessage];
+        
     }];
 }
 
@@ -138,13 +139,13 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SearchItemCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SearchItemCollectionCell class]) forIndexPath:indexPath];
     NSDictionary * item = self.dataArray[indexPath.row];
-    cell.contentLabel.text = item[@"title"];
+    cell.contentLabel.text = item[@"label"];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     self.collectionView.hidden = YES;
-    self.selectText = self.dataArray[indexPath.row][@"title"];
+    self.selectText = self.dataArray[indexPath.row][@"label"];
     self.page = 1;
     self.currentFlag = 0;
     self.searchBar.text = @"";
@@ -186,7 +187,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 10;
+    return 0;
 }
 
 - (void)dealloc{

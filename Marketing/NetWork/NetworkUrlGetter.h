@@ -54,5 +54,6 @@
 
 + (NSString *)getHotSearchUrl;
 
++ (NSString *)getDownUrl;
 
 @end

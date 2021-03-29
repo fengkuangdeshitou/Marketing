@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,21 +129,6 @@
                                 <constraint firstItem="Unj-tB-jaf" firstAttribute="top" secondItem="uYI-is-mEa" secondAttribute="top" constant="20" id="uto-tW-qEx"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-Pm-ifJ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tzG-TG-uhp">
-                                <size key="itemSize" width="128" height="128"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="3yZ-sh-Er9"/>
-                                <outlet property="delegate" destination="-1" id="SK2-qi-Zec"/>
-                            </connections>
-                        </collectionView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -158,14 +142,31 @@
                         <constraint firstAttribute="trailing" secondItem="uYI-is-mEa" secondAttribute="trailing" id="xrT-F0-fPh"/>
                     </constraints>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-Pm-ifJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tzG-TG-uhp">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="3yZ-sh-Er9"/>
+                        <outlet property="delegate" destination="-1" id="SK2-qi-Zec"/>
+                    </connections>
+                </collectionView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Lu5-Pm-ifJ" secondAttribute="trailing" id="5Xd-gY-DZy"/>
+                <constraint firstItem="Lu5-Pm-ifJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="79i-8D-Go6"/>
+                <constraint firstItem="Lu5-Pm-ifJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="P3c-1W-IOV"/>
                 <constraint firstAttribute="bottom" secondItem="aWa-5e-sS4" secondAttribute="bottom" id="SwB-0N-i55"/>
-                <constraint firstItem="aWa-5e-sS4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ZdM-Gw-Omv"/>
+                <constraint firstItem="aWa-5e-sS4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZdM-Gw-Omv"/>
                 <constraint firstItem="aWa-5e-sS4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aFu-F3-mNQ"/>
-                <constraint firstItem="aWa-5e-sS4" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="rKH-fV-iy9"/>
+                <constraint firstAttribute="bottom" secondItem="Lu5-Pm-ifJ" secondAttribute="bottom" id="lvS-fJ-V8Z"/>
+                <constraint firstItem="aWa-5e-sS4" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="rKH-fV-iy9"/>
             </constraints>
             <point key="canvasLocation" x="18.840579710144929" y="82.366071428571431"/>
         </view>

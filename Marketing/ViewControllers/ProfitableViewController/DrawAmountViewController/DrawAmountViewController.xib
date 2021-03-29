@@ -70,10 +70,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sm-ve-VsP">
-                    <rect key="frame" x="15" y="87.5" width="384" height="50"/>
+                    <rect key="frame" x="15" y="87.5" width="384" height="40"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入提现金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="usK-P2-3QK">
-                            <rect key="frame" x="5" y="0.0" width="374" height="50"/>
+                            <rect key="frame" x="5" y="0.0" width="374" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -81,14 +81,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="usK-P2-3QK" firstAttribute="leading" secondItem="2Sm-ve-VsP" secondAttribute="leading" constant="5" id="ewT-TP-l2R"/>
-                        <constraint firstAttribute="height" constant="50" id="fRh-ip-ya6"/>
+                        <constraint firstAttribute="height" constant="40" id="fRh-ip-ya6"/>
                         <constraint firstAttribute="bottom" secondItem="usK-P2-3QK" secondAttribute="bottom" id="kaa-tE-a6F"/>
                         <constraint firstItem="usK-P2-3QK" firstAttribute="top" secondItem="2Sm-ve-VsP" secondAttribute="top" id="khy-yl-jE4"/>
                         <constraint firstAttribute="trailing" secondItem="usK-P2-3QK" secondAttribute="trailing" constant="5" id="tRq-D5-unK"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeZ-XH-qvv">
-                    <rect key="frame" x="15" y="162.5" width="384" height="49"/>
+                    <rect key="frame" x="15" y="155.5" width="384" height="49"/>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="pij-oK-aMv"/>
@@ -105,7 +105,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzM-AR-05c">
-                    <rect key="frame" x="15" y="236.5" width="384" height="100"/>
+                    <rect key="frame" x="15" y="229.5" width="384" height="100"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">提现规则:
@@ -152,7 +152,7 @@
                 <constraint firstItem="2Sm-ve-VsP" firstAttribute="top" secondItem="es3-4M-5Ga" secondAttribute="bottom" constant="12" id="VY0-j9-Ijp"/>
                 <constraint firstItem="hzM-AR-05c" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="WuK-gt-zm9"/>
                 <constraint firstItem="es3-4M-5Ga" firstAttribute="top" secondItem="O8S-MP-7ae" secondAttribute="bottom" constant="12" id="a80-KZ-LgD"/>
-                <constraint firstItem="zeZ-XH-qvv" firstAttribute="top" secondItem="2Sm-ve-VsP" secondAttribute="bottom" constant="25" id="b8v-w2-Cpf"/>
+                <constraint firstItem="zeZ-XH-qvv" firstAttribute="top" secondItem="2Sm-ve-VsP" secondAttribute="bottom" constant="28" id="b8v-w2-Cpf"/>
                 <constraint firstItem="es3-4M-5Ga" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="gKc-c2-oeB"/>
                 <constraint firstItem="0b3-E9-2tA" firstAttribute="centerY" secondItem="es3-4M-5Ga" secondAttribute="centerY" id="iGo-DL-oh6"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="hzM-AR-05c" secondAttribute="trailing" constant="15" id="oaW-kz-oxU"/>

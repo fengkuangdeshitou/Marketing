@@ -25,7 +25,8 @@ NSString * const configUrl = @"/app/member/getConfig";
 NSString * const findGroupListUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/pageFindGroupList";
 /// 热门分类
 NSString * const hotSearchUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/hotSearch?wxgType=group";
-
+/// 获取下载地址
+NSString * const downUrl = @"app/member/getDownUrl";
 
 /// 微信登录
 NSString * const wechatLoginUrl = @"app/member/weixinuserinfo";

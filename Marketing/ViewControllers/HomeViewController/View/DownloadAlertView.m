@@ -37,8 +37,8 @@
 }
 
 - (void)getDownloadUrl{
-    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:@"DOWN_PACK_URL"] success:^(NSDictionary *result) {
-        self.count = [result[@"count"] integerValue];
+    [NetworkWorker networkGet:[NetworkUrlGetter getDownUrl] success:^(NSDictionary *result) {
+        self.count = [result[@"downCount"] integerValue];
         if (self.count > 0) {
             [self.actionButton setTitle:@"复制链接" forState:UIControlStateNormal];
         }else{

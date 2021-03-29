@@ -99,7 +99,9 @@
     return hotSearchUrl;
 }
 
-
++ (NSString *)getDownUrl{
+    return [[hostUrl stringByAppendingPathComponent:downUrl] stringByAppendingString:@"?key=DOWN_PACK_URL"];
+}
 
 
 

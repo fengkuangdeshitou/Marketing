@@ -28,6 +28,8 @@ extern NSString * const findGroupListUrl;
 
 extern NSString * const hotSearchUrl;
 
+extern NSString * const downUrl;
+
 
 /// 赚钱
 
