@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7U0-3d-Rvc">
                         <rect key="frame" x="64.5" y="10" width="251" height="251"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-Sn-Pjn">
+                            <imageView clipsSubviews="YES" tag="10" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-Sn-Pjn">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="80" id="ntP-4v-ygw"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Fp-07-BKF">
+                            <imageView clipsSubviews="YES" tag="11" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Fp-07-BKF">
                                 <rect key="frame" x="85.5" y="0.0" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="80" id="vef-JG-tiJ"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="12" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EFJ-dq-n7a">
+                            <imageView clipsSubviews="YES" tag="12" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EFJ-dq-n7a">
                                 <rect key="frame" x="171" y="0.0" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="width" constant="80" id="kUl-ul-jsV"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="13" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Vn-Bg-Tkl">
+                            <imageView clipsSubviews="YES" tag="13" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Vn-Bg-Tkl">
                                 <rect key="frame" x="0.0" y="85.5" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="80" id="Opg-8U-NBA"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="14" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VLw-H4-EkG">
+                            <imageView clipsSubviews="YES" tag="14" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VLw-H4-EkG">
                                 <rect key="frame" x="85.5" y="85.5" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                     <constraint firstAttribute="width" constant="80" id="Ind-sZ-PFt"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="15" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BsP-BH-rsQ">
+                            <imageView clipsSubviews="YES" tag="15" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BsP-BH-rsQ">
                                 <rect key="frame" x="171" y="85.5" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -69,7 +69,7 @@
                                     <constraint firstAttribute="height" constant="80" id="hbu-vQ-ZW6"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="16" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZiC-V4-p52">
+                            <imageView clipsSubviews="YES" tag="16" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZiC-V4-p52">
                                 <rect key="frame" x="0.0" y="171" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -77,7 +77,7 @@
                                     <constraint firstAttribute="width" constant="80" id="iCi-ZY-sNM"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="17" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Aq-1b-A0r">
+                            <imageView clipsSubviews="YES" tag="17" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Aq-1b-A0r">
                                 <rect key="frame" x="85.5" y="171" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -85,7 +85,7 @@
                                     <constraint firstAttribute="height" constant="80" id="xGt-cX-PFZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="18" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-Z6-8ko">
+                            <imageView clipsSubviews="YES" tag="18" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-Z6-8ko">
                                 <rect key="frame" x="171" y="171" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>

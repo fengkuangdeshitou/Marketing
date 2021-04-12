@@ -23,6 +23,7 @@
 @interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,copy)NSString * userId;
+@property(nonatomic,assign)NSInteger page;
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,weak)IBOutlet NSLayoutConstraint * navigationBarHeight;
@@ -87,17 +88,17 @@
         // 先导入了SDWebImage
         _photoManager.configuration.photoEditConfigur.requestChartletModels = ^(void (^ _Nonnull chartletModels)(NSArray<HXPhotoEditChartletTitleModel *> * _Nonnull)) {
             
-            HXPhotoEditChartletTitleModel *netModel = [HXPhotoEditChartletTitleModel modelWithNetworkNURL:[NSURL URLWithString:@"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/xxy_s_highlighted.png"]];
-            NSString *prefix = @"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/xxy%d.png";
-            NSMutableArray *netModels = @[].mutableCopy;
-            for (int i = 1; i <= 40; i++) {
-                [netModels addObject:[HXPhotoEditChartletModel modelWithNetworkNURL:[NSURL URLWithString:[NSString stringWithFormat:prefix ,i]]]];
-            }
-            netModel.models = netModels.copy;
-            
-            if (chartletModels) {
-                chartletModels(@[netModel]);
-            }
+//            HXPhotoEditChartletTitleModel *netModel = [HXPhotoEditChartletTitleModel modelWithNetworkNURL:[NSURL URLWithString:@"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/xxy_s_highlighted.png"]];
+//            NSString *prefix = @"http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/xxy%d.png";
+//            NSMutableArray *netModels = @[].mutableCopy;
+//            for (int i = 1; i <= 40; i++) {
+//                [netModels addObject:[HXPhotoEditChartletModel modelWithNetworkNURL:[NSURL URLWithString:[NSString stringWithFormat:prefix ,i]]]];
+//            }
+//            netModel.models = netModels.copy;
+//
+//            if (chartletModels) {
+//                chartletModels(@[netModel]);
+//            }
         };
 //#endif
     }
@@ -182,6 +183,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.page = 1;
     if (!self.userId) {
         self.navigationBarHeight.constant = NavagationHeight;
         [self.view addSubview:self.topView];
@@ -197,34 +199,8 @@
         [ImageLoader loadImage:self.avatarImageView url:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg" placeholder:nil];
     }
 
-    NSDictionary * dict = @{
-        @"content":@"拉库房阿里积分垃圾了法律上看见放辣椒拉减肥垃圾垃圾"
-    };
-    [self.dataArray addObject:dict];
+    [self loadCircleData];
     
-    
-    NSArray * array = @[
-    @{
-        @"title":@"张三",
-        @"content":@"拉库房阿里积分垃圾了法律上垃圾垃圾房间爱了就垃圾阿拉基垃圾平均分假发票忘记放设计费配偶无分机安静泡脚搜啊就撒;就是解放路卡解放啦撒酒疯拉进来看家里放假拉丝机弗兰克斯家乐福阿里积分放假阿里",
-        @"time":@"123212323",
-        @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg",
-        @"images":@[@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2005235653,1742582269&fm=26&gp=0.jpg"]
-    },
-        @{
-            @"title":@"瑞文",
-            @"content":@"圣诞节啦了垃圾垃圾假两件阿拉基倒垃圾老孔",
-            @"time":@"123242323",
-            @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg",
-            @"images":@[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1569653248,3049509889&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=147444100,3816927537&fm=26&gp=0.jpg"]
-        },
-        @{
-            @"title":@"卡特琳娜",
-            @"content":@"陪我皮卡OK 排污口破我拉了打卡磕碰 OK颇为考完;奥施康定安监局撒世纪大劫案解放军按实际福利假按揭捡垃圾安静安静多少级阿拉斯加放辣椒垃圾恐龙当家安吉莉卡圣诞节拉进来卡",
-            @"time":@"123212323",
-            @"avatar":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg"},
-    ];
-    self.dataArray = [CircleModel mj_objectArrayWithKeyValuesArray:array];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleContentCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleStatusCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleStatusCell class])];
@@ -232,6 +208,20 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleNineImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleNineImageCell class])];
     
 }
+
+- (void)loadCircleData{
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindCircleUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"10"} success:^(NSDictionary *result) {
+        if (self.page == 1) {
+            self.dataArray = [[NSMutableArray alloc] init];
+        }
+        NSArray * list = [result objectForKey:@"page"][@"list"];
+        [self.dataArray addObjectsFromArray:[CircleModel mj_objectArrayWithKeyValuesArray:list]];
+        [self.tableView reloadData];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
 
 /// 发布
 - (IBAction)cgrectCircleAction{
@@ -274,7 +264,7 @@
         return cell;
     }else if(indexPath.row == 1){
         CircleContentCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleContentCell class]) forIndexPath:indexPath];
-        cell.contentLabel.text = model.content;
+        cell.contentLabel.text = model.text;
         return cell;
     }else if(indexPath.row == 2){
         CircleStatusCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleStatusCell class]) forIndexPath:indexPath];

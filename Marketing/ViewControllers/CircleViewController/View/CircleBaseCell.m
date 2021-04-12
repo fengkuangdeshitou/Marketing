@@ -13,14 +13,14 @@
     if (indexPath.row == 0) {
         return 76;
     }else if(indexPath.row == 1){
-        CGFloat contentHeight = [PreHelper getCircleContentHeight:model.content];
+        CGFloat contentHeight = [PreHelper getCircleContentHeight:model.text];
         if (model.isOpen) {
             return UITableViewAutomaticDimension;
         }else{
             return contentHeight > 61 ? 61 :  UITableViewAutomaticDimension;
         }
     }else if(indexPath.row == 2){
-        CGFloat heigit = [PreHelper getCircleContentHeight:model.content];
+        CGFloat heigit = [PreHelper getCircleContentHeight:model.text];
         return heigit > 61 ? 30 : 0.001;
     }else if(indexPath.row == 3){
         if (model.images.count == 0) {

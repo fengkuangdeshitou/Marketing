@@ -35,6 +35,8 @@ NSString * const verificationCodeUrl = @"app/sms/send";
 /// 验证码登录
 NSString * const codeLoginUrl = @"app/sms/checkCode";
 
+/// 品圈列表
+NSString * const findCircleUrl = @"app/circle/pageFindCircle";
 
 
 /// 我的余额

@@ -11,11 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleModel : NSObject
 
-@property(nonatomic,copy)NSString * title;
-@property(nonatomic,copy)NSString * time;
-@property(nonatomic,copy)NSString * avatar;
-@property(nonatomic,copy)NSString * content;
+@property(nonatomic,copy)NSString * nikename;
+@property(nonatomic,copy)NSString * add_time;
+@property(nonatomic,copy)NSString * head_url;
+@property(nonatomic,copy)NSString * text;
 @property(nonatomic,assign)BOOL isOpen;
+@property(nonatomic,copy)NSString * img_urls;
 @property(nonatomic,strong)NSArray * images;
 
 @end

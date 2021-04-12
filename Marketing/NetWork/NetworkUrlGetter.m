@@ -103,7 +103,9 @@
     return [[hostUrl stringByAppendingPathComponent:downUrl] stringByAppendingString:@"?key=DOWN_PACK_URL"];
 }
 
-
++ (NSString *)getFindCircleUrl{
+    return [hostUrl stringByAppendingPathComponent:findCircleUrl];
+}
 
 
 

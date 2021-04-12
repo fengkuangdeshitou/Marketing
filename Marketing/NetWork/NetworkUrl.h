@@ -30,6 +30,10 @@ extern NSString * const hotSearchUrl;
 
 extern NSString * const downUrl;
 
+// 品圈
+
+extern NSString * const findCircleUrl;
+
 
 /// 赚钱
 

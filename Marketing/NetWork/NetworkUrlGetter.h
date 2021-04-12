@@ -56,4 +56,10 @@
 
 + (NSString *)getDownUrl;
 
++ (NSString *)getFindCircleUrl;
+
+
+
+
+
 @end

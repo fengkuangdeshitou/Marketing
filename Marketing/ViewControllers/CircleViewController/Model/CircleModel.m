@@ -9,4 +9,8 @@
 
 @implementation CircleModel
 
+- (NSArray *)images{
+    return [self.img_urls componentsSeparatedByString:@","];
+}
+
 @end
