@@ -10,6 +10,9 @@
 #import "HXPhotoPicker.h"
 
 @interface CircleNineImageCell ()
+
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * imageWidthConstraint;
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * imageHeightConstraint;
 @property(nonatomic,strong)HXPhotoManager *photoManager;
 @property(nonatomic,weak)IBOutlet UIView * imagesView;
 
@@ -50,11 +53,17 @@
 
 - (void)setModel:(CircleModel *)model{
     [super setModel:model];
+    self.imageHeightConstraint.constant = 80;
+    self.imageWidthConstraint.constant = 80;
     for (UIImageView * imageView in self.imagesView.subviews) {
         imageView.image = [UIImage new];
     }
     
-    if (model.images.count == 4) {
+    if (model.images.count == 1){
+        self.imageHeightConstraint.constant = 180;
+        self.imageWidthConstraint.constant = 120;
+        [ImageLoader loadImage:[self.imagesView viewWithTag:10] url:model.images.firstObject placeholder:nil];
+    }else if (model.images.count == 4) {
         for (int i=0; i<2; i++) {
             [ImageLoader loadImage:[self.imagesView viewWithTag:i+10] url:model.images[i] placeholder:nil];
             [ImageLoader loadImage:[self.imagesView viewWithTag:i+13] url:model.images[i] placeholder:nil];

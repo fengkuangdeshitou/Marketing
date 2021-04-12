@@ -14,9 +14,8 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - HXPhotoPicker (3.1.9):
-    - HXPhotoPicker/Default (= 3.1.9)
-  - HXPhotoPicker/Default (3.1.9)
+  - HXPhotoPicker/SDWebImage (3.1.9):
+    - SDWebImage (~> 5.0)
   - IQKeyboardManager (6.5.5)
   - LinkedME_LinkPage (1.5.5.4)
   - Masonry (1.1.0)
@@ -38,7 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - HXPhotoPicker
+  - HXPhotoPicker/SDWebImage
   - IQKeyboardManager
   - LinkedME_LinkPage
   - Masonry
@@ -76,6 +75,6 @@ SPEC CHECKSUMS:
   MOBFoundation: 934ee1a43aed452d51942b416bc3dc4d0813ac82
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: 1f25587d59fafe0fb064d1f059c77eaf3ce51808
+PODFILE CHECKSUM: 77c9596d375f5c4687497745709448d0da1c87b2
 
 COCOAPODS: 1.10.1

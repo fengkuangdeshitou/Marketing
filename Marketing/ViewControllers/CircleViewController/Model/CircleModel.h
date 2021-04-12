@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString * add_time;
 @property(nonatomic,copy)NSString * head_url;
 @property(nonatomic,copy)NSString * text;
+@property(nonatomic,copy)NSString * wechat_num;
+@property(nonatomic,copy)NSString * contact;
+@property(nonatomic,copy)NSString * wechat_er_code;
 @property(nonatomic,assign)BOOL isOpen;
 @property(nonatomic,copy)NSString * img_urls;
 @property(nonatomic,strong)NSArray * images;

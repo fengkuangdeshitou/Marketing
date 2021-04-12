@@ -19,6 +19,7 @@
 #import "CreateCircleCiewController.h"
 #import "HXPhotoPicker.h"
 #import "HXPhotoCustomNavigationBar.h"
+#import <ContactsUI/ContactsUI.h>
 
 @interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -196,10 +197,20 @@
         self.tableView.tableHeaderView = headerView;
         
         [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
-        [ImageLoader loadImage:self.avatarImageView url:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3043529068,4013011478&fm=26&gp=0.jpg" placeholder:nil];
+        [ImageLoader loadImage:self.avatarImageView url:[UserManager getUser].headimgurl placeholder:nil];
     }
 
-    [self loadCircleData];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.page = 1;
+        [self loadCircleData];
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        self.page ++;
+        [self loadCircleData];
+    }];
+    
+    [self.tableView.mj_header beginRefreshing];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleContentCell class])];
@@ -217,8 +228,11 @@
         NSArray * list = [result objectForKey:@"page"][@"list"];
         [self.dataArray addObjectsFromArray:[CircleModel mj_objectArrayWithKeyValuesArray:list]];
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
     } failure:^(NSString *errorMessage) {
-        
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
@@ -291,7 +305,9 @@
 
 - (void)addFriendAction:(UIButton *)btn{
     CircleMoreCell * cell = (CircleMoreCell *)[[btn superview] superview];
-    AddFriendAlertView * alertView = [[AddFriendAlertView alloc] init];
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    CircleModel * model = self.dataArray[indexPath.section];
+    [AddFriendAlertView addFriendWithModel:model];
 }
 
 - (void)circleMoreAction:(UIButton *)btn{
@@ -355,6 +371,16 @@
 #pragma mark - < HXCustomNavigationControllerDelegate >
 - (void)photoNavigationViewControllerFinishDismissCompletion:(HXCustomNavigationController *)photoNavigationViewController {
     [self presentMomentPublish];
+}
+
+- (void)contactViewController:(CNContactViewController *)viewController didCompleteWithContact:(CNContact *)contact{
+    if (contact) {
+        NSLog(@"保存成功");
+    }else{
+        NSLog(@"点击了取消，保存失败");
+    }
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+//    [[PreHelper getCurrentVC].navigationController popViewControllerAnimated:true];
 }
 
 /*

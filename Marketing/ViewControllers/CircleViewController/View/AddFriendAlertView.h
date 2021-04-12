@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddFriendAlertView : UIView
+
++ (void)addFriendWithModel:(CircleModel *)model;
 
 @end
 

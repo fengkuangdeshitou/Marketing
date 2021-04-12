@@ -126,6 +126,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="imageHeightConstraint" destination="ntP-4v-ygw" id="P6z-FB-ym8"/>
+                <outlet property="imageWidthConstraint" destination="jNW-r9-SrL" id="4jB-Fx-Gs8"/>
                 <outlet property="imagesView" destination="7U0-3d-Rvc" id="J8s-Vw-YLX"/>
             </connections>
             <point key="canvasLocation" x="26.811594202898554" y="153.01339285714286"/>

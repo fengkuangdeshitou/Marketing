@@ -10,6 +10,7 @@
 
 @interface AddFriendAlertView ()<CNContactViewControllerDelegate>
 
+@property(nonatomic,strong)CircleModel * model;
 @property(nonatomic,weak)IBOutlet UILabel * nameLabel;
 @property(nonatomic,weak)IBOutlet UILabel * wechatLabel;
 @property(nonatomic,weak)IBOutlet UILabel * mobileLabel;
@@ -22,13 +23,25 @@
 
 @implementation AddFriendAlertView
 
-- (instancetype)init
++ (void)addFriendWithModel:(CircleModel *)model{
+    AddFriendAlertView * alertView = [[AddFriendAlertView alloc] initWithModel:model];
+    [alertView show];
+}
+
+- (instancetype)initWithModel:(CircleModel *)model
 {
     self = [super init];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AddFriendAlertView class]) owner:self options:nil] lastObject];
         self.frame = UIScreen.mainScreen.bounds;
+        self.alpha = 0;
         [UIApplication.sharedApplication.keyWindow addSubview:self];
+        self.model = model;
+        
+        self.nameLabel.text = model.nikename;
+        self.wechatLabel.text = [NSString stringWithFormat:@"微信号:%@",model.wechat_num];
+        self.mobileLabel.text = [NSString stringWithFormat:@"手机号:%@",model.contact];
+        [ImageLoader loadImage:self.avatarImageView url:model.wechat_er_code placeholder:nil];
         
         self.addAddressBookButton.layer.cornerRadius = 17;
         self.addAddressBookButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
@@ -39,6 +52,12 @@
         
     }
     return self;
+}
+
+- (void)show{
+    [UIView animateWithDuration:0.1 animations:^{
+        self.alpha = 1;
+    }];
 }
 
 /// 复制微信
@@ -89,7 +108,7 @@
     
     CNContactViewController * contackController = [CNContactViewController viewControllerForNewContact:contack];
     contackController.contactStore = [[CNContactStore alloc] init];
-    contackController.delegate = self;
+    contackController.delegate = [PreHelper getCurrentVC];
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:contackController];
     nav.navigationBar.barTintColor = [UIColor whiteColor];
     [[PreHelper getCurrentVC] presentViewController:nav animated:true completion:^{
