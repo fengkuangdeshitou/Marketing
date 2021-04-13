@@ -28,6 +28,8 @@
 
 + (NSString *)getUploadImgUrl;
 
++ (NSString *)getUploadVideoUrl;
+
 + (NSString *)getMyShareRecordUrl;
 
 + (NSString *)getMyMoneyUrl;
@@ -61,5 +63,10 @@
 + (NSString *)getComplaintTypeListUrl;
 
 + (NSString *)getAddCircleUrl;
+
++ (NSString *)getAddComplaintUrl;
+
+
+
 
 @end

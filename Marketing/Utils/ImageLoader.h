@@ -31,6 +31,8 @@
 
 + (NSString *)getCreateImageName:(NSString *)userId;
 
++ (NSString *)getCreateVidelName;
+
 + (void)praiseAnimationsWithView:(UIView *)pariseview;
 
 + (NSString *)getYMD:(long long)time;

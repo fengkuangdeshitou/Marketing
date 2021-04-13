@@ -154,6 +154,7 @@
 		BDDEFB4525EBA6F500D7A5D7 /* MembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDEFB4325EBA6F500D7A5D7 /* MembersViewController.m */; };
 		BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDEFB4425EBA6F500D7A5D7 /* MembersViewController.xib */; };
 		BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE0A07225FF797700F40684 /* PhotoManager.m */; };
+		BDE18AA22625E24900D80997 /* PlayerSuperImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18AA12625E24900D80997 /* PlayerSuperImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -392,6 +393,8 @@
 		BDDEFB4425EBA6F500D7A5D7 /* MembersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembersViewController.xib; sourceTree = "<group>"; };
 		BDE0A07125FF797700F40684 /* PhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
 		BDE0A07225FF797700F40684 /* PhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
+		BDE18AA02625E24900D80997 /* PlayerSuperImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerSuperImageView.h; sourceTree = "<group>"; };
+		BDE18AA12625E24900D80997 /* PlayerSuperImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerSuperImageView.m; sourceTree = "<group>"; };
 		D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marketing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F30598FE1410F84634F9EB /* Pods-Marketing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketing.debug.xcconfig"; path = "Target Support Files/Pods-Marketing/Pods-Marketing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -744,6 +747,8 @@
 				0F35E7962625B00B00FCF378 /* CircleVideoCell.h */,
 				0F35E7972625B00B00FCF378 /* CircleVideoCell.m */,
 				0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */,
+				BDE18AA02625E24900D80997 /* PlayerSuperImageView.h */,
+				BDE18AA12625E24900D80997 /* PlayerSuperImageView.m */,
 				BDC265BA25ED0C3900DBAA64 /* CircleMoreActionAlertView.h */,
 				BDC265BB25ED0C3900DBAA64 /* CircleMoreActionAlertView.m */,
 				BDC265BE25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib */,
@@ -1273,6 +1278,7 @@
 				BD0543822603AC4100DEF83F /* UserModel.m in Sources */,
 				BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */,
 				BDC585A125EB57180021F808 /* UIView+Extension.m in Sources */,
+				BDE18AA22625E24900D80997 /* PlayerSuperImageView.m in Sources */,
 				0F35E7992625B00B00FCF378 /* CircleVideoCell.m in Sources */,
 				BDC265BC25ED0C3900DBAA64 /* CircleMoreActionAlertView.m in Sources */,
 				BDDEFB0525EB647300D7A5D7 /* SettingCell.m in Sources */,

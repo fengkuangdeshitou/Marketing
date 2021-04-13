@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleModel : NSObject
 
+@property(nonatomic,copy)NSString * circle_id;
 @property(nonatomic,copy)NSString * nikename;
 @property(nonatomic,copy)NSString * add_time;
 @property(nonatomic,copy)NSString * head_url;

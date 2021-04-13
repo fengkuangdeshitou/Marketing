@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CircleMoreActionAlertView : UIView
 
-+ (instancetype)showMoreAcrionAlertViewWithId:(NSString *)modelId;
++ (void)showMoreAcrionAlertViewWithId:(NSString *)circleId;
 
 @end
 

@@ -258,7 +258,7 @@
 /// @param filePath 视频路径
 - (void)uploadVideoWithFilePath:(NSString *)filePath{
     NSData * videoData = [NSData dataWithContentsOfFile:filePath];
-    [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:videoData andFileName:[ImageLoader getCreateImageName:[UserManager getUser].nickname] success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getUploadVideoUrl] formPostData:videoData andFileName:[ImageLoader getCreateVidelName] success:^(NSDictionary *result) {
         [self createCircleWithImageUrl:nil videoUrl:result[@"url"]];
     } failure:^(NSString *errorMessage) {
         
@@ -266,7 +266,9 @@
 }
 
 - (void)createCircleWithImageUrl:(NSString *)imageUrl videoUrl:(NSString *)videoUrl{
+    
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
+    
     if (self.textView.text.length > 0) {
         [params setValue:self.textView.text forKey:@"text"];
     }
@@ -276,7 +278,7 @@
     }
     
     if (videoUrl) {
-        [params setValue:imageUrl forKey:@"videoUrl"];
+        [params setValue:videoUrl forKey:@"videoUrl"];
     }
     
     [NetworkWorker networkPost:[NetworkUrlGetter getAddCircleUrl] params:params success:^(NSDictionary *result) {

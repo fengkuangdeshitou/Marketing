@@ -38,6 +38,8 @@ extern NSString * const addCircleUrl;
 
 extern NSString * const complaintTypeListUrl;
 
+extern NSString * const addComplaintUrl;
+
 
 /// 赚钱
 
@@ -66,6 +68,8 @@ extern NSString * const applyPayNotifyUrl;
 extern NSString * const updateMemberInfoUrl;
 
 extern NSString * const uploadImgUrl;
+
+extern NSString * const uploadVidelUrl;
 
 extern NSString * const bindPhoneUrl;
 

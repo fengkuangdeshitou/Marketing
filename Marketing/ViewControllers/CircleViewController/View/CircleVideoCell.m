@@ -6,10 +6,11 @@
 //
 
 #import "CircleVideoCell.h"
+#import "PlayerSuperImageView.h"
 
 @interface CircleVideoCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+@property (weak, nonatomic) IBOutlet PlayerSuperImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *mediaTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -36,15 +37,15 @@
 
 - (void)setModel:(CircleModel *)model{
     [super setModel:model];
-//    [ImageLoader loadImage:self.coverImageView url:model.cover placeholder:nil];
+    [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
 //    [ImageLoader loadImage:self.avatarImageView url:model.avatar placeholder:nil];
 //        _mediaTitleLabel.attributedText = _dataSource.mediaTitle;
 //        _usernameLabel.attributedText = _dataSource.username;
 }
 
 - (void)handleTapGesture:(id)sender {
-    if ( [(id)_delegate respondsToSelector:@selector(coverItemWasTapped:)] ) {
-        [_delegate coverItemWasTapped:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(coverItemWasTapped:)] ) {
+        [self.delegate coverItemWasTapped:self];
     }
 }
 

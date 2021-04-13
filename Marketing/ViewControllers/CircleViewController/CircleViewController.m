@@ -23,6 +23,7 @@
 #import <ContactsUI/ContactsUI.h>
 #import <SJVideoPlayer/SJVideoPlayer.h>
 #import <SJBaseVideoPlayer/UIScrollView+ListViewAutoplaySJAdd.h>
+#import "UIScrollView+ListViewAutoplaySJAdd.h"
 
 @interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,CreateCircleCiewControllerDelegate,CircleVideoCellDelegate,SJPlayerAutoplayDelegate>
 
@@ -247,21 +248,29 @@
     
 }
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    return YES;
+}
+
 - (void)coverItemWasTapped:(CircleVideoCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSLog(@"111=%ld",indexPath.row);
     [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
 }
 
 - (void)sj_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath {
-    CircleModel *model = self.dataArray[indexPath.section];
     
+    CircleModel *model = self.dataArray[indexPath.section];
     if ( !_player ) {
         _player = [SJVideoPlayer player];
     }
-    
-    
+
     _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:model.video_url] playModel:[SJPlayModel playModelWithTableView:self.tableView indexPath:indexPath]];
-//    _player.URLAsset.title = model.nikename;
+    _player.URLAsset.title = model.nikename;
 }
 
 - (void)loadCircleData{
@@ -275,6 +284,7 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     }];
@@ -314,15 +324,17 @@
     } cancelClick:nil];
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(CircleVideoCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CircleModel * model = self.dataArray[indexPath.section];
-//    cell.model = model;
-//    cell.delegate = self;
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(CircleVideoCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[CircleVideoCell class]]) {
+        CircleModel * model = self.dataArray[indexPath.section];
+        cell.model = model;
+        cell.delegate = self;
+    }
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CircleModel * model = self.dataArray[indexPath.section];
-    model.video_url = @"https://static-cdn.app.99maiyou.com/boxforum/videos/20210412/217__e0c8fa29b49e7c756fddfcf5463008cb.mp4";
     if (indexPath.row == 0) {
         CircleHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleHeaderCell class]) forIndexPath:indexPath];
         cell.model = model;
@@ -343,8 +355,8 @@
     }else if(indexPath.row == 3){
         if (model.video_url.length > 0) {
             CircleVideoCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleVideoCell class]) forIndexPath:indexPath];
-            cell.model = model;
-            cell.delegate = self;
+//            cell.model = model;
+//            cell.delegate = self;
             return cell;
         }else{
             CircleNineImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleNineImageCell class]) forIndexPath:indexPath];
@@ -367,7 +379,10 @@
 }
 
 - (void)circleMoreAction:(UIButton *)btn{
-    [self.view.window addSubview:[CircleMoreActionAlertView showMoreAcrionAlertViewWithId:@""]];
+    CircleMoreCell * cell = (CircleMoreCell *)[[btn superview] superview];
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    CircleModel * model = self.dataArray[indexPath.section];
+    [CircleMoreActionAlertView showMoreAcrionAlertViewWithId:model.circle_id];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

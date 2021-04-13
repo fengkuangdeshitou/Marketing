@@ -41,6 +41,9 @@ NSString * const findCircleUrl = @"app/circle/pageFindCircle";
 NSString * const addCircleUrl = @"app/circle/addCircle";
 /// 举报原因列表
 NSString * const complaintTypeListUrl = @"app/circle/ComplaintTypeList";
+/// 品圈举报
+NSString * const addComplaintUrl = @"app/circle/addComplaint";
+
 
 /// 我的余额
 NSString * const myMoneyUrl = @"/app/bank/myMoney";
@@ -68,6 +71,8 @@ NSString * const applyPayNotifyUrl = @"/app/pay/applyPayNotify";
 NSString * const updateMemberInfoUrl = @"/app/member/updateMemberInfo";
 /// 图片上传
 NSString * const uploadImgUrl = @"sys/oss/uploadImg";
+/// 文件上传
+NSString * const uploadVidelUrl = @"sys/oss/upload";
 /// 绑定手机号
 NSString * const bindPhoneUrl = @"app/member/bindPhone";
 /// VIP信息

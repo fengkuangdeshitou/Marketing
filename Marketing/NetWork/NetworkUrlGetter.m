@@ -47,6 +47,10 @@
     return [hostUrl stringByAppendingPathComponent:uploadImgUrl];
 }
 
++ (NSString *)getUploadVideoUrl{
+    return [hostUrl stringByAppendingPathComponent:uploadVidelUrl];
+}
+
 + (NSString *)getMyShareRecordUrl{
     return [hostUrl stringByAppendingPathComponent:myShareRecordUrl];
 }
@@ -115,7 +119,9 @@
     return [hostUrl stringByAppendingPathComponent:addCircleUrl];
 }
 
-
++ (NSString *)getAddComplaintUrl{
+    return [hostUrl stringByAppendingPathComponent:addComplaintUrl];
+}
 
 
 

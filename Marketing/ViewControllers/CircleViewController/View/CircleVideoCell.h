@@ -7,10 +7,15 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleBaseCell.h"
-
-@protocol CircleVideoCellDelegate;
+@class CircleVideoCell;
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol CircleVideoCellDelegate <NSObject>
+
+- (void)coverItemWasTapped:(CircleVideoCell *)cell;
+
+@end
 
 @interface CircleVideoCell : CircleBaseCell
 
@@ -18,10 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol CircleVideoCellDelegate
 
-- (void)coverItemWasTapped:(CircleVideoCell *)cell;
-
-@end
 
 NS_ASSUME_NONNULL_END

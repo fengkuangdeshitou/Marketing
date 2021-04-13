@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ComplaintsViewController : UIViewController
 
+- (instancetype)initWithCircleId:(NSString *)circleId;
+
 @end
 
 NS_ASSUME_NONNULL_END

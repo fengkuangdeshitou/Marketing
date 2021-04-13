@@ -145,6 +145,14 @@
     }
 }
 
++ (NSString *)getCreateVidelName{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:TIME_FORMAT];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    NSString *imageName = dateTime;
+    return [imageName stringByAppendingFormat:@".mp4"];
+}
+
 + (void)praiseAnimationsWithView:(UIView *)pariseview
 {
     [UIView animateWithDuration:0.25 animations:^{
