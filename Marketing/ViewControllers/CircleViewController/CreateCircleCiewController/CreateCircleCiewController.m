@@ -28,6 +28,7 @@
 // 没有完全显示之前不加动画
 @property (assign, nonatomic) BOOL didAppear;
 @property (strong, nonatomic) NSMutableDictionary *assetURLDict;
+@property (strong, nonatomic) NSMutableArray * imageUrlArray;
 
 @end
 
@@ -66,6 +67,7 @@
     self.bottomViewBottomConstraint.constant = -self.bottomViewHeightConstraint.constant;
     
     self.photoView.spacing = 5.f;
+    self.photoView.lineCount = 4;
     self.photoView.delegate = self;
     self.photoView.deleteCellShowAlert = YES;
     self.photoView.hideDeleteButton = YES;
@@ -109,7 +111,8 @@
 - (void)didPublishClick:(UIButton *)button {
     // 发布的时候也清空草稿
     [self.photoManager deleteLocalModelsInFile];
-//    self.assetURLDict = [NSMutableDictionary dictionary];
+    self.assetURLDict = [NSMutableDictionary dictionary];
+    self.imageUrlArray = [[NSMutableArray alloc] init];
     [self.view hx_showLoadingHUDText:nil];
     HXWeakSelf
     __block NSInteger count = 0;
@@ -128,7 +131,7 @@
                     count++;
                     // 可以直接通过manager取地址，不过如果中间获取失败了可能为nil
                     // 为nil的情况需要单独处理
-//                    [weakSelf.assetURLDict setObject:@{@"imageURL": imageURL, @"videoURL": videoURL} forKey:model.selectIndexStr];
+                    [weakSelf.assetURLDict setObject:imageURL forKey:model.selectIndexStr];
                     if (count == weakSelf.photoManager.afterSelectedCount) {
                         [weakSelf.view hx_handleLoading];
                         [weakSelf fetchAssetURLCompletion];
@@ -152,16 +155,17 @@
                         // URL是网络图片地址
                         
                     }
+                    [weakSelf.assetURLDict setObject:URL forKey:model.selectIndexStr];
                 }else if (mediaType == HXPhotoModelMediaSubTypeVideo) {
                     // 视频
                     if (isNetwork) {
                         // URL是网络视频地址
                         
                     }
+                    [weakSelf.assetURLDict setObject:@{@"videoURL":URL} forKey:model.selectIndexStr];
                 }
                 // 可以直接通过manager取地址，不过如果中间获取失败了可能为nil
                 // 为nil的情况需要单独处理
-//                [weakSelf.assetURLDict setObject:URL forKey:model.selectIndexStr];
                 if (count == weakSelf.photoManager.afterSelectedCount) {
                     [weakSelf.view hx_handleLoading];
                     [weakSelf fetchAssetURLCompletion];
@@ -198,7 +202,7 @@
             NSSLog(@"\n视频地址：%@", photoModel.videoURL);
         }
     }
-    /*
+    
     // 因为获取得到的顺序是错乱的，需要先排序一下
     NSArray *keys = [self.assetURLDict.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString * obj1, NSString * obj2) {
         if (obj1.integerValue > obj2.integerValue) {
@@ -214,27 +218,77 @@
         // 如果有传入网络图片/视频这个URL就可能是网络/视频，注意在获取的时候区分
         id obj = self.assetURLDict[key];
         if ([obj isKindOfClass:[NSURL class]]) {
-            NSSLog(@"%@", obj);
+//            NSSLog(@"%@", obj);
+            [self uploadImageWithFilePath:((NSURL *)obj).path];
         }else if ([obj isKindOfClass:[NSDictionary class]]) {
-            NSURL *imageURL = obj[@"imageURL"];
             NSURL *videoURL = obj[@"videoURL"];
-            NSSLog(@"LivePhoto：\nimageURL - %@\nvideoURL - %@", imageURL, videoURL);
+            [self uploadVideoWithFilePath:videoURL.path];
+//            NSSLog(@"LivePhoto：\nimageURL - %@\nvideoURL - %@", imageURL, videoURL);
         }
     }
-     */
-    HXWeakSelf
-    NSString *tipString;
-    HXPhotoModel *photoModel = self.photoManager.afterSelectedArray.firstObject;
-    // 因为图片和视频不能同时选择，所以可以只判断第一个model是什么类型就可以知道这次获取的地址是什么类型
-    if (photoModel.subType == HXPhotoModelMediaSubTypePhoto) {
-        tipString = @"图片地址获取完成";
-    }else if (photoModel.subType == HXPhotoModelMediaSubTypeVideo) {
-        tipString = @"视频地址获取完成";
-    }
-    hx_showAlert(self, tipString, @"已打印在控制台", @"确定", nil, ^{
-        [weakSelf back];
-    }, nil);
+     
+//    HXWeakSelf
+//    NSString *tipString;
+//    HXPhotoModel *photoModel = self.photoManager.afterSelectedArray.firstObject;
+//    // 因为图片和视频不能同时选择，所以可以只判断第一个model是什么类型就可以知道这次获取的地址是什么类型
+//    if (photoModel.subType == HXPhotoModelMediaSubTypePhoto) {
+//        tipString = @"图片地址获取完成";
+//    }else if (photoModel.subType == HXPhotoModelMediaSubTypeVideo) {
+//        tipString = @"视频地址获取完成";
+//    }
+//    hx_showAlert(self, tipString, @"已打印在控制台", @"确定", nil, ^{
+//        [weakSelf back];
+//    }, nil);
 }
+
+- (void)uploadImageWithFilePath:(NSString *)filePath{
+    NSData * data = [NSData dataWithContentsOfFile:filePath];
+    NSString * fileName = [[filePath componentsSeparatedByString:@"/"].lastObject componentsSeparatedByString:@"."].firstObject;
+    [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:data andFileName:[ImageLoader getCreateImageName:fileName] success:^(NSDictionary *result) {
+        [self.imageUrlArray addObject:result[@"url"]];
+        if (self.imageUrlArray.count == self.photoManager.afterSelectedArray.count) {
+            [self createCircleWithImageUrl:[self.imageUrlArray componentsJoinedByString:@","] videoUrl:nil];
+        }
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+/// 上传视频
+/// @param filePath 视频路径
+- (void)uploadVideoWithFilePath:(NSString *)filePath{
+    NSData * videoData = [NSData dataWithContentsOfFile:filePath];
+    [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:videoData andFileName:[ImageLoader getCreateImageName:[UserManager getUser].nickname] success:^(NSDictionary *result) {
+        [self createCircleWithImageUrl:nil videoUrl:result[@"url"]];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+- (void)createCircleWithImageUrl:(NSString *)imageUrl videoUrl:(NSString *)videoUrl{
+    NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
+    if (self.textView.text.length > 0) {
+        [params setValue:self.textView.text forKey:@"text"];
+    }
+    
+    if (imageUrl) {
+        [params setValue:imageUrl forKey:@"imgUrls"];
+    }
+    
+    if (videoUrl) {
+        [params setValue:imageUrl forKey:@"videoUrl"];
+    }
+    
+    [NetworkWorker networkPost:[NetworkUrlGetter getAddCircleUrl] params:params success:^(NSDictionary *result) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onCreateCircleSuccess)]) {
+            [self.delegate onCreateCircleSuccess];
+        }
+        [self back];
+    } failure:^(NSString *errorMessage) {
+        [self.view makeToast:errorMessage];
+    }];
+}
+
 - (void)photoView:(HXPhotoView *)photoView changeComplete:(NSArray<HXPhotoModel *> *)allList photos:(NSArray<HXPhotoModel *> *)photos videos:(NSArray<HXPhotoModel *> *)videos original:(BOOL)isOriginal {
     if (allList.count) {
         self.publishBtn.enabled = YES;

@@ -107,9 +107,13 @@
     return [hostUrl stringByAppendingPathComponent:findCircleUrl];
 }
 
++ (NSString *)getComplaintTypeListUrl{
+    return [hostUrl stringByAppendingPathComponent:complaintTypeListUrl];
+}
 
-
-
++ (NSString *)getAddCircleUrl{
+    return [hostUrl stringByAppendingPathComponent:addCircleUrl];
+}
 
 
 

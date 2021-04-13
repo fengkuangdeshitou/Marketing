@@ -16,6 +16,7 @@ pod 'SDWebImage'
 pod 'MBProgressHUD'
 pod 'IQKeyboardManager'
 pod 'LinkedME_LinkPage'
+pod 'SJVideoPlayer'
 pod 'mob_sharesdk'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'  
 

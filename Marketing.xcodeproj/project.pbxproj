@@ -24,6 +24,11 @@
 		0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A31F25F895D00001B38E /* APBToygerFacade.bundle */; };
 		0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F28A32125F895D10001B38E /* BioAuthEngine.bundle */; };
 		0F28A32F25F89EF20001B38E /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F28A32E25F89EF20001B38E /* HttpClient.m */; };
+		0F35E74826253C8700FCF378 /* ReportReasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E74626253C8700FCF378 /* ReportReasonsViewController.m */; };
+		0F35E74926253C8700FCF378 /* ReportReasonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F35E74726253C8700FCF378 /* ReportReasonsViewController.xib */; };
+		0F35E74F26253E8200FCF378 /* ComplaintsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E74E26253E8200FCF378 /* ComplaintsModel.m */; };
+		0F35E7992625B00B00FCF378 /* CircleVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E7972625B00B00FCF378 /* CircleVideoCell.m */; };
+		0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */; };
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
@@ -176,6 +181,14 @@
 		0F28A32125F895D10001B38E /* BioAuthEngine.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BioAuthEngine.bundle; sourceTree = "<group>"; };
 		0F28A32D25F89EF20001B38E /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		0F28A32E25F89EF20001B38E /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		0F35E74526253C8700FCF378 /* ReportReasonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportReasonsViewController.h; sourceTree = "<group>"; };
+		0F35E74626253C8700FCF378 /* ReportReasonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportReasonsViewController.m; sourceTree = "<group>"; };
+		0F35E74726253C8700FCF378 /* ReportReasonsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportReasonsViewController.xib; sourceTree = "<group>"; };
+		0F35E74D26253E8200FCF378 /* ComplaintsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplaintsModel.h; sourceTree = "<group>"; };
+		0F35E74E26253E8200FCF378 /* ComplaintsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplaintsModel.m; sourceTree = "<group>"; };
+		0F35E7962625B00B00FCF378 /* CircleVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleVideoCell.h; sourceTree = "<group>"; };
+		0F35E7972625B00B00FCF378 /* CircleVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleVideoCell.m; sourceTree = "<group>"; };
+		0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleVideoCell.xib; sourceTree = "<group>"; };
 		0F67410D26007EEA00BF7315 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
 		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
@@ -464,6 +477,25 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		0F35E74426253C6E00FCF378 /* ReportReasonsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0F35E74526253C8700FCF378 /* ReportReasonsViewController.h */,
+				0F35E74626253C8700FCF378 /* ReportReasonsViewController.m */,
+				0F35E74726253C8700FCF378 /* ReportReasonsViewController.xib */,
+			);
+			path = ReportReasonsViewController;
+			sourceTree = "<group>";
+		};
+		0F35E74C26253E6200FCF378 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F35E74D26253E8200FCF378 /* ComplaintsModel.h */,
+				0F35E74E26253E8200FCF378 /* ComplaintsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +741,9 @@
 				BDC265B425ED09EF00DBAA64 /* CircleNineImageCell.h */,
 				BDC265B525ED09EF00DBAA64 /* CircleNineImageCell.m */,
 				BDC265B625ED09EF00DBAA64 /* CircleNineImageCell.xib */,
+				0F35E7962625B00B00FCF378 /* CircleVideoCell.h */,
+				0F35E7972625B00B00FCF378 /* CircleVideoCell.m */,
+				0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */,
 				BDC265BA25ED0C3900DBAA64 /* CircleMoreActionAlertView.h */,
 				BDC265BB25ED0C3900DBAA64 /* CircleMoreActionAlertView.m */,
 				BDC265BE25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib */,
@@ -997,6 +1032,8 @@
 				BDDEFB2D25EB7BB600D7A5D7 /* ComplaintsViewController.h */,
 				BDDEFB2E25EB7BB600D7A5D7 /* ComplaintsViewController.m */,
 				BDDEFB2F25EB7BB600D7A5D7 /* ComplaintsViewController.xib */,
+				0F35E74426253C6E00FCF378 /* ReportReasonsViewController */,
+				0F35E74C26253E6200FCF378 /* Model */,
 				BDC2657B25EBD4B300DBAA64 /* View */,
 			);
 			path = ComplaintsViewController;
@@ -1097,6 +1134,7 @@
 				BDDEFB0D25EB6E9400D7A5D7 /* UserInfoViewController.xib in Resources */,
 				BDC2659625EBEBED00DBAA64 /* CircleHeaderCell.xib in Resources */,
 				BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */,
+				0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */,
 				BDC585B925EB5C590021F808 /* UserCell.xib in Resources */,
 				0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */,
 				BDC585B325EB5A1E0021F808 /* HomeViewController.xib in Resources */,
@@ -1123,6 +1161,7 @@
 				BDC2659D25EBEE2A00DBAA64 /* CircleContentCell.xib in Resources */,
 				BDC2658825EBD66600DBAA64 /* ComplaintReasonCell.xib in Resources */,
 				BDDEFB3F25EB834F00D7A5D7 /* MobileLoginViewController.xib in Resources */,
+				0F35E74926253C8700FCF378 /* ReportReasonsViewController.xib in Resources */,
 				BDC265DE25EE5EEB00DBAA64 /* ProfitShareCell.xib in Resources */,
 				BDDEFB3125EB7BB600D7A5D7 /* ComplaintsViewController.xib in Resources */,
 				BD06EC0B25F7A3D6005A8FE4 /* DrawAmountViewController.xib in Resources */,
@@ -1234,6 +1273,7 @@
 				BD0543822603AC4100DEF83F /* UserModel.m in Sources */,
 				BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */,
 				BDC585A125EB57180021F808 /* UIView+Extension.m in Sources */,
+				0F35E7992625B00B00FCF378 /* CircleVideoCell.m in Sources */,
 				BDC265BC25ED0C3900DBAA64 /* CircleMoreActionAlertView.m in Sources */,
 				BDDEFB0525EB647300D7A5D7 /* SettingCell.m in Sources */,
 				BDDEFB4525EBA6F500D7A5D7 /* MembersViewController.m in Sources */,
@@ -1248,6 +1288,7 @@
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
 				BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
+				0F35E74F26253E8200FCF378 /* ComplaintsModel.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
 				BD05437B26039D1100DEF83F /* DeviceTool.m in Sources */,
@@ -1259,6 +1300,7 @@
 				BD835F95260E379000ADCDBD /* InvitationModel.m in Sources */,
 				BDC5859F25EB57180021F808 /* UIButton+ImageTitleSpacing.m in Sources */,
 				BD9869A025FE49F300C5177A /* ServiceAlertView.m in Sources */,
+				0F35E74826253C8700FCF378 /* ReportReasonsViewController.m in Sources */,
 				BDC5855C25EB4C4E0021F808 /* NetworkUrl.m in Sources */,
 				BD410C8925F8F78A007A1D5E /* BindingMobileViewController.m in Sources */,
 				BDDEFB1425EB700500D7A5D7 /* UserHeaderCell.m in Sources */,

@@ -9,9 +9,11 @@
 #import "ComplaintReasonHeaderCell.h"
 #import "ComplaintReasonCell.h"
 #import "ComplaintImageCell.h"
+#import "ReportReasonsViewController.h"
 
-@interface ComplaintsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ComplaintsViewController ()<UITableViewDelegate,UITableViewDataSource,ReportReasonsViewControllerDelegate>
 
+@property(nonatomic,strong)ComplaintsModel * complaintsModel;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 
 @end
@@ -28,9 +30,15 @@
     
 }
 
+- (void)onDidSelectedReasonsModel:(ComplaintsModel *)model{
+    self.complaintsModel = model;
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         ComplaintReasonHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ComplaintReasonHeaderCell class]) forIndexPath:indexPath];
+        cell.contentLabel.text = self.complaintsModel.dict_name;
         return cell;
     }else if(indexPath.section == 1){
         ComplaintReasonCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ComplaintReasonCell class]) forIndexPath:indexPath];
@@ -38,6 +46,15 @@
     }else{
         ComplaintImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ComplaintImageCell class]) forIndexPath:indexPath];
         return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        ReportReasonsViewController * reasons = [[ReportReasonsViewController alloc] init];
+        reasons.delegate = self;
+        reasons.title = @"举报原因";
+        [self.navigationController pushViewController:reasons animated:YES];
     }
 }
 

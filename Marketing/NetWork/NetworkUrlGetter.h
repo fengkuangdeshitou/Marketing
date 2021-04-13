@@ -58,8 +58,8 @@
 
 + (NSString *)getFindCircleUrl;
 
++ (NSString *)getComplaintTypeListUrl;
 
-
-
++ (NSString *)getAddCircleUrl;
 
 @end

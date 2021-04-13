@@ -27,7 +27,7 @@
     HXWeakSelf
     // 跳转预览界面时动画起始的view
     _photoManager.configuration.customPreviewFromView = ^UIView *(NSInteger currentIndex) {
-        return weakSelf;
+        return [weakSelf.imagesView viewWithTag:currentIndex+10];
     };
     // 跳转预览界面时展现动画的image
     _photoManager.configuration.customPreviewFromImage = ^UIImage *(NSInteger currentIndex) {
@@ -35,7 +35,7 @@
     };
     // 退出预览界面时终点view
     _photoManager.configuration.customPreviewToView = ^UIView *(NSInteger currentIndex) {
-        return weakSelf;
+        return [weakSelf.imagesView viewWithTag:currentIndex+10];;
     };
     return _photoManager;
 }
@@ -76,6 +76,7 @@
 }
 
 - (void)imageDetail:(UITapGestureRecognizer *)sender{
+    [self.photoManager clearSelectedList];
     NSMutableArray * imageModelArray = [[NSMutableArray alloc] init];
     for (int i=0; i<self.model.images.count; i++) {
         HXCustomAssetModel *assetModel = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:self.model.images[i]] selected:YES];

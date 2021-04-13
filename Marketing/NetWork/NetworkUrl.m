@@ -37,7 +37,10 @@ NSString * const codeLoginUrl = @"app/sms/checkCode";
 
 /// 品圈列表
 NSString * const findCircleUrl = @"app/circle/pageFindCircle";
-
+/// 发布品圈
+NSString * const addCircleUrl = @"app/circle/addCircle";
+/// 举报原因列表
+NSString * const complaintTypeListUrl = @"app/circle/ComplaintTypeList";
 
 /// 我的余额
 NSString * const myMoneyUrl = @"/app/bank/myMoney";

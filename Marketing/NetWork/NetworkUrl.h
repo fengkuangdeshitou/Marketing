@@ -34,6 +34,10 @@ extern NSString * const downUrl;
 
 extern NSString * const findCircleUrl;
 
+extern NSString * const addCircleUrl;
+
+extern NSString * const complaintTypeListUrl;
+
 
 /// 赚钱
 

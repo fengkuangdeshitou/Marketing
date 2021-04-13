@@ -12,6 +12,7 @@
 #import "CircleStatusCell.h"
 #import "CircleMoreCell.h"
 #import "CircleNineImageCell.h"
+#import "CircleVideoCell.h"
 #import "CircleMoreActionAlertView.h"
 #import "AddFriendAlertView.h"
 #import "CircleModel.h"
@@ -20,8 +21,10 @@
 #import "HXPhotoPicker.h"
 #import "HXPhotoCustomNavigationBar.h"
 #import <ContactsUI/ContactsUI.h>
+#import <SJVideoPlayer/SJVideoPlayer.h>
+#import <SJBaseVideoPlayer/UIScrollView+ListViewAutoplaySJAdd.h>
 
-@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,CreateCircleCiewControllerDelegate,CircleVideoCellDelegate,SJPlayerAutoplayDelegate>
 
 @property(nonatomic,copy)NSString * userId;
 @property(nonatomic,assign)NSInteger page;
@@ -38,6 +41,7 @@
 @property (strong, nonatomic) HXPhotoManager *photoManager;
 @property (strong, nonatomic) CAGradientLayer *topMaskLayer;
 @property (strong, nonatomic) UIView *topView;
+@property (nonatomic, strong) SJVideoPlayer *player;
 
 @end
 
@@ -175,10 +179,27 @@
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self.player vc_viewWillDisappear];
     if (!self.userId) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
+
+- (void)onCreateCircleSuccess{
+    self.page = 1;
+    [self loadCircleData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.player vc_viewDidAppear];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.player vc_viewDidDisappear];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -217,11 +238,34 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleStatusCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleStatusCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleMoreCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleMoreCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleNineImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleNineImageCell class])];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleVideoCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleVideoCell class])];
+    
+    // 开启滑动自动播放
+    SJPlayerAutoplayConfig *config = [SJPlayerAutoplayConfig configWithAutoplayDelegate:self];
+    config.autoplayPosition = SJAutoplayPositionMiddle; // 播放距离中线最近的视频
+    [self.tableView sj_enableAutoplayWithConfig:config];
     
 }
 
+- (void)coverItemWasTapped:(CircleVideoCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
+}
+
+- (void)sj_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath {
+    CircleModel *model = self.dataArray[indexPath.section];
+    
+    if ( !_player ) {
+        _player = [SJVideoPlayer player];
+    }
+    
+    
+    _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:model.video_url] playModel:[SJPlayModel playModelWithTableView:self.tableView indexPath:indexPath]];
+//    _player.URLAsset.title = model.nikename;
+}
+
 - (void)loadCircleData{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindCircleUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"10"} success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindCircleUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"10"} success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
@@ -270,8 +314,15 @@
     } cancelClick:nil];
 }
 
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(CircleVideoCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    CircleModel * model = self.dataArray[indexPath.section];
+//    cell.model = model;
+//    cell.delegate = self;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CircleModel * model = self.dataArray[indexPath.section];
+    model.video_url = @"https://static-cdn.app.99maiyou.com/boxforum/videos/20210412/217__e0c8fa29b49e7c756fddfcf5463008cb.mp4";
     if (indexPath.row == 0) {
         CircleHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleHeaderCell class]) forIndexPath:indexPath];
         cell.model = model;
@@ -290,12 +341,17 @@
         };
         return cell;
     }else if(indexPath.row == 3){
-        CircleNineImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleNineImageCell class]) forIndexPath:indexPath];
-        cell.model = model;
-        return cell;
-    }
-    
-    else{
+        if (model.video_url.length > 0) {
+            CircleVideoCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleVideoCell class]) forIndexPath:indexPath];
+            cell.model = model;
+            cell.delegate = self;
+            return cell;
+        }else{
+            CircleNineImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleNineImageCell class]) forIndexPath:indexPath];
+            cell.model = model;
+            return cell;
+        }
+    }else{
         CircleMoreCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleMoreCell class]) forIndexPath:indexPath];
         [cell.addFriendButton addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreButton addTarget:self action:@selector(circleMoreAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -355,7 +411,7 @@
     
     CreateCircleCiewController *vc = [[CreateCircleCiewController alloc] init];
     vc.photoManager = self.photoManager;
-
+    vc.delegate = self;
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalPresentationCapturesStatusBarAppearance = YES;
     [self presentViewController:vc animated:YES completion:nil];

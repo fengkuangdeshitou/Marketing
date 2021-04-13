@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString * wechat_er_code;
 @property(nonatomic,assign)BOOL isOpen;
 @property(nonatomic,copy)NSString * img_urls;
+@property(nonatomic,copy)NSString * video_url;
 @property(nonatomic,strong)NSArray * images;
 
 @end

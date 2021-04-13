@@ -7,11 +7,20 @@
 
 #import <UIKit/UIKit.h>
 @class HXPhotoManager;
+
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol CreateCircleCiewControllerDelegate <NSObject>
+
+- (void)onCreateCircleSuccess;
+
+@end
 
 @interface CreateCircleCiewController : UIViewController
 
 @property (strong, nonatomic) HXPhotoManager *photoManager;
+
+@property (weak, nonatomic) id<CreateCircleCiewControllerDelegate>delegate;
 
 @end
 
