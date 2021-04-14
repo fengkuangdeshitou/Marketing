@@ -7,6 +7,7 @@
 
 #import "SettingViewController.h"
 #import "SettingCell.h"
+#import "WebViewController.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -52,6 +53,13 @@
     cell.detailIcon.image = [UIImage imageNamed:@"setting_cell_more"];
     cell.detailIconWidth.constant = 5.5;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 1) {
+        WebViewController * web = [[WebViewController alloc] initWithUrl:@"https://www.bing.com"];
+        [self.navigationController pushViewController:web animated:YES];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

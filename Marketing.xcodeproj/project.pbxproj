@@ -156,6 +156,9 @@
 		BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDDEFB4425EBA6F500D7A5D7 /* MembersViewController.xib */; };
 		BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE0A07225FF797700F40684 /* PhotoManager.m */; };
 		BDE18AA22625E24900D80997 /* PlayerSuperImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18AA12625E24900D80997 /* PlayerSuperImageView.m */; };
+		BDE18AA926270A6600D80997 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18AA726270A6600D80997 /* WebViewController.m */; };
+		BDE18AAA26270A6600D80997 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE18AA826270A6600D80997 /* WebViewController.xib */; };
+		BDE18AAF26270CCD00D80997 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE18AAE26270CCD00D80997 /* CustomWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -398,6 +401,11 @@
 		BDE0A07225FF797700F40684 /* PhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
 		BDE18AA02625E24900D80997 /* PlayerSuperImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerSuperImageView.h; sourceTree = "<group>"; };
 		BDE18AA12625E24900D80997 /* PlayerSuperImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerSuperImageView.m; sourceTree = "<group>"; };
+		BDE18AA626270A6600D80997 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		BDE18AA726270A6600D80997 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		BDE18AA826270A6600D80997 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		BDE18AAD26270CCD00D80997 /* CustomWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
+		BDE18AAE26270CCD00D80997 /* CustomWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
 		D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marketing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F30598FE1410F84634F9EB /* Pods-Marketing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketing.debug.xcconfig"; path = "Target Support Files/Pods-Marketing/Pods-Marketing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -983,6 +991,7 @@
 				BDDEFB0225EB647300D7A5D7 /* SettingCell.h */,
 				BDDEFB0325EB647300D7A5D7 /* SettingCell.m */,
 				BDDEFB0425EB647300D7A5D7 /* SettingCell.xib */,
+				BDE18AA526270A5200D80997 /* WebViewController */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -1072,6 +1081,18 @@
 			path = MembersViewController;
 			sourceTree = "<group>";
 		};
+		BDE18AA526270A5200D80997 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BDE18AA626270A6600D80997 /* WebViewController.h */,
+				BDE18AA726270A6600D80997 /* WebViewController.m */,
+				BDE18AA826270A6600D80997 /* WebViewController.xib */,
+				BDE18AAD26270CCD00D80997 /* CustomWebView.h */,
+				BDE18AAE26270CCD00D80997 /* CustomWebView.m */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1133,6 +1154,7 @@
 			files = (
 				BDC265C625ED2A7000DBAA64 /* ProfitableViewController.xib in Resources */,
 				BD410C9225F8FD2E007A1D5E /* BindingAliViewController.xib in Resources */,
+				BDE18AAA26270A6600D80997 /* WebViewController.xib in Resources */,
 				BDDEFAFF25EB63CF00D7A5D7 /* SettingViewController.xib in Resources */,
 				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
 				BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */,
@@ -1297,6 +1319,7 @@
 				BD0543862603AE0C00DEF83F /* UserManager.m in Sources */,
 				BDC265D725EE5D4F00DBAA64 /* ProfitHeaderCell.m in Sources */,
 				BD06EC1A25F7ADEE005A8FE4 /* DrawAmountListCell.m in Sources */,
+				BDE18AAF26270CCD00D80997 /* CustomWebView.m in Sources */,
 				BDC2658E25EBDA0600DBAA64 /* ComplaintImageCell.m in Sources */,
 				BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */,
 				BD06EC2925F7C6C6005A8FE4 /* InvitationListCell.m in Sources */,
@@ -1333,6 +1356,7 @@
 				0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */,
 				BDC265B125EBF66400DBAA64 /* CircleBaseCell.m in Sources */,
 				BD410CA525FA4379007A1D5E /* SearchItemCollectionCell.m in Sources */,
+				BDE18AA926270A6600D80997 /* WebViewController.m in Sources */,
 				BDC5857425EB50260021F808 /* PreHelper.m in Sources */,
 				BDC265D025EE5BB100DBAA64 /* ImageOrVideoCell.m in Sources */,
 				BDDEFB2825EB7B1900D7A5D7 /* CircleViewController.m in Sources */,

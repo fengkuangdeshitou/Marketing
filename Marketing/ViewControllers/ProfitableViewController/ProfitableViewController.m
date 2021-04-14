@@ -63,9 +63,11 @@
     
     [self loadMyMoneyData];
     [self getMyBankType];
-    [self loadShareTextData];
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
+/// 分享文案数据
 - (void)loadShareTextData{
     [NetworkWorker networkGet:[NetworkUrlGetter getShareTextUrl] success:^(NSDictionary *result) {
         NSArray * list = result[@"List"];
@@ -90,7 +92,6 @@
         
     }];
 }
-
 
 /// 查找我的提现方式
 - (void)getMyBankType{
