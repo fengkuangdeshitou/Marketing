@@ -29,6 +29,7 @@
 		0F35E74F26253E8200FCF378 /* ComplaintsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E74E26253E8200FCF378 /* ComplaintsModel.m */; };
 		0F35E7992625B00B00FCF378 /* CircleVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E7972625B00B00FCF378 /* CircleVideoCell.m */; };
 		0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */; };
+		0F35E8482626BAA800FCF378 /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E8472626BAA800FCF378 /* ShareModel.m */; };
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
@@ -190,6 +191,8 @@
 		0F35E7962625B00B00FCF378 /* CircleVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleVideoCell.h; sourceTree = "<group>"; };
 		0F35E7972625B00B00FCF378 /* CircleVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleVideoCell.m; sourceTree = "<group>"; };
 		0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleVideoCell.xib; sourceTree = "<group>"; };
+		0F35E8462626BAA800FCF378 /* ShareModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareModel.h; sourceTree = "<group>"; };
+		0F35E8472626BAA800FCF378 /* ShareModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
 		0F67410D26007EEA00BF7315 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
 		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
@@ -686,6 +689,8 @@
 			children = (
 				BD73BCDE26079B3F00ADD55F /* BankModel.h */,
 				BD73BCDF26079B3F00ADD55F /* BankModel.m */,
+				0F35E8462626BAA800FCF378 /* ShareModel.h */,
+				0F35E8472626BAA800FCF378 /* ShareModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1285,6 +1290,7 @@
 				BDDEFB4525EBA6F500D7A5D7 /* MembersViewController.m in Sources */,
 				BDDEFB3E25EB834F00D7A5D7 /* MobileLoginViewController.m in Sources */,
 				BDDEFB3025EB7BB600D7A5D7 /* ComplaintsViewController.m in Sources */,
+				0F35E8482626BAA800FCF378 /* ShareModel.m in Sources */,
 				BDC2659525EBEBED00DBAA64 /* CircleHeaderCell.m in Sources */,
 				BDC2658725EBD66600DBAA64 /* ComplaintReasonCell.m in Sources */,
 				BDC585B225EB5A1E0021F808 /* HomeViewController.m in Sources */,

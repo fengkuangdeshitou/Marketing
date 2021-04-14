@@ -123,6 +123,8 @@
     return [hostUrl stringByAppendingPathComponent:addComplaintUrl];
 }
 
-
++ (NSString *)getShareTextUrl{
+    return [hostUrl stringByAppendingPathComponent:shareTextUrl];
+}
 
 @end

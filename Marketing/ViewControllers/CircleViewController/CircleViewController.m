@@ -258,7 +258,6 @@
 
 - (void)coverItemWasTapped:(CircleVideoCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSLog(@"111=%ld",indexPath.row);
     [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
 }
 
@@ -382,7 +381,7 @@
     CircleMoreCell * cell = (CircleMoreCell *)[[btn superview] superview];
     NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
     CircleModel * model = self.dataArray[indexPath.section];
-    [CircleMoreActionAlertView showMoreAcrionAlertViewWithId:model.circle_id];
+    [CircleMoreActionAlertView showMoreAcrionAlertViewWithCircleModel:model];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

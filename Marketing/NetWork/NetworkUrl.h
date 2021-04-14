@@ -57,6 +57,8 @@ extern NSString * const myDrawUrl;
 
 extern NSString * const dicPriceListUrl;
 
+extern NSString * const shareTextUrl;
+
 /// 个人中心
 
 extern NSString * const myGroupDownUrl;

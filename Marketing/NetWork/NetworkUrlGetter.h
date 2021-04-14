@@ -66,7 +66,7 @@
 
 + (NSString *)getAddComplaintUrl;
 
-
++ (NSString *)getShareTextUrl;
 
 
 @end

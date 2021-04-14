@@ -12,11 +12,13 @@
 #import "DrawAmountViewController.h"
 #import "InvitationViewController.h"
 #import "BankModel.h"
+#import "ShareModel.h"
 
 @interface ProfitableViewController ()<UITableViewDelegate,UITableViewDataSource,BindingAliViewControllerDelegate,DrawAmountViewControllerDelegate>
 
 @property(nonatomic,strong)UserModel * userModel;
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
+@property(nonatomic,strong)NSArray * dataArray;
 @property(nonatomic,weak)IBOutlet UIView * todayView;
 @property(nonatomic,weak)IBOutlet UIView * totalView;
 @property(nonatomic,weak)IBOutlet UIView * invitationView;
@@ -55,13 +57,29 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitShareCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitShareCell class])];
     
-    [self loadData];
-    [self getMyBankType];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadShareTextData];
+    }];
     
+    [self loadMyMoneyData];
+    [self getMyBankType];
+    [self loadShareTextData];
 }
 
-/// 请求数据
-- (void)loadData{
+- (void)loadShareTextData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getShareTextUrl] success:^(NSDictionary *result) {
+        NSArray * list = result[@"List"];
+        self.dataArray = [ShareModel mj_objectArrayWithKeyValuesArray:list];
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    } failure:^(NSString *errorMessage) {
+        [self.tableView.mj_header endRefreshing];
+        [self.view makeToast:errorMessage];
+    }];
+}
+
+/// 请求余额
+- (void)loadMyMoneyData{
     [NetworkWorker networkGet:[NetworkUrlGetter getMyMoneyUrl] success:^(NSDictionary *result) {
         self.dataDictionary = result;
         self.moneyLabel.text = [NSString stringWithFormat:@"%@",result[@"myMoney"]];
@@ -113,7 +131,7 @@
 
 /// 提现成功回调
 - (void)onDeawAmountSuccess{
-    [self loadData];
+    [self loadMyMoneyData];
 }
 
 /// 邀请记录
@@ -136,18 +154,21 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ShareModel * model = self.dataArray[indexPath.section];
+    model.index = indexPath.section;
     if (indexPath.row == 0) {
         ProfitHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProfitHeaderCell class]) forIndexPath:indexPath];
+        cell.model = model;
         return cell;
     }else{
         ProfitShareCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProfitShareCell class]) forIndexPath:indexPath];
+        cell.model = model;
         return cell;
     }
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return self.dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

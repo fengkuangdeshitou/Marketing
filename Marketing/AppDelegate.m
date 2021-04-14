@@ -38,7 +38,7 @@
     
     //9a36d88e4c646b80f6870e4e1cf0c165
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
-        [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com"];
+        [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com/"];
     }];
     
     LinkedME* linkedme = [LinkedME getInstance];
@@ -49,7 +49,7 @@
     //打印日志
 //    [linkedme setDebug];
     
-//    [linkedme disableClipboardMatch];
+    [linkedme disableClipboardMatch];
     
 //    DetailViewController * detail = [[DetailViewController alloc] init];
 //    [linkedme registerDeepLinkController:detail forKey:@"DetailViewController"];

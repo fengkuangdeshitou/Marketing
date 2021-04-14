@@ -6,14 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShareModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfitShareCell : UITableViewCell
 
-@property(nonatomic,weak)IBOutlet UIButton * shareToFriendsButton;
-@property(nonatomic,weak)IBOutlet UIButton * shareToGroupButton;
-@property(nonatomic,weak)IBOutlet UIButton * shareToFriendCircleButton;
+@property(nonatomic,strong)ShareModel * model;
 
 @end
 

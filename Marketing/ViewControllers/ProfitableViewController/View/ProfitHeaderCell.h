@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShareModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfitHeaderCell : UITableViewCell
+
+@property(nonatomic,strong)ShareModel * model;
 
 @end
 

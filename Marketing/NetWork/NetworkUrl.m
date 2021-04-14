@@ -59,7 +59,8 @@ NSString * const myDrawRecordUrl = @"app/member/myDrawRecord";
 NSString * const myDrawUrl = @"app/bank/tixian";
 /// 价目表
 NSString * const dicPriceListUrl = @"/app/pay/getDicPriceList";
-
+/// 赚钱分享文案
+NSString * const shareTextUrl = @"/app/circle/getShareText";
 
 /// 剩余下载
 NSString * const myGroupDownUrl = @"/app/member/getMyGroupDown";

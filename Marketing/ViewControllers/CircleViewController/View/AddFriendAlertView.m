@@ -50,6 +50,8 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
         [self addGestureRecognizer:tap];
         
+        UILongPressGestureRecognizer * longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveToPhoto)];
+        [self.avatarImageView addGestureRecognizer:longpress];
     }
     return self;
 }
@@ -64,7 +66,7 @@
 /// @param sender 按钮
 - (IBAction)copyWechat:(UIButton *)sender{
     UIPasteboard * paste = [UIPasteboard generalPasteboard];
-    paste.string = @"微信号";
+    paste.string = self.model.wechat_num;
     [self makeToast:@"已复制到剪贴板"];
 }
 
@@ -91,8 +93,8 @@
         }
     
     CNMutableContact * contack = [[CNMutableContact alloc] init];
-    contack.nickname = @"啦啦啦";
-    CNPhoneNumber * number = [CNPhoneNumber phoneNumberWithStringValue:@"18700850373"];
+    contack.nickname = [NSString stringWithFormat:@"WSYX%@",self.model.nikename];
+    CNPhoneNumber * number = [CNPhoneNumber phoneNumberWithStringValue:self.model.contact];
     CNLabeledValue * value = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberiPhone value:number];
     contack.phoneNumbers = @[value];
     
