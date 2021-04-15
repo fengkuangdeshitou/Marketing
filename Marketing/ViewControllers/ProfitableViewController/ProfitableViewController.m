@@ -6,11 +6,12 @@
 //
 
 #import "ProfitableViewController.h"
-#import "ProfitHeaderCell.h"
-#import "ProfitShareCell.h"
 #import "BindingAliViewController.h"
 #import "DrawAmountViewController.h"
 #import "InvitationViewController.h"
+#import "ProfitHeaderCell.h"
+#import "ProfitShareCell.h"
+#import "ProfitImageCell.h"
 #import "BankModel.h"
 #import "ShareModel.h"
 
@@ -56,6 +57,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitShareCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitShareCell class])];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProfitImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([ProfitImageCell class])];
+    
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadShareTextData];
@@ -161,6 +164,10 @@
         ProfitHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProfitHeaderCell class]) forIndexPath:indexPath];
         cell.model = model;
         return cell;
+    }else if (indexPath.row == 1){
+        ProfitImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProfitImageCell class]) forIndexPath:indexPath];
+        cell.model = model;
+        return cell;
     }else{
         ProfitShareCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProfitShareCell class]) forIndexPath:indexPath];
         cell.model = model;
@@ -173,12 +180,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         return UITableViewAutomaticDimension;
+    }else if(indexPath.row == 1){
+        return 180;
     }else{
         return 71;
     }

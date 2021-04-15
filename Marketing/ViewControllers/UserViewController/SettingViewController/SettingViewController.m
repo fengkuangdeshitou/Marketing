@@ -6,8 +6,9 @@
 //
 
 #import "SettingViewController.h"
-#import "SettingCell.h"
+#import "AboutViewController.h"
 #import "WebViewController.h"
+#import "SettingCell.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -56,7 +57,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 1) {
+    if (indexPath.row == 0) {
+        AboutViewController * about = [[AboutViewController alloc] init];
+        about.title = @"关于我们";
+        [self.navigationController pushViewController:about animated:YES];
+    }else if (indexPath.row == 1) {
         WebViewController * web = [[WebViewController alloc] initWithUrl:@"https://www.bing.com"];
         [self.navigationController pushViewController:web animated:YES];
     }

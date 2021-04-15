@@ -31,6 +31,8 @@
 		0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F35E7982625B00B00FCF378 /* CircleVideoCell.xib */; };
 		0F35E8482626BAA800FCF378 /* ShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F35E8472626BAA800FCF378 /* ShareModel.m */; };
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
+		0F6C0CF72627DEB1007ABE5A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */; };
+		0F6C0CF82627DEB1007ABE5A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
 		BD0543772600CEC200DEF83F /* EditUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */; };
@@ -92,8 +94,8 @@
 		BDC265BF25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC265BE25ED0C3F00DBAA64 /* CircleMoreActionAlertView.xib */; };
 		BDC265C525ED2A7000DBAA64 /* ProfitableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC265C325ED2A7000DBAA64 /* ProfitableViewController.m */; };
 		BDC265C625ED2A7000DBAA64 /* ProfitableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC265C425ED2A7000DBAA64 /* ProfitableViewController.xib */; };
-		BDC265D025EE5BB100DBAA64 /* ImageOrVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC265CE25EE5BB100DBAA64 /* ImageOrVideoCell.m */; };
-		BDC265D125EE5BB100DBAA64 /* ImageOrVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC265CF25EE5BB100DBAA64 /* ImageOrVideoCell.xib */; };
+		BDC265D025EE5BB100DBAA64 /* ProfitImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC265CE25EE5BB100DBAA64 /* ProfitImageCell.m */; };
+		BDC265D125EE5BB100DBAA64 /* ProfitImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC265CF25EE5BB100DBAA64 /* ProfitImageCell.xib */; };
 		BDC265D725EE5D4F00DBAA64 /* ProfitHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC265D525EE5D4F00DBAA64 /* ProfitHeaderCell.m */; };
 		BDC265D825EE5D4F00DBAA64 /* ProfitHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC265D625EE5D4F00DBAA64 /* ProfitHeaderCell.xib */; };
 		BDC265DD25EE5EEB00DBAA64 /* ProfitShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC265DB25EE5EEB00DBAA64 /* ProfitShareCell.m */; };
@@ -197,6 +199,9 @@
 		0F35E8462626BAA800FCF378 /* ShareModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareModel.h; sourceTree = "<group>"; };
 		0F35E8472626BAA800FCF378 /* ShareModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareModel.m; sourceTree = "<group>"; };
 		0F67410D26007EEA00BF7315 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0F6C0CF42627DEB1007ABE5A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
 		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUserInfoViewController.xib; sourceTree = "<group>"; };
@@ -291,9 +296,9 @@
 		BDC265C225ED2A7000DBAA64 /* ProfitableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitableViewController.h; sourceTree = "<group>"; };
 		BDC265C325ED2A7000DBAA64 /* ProfitableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfitableViewController.m; sourceTree = "<group>"; };
 		BDC265C425ED2A7000DBAA64 /* ProfitableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfitableViewController.xib; sourceTree = "<group>"; };
-		BDC265CD25EE5BB100DBAA64 /* ImageOrVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOrVideoCell.h; sourceTree = "<group>"; };
-		BDC265CE25EE5BB100DBAA64 /* ImageOrVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOrVideoCell.m; sourceTree = "<group>"; };
-		BDC265CF25EE5BB100DBAA64 /* ImageOrVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOrVideoCell.xib; sourceTree = "<group>"; };
+		BDC265CD25EE5BB100DBAA64 /* ProfitImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitImageCell.h; sourceTree = "<group>"; };
+		BDC265CE25EE5BB100DBAA64 /* ProfitImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfitImageCell.m; sourceTree = "<group>"; };
+		BDC265CF25EE5BB100DBAA64 /* ProfitImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfitImageCell.xib; sourceTree = "<group>"; };
 		BDC265D425EE5D4F00DBAA64 /* ProfitHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitHeaderCell.h; sourceTree = "<group>"; };
 		BDC265D525EE5D4F00DBAA64 /* ProfitHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfitHeaderCell.m; sourceTree = "<group>"; };
 		BDC265D625EE5D4F00DBAA64 /* ProfitHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfitHeaderCell.xib; sourceTree = "<group>"; };
@@ -508,6 +513,16 @@
 				0F35E74E26253E8200FCF378 /* ComplaintsModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0F6C0CF32627DE95007ABE5A /* AboutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0F6C0CF42627DEB1007ABE5A /* AboutViewController.h */,
+				0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */,
+				0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */,
+			);
+			path = AboutViewController;
 			sourceTree = "<group>";
 		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
@@ -789,9 +804,9 @@
 		BDC265CC25EE5B5900DBAA64 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BDC265CD25EE5BB100DBAA64 /* ImageOrVideoCell.h */,
-				BDC265CE25EE5BB100DBAA64 /* ImageOrVideoCell.m */,
-				BDC265CF25EE5BB100DBAA64 /* ImageOrVideoCell.xib */,
+				BDC265CD25EE5BB100DBAA64 /* ProfitImageCell.h */,
+				BDC265CE25EE5BB100DBAA64 /* ProfitImageCell.m */,
+				BDC265CF25EE5BB100DBAA64 /* ProfitImageCell.xib */,
 				BDC265D425EE5D4F00DBAA64 /* ProfitHeaderCell.h */,
 				BDC265D525EE5D4F00DBAA64 /* ProfitHeaderCell.m */,
 				BDC265D625EE5D4F00DBAA64 /* ProfitHeaderCell.xib */,
@@ -991,6 +1006,7 @@
 				BDDEFB0225EB647300D7A5D7 /* SettingCell.h */,
 				BDDEFB0325EB647300D7A5D7 /* SettingCell.m */,
 				BDDEFB0425EB647300D7A5D7 /* SettingCell.xib */,
+				0F6C0CF32627DE95007ABE5A /* AboutViewController */,
 				BDE18AA526270A5200D80997 /* WebViewController */,
 			);
 			path = SettingViewController;
@@ -1158,7 +1174,7 @@
 				BDDEFAFF25EB63CF00D7A5D7 /* SettingViewController.xib in Resources */,
 				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
 				BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */,
-				BDC265D125EE5BB100DBAA64 /* ImageOrVideoCell.xib in Resources */,
+				BDC265D125EE5BB100DBAA64 /* ProfitImageCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
 				BDC585AB25EB58500021F808 /* UserViewController.xib in Resources */,
 				BD06EC2325F7C247005A8FE4 /* InvitationViewController.xib in Resources */,
@@ -1168,6 +1184,7 @@
 				BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */,
 				0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */,
 				BDC585B925EB5C590021F808 /* UserCell.xib in Resources */,
+				0F6C0CF82627DEB1007ABE5A /* AboutViewController.xib in Resources */,
 				0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */,
 				BDC585B325EB5A1E0021F808 /* HomeViewController.xib in Resources */,
 				BDC265D825EE5D4F00DBAA64 /* ProfitHeaderCell.xib in Resources */,
@@ -1348,6 +1365,7 @@
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,
 				BD05438A260714B100DEF83F /* UIViewController+HUD.m in Sources */,
 				BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */,
+				0F6C0CF72627DEB1007ABE5A /* AboutViewController.m in Sources */,
 				BDC2657F25EBD50600DBAA64 /* ComplaintReasonHeaderCell.m in Sources */,
 				BDC585A325EB57180021F808 /* UIColor+HexString.m in Sources */,
 				BDC5859C25EB57180021F808 /* UITextView+ZWPlaceHolder.m in Sources */,
@@ -1358,7 +1376,7 @@
 				BD410CA525FA4379007A1D5E /* SearchItemCollectionCell.m in Sources */,
 				BDE18AA926270A6600D80997 /* WebViewController.m in Sources */,
 				BDC5857425EB50260021F808 /* PreHelper.m in Sources */,
-				BDC265D025EE5BB100DBAA64 /* ImageOrVideoCell.m in Sources */,
+				BDC265D025EE5BB100DBAA64 /* ProfitImageCell.m in Sources */,
 				BDDEFB2825EB7B1900D7A5D7 /* CircleViewController.m in Sources */,
 				0F03F04825FB72790044C8BA /* CustomerServiceCell.m in Sources */,
 			);

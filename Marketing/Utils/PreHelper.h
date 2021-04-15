@@ -23,48 +23,14 @@
 
 + (UIViewController *)getCurrentVC;
 
-+ (NSString *)setCreateTime:(NSString *)createTime;
-
-+ (NSString *)getHourAndMinute:(NSDate *)date;
-
-+ (void)setExtraCellLineHidden:(UITableView *)tableView;
-
-+ (NSString *)stringFormatDateMin:(NSDate *)date;
-
-+ (NSData *)toJSONData:(id)theData;
-
-+ (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
-
-+ (NSString *)getCurrentDataAndTime;
-
 + (NSString *)dateFromString:(NSString*)dateString;
 
 + (CGFloat)getCircleContentHeight:(NSString *)content;
 
-+ (void)resetTableViewFrame:(UITableView *)tableView;
++ (BOOL)isBlankString:(NSString *)string;
 
-+ (void)resignFirstResponderTextFieldOrTextView:(NSArray *)fieldArray;
++ (CGFloat)getWidthWithUrl:(NSString *)url;
 
-+ (NSString *)getDays:(NSString *)dateStr;
-
-+ (NSString *)getHours:(NSString *)dateStr;
-
-+ (NSDateComponents *)getDate:(NSString *)dateStr;
-
-+ (NSString *)getSubmitMouth:(long long)submitTime;
-
-+ (NSString *)getSubmitDays:(long long)submitTime;
-
-+ (long long)getTimeSinceWithDate:(NSDate *)date;
-
-+ (long long)getTimeWithDateStr:(NSString *)dateStr;
-
-+(BOOL)DocumentFilePaht:(NSString*)fileName requestUrl:(NSString*)URl;
-
-+(NSDictionary*)ReadDocmentsTempFile :(NSString*)_Name;
-
-+(BOOL) isBlankString:(NSString *)string;
-
-+ (BOOL)valiMobile:(NSString *)mobile;
++ (CGFloat)getHeightWithUrl:(NSString *)url;
 
 @end

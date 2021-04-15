@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShareModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ImageOrVideoCell : UITableViewCell
+@interface ProfitImageCell : UITableViewCell
 
-@property(nonatomic,strong)UIImageView * placeholdImageView;
+@property(nonatomic,strong)ShareModel * model;
 
 @end
 

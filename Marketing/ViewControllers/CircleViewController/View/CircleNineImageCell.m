@@ -60,8 +60,10 @@
     }
     
     if (model.images.count == 1){
-        self.imageHeightConstraint.constant = 180;
-        self.imageWidthConstraint.constant = 120;
+        CGFloat imageHeight = [PreHelper getHeightWithUrl:model.images.firstObject];
+        CGFloat imageWidth = [PreHelper getWidthWithUrl:model.images.firstObject];
+        self.imageHeightConstraint.constant = imageHeight > 0 ? imageHeight : 180;
+        self.imageWidthConstraint.constant = imageWidth > 0 ? imageWidth : 120;
         [ImageLoader loadImage:[self.imagesView viewWithTag:10] url:model.images.firstObject placeholder:nil];
     }else if (model.images.count == 4) {
         for (int i=0; i<2; i++) {
