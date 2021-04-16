@@ -187,7 +187,8 @@
     if (indexPath.row == 0) {
         return UITableViewAutomaticDimension;
     }else if(indexPath.row == 1){
-        return 180;
+        ShareModel * model = self.dataArray[indexPath.section];
+        return [PreHelper getHeightWithUrl:model.imgurl]+15;
     }else{
         return 71;
     }

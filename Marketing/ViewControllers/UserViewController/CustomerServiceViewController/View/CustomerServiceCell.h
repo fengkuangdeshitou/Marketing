@@ -6,13 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HelpModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomerServiceCell : UITableViewCell
 
 @property (nonatomic, assign) BOOL isShowContent;
-@property (nonatomic, strong) NSDictionary *dataDic;
+@property (nonatomic, strong) HelpModel *model;
 @property (nonatomic, copy) void(^moreBtnBlock)(void);
 
 @end

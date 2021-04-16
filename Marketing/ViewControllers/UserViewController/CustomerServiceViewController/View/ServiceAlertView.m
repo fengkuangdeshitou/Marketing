@@ -6,6 +6,7 @@
 //
 
 #import "ServiceAlertView.h"
+#import "NetworkUrl.h"
 
 @interface ServiceAlertView ()
 
@@ -28,8 +29,18 @@
         self.frame = UIScreen.mainScreen.bounds;
         self.alpha = 0;
         [UIApplication.sharedApplication.keyWindow addSubview:self];
+        [self loadServiceErCodeData];
     }
     return self;
+}
+
+/// 客服二维码
+- (void)loadServiceErCodeData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:kefuErCodeUrl] success:^(NSDictionary *result) {
+        [ImageLoader loadImage:self.qrcodeImageView url:result[@"str"] placeholder:nil];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (void)show{

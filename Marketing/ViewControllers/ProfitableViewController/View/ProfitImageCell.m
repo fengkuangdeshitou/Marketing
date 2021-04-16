@@ -10,6 +10,8 @@
 @interface ProfitImageCell ()
 
 @property(nonatomic,weak)IBOutlet UIImageView * coverImageView;
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * coverImageViewWidthConstraint;
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * coverImageViewHeightConstraint;
 
 @end
 
@@ -23,6 +25,8 @@
 - (void)setModel:(ShareModel *)model{
     _model = model;
     [ImageLoader loadImage:self.coverImageView url:model.imgurl placeholder:nil];
+    self.coverImageViewWidthConstraint.constant = [PreHelper getWidthWithUrl:model.imgurl];
+    self.coverImageViewHeightConstraint.constant = [PreHelper getHeightWithUrl:model.imgurl];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

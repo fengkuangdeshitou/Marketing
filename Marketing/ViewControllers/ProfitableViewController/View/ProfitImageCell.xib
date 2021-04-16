@@ -17,12 +17,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YX6-Nq-lSc">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YX6-Nq-lSc">
                         <rect key="frame" x="85" y="15" width="220" height="102"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="220" id="RUI-mn-YvB"/>
+                            <constraint firstAttribute="height" constant="102" id="Wra-Pk-lDX"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="YX6-Nq-lSc" secondAttribute="trailing" constant="15" id="nyC-pN-h9o"/>
                     <constraint firstAttribute="bottom" secondItem="YX6-Nq-lSc" secondAttribute="bottom" id="o8r-P2-uV3"/>
                     <constraint firstItem="YX6-Nq-lSc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="85" id="s8s-A1-t3U"/>
                     <constraint firstItem="YX6-Nq-lSc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="zWP-FJ-phf"/>
@@ -31,6 +34,8 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="coverImageView" destination="YX6-Nq-lSc" id="M5X-er-Avy"/>
+                <outlet property="coverImageViewHeightConstraint" destination="Wra-Pk-lDX" id="qLv-G0-7c2"/>
+                <outlet property="coverImageViewWidthConstraint" destination="RUI-mn-YvB" id="VSX-cS-XNN"/>
             </connections>
             <point key="canvasLocation" x="-57.971014492753625" y="112.16517857142857"/>
         </tableViewCell>

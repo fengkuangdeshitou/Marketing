@@ -23,5 +23,9 @@ extern NSString *const DATE_FORMAT_TAKE_MIN;
 extern NSString *const REQUEST_FAIL;
 
 extern CGFloat const NavagationBarHeight;
+/// 图片默认宽度
+extern CGFloat const DEFAULT_IMAGE_WIDTH;
+/// 图片默认高度
+extern CGFloat const DEFAULT_IMAGE_HEIGHT;
 
 @end

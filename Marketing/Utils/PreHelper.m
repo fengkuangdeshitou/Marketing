@@ -81,6 +81,7 @@
 + (void)pushToLoginController{
     LoginViewController *login = [[LoginViewController alloc] init];
     CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
+    nav.navigationBar.hidden = YES;
     UIWindow *window =  [[UIApplication sharedApplication].delegate window];
     window.rootViewController = nav;
     [window makeKeyAndVisible];
@@ -202,21 +203,35 @@
     if ([self urlContainsWidthAndHeight:url]) {
         NSArray * widthArray = [url componentsSeparatedByString:@"__"];
         CGFloat widthValue = [widthArray[1] floatValue];
-        if (widthValue > (SCREEN_WIDTH-100)) {
-            widthValue = 120;
+        CGFloat heightValue = [widthArray[2] floatValue];
+        if (widthValue <= heightValue) {
+            widthValue = DEFAULT_IMAGE_WIDTH;
+        }else{
+            if (widthValue > (SCREEN_WIDTH-80)) {
+                CGFloat proportion = heightValue/widthValue;
+                widthValue = DEFAULT_IMAGE_HEIGHT/proportion;
+            }
         }
         return widthValue;
     }else{
-        return 0;
+        return DEFAULT_IMAGE_WIDTH;
     }
 }
 
 + (CGFloat)getHeightWithUrl:(NSString *)url{
     if ([self urlContainsWidthAndHeight:url]) {
         NSArray * widthArray = [url componentsSeparatedByString:@"__"];
-        return [widthArray[2] floatValue];
+        CGFloat widthValue = [widthArray[1] floatValue];
+        CGFloat heightValue = [widthArray[2] floatValue];
+        if (widthValue <= heightValue) {
+            CGFloat proportion = widthValue/heightValue;
+            heightValue = DEFAULT_IMAGE_WIDTH/proportion;
+        }else{
+            heightValue = DEFAULT_IMAGE_HEIGHT;
+        }
+        return heightValue;
     }else{
-        return 0;
+        return DEFAULT_IMAGE_HEIGHT;
     }
 }
 

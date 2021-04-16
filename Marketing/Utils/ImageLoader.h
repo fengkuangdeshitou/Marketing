@@ -33,20 +33,12 @@
 
 + (NSString *)getCreateVidelName;
 
-+ (void)praiseAnimationsWithView:(UIView *)pariseview;
-
-+ (NSString *)getYMD:(long long)time;
-
 + (NSString *)md5:(NSString *)input;
 
 + (UIImage *)imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize;
 
-+ (NSString *)randomStringWithLength:(NSInteger)len;
-
 + (BOOL)stringContainsEmoji:(NSString *)string;
 
-+ (void)layerWithView:(UIView *)view corner:(CGFloat)corner;
-
-+ (CAGradientLayer *)setGradualChangingColor:(UIView *)view fromColor:(NSString *)fromHexColorStr toColor:(NSString *)toHexColorStr startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint;
++ (UIImage*)getVideoFirstViewImage:(NSString *)path;
 
 @end

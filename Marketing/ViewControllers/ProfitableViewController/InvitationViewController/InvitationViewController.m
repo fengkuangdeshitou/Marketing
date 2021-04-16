@@ -56,10 +56,12 @@
         }
         NSArray * list = result[@"page"][@"list"];
         [self.dataArray addObjectsFromArray:[InvitationModel mj_objectArrayWithKeyValuesArray:list]];
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView reloadData];
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView reloadData];
     }];

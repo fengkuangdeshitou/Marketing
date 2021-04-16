@@ -43,14 +43,17 @@ NSString * const addCircleUrl = @"app/circle/addCircle";
 NSString * const complaintTypeListUrl = @"app/circle/ComplaintTypeList";
 /// 品圈举报
 NSString * const addComplaintUrl = @"app/circle/addComplaint";
-
+/// 删除品圈
+NSString * const deleteCircleUrl = @"app/circle/delCircle";
+/// 品圈介绍图
+NSString * const circleFriendsBackgroundUrl = @"circle_friends_background";
 
 /// 我的余额
-NSString * const myMoneyUrl = @"/app/bank/myMoney";
+NSString * const myMoneyUrl = @"app/bank/myMoney";
 /// 我的邀请记录
 NSString * const myShareRecordUrl = @"app/member/myShareRecord";
 /// 绑定支付宝
-NSString * const addBankUrl = @"/app/bank/addBank";
+NSString * const addBankUrl = @"app/bank/addBank";
 /// 查询我的提现方式
 NSString * const myBankUrl = @"app/bank/myBank";
 /// 提现记录
@@ -58,18 +61,22 @@ NSString * const myDrawRecordUrl = @"app/member/myDrawRecord";
 /// 提现
 NSString * const myDrawUrl = @"app/bank/tixian";
 /// 价目表
-NSString * const dicPriceListUrl = @"/app/pay/getDicPriceList";
+NSString * const dicPriceListUrl = @"app/pay/getDicPriceList";
 /// 赚钱分享文案
-NSString * const shareTextUrl = @"/app/circle/getShareText";
+NSString * const shareTextUrl = @"app/circle/getShareText";
+/// 用户协议
+NSString * const userAgreementUrl = @"http://file-oss.wecein.com/html/yxzs/yhxy.html";
+/// 隐私政策
+NSString * const privacyPolicyUrl = @"http://file-oss.wecein.com/html/yxzs/yszc.html";
 
 /// 剩余下载
-NSString * const myGroupDownUrl = @"/app/member/getMyGroupDown";
+NSString * const myGroupDownUrl = @"app/member/getMyGroupDown";
 /// 实名认证
 NSString * const livenessCheckUrl = @"app/member/livenessCheck";
 /// 内购验证
-NSString * const applyPayNotifyUrl = @"/app/pay/applyPayNotify";
+NSString * const applyPayNotifyUrl = @"app/pay/applyPayNotify";
 /// 修改个人信息
-NSString * const updateMemberInfoUrl = @"/app/member/updateMemberInfo";
+NSString * const updateMemberInfoUrl = @"app/member/updateMemberInfo";
 /// 图片上传
 NSString * const uploadImgUrl = @"sys/oss/uploadImg";
 /// 文件上传
@@ -77,9 +84,16 @@ NSString * const uploadVidelUrl = @"sys/oss/upload";
 /// 绑定手机号
 NSString * const bindPhoneUrl = @"app/member/bindPhone";
 /// VIP信息
-NSString * const myVipUrl = @"/app/member/myVip";
+NSString * const myVipUrl = @"app/member/myVip";
 /// VIP 价格表
-NSString * const priceListUrl = @"/app/member/priceList";
+NSString * const priceListUrl = @"app/member/priceList";
+/// 客服在线时间
+NSString * const kefuOnlineUrl = @"kefu_online";
+/// 客服二维码
+NSString * const kefuErCodeUrl = @"kefu_ercode";
+/// 帮助
+NSString * const helpUrl = @"app/common/getDic?key=HELP_IOS";
+
 
 
 @end

@@ -11,18 +11,18 @@
 
 @interface WebViewController ()<WKNavigationDelegate>
 
-@property(nonatomic,copy)NSString *url;
+@property(nonatomic,copy)NSString *html;
 @property(nonatomic,weak)IBOutlet CustomWebView * webView;
 
 @end
 
 @implementation WebViewController
 
-- (instancetype)initWithUrl:(NSString *)url
+- (instancetype)initWithHtml:(NSString *)html
 {
     self = [super init];
     if (self) {
-        self.url = url;
+        self.html = html;
     }
     return self;
 }
@@ -31,9 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.url]];
     self.webView.navigationDelegate = self;
-    [self.webView loadRequest:request];
+    [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.html]]];
     
 }
 

@@ -63,6 +63,11 @@
     
     UISearchBar * searchBar = [[UISearchBar alloc] initWithFrame:searchView.bounds];
     searchBar.delegate = self;
+    if (@available(iOS 13.0, *)) {
+        searchBar.searchTextField.font = [UIFont systemFontOfSize:14];
+    } else {
+        // Fallback on earlier versions
+    }
     searchBar.placeholder = @"请输入关键字进行搜索";
     searchBar.backgroundImage = [UIImage new];
     [searchView addSubview:searchBar];

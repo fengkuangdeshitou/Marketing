@@ -8,10 +8,13 @@
 #import "CustomerServiceViewController.h"
 #import "CustomerServiceCell.h"
 #import "ServiceAlertView.h"
+#import "NetworkUrl.h"
+#import "HelpModel.h"
 
 @interface CustomerServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * backButtonTopConstraint;
+@property (nonatomic, weak) IBOutlet UILabel * onlineTimeLabel;
 @property (nonatomic, weak) IBOutlet UITableView * tableView;
 @property (nonatomic, strong) NSArray * dataArray;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -29,11 +32,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.selectedIndex = -1;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.delegate = self;
     self.backButtonTopConstraint.constant = StatusBarHeight;
-    self.dataArray = @[@{@"title":@" 1、我已经买了会员，为什么还提示要开通会员？",@"content":@"会员等级不同对应的权限不同，请在会员中心查看不同会员对应的功能权限 。"}];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CustomerServiceCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CustomerServiceCell class])];
+    [self loadOnliTimeData];
+    [self loadHelpData];
+}
+
+/// 客服在线时间
+- (void)loadOnliTimeData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:kefuOnlineUrl] success:^(NSDictionary *result) {
+        self.onlineTimeLabel.text = [NSString stringWithFormat:@"在线时间:%@",result[@"str"]];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+/// 加载帮助数据
+- (void)loadHelpData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getHelpUrl] success:^(NSDictionary *result) {
+        NSArray * list = result[@"list"];
+        self.dataArray = [HelpModel mj_objectArrayWithKeyValuesArray:list];
+        [self.tableView reloadData];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (IBAction)backViewController:(id)sender{
@@ -49,9 +74,8 @@
 #pragma mark - UITableViewDelegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CustomerServiceCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CustomerServiceCell class]) forIndexPath:indexPath];
-    
     cell.isShowContent = self.selectedIndex == indexPath.row;
-    cell.dataDic = self.dataArray[indexPath.row];
+    cell.model = self.dataArray[indexPath.row];
     cell.moreBtnBlock = ^{
         if (self.selectedIndex != indexPath.row){
             self.selectedIndex = indexPath.row;
@@ -64,12 +88,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self.navigationController popViewControllerAnimated:true];
     if (self.selectedIndex == indexPath.row){
-//            MyServiceDetailController * detail = [MyServiceDetailController new];
-//            detail.dataDic = self.dataArray[indexPath.row];
-//            detail.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:detail animated:YES];
+
     }else{
         self.selectedIndex = indexPath.row;
         [self.tableView reloadData];
@@ -102,11 +122,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewAutomaticDimension;
+    return self.selectedIndex == indexPath.row ? UITableViewAutomaticDimension : 60.5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.selectedIndex == indexPath.row ? 100 : 44;
+    return 100;
 }
 
 /*

@@ -45,7 +45,7 @@
 
 - (void)logout{
     [UserManager deleteUser];
-    [PreHelper pushToTabbarController];
+    [PreHelper pushToLoginController];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,9 +61,14 @@
         AboutViewController * about = [[AboutViewController alloc] init];
         about.title = @"关于我们";
         [self.navigationController pushViewController:about animated:YES];
-    }else if (indexPath.row == 1) {
-        WebViewController * web = [[WebViewController alloc] initWithUrl:@"https://www.bing.com"];
+    }else if (indexPath.row == 2) {
+        WebViewController * web = [[WebViewController alloc] initWithHtml:[NetworkUrlGetter getUserAgreementUrl]];
         [self.navigationController pushViewController:web animated:YES];
+    }else if (indexPath.row == 3) {
+        WebViewController * web = [[WebViewController alloc] initWithHtml:[NetworkUrlGetter getPrivacyPolicyUrl]];
+        [self.navigationController pushViewController:web animated:YES];
+    }else if (indexPath.row == 4){
+        [self logout];
     }
 }
 

@@ -14,6 +14,9 @@
 
 @interface UIViewController (HUD)
 
+@property(nonatomic,assign)BOOL isHiddenLoadString;
+@property(nonatomic,copy)NSString * loadString;
+
 - (void)showHudInView:(UIView *)view hint:(NSString *)hint;
 
 - (void)hideHud;

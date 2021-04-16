@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UserModel : NSObject
 
 @property(nonatomic,copy)NSString * mb_no;
+@property(nonatomic,copy)NSString * mb_id;
 /// 账号绑定手机号
 @property(nonatomic,copy)NSString * tell;
 /// 微信绑定手机号

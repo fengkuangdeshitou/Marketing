@@ -127,4 +127,20 @@
     return [hostUrl stringByAppendingPathComponent:shareTextUrl];
 }
 
++ (NSString *)getUserAgreementUrl{
+    return userAgreementUrl;
+}
+
++ (NSString *)getPrivacyPolicyUrl{
+    return privacyPolicyUrl;
+}
+
++ (NSString *)getHelpUrl{
+    return [hostUrl stringByAppendingPathComponent:helpUrl];
+}
+
++ (NSString *)getDeleteCircelWithCircleId:(NSString *)circleId{
+    return [[[hostUrl stringByAppendingPathComponent:deleteCircleUrl] stringByAppendingString:@"?circleId="] stringByAppendingString:circleId];
+}
+
 @end

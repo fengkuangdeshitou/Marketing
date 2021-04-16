@@ -45,8 +45,6 @@ static NetworkWorker * networkWorker = nil;
     _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     _manager.requestSerializer = [AFJSONRequestSerializer serializer];
     _manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-//    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    [_manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     return _manager;
 }
 
@@ -54,12 +52,16 @@ static NetworkWorker * networkWorker = nil;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     });
+
+    UIViewController * currentController = [PreHelper getCurrentVC];
+    [currentController showHudInView:currentController.view hint:currentController.loadString];
 }
 
 + (void)dismissNetworkActivityIndicatorVisible{
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     });
+    [[PreHelper getCurrentVC] hideHud];
 }
 
 + (void)networkGet:(NSString *)URLString

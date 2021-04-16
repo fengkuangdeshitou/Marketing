@@ -11,9 +11,8 @@
 @interface CircleVideoCell ()
 
 @property (weak, nonatomic) IBOutlet PlayerSuperImageView *coverImageView;
-@property (weak, nonatomic) IBOutlet UILabel *mediaTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *coverImageViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *coverImageViewHeightConstraint;
 
 @end
 
@@ -23,24 +22,15 @@
     [super awakeFromNib];
     // Initialization code
     
-    _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
-    _coverImageView.clipsToBounds = YES;
-    _coverImageView.backgroundColor = UIColor.clearColor;
-//    _coverImageView.sd_imageTransition = [SDWebImageTransition fadeTransition];
-    _coverImageView.userInteractionEnabled = YES;
-    
-//    SJCornerMaskSetRound(_avatarImageView, 2, UIColor.brownColor);
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
-    [_coverImageView addGestureRecognizer:tap];
+    [self.coverImageView addGestureRecognizer:tap];
 }
 
 - (void)setModel:(CircleModel *)model{
     [super setModel:model];
-    [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
-//    [ImageLoader loadImage:self.avatarImageView url:model.avatar placeholder:nil];
-//        _mediaTitleLabel.attributedText = _dataSource.mediaTitle;
-//        _usernameLabel.attributedText = _dataSource.username;
+    self.coverImageView.image = [ImageLoader getVideoFirstViewImage:model.video_url];
+    self.coverImageViewWidthConstraint.constant = [PreHelper getWidthWithUrl:model.video_url];
+    self.coverImageViewHeightConstraint.constant = [PreHelper getHeightWithUrl:model.head_url];
 }
 
 - (void)handleTapGesture:(id)sender {

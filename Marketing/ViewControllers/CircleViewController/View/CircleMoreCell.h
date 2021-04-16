@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,weak)IBOutlet UIButton * addFriendButton;
 @property(nonatomic,weak)IBOutlet UIButton * moreButton;
+@property(nonatomic,copy)void(^DeleteCircleBlock)(NSString * circleId);
 
 @end
 

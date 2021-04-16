@@ -47,6 +47,11 @@
     searchBar.backgroundImage = [UIImage new];
     searchBar.placeholder = @"请输入关键字检索（字越少结果越多）";
     searchBar.delegate = self;
+    if (@available(iOS 13.0, *)) {
+        searchBar.searchTextField.font = [UIFont systemFontOfSize:14];
+    } else {
+        // Fallback on earlier versions
+    }
     searchBar.returnKeyType = UIReturnKeySearch;
     [searchView addSubview:searchBar];
     self.searchBar = searchBar;

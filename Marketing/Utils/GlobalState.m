@@ -24,4 +24,8 @@ NSString * const REQUEST_FAIL = @"1";
 
 const CGFloat NavagationBarHeight = 44;
 
+const CGFloat DEFAULT_IMAGE_WIDTH = 120;
+
+const CGFloat DEFAULT_IMAGE_HEIGHT = 190;
+
 @end

@@ -10,6 +10,7 @@
 @interface CustomerServiceCell ()
 
 @property(nonatomic,weak)IBOutlet UILabel * titleLabel;
+@property(nonatomic,weak)IBOutlet UILabel * contentLabel;
 
 @end
 
@@ -20,9 +21,10 @@
     // Initialization code
 }
 
-- (void)setDataDic:(NSDictionary *)dataDic{
-    _dataDic = dataDic;
-    self.titleLabel.text = dataDic[@"title"];
+- (void)setModel:(HelpModel *)model{
+    _model = model;
+    self.titleLabel.text = model.dict_name;
+    self.contentLabel.text = model.dict_value;
 }
 
 - (IBAction)moreBtnClick:(id)sender

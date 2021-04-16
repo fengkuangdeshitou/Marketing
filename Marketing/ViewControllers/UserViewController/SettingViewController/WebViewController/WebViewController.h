@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WebViewController : UIViewController
 
-- (instancetype)initWithUrl:(NSString *)url;
+- (instancetype)initWithHtml:(NSString *)html;
 
 @end
 

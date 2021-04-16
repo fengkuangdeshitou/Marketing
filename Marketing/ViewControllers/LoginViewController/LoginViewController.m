@@ -7,6 +7,7 @@
 
 #import "LoginViewController.h"
 #import "MobileLoginViewController.h"
+#import "WebViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <WechatConnector/WechatConnector.h>
 
@@ -18,6 +19,11 @@
 @end
 
 @implementation LoginViewController
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,6 +87,14 @@
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
     }];
+}
+
+/// 用户协议
+/// @param sender 按钮
+- (IBAction)userAgreement:(id)sender{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    WebViewController * web = [[WebViewController alloc] initWithHtml:[NetworkUrlGetter getUserAgreementUrl]];
+    [self.navigationController pushViewController:web animated:YES];
 }
 
 /*

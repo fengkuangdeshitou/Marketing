@@ -65,6 +65,7 @@
 		BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */; };
 		BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410CAB25FA539B007A1D5E /* SearchViewController.m */; };
 		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
+		BD5787B22629D4A10046415A /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5787B12629D4A10046415A /* HelpModel.m */; };
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
@@ -250,6 +251,8 @@
 		BD410CAA25FA539B007A1D5E /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		BD410CAB25FA539B007A1D5E /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		BD410CAC25FA539B007A1D5E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		BD5787B02629D4A10046415A /* HelpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpModel.h; sourceTree = "<group>"; };
+		BD5787B12629D4A10046415A /* HelpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpModel.m; sourceTree = "<group>"; };
 		BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateCircleCiewController.h; sourceTree = "<group>"; };
 		BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateCircleCiewController.m; sourceTree = "<group>"; };
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
@@ -444,6 +447,7 @@
 				0F03F03E25FB71BC0044C8BA /* CustomerServiceViewController.h */,
 				0F03F03F25FB71BC0044C8BA /* CustomerServiceViewController.m */,
 				0F03F04025FB71BC0044C8BA /* CustomerServiceViewController.xib */,
+				BD5787AF2629D4910046415A /* Model */,
 				0F03F04425FB725F0044C8BA /* View */,
 			);
 			path = CustomerServiceViewController;
@@ -695,6 +699,15 @@
 				BD410CA125FA4327007A1D5E /* View */,
 			);
 			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		BD5787AF2629D4910046415A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD5787B02629D4A10046415A /* HelpModel.h */,
+				BD5787B12629D4A10046415A /* HelpModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BD6C922825FC74F5009C5D1F /* CreateCircleCiewController */ = {
@@ -1372,6 +1385,7 @@
 				BD06EC0A25F7A3D6005A8FE4 /* DrawAmountViewController.m in Sources */,
 				BDC265F625EE79B600DBAA64 /* DetailViewController.m in Sources */,
 				0F28A2CA25F88B500001B38E /* AuthenticationViewController.m in Sources */,
+				BD5787B22629D4A10046415A /* HelpModel.m in Sources */,
 				BDC265B125EBF66400DBAA64 /* CircleBaseCell.m in Sources */,
 				BD410CA525FA4379007A1D5E /* SearchItemCollectionCell.m in Sources */,
 				BDE18AA926270A6600D80997 /* WebViewController.m in Sources */,

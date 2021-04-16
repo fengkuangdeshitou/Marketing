@@ -71,7 +71,7 @@
             services.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:services animated:true];
         }else if(indexPath.row == 1){
-            CircleViewController * circle = [[CircleViewController alloc] initWithUserId:@"11"];
+            CircleViewController * circle = [[CircleViewController alloc] initWithUserId:[UserManager getUser].mb_id];
             circle.title = @"我的发布";
             circle.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:circle animated:true];

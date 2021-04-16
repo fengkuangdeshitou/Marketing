@@ -37,6 +37,9 @@
                             <state key="normal" title="《用户使用协议》">
                                 <color key="titleColor" red="1" green="0.40000000000000002" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="userAgreement:" destination="-1" eventType="touchUpInside" id="15T-ha-BsQ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录即代表你同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-at-BBy">
                             <rect key="frame" x="0.0" y="0.0" width="98.5" height="12"/>
@@ -58,17 +61,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Va2-mL-JCN">
-                    <rect key="frame" x="165.5" y="742" width="83" height="29"/>
+                    <rect key="frame" x="165" y="742" width="84" height="29"/>
                     <state key="normal">
                         <attributedString key="attributedTitle">
-                            <fragment content="手机号登录">
-                                <attributes>
-                                    <color key="NSColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                    <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
-                                    <integer key="NSUnderline" value="1"/>
-                                </attributes>
-                            </fragment>
-                            <fragment content=" &gt;">
+                            <fragment content="手机号登录 &gt;">
                                 <attributes>
                                     <color key="NSColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                     <font key="NSFont" metaFont="system" size="14"/>

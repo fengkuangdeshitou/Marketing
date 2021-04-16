@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CircleModel : NSObject
 
 @property(nonatomic,copy)NSString * circle_id;
+@property(nonatomic,copy)NSString * mb_id;
 @property(nonatomic,copy)NSString * nikename;
 @property(nonatomic,copy)NSString * add_time;
 @property(nonatomic,copy)NSString * head_url;
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString * contact;
 @property(nonatomic,copy)NSString * wechat_er_code;
 @property(nonatomic,assign)BOOL isOpen;
+@property(nonatomic,assign)BOOL isShowDeleteButton;
 @property(nonatomic,copy)NSString * img_urls;
 @property(nonatomic,copy)NSString * video_url;
 @property(nonatomic,strong)NSArray * images;

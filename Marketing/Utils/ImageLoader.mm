@@ -11,6 +11,9 @@
 #import "NetworkUrlGetter.h"
 #import "AFNetworkReachabilityManager.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <AVFoundation/AVAsset.h>
+#import <AVFoundation/AVAssetImageGenerator.h>
+#import <AVFoundation/AVTime.h>
 
 @implementation ImageLoader
 
@@ -153,59 +156,6 @@
     return [imageName stringByAppendingFormat:@".mp4"];
 }
 
-+ (void)praiseAnimationsWithView:(UIView *)pariseview
-{
-    [UIView animateWithDuration:0.25 animations:^{
-        CATransform3D transform = CATransform3DMakeScale(1.6, 1.6, 1.0);
-        pariseview.layer.transform = transform;
-        //        view.transform = CGAffineTransformMakeScale(2.0, 2.0);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            pariseview.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        } completion:^(BOOL finished) {
-            
-        }];
-    }];
-
-}
-
-+ (NSString *)getYMD:(long long)time
-{
-    
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:time/1000];
-    
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    // YYYY年MM月dd日
-    [format setDateFormat:@"MM-dd"];
-    
-    //获取传过来的时间的时分
-    NSDateFormatter *fo = [[NSDateFormatter alloc] init];
-    [fo setDateFormat:@"HH:mm"];
-    NSString *hoursandSec = [fo stringFromDate:date];
-    
-    //获取传过来的时间的date
-    NSString *createDate = [format stringFromDate:date];
-    
-    //获取今天
-    NSDate *nowDate = [NSDate date];
-    NSString *today = [format stringFromDate:nowDate];
-    
-    //获取昨天
-    NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:-(24*60*60)];
-    NSString *yesterday = [format stringFromDate:yesterdayDate];
-    
-    if ([createDate isEqualToString:today]) {
-        return [NSString stringWithFormat:@"今天 %@",hoursandSec];
-    }else if ([createDate isEqualToString:yesterday])
-    {
-        return [NSString stringWithFormat:@"昨天 %@",hoursandSec];
-    }else
-    {
-        //return hoursandSec;
-        return [NSString stringWithFormat:@"%@ %@",createDate,hoursandSec];
-    }
-}
-
 + (NSString *) md5:(NSString *) input {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
@@ -270,16 +220,6 @@
     return newImage;
 }
 
-+ (NSString *)randomStringWithLength:(NSInteger)len {
-    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
-    
-    for (NSInteger i = 0; i < len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
-    }
-    return randomString;
-}
-
 +(BOOL)stringContainsEmoji:(NSString *)string
 {
     __block BOOL returnValue = NO;
@@ -309,37 +249,23 @@
     return returnValue;
 }
 
-+ (void)layerWithView:(UIView *)view corner:(CGFloat)corner{
-    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(corner, corner)];
-    CAShapeLayer * maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = view.bounds;
-    maskLayer.path = path.CGPath;
-    view.layer.mask = maskLayer;
-}
-
 + (void)loadImage:(UIImageView *)imageView url:(NSString *)url placeholder:(UIImage *)placeholder{
     [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholder];
 }
 
-+ (CAGradientLayer *)setGradualChangingColor:(UIView *)view fromColor:(NSString *)fromHexColorStr toColor:(NSString *)toHexColorStr startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint{
++ (UIImage*)getVideoFirstViewImage:(NSString *)path {
+    NSURL * url = [[NSURL alloc] initWithString:path];
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+    AVAssetImageGenerator *assetGen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
     
-    //    CAGradientLayer类对其绘制渐变背景颜色、填充层的形状(包括圆角)
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = view.bounds;
-
-    //  创建渐变色数组，需要转换为CGColor颜色
-    gradientLayer.colors = @[(__bridge id)[PreHelper colorWithHexString:fromHexColorStr alpha:1].CGColor,(__bridge id)[PreHelper colorWithHexString:toHexColorStr alpha:1].CGColor];
-    
-    //  设置渐变颜色方向，左上点为(0,0), 右下点为(1,1)
-    gradientLayer.startPoint = startPoint;
-    gradientLayer.endPoint = endPoint;
-//    gradientLayer.startPoint = CGPointMake(0, 0);
-//    gradientLayer.endPoint = CGPointMake(1, 1);
-    
-    //  设置颜色变化点，取值范围 0.0~1.0
-    gradientLayer.locations = @[@0,@1];
-    
-    return gradientLayer;
+    assetGen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [assetGen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *videoImage = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    return videoImage;
 }
 
 @end

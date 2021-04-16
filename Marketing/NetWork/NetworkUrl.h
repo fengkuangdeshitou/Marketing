@@ -40,6 +40,10 @@ extern NSString * const complaintTypeListUrl;
 
 extern NSString * const addComplaintUrl;
 
+extern NSString * const deleteCircleUrl;
+
+extern NSString * const circleFriendsBackgroundUrl;
+
 
 /// 赚钱
 
@@ -78,5 +82,15 @@ extern NSString * const bindPhoneUrl;
 extern NSString * const myVipUrl;
 
 extern NSString * const priceListUrl;
+
+extern NSString * const userAgreementUrl;
+
+extern NSString * const privacyPolicyUrl;
+
+extern NSString * const kefuOnlineUrl;
+
+extern NSString * const kefuErCodeUrl;
+
+extern NSString * const helpUrl;
 
 @end

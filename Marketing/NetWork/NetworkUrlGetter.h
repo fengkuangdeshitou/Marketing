@@ -68,5 +68,12 @@
 
 + (NSString *)getShareTextUrl;
 
++ (NSString *)getUserAgreementUrl;
+
++ (NSString *)getPrivacyPolicyUrl;
+
++ (NSString *)getHelpUrl;
+
++ (NSString *)getDeleteCircelWithCircleId:(NSString *)circleId;
 
 @end

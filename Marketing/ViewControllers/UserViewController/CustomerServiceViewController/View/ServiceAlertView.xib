@@ -101,6 +101,7 @@
                 <constraint firstItem="UKD-fj-VJx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="45" id="har-PE-Ibq"/>
             </constraints>
             <connections>
+                <outlet property="qrcodeImageView" destination="E3I-e3-GD2" id="EyQ-LS-omK"/>
                 <outletCollection property="gestureRecognizers" destination="cHC-gR-puZ" appends="YES" id="G9v-9E-Cde"/>
             </connections>
             <point key="canvasLocation" x="-33.333333333333336" y="82.366071428571431"/>

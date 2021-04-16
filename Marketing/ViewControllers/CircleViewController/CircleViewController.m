@@ -24,8 +24,9 @@
 #import <SJVideoPlayer/SJVideoPlayer.h>
 #import <SJBaseVideoPlayer/UIScrollView+ListViewAutoplaySJAdd.h>
 #import "UIScrollView+ListViewAutoplaySJAdd.h"
+#import "NetworkUrl.h"
 
-@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,CreateCircleCiewControllerDelegate,CircleVideoCellDelegate,SJPlayerAutoplayDelegate>
+@interface CircleViewController ()<UITableViewDelegate,UITableViewDataSource,CreateCircleCiewControllerDelegate,CircleVideoCellDelegate,SJPlayerAutoplayDelegate,CNContactViewControllerDelegate>
 
 @property(nonatomic,copy)NSString * userId;
 @property(nonatomic,assign)NSInteger page;
@@ -201,11 +202,10 @@
     [self.player vc_viewDidDisappear];
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.isHiddenLoadString = YES;
     self.page = 1;
     if (!self.userId) {
         self.navigationBarHeight.constant = NavagationHeight;
@@ -218,7 +218,7 @@
         [headerView addSubview:self.avatarImageView];
         self.tableView.tableHeaderView = headerView;
         
-        [ImageLoader loadImage:self.coverImageView url:@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=163656268,2073708275&fm=26&gp=0.jpg" placeholder:nil];
+        [self loadCircleFriendsBackgroundImageData];
         [ImageLoader loadImage:self.avatarImageView url:[UserManager getUser].headimgurl placeholder:nil];
     }
 
@@ -248,6 +248,15 @@
     
 }
 
+/// 品圈 Header 图
+- (void)loadCircleFriendsBackgroundImageData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:circleFriendsBackgroundUrl] success:^(NSDictionary *result) {
+        [ImageLoader loadImage:self.coverImageView url:result[@"str"] placeholder:nil];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -272,8 +281,9 @@
     _player.URLAsset.title = model.nikename;
 }
 
+/// 品圈数据
 - (void)loadCircleData{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindCircleUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"10"} success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindCircleUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"10",@"mbId":self.userId != nil ? self.userId : @""} success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
@@ -288,7 +298,6 @@
         [self.tableView.mj_footer endRefreshing];
     }];
 }
-
 
 /// 发布
 - (IBAction)cgrectCircleAction{
@@ -354,8 +363,6 @@
     }else if(indexPath.row == 3){
         if (model.video_url.length > 0) {
             CircleVideoCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleVideoCell class]) forIndexPath:indexPath];
-//            cell.model = model;
-//            cell.delegate = self;
             return cell;
         }else{
             CircleNineImageCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleNineImageCell class]) forIndexPath:indexPath];
@@ -364,8 +371,15 @@
         }
     }else{
         CircleMoreCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CircleMoreCell class]) forIndexPath:indexPath];
+        cell.model = model;
+        cell.model.isShowDeleteButton = self.userId != nil;
         [cell.addFriendButton addTarget:self action:@selector(addFriendAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreButton addTarget:self action:@selector(circleMoreAction:) forControlEvents:UIControlEventTouchUpInside];
+        HXWeakSelf
+        cell.DeleteCircleBlock = ^(NSString * _Nonnull circleId) {
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.section];
+            [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        };
         return cell;
     }
 }
