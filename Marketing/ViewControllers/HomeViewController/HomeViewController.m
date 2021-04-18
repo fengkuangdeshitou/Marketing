@@ -53,9 +53,7 @@
     
     self.beforeButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.beforeButton.layer.borderWidth = 1;
-    
-    [self addObserver:self forKeyPath:@"currentFlag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
+        
     UIView * searchView = [[UIView alloc] initWithFrame:CGRectMake(15, 7, SCREEN_WIDTH-70, 30)];
     searchView.layer.cornerRadius = 5;
     searchView.layer.borderColor = [PreHelper colorWithHexString:@"#DEDEDE"].CGColor;
@@ -84,16 +82,26 @@
 }
 
 - (void)getFindGroupList{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"50",@"wxgType":@"group",@"direction":@"random",@"time":[NSString stringWithFormat:@"%ld",self.time]} success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"1",@"wxgType":@"group",@"direction":@"random",@"time":[NSString stringWithFormat:@"%d",self.time]} success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
         NSArray * list = result[@"page"][@"list"];
-        [self.dataArray addObjectsFromArray:[GroupModel mj_objectArrayWithKeyValuesArray:list]];
-        self.currentFlag ++;
+        NSArray * modelArray = [GroupModel mj_objectArrayWithKeyValuesArray:list];
+        [self.dataArray addObject:modelArray.firstObject];
+        [self formatNumber];
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
     }];
+}
+
+- (void)formatNumber{
+    GroupModel * model = self.dataArray[self.currentFlag];
+    [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
+    self.contentLabel.text = model.wxg_desc;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.dataArray.count];
+    self.currentFlag ++;
 }
 
 /// 日期切换
@@ -138,52 +146,22 @@
     return NO;
 }
 
-/// 观察者
-/// @param keyPath currentFlag
-/// @param object object
-/// @param change change
-/// @param context context
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    
-    if (self.currentFlag == 0) {
-        return;
-    }
-    
-    if (self.currentFlag <= self.dataArray.count) {
-        GroupModel * model = self.dataArray[self.currentFlag-1];
-        [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
-        self.contentLabel.text = model.wxg_desc;
-        self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
-        self.pageLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentFlag,self.dataArray.count];
-    }
-    
-}
-
 /// 上一张
 /// @param sender 按钮
 - (IBAction)beforeAction:(id)sender{
     if (self.currentFlag > 1) {
         self.currentFlag--;
     }
+    [self formatNumber];
 }
 
 /// 下一张
 /// @param sender 按钮
 - (IBAction)nextAction:(id)sender{
-    
-    if (self.currentFlag == self.dataArray.count-1) {
-        self.page += 1;
-        [self getFindGroupList];
-        return;
-    }
-    
-    self.currentFlag ++;
-    
+    self.page++;
+    [self getFindGroupList];
 }
 
-- (void)dealloc{
-    [self removeObserver:self forKeyPath:@"currentFlag"];
-}
 /*
 #pragma mark - Navigation
 

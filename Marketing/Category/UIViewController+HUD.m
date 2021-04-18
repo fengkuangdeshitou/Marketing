@@ -11,7 +11,6 @@
   */
  
 #import "UIViewController+HUD.h"
-#import "MBProgressHUD.h"
 #import <objc/runtime.h>
 
 static const void *LoadStringKey = &LoadStringKey;
@@ -45,7 +44,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 }
 
 - (void)showHudInView:(UIView *)view hint:(NSString *)hint{
-    if (self.isHiddenLoadString) {
+    if (self.isHiddenLoadString == YES) {
         return;
     }
     
@@ -56,15 +55,14 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
             hint = @"加载中";
         }
     }
-    if ([self HUD]) {
-        return;
+    
+    if (!self.HUD) {
+        self.HUD = [[MBProgressHUD alloc] initWithView:view];
     }
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:view];
-    HUD.label.text = hint;
-    HUD.offset = CGPointMake(0, 0);
-    [view addSubview:HUD];
-    [HUD showAnimated:YES];
-    [self setHUD:HUD];
+    self.HUD.label.text = hint;
+    self.HUD.offset = CGPointMake(0, 0);
+    [view addSubview:self.HUD];
+    [self.HUD showAnimated:YES];
 }
 
 - (void)showHint:(NSString *)hint {
@@ -96,7 +94,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 }
 
 - (void)hideHud{
-    [[self HUD] hideAnimated:YES];
+    [self.HUD hideAnimated:YES];
 }
 
 @end

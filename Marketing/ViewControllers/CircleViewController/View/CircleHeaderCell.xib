@@ -17,8 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="94"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RxQ-2v-eQV">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RxQ-2v-eQV">
                         <rect key="frame" x="15" y="25" width="42" height="42"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="9Xh-gT-JbL"/>
                             <constraint firstAttribute="height" constant="42" id="p0g-Yq-0PX"/>
@@ -42,6 +43,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbf-zm-vcy">
                         <rect key="frame" x="287" y="36" width="20" height="22"/>
                         <state key="normal" image="circle_complaint_share"/>
+                        <connections>
+                            <action selector="shareAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2Bt-8K-ljR"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

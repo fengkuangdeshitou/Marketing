@@ -201,6 +201,12 @@
         return;
     }
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showHudInView:self.view hint:@"正在发起支付"];
+        });
+    });
+    
     for (SKProduct * product in productsArray) {
         NSLog(@"%@", [product description]);
         NSLog(@"%@", [product localizedTitle]);
@@ -233,6 +239,11 @@
                 break;
             case SKPaymentTransactionStatePurchasing:{
                 NSLog(@"商品添加进列表");
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showHudInView:self.view hint:@"正在支付"];
+                    });
+                });
             }
                 break;
             case SKPaymentTransactionStateRestored:{

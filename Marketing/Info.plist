@@ -59,9 +59,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>营销工具需要访问你的相机来实现认证功能</string>
+	<string>微商营销工具需要访问你的相机来实现认证功能</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>微商营销工具虚要访问你的麦克风已发表品圈</string>
 	<key>NSContactsUsageDescription</key>
-	<string>营销工具需要访问你的通讯录来新建联系人</string>
+	<string>微商营销工具需要访问你的通讯录来新建联系人</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>微商营销工具需要访问你的相册用已保存图片</string>
 	<key>NSPhotoLibraryUsageDescription</key>

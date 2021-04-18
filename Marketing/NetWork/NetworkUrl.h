@@ -93,4 +93,10 @@ extern NSString * const kefuErCodeUrl;
 
 extern NSString * const helpUrl;
 
+extern NSString * const appVersionUrl;
+
+extern NSString * const iosAuditStateUrl;
+
+extern NSString * const iosAuditLoginUrl;
+
 @end

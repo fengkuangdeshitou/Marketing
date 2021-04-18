@@ -380,7 +380,7 @@
 - (UIButton *)publishBtn {
     if (!_publishBtn) {
         _publishBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_publishBtn setTitle:@"发表" forState:UIControlStateNormal];
+        [_publishBtn setTitle:@"发布" forState:UIControlStateNormal];
         [_publishBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_publishBtn setTitleColor:[UIColor hx_colorWithHexStr:@"#999999"] forState:UIControlStateDisabled];
         [_publishBtn setBackgroundColor:[UIColor hx_colorWithHexStr:@"#07C160"]];

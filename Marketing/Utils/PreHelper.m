@@ -7,7 +7,7 @@
 //
 #import <AVFoundation/AVFoundation.h>
 #import "MyTabbarViewController.h"
-#import "LoginViewController.h"
+#import "BindingMobileViewController.h"
 #import "CustomNavagationController.h"
 
 @implementation PreHelper
@@ -79,12 +79,11 @@
 }
 
 + (void)pushToLoginController{
-    LoginViewController *login = [[LoginViewController alloc] init];
-    CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
-    nav.navigationBar.hidden = YES;
-    UIWindow *window =  [[UIApplication sharedApplication].delegate window];
-    window.rootViewController = nav;
-    [window makeKeyAndVisible];
+    BindingMobileViewController *login = [[BindingMobileViewController alloc] init];
+    login.isAudit = YES;
+    login.title = @"登录";
+    login.hidesBottomBarWhenPushed = YES;
+    [[self getCurrentVC].navigationController pushViewController:login animated:YES];
 }
 
 + (UIViewController *)jsd_getRootViewController{
@@ -209,7 +208,7 @@
         }else{
             if (widthValue > (SCREEN_WIDTH-80)) {
                 CGFloat proportion = heightValue/widthValue;
-                widthValue = DEFAULT_IMAGE_HEIGHT/proportion;
+                widthValue = (DEFAULT_IMAGE_HEIGHT-15)/proportion;
             }
         }
         return widthValue;

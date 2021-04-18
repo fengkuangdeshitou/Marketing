@@ -98,7 +98,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="这一刻的想法..."/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入你的产品描述..."/>
                         <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                             <color key="value" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>

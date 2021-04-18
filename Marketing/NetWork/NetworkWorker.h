@@ -36,16 +36,6 @@ typedef void(^RequestFailureCompletion)(NSString *errorMessage);
                           success:(void (^)(NSDictionary *dictionary))success
                           failure:(void (^)(NSError * error))failure;
 
-+ (void)networkDelete:(NSString *)URLString
-           parameters:(NSDictionary *)dictData
-              success:(void (^)(NSDictionary * dictionary))success
-              failure:(void(^)(NSString * error,NSDictionary * dictionary))failure;
-
-+ (void)networkPut:(NSString *)URLString
-       paramenters:(NSDictionary *)parameters
-           success:(void(^)(NSDictionary * dictionary))success
-           failure:(void(^)(NSString * errar,NSDictionary * dictionary))failure;
-
 +(void)networkOperationCancel;
 
 @end

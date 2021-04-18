@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BindingMobileViewController : UIViewController
 
+@property(nonatomic,assign)BOOL isAudit;
+
 @end
 
 NS_ASSUME_NONNULL_END

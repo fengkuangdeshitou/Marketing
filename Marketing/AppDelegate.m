@@ -26,21 +26,25 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    if ([PreHelper isLogin]) {
-        MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
-        self.window.rootViewController = tabbar;
-    }else{
-        LoginViewController * login = [[LoginViewController alloc] init];
-        CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
-        nav.navigationBar.hidden = true;
-        self.window.rootViewController = nav;
-    }
+    self.window.backgroundColor = UIColor.whiteColor;
+    
+    MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
+    self.window.rootViewController = tabbar;
+    [self.window makeKeyAndVisible];
     
     //9a36d88e4c646b80f6870e4e1cf0c165
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
         [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com/"];
     }];
     
+    [self loadLinkME];
+    [self loadIosAuditStateUrl];
+    [self getAppUpdateVersion];
+    
+    return YES;
+}
+
+- (void)loadLinkME{
     LinkedME* linkedme = [LinkedME getInstance];
     //设置重试次数
 //    [linkedme setMaxRetries:60];
@@ -95,10 +99,36 @@
 //            NSLog(@"LinkedME failed init: %@", error);
 //        }
 //    }];
+}
 
-    [self.window makeKeyAndVisible];
-    
-    return YES;
+- (void)loadIosAuditStateUrl{
+    [NetworkWorker networkGet:[NetworkUrlGetter getIosAuditStateUrl] success:^(NSDictionary *result) {
+//        [DeviceTool shareInstance].reviewStatus = result[@"str"];
+        [DeviceTool shareInstance].reviewStatus = @"审核中";
+        if ([[DeviceTool shareInstance].reviewStatus isEqualToString:@"已通过"]) {
+            if ([PreHelper isLogin]) {
+                MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
+                self.window.rootViewController = tabbar;
+            }else{
+                LoginViewController * login = [[LoginViewController alloc] init];
+                CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
+                nav.navigationBar.hidden = true;
+                self.window.rootViewController = nav;
+            }
+            [self loadLinkME];
+        }
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+/// 版本更新检查
+- (void)getAppUpdateVersion{
+    [NetworkWorker networkGet:[NetworkUrlGetter getAppVersion] success:^(NSDictionary *result) {
+            
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation{

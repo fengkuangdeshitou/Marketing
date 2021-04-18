@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     
     UserModel * model = [UserManager getUser];
-    if (model.cert_no) {
+    if (model.cert_no.length > 0) {
         [self.autheticationButton setTitle:@"已认证" forState:UIControlStateNormal];
         self.nameTextField.text = model.cert_name;
         self.numberTextField.text = model.cert_no;

@@ -76,4 +76,10 @@
 
 + (NSString *)getDeleteCircelWithCircleId:(NSString *)circleId;
 
++ (NSString *)getAppVersion;
+
++ (NSString *)getIosAuditStateUrl;
+
++ (NSString *)getIosAuditLoginUrl;
+
 @end

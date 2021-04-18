@@ -143,4 +143,16 @@
     return [[[hostUrl stringByAppendingPathComponent:deleteCircleUrl] stringByAppendingString:@"?circleId="] stringByAppendingString:circleId];
 }
 
++ (NSString *)getAppVersion{
+    return [[hostUrl stringByAppendingPathComponent:appVersionUrl] stringByAppendingFormat:@"?plat=ios"];
+}
+
++ (NSString *)getIosAuditStateUrl{
+    return [[[[hostUrl stringByAppendingPathComponent:configUrl] stringByAppendingString:@"?key="] stringByAppendingString:iosAuditStateUrl] stringByAppendingString:[DeviceTool shareInstance].appVersion];
+}
+
++ (NSString *)getIosAuditLoginUrl{
+    return [[[[hostUrl stringByAppendingPathComponent:configUrl] stringByAppendingString:@"?key="] stringByAppendingString:iosAuditLoginUrl] stringByAppendingString:[DeviceTool shareInstance].appVersion];
+}
+
 @end

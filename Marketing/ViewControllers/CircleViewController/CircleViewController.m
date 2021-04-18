@@ -69,6 +69,7 @@
     if (!_coverImageView) {
         _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 330)];
         _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _coverImageView.clipsToBounds = YES;
     }
     return _coverImageView;
 }
@@ -164,6 +165,7 @@
     CGFloat endPoint = startPoint+UIApplication.sharedApplication.statusBarFrame.size.height;
     if (scrollView.contentOffset.y > startPoint && scrollView.contentOffset.y < endPoint) {
         self.customNavBar.backgroundColor = [PreHelper colorWithHexString:@"#F6F6F6" alpha:(scrollView.contentOffset.y-startPoint)/(endPoint-startPoint)];
+        self.navItem.rightBarButtonItem.image = [UIImage imageNamed:@"circle_create_black"];
     }else if (scrollView.contentOffset.y < startPoint){
         self.customNavBar.backgroundColor = [PreHelper colorWithHexString:@"#FFFFFF" alpha:0];
     }else{
@@ -240,11 +242,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleMoreCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleMoreCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleNineImageCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleNineImageCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CircleVideoCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CircleVideoCell class])];
-    
-    // 开启滑动自动播放
-    SJPlayerAutoplayConfig *config = [SJPlayerAutoplayConfig configWithAutoplayDelegate:self];
-    config.autoplayPosition = SJAutoplayPositionMiddle; // 播放距离中线最近的视频
-    [self.tableView sj_enableAutoplayWithConfig:config];
     
 }
 
@@ -338,7 +335,6 @@
         cell.model = model;
         cell.delegate = self;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

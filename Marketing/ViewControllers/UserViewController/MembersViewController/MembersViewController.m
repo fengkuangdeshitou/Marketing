@@ -111,7 +111,7 @@
 }
 
 - (void)getConfig{
-    [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:@"ios_audit_state_APP"] success:^(NSDictionary *result) {
+    [NetworkWorker networkGet:[NetworkUrlGetter getIosAuditStateUrl] success:^(NSDictionary *result) {
             
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];

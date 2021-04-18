@@ -37,6 +37,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="statusButton" destination="QTY-z3-kCI" id="QMc-Be-WwO"/>
+            </connections>
             <point key="canvasLocation" x="23" y="102"/>
         </tableViewCell>
     </objects>

@@ -7,6 +7,12 @@
 
 #import "CircleStatusCell.h"
 
+@interface CircleStatusCell ()
+
+@property(nonatomic,weak)IBOutlet UIButton * statusButton;
+
+@end
+
 @implementation CircleStatusCell
 
 - (void)awakeFromNib {
@@ -14,9 +20,13 @@
     // Initialization code
 }
 
+- (void)setModel:(CircleModel *)model{
+    [super setModel:model];
+    [self.statusButton setTitle:model.isOpen ? @"收起" : @"全文" forState:UIControlStateNormal];
+}
+
 - (IBAction)cellHeightChangeAction:(UIButton *)sender{
     self.model.isOpen = !self.model.isOpen;
-    [sender setTitle:self.model.isOpen ? @"收起" : @"全文" forState:UIControlStateNormal];
     if (self.cellHeightChangeBlock) {
         self.cellHeightChangeBlock();
     }

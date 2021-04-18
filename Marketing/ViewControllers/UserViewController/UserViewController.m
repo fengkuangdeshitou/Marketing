@@ -49,12 +49,16 @@
     }else{
         UserCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserCell class]) forIndexPath:indexPath];
         cell.titleLabel.text = self.titleArray[indexPath.row];
-        cell.icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"user_title_%ld",indexPath.row]];
+        cell.icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"user_title_%d",indexPath.row]];
         return cell;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (![PreHelper isLogin]) {
+        [PreHelper pushToLoginController];
+        return;
+    }
     if (indexPath.section == 0) {
         UserInfoViewController * userInfo = [[UserInfoViewController alloc] init];
         userInfo.title = @"我的个人名片";

@@ -18,6 +18,7 @@
 
 @implementation DeviceTool
 
+static NSString * K_REVIEWSTATUS = @"K_REVIEWSTATUS";
 static DeviceTool *_device = nil;
 
 + (instancetype)shareInstance{
@@ -32,7 +33,8 @@ static DeviceTool *_device = nil;
 }
 
 - (NSString *)appVersion{
-    return [LMPreferenceHelper preferenceHelper].appVersion;
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
 }
 
 - (NSString *)brand{
@@ -45,6 +47,14 @@ static DeviceTool *_device = nil;
 
 - (NSString *)getChannel{
     return @"App Store";
+}
+
+- (void)setReviewStatus:(NSString *)reviewStatus{
+    K_UD_SAVE(reviewStatus, K_REVIEWSTATUS);
+}
+
+- (NSString *)reviewStatus{
+    return K_UD_READ(K_REVIEWSTATUS);
 }
 
 - (NSString *)getCurrentDeviceModel{

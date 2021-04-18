@@ -11,11 +11,13 @@
   */
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface UIViewController (HUD)
 
 @property(nonatomic,assign)BOOL isHiddenLoadString;
 @property(nonatomic,copy)NSString * loadString;
+@property(nonatomic,strong)MBProgressHUD * HUD;
 
 - (void)showHudInView:(UIView *)view hint:(NSString *)hint;
 

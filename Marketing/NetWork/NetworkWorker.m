@@ -34,7 +34,9 @@ static NetworkWorker * networkWorker = nil;
     if (!_headers) {
         _headers = [[NSMutableDictionary alloc] init];
     }
-    [_headers setValue:[UserManager getUser].token forKey:@"token"];
+    if ([UserManager getUser].token) {
+        [_headers setValue:[UserManager getUser].token forKey:@"token"];
+    }
     return _headers;
 }
 
@@ -145,48 +147,6 @@ static NetworkWorker * networkWorker = nil;
         [self dismissNetworkActivityIndicatorVisible];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
-        [self dismissNetworkActivityIndicatorVisible];
-    }];
-}
-
-+ (void)networkDelete:(NSString *)URLString parameters:(NSDictionary *)dictData success:(void (^)(NSDictionary *))success failure:(void (^)(NSString *, NSDictionary *))failure
-{
-    [self showNetworkActivityIndicatorVisible];
-    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NetworkWorker * network = [NetworkWorker shareInstance];
-    [network.manager DELETE:URLString parameters:dictData headers:network.headers success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"message"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            failure([dictionary objectForKey:@"result"], dictionary);
-        }
-        [self dismissNetworkActivityIndicatorVisible];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(@"", nil);
-        [self dismissNetworkActivityIndicatorVisible];
-    }];
-}
-
-+ (void)networkPut:(NSString *)URLString
-       paramenters:(NSDictionary *)parameters
-           success:(void(^)(NSDictionary * dictionary))success
-           failure:(void(^)(NSString * errar,NSDictionary * dictionary))failure{
-    [self showNetworkActivityIndicatorVisible];
-    URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NetworkWorker * network = [NetworkWorker shareInstance];
-    [network.manager PUT:URLString parameters:parameters headers:network.headers success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@",[dictionary objectForKey:@"message"]);
-        if ([[dictionary objectForKey:@"success"] intValue] == requestSuccess) {
-            success(dictionary);
-        } else {
-            failure([dictionary objectForKey:@"result"], dictionary);
-        }
-        [self dismissNetworkActivityIndicatorVisible];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(@"", nil);
         [self dismissNetworkActivityIndicatorVisible];
     }];
 }

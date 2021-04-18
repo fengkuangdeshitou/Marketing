@@ -48,7 +48,7 @@
 
 - (void)loadDataWithParams:(NSDictionary *)params{
     NSMutableDictionary * mutablePatams = [NSMutableDictionary dictionaryWithDictionary:params];
-    [mutablePatams setValue:[NSString stringWithFormat:@"%ld",self.page] forKey:@"page"];
+    [mutablePatams setValue:[NSString stringWithFormat:@"%d",self.page] forKey:@"page"];
     [mutablePatams setValue:@"10" forKey:@"limit"];
     [NetworkWorker networkPost:[NetworkUrlGetter getMyShareRecordUrl] params:mutablePatams success:^(NSDictionary *result) {
         if (self.page == 1){

@@ -19,7 +19,11 @@ NSString * const ApplePayUrl = @"https://buy.itunes.apple.com/verifyReceipt";
 #endif
 
 /// 系统配置
-NSString * const configUrl = @"/app/member/getConfig";
+NSString * const configUrl = @"app/member/getConfig";
+/// 审核状态
+NSString * const iosAuditStateUrl = @"ios_audit_state_";
+/// 审核登录
+NSString * const iosAuditLoginUrl = @"ios_login_audit_state_";
 
 ///  首页
 NSString * const findGroupListUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/pageFindGroupList";
@@ -93,7 +97,7 @@ NSString * const kefuOnlineUrl = @"kefu_online";
 NSString * const kefuErCodeUrl = @"kefu_ercode";
 /// 帮助
 NSString * const helpUrl = @"app/common/getDic?key=HELP_IOS";
-
-
+/// 版本更新
+NSString * const appVersionUrl = @"app/common/getAppVersion";
 
 @end

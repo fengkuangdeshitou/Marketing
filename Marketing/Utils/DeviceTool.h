@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 渠道号
 @property(nonatomic,readonly)NSString * getChannel;
 
+/// 审核状态
+@property(nonatomic,copy)NSString * reviewStatus;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,6 +12,7 @@
 @interface SearchViewController ()<UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UISearchBarDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
+@property(nonatomic,strong)NSMutableArray * hotSearchArray;
 @property(nonatomic,weak)IBOutlet UICollectionView * collectionView;
 @property(nonatomic,strong)UISearchBar * searchBar;
 @property(nonatomic,weak)IBOutlet UIButton * beforeButton;
@@ -63,9 +64,7 @@
     self.collectionView.backgroundColor = [PreHelper colorWithHexString:COLOR_TABBAR_TOPLINE_COLOR];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SearchItemCollectionCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SearchItemCollectionCell class])];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader"];
-    
-    [self addObserver:self forKeyPath:@"currentFlag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
+        
     [self getHotSearch];
 }
 
@@ -76,56 +75,54 @@
 }
 
 - (void)getFindGroupList{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"10",@"wxgType":@"group",@"direction":@"random",@"time":@"1",@"key":self.searchBar.text,@"selectLabelList":self.selectText} success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"1",@"wxgType":@"group",@"direction":@"random",@"time":@"1",@"key":self.searchBar.text,@"selectLabelList":self.selectText} success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
         NSArray * list = result[@"page"][@"list"];
         [self.dataArray addObjectsFromArray:[GroupModel mj_objectArrayWithKeyValuesArray:list]];
-        self.currentFlag ++;
+        [self formatNumber];
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
     }];
 }
 
+- (void)formatNumber{
+    GroupModel * model = self.dataArray[self.currentFlag];
+    [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
+    self.contentLabel.text = model.wxg_desc;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.dataArray.count];
+    self.currentFlag ++;
+}
+
 /// 获取热门分类
 - (void)getHotSearch{
     [NetworkWorker networkPost:[NetworkUrlGetter getHotSearchUrl] params:@{} success:^(NSDictionary *result) {
-        self.dataArray = result[@"list"];
+        self.hotSearchArray = [[NSMutableArray alloc] init];
+        NSArray * list = result[@"list"];
+        if (list.count > 20) {
+            for (int i=0; i<20; i++) {
+                [self.hotSearchArray addObject:list[i]];
+            }
+        }
         [self.collectionView reloadData];
     } failure:^(NSString *errorMessage) {
         
     }];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if (self.currentFlag == 0) {
-        return;
-    }
-    
-    if (self.currentFlag <= self.dataArray.count) {
-        GroupModel * model = self.dataArray[self.currentFlag-1];
-        [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
-        self.contentLabel.text = model.wxg_desc;
-        self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
-        self.pageLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentFlag,self.dataArray.count];
-    }
-}
 
 - (IBAction)beforeAction:(id)sender{
     if (self.currentFlag > 1) {
         self.currentFlag--;
     }
+    [self formatNumber];
 }
 
 - (IBAction)nextAction:(id)sender{
-    if (self.currentFlag == self.dataArray.count-1) {
-        self.page += 1;
-        [self getFindGroupList];
-        return;
-    }
-    
-    self.currentFlag ++;
+    self.page++;
+    [self getFindGroupList];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -143,14 +140,14 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SearchItemCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SearchItemCollectionCell class]) forIndexPath:indexPath];
-    NSDictionary * item = self.dataArray[indexPath.row];
+    NSDictionary * item = self.hotSearchArray[indexPath.row];
     cell.contentLabel.text = item[@"label"];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     self.collectionView.hidden = YES;
-    self.selectText = self.dataArray[indexPath.row][@"label"];
+    self.selectText = self.hotSearchArray[indexPath.row][@"label"];
     self.page = 1;
     self.currentFlag = 0;
     self.searchBar.text = @"";
@@ -176,7 +173,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.dataArray.count;
+    return self.hotSearchArray.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -193,10 +190,6 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 0;
-}
-
-- (void)dealloc{
-    [self removeObserver:self forKeyPath:@"currentFlag"];
 }
 
 /*

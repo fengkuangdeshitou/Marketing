@@ -66,6 +66,8 @@
             [UIApplication.sharedApplication.keyWindow makeToast:@"暂无图片"];
         }
     }else if(sender.tag == 12){
+        UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.model.text;
         NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
         [params SSDKSetupShareParamsByText:self.model.text images:self.model.images.count > 0 ? self.model.images : nil url:self.model.video_url.length > 0 ? [NSURL URLWithString:self.model.video_url] : nil title:self.model.text type:SSDKContentTypeAuto];
         [ShareSDK share:SSDKPlatformSubTypeWechatTimeline parameters:params onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {

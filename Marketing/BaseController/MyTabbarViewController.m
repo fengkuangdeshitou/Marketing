@@ -13,7 +13,7 @@
 #import "ProfitableViewController.h"
 #import "UserViewController.h"
 
-@interface MyTabbarViewController ()
+@interface MyTabbarViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -29,6 +29,7 @@
     // 设置子控制器
     [self setUpChildViewController];
     
+    self.delegate = self;
 }
 
 /**
@@ -130,6 +131,20 @@
     viewController.tabBarItem.image         = image;
     [viewController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 10)];
     [self addChildViewController:viewController];
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    CustomNavagationController * nav = (CustomNavagationController *)viewController;
+    if ([nav.topViewController isKindOfClass:[CircleViewController class]] || [nav.topViewController isKindOfClass:[ProfitableViewController class]]) {
+        if (![PreHelper isLogin]) {
+            [PreHelper pushToLoginController];
+            return NO;
+        }else{
+            return YES;
+        }
+    }else{
+        return YES;
+    }
 }
 
 //这个方法可以抽取到 UIImage 的分类中

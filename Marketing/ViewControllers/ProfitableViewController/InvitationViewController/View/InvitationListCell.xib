@@ -45,11 +45,21 @@
                         <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-PE-jxv">
+                        <rect key="frame" x="15" y="91.5" width="304" height="0.5"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="dmi-eO-5wh"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hef-XE-e3Y" firstAttribute="leading" secondItem="6fh-V5-qTf" secondAttribute="leading" id="5Px-vi-A0V"/>
                     <constraint firstItem="Zl3-U0-IlS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FgI-yl-6NG"/>
+                    <constraint firstAttribute="bottom" secondItem="F4Y-PE-jxv" secondAttribute="bottom" id="JQ3-HO-ynp"/>
                     <constraint firstItem="ytA-N4-myY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NnK-0b-qMm"/>
+                    <constraint firstAttribute="trailing" secondItem="F4Y-PE-jxv" secondAttribute="trailing" constant="15" id="Urk-pV-lde"/>
+                    <constraint firstItem="F4Y-PE-jxv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xge-AS-ING"/>
                     <constraint firstAttribute="trailing" secondItem="Zl3-U0-IlS" secondAttribute="trailing" constant="15" id="YBr-Hn-sqR"/>
                     <constraint firstItem="6fh-V5-qTf" firstAttribute="leading" secondItem="ytA-N4-myY" secondAttribute="trailing" constant="10" id="eNj-uD-PFf"/>
                     <constraint firstItem="6fh-V5-qTf" firstAttribute="top" secondItem="ytA-N4-myY" secondAttribute="top" id="jyz-6L-bkr"/>
