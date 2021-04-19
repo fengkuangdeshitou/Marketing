@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cmG-7V-Wdf">
-                    <rect key="frame" x="167" y="129" width="80" height="80"/>
+                    <rect key="frame" x="167" y="64" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="54A-JR-Bdf"/>
                         <constraint firstAttribute="height" constant="80" id="uop-zz-hhk"/>
@@ -96,7 +96,7 @@
             <viewLayoutGuide key="safeArea" id="RWm-p8-Q2E"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="cmG-7V-Wdf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="129" id="HFH-J1-toV"/>
+                <constraint firstItem="cmG-7V-Wdf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="HFH-J1-toV"/>
                 <constraint firstItem="gjr-4v-j6k" firstAttribute="top" secondItem="Va2-mL-JCN" secondAttribute="bottom" constant="57" id="Mdp-BH-V7v"/>
                 <constraint firstItem="Va2-mL-JCN" firstAttribute="top" secondItem="QlY-pJ-dwH" secondAttribute="bottom" constant="18" id="T1a-sz-0nh"/>
                 <constraint firstAttribute="trailing" secondItem="QlY-pJ-dwH" secondAttribute="trailing" constant="45" id="Ubr-0l-10u"/>

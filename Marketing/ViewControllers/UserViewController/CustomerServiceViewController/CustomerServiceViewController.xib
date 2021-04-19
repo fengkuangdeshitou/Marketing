@@ -73,6 +73,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="1mL-iv-3YL" firstAttribute="leading" secondItem="F0a-bc-Zfi" secondAttribute="leading" constant="15" id="5GI-Cn-q2G"/>
                                     <constraint firstItem="nEe-K2-0bU" firstAttribute="leading" secondItem="F0a-bc-Zfi" secondAttribute="leading" constant="15" id="Doh-Ek-hT7"/>
@@ -94,6 +95,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.borderWidth" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iZ7-hU-9yW" appends="YES" id="OLk-Pd-a6C"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97U-3D-TEf">
                                 <rect key="frame" x="212" y="149" width="187" height="99.5"/>
@@ -158,7 +162,7 @@
                                     <constraint firstAttribute="width" constant="44" id="WdF-7C-N3V"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="back.png"/>
+                                <state key="normal" image="sj_video_player_back.png"/>
                                 <connections>
                                     <action selector="backViewController:" destination="-1" eventType="touchUpInside" id="1jL-KR-TOn"/>
                                 </connections>
@@ -205,12 +209,17 @@
                 <action selector="showServiceAlert:" destination="-1" id="w1S-88-zeV"/>
             </connections>
         </tapGestureRecognizer>
+        <tapGestureRecognizer id="iZ7-hU-9yW">
+            <connections>
+                <action selector="shareToWechat:" destination="-1" id="vVD-DD-o92"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="back.png" width="26" height="40"/>
         <image name="server_header" width="375" height="224"/>
         <image name="server_open" width="30" height="30"/>
         <image name="server_wechat" width="30" height="30"/>
+        <image name="sj_video_player_back.png" width="33" height="51"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

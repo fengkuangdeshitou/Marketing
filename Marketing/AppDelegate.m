@@ -103,8 +103,8 @@
 
 - (void)loadIosAuditStateUrl{
     [NetworkWorker networkGet:[NetworkUrlGetter getIosAuditStateUrl] success:^(NSDictionary *result) {
-//        [DeviceTool shareInstance].reviewStatus = result[@"str"];
-        [DeviceTool shareInstance].reviewStatus = @"审核中";
+        [DeviceTool shareInstance].reviewStatus = result[@"str"];
+//        [DeviceTool shareInstance].reviewStatus = @"审核中";
         if ([[DeviceTool shareInstance].reviewStatus isEqualToString:@"已通过"]) {
             if ([PreHelper isLogin]) {
                 MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
@@ -112,7 +112,6 @@
             }else{
                 LoginViewController * login = [[LoginViewController alloc] init];
                 CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
-                nav.navigationBar.hidden = true;
                 self.window.rootViewController = nav;
             }
             [self loadLinkME];

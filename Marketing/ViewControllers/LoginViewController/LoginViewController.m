@@ -22,7 +22,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
 }
 
 - (void)viewDidLoad {

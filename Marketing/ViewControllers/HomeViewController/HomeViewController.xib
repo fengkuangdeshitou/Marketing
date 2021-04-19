@@ -16,6 +16,7 @@
                 <outlet property="icon" destination="faZ-wJ-WrP" id="KJ4-mQ-hBM"/>
                 <outlet property="moreButton" destination="eEd-x5-fph" id="fVr-Jf-jih"/>
                 <outlet property="pageLabel" destination="lR0-pD-sOK" id="3bc-Pe-Izm"/>
+                <outlet property="saveButton" destination="T0X-Dj-Fvw" id="b8U-cB-eP1"/>
                 <outlet property="segmentView" destination="aaL-RP-Ydk" id="XAK-ti-YYj"/>
                 <outlet property="timeLabel" destination="KjC-vs-lj0" id="gZa-CV-pmk"/>
                 <outlet property="todayButton" destination="D6x-6V-iVp" id="aNg-17-djV"/>
@@ -156,11 +157,12 @@
                         <constraint firstItem="eEd-x5-fph" firstAttribute="top" secondItem="D6x-6V-iVp" secondAttribute="top" id="zV7-tg-MKr"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xI-Fw-Y0d">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xI-Fw-Y0d">
                     <rect key="frame" x="0.0" y="49" width="414" height="735"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-wJ-WrP">
-                            <rect key="frame" x="19.5" y="30" width="375" height="668"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="668" translatesAutoresizingMaskIntoConstraints="NO" id="faZ-wJ-WrP">
+                            <rect key="frame" x="107" y="30" width="200" height="668"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjC-vs-lj0">
                             <rect key="frame" x="207" y="708" width="0.0" height="12"/>
@@ -177,6 +179,14 @@
                             <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0X-Dj-Fvw">
+                            <rect key="frame" x="297" y="686" width="20" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="home_save"/>
+                            <connections>
+                                <action selector="saveImageToPhoto:" destination="-1" eventType="touchUpInside" id="jT4-J3-5k8"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -185,9 +195,9 @@
                         <constraint firstAttribute="trailing" secondItem="nLB-lj-bCT" secondAttribute="trailing" constant="15" id="MCf-5D-MEv"/>
                         <constraint firstAttribute="bottom" secondItem="KjC-vs-lj0" secondAttribute="bottom" constant="15" id="OEP-5f-qzR"/>
                         <constraint firstItem="KjC-vs-lj0" firstAttribute="centerX" secondItem="2xI-Fw-Y0d" secondAttribute="centerX" id="QKM-c9-22t"/>
+                        <constraint firstItem="faZ-wJ-WrP" firstAttribute="centerX" secondItem="2xI-Fw-Y0d" secondAttribute="centerX" id="Wv2-hD-0DW"/>
                         <constraint firstItem="faZ-wJ-WrP" firstAttribute="top" secondItem="nLB-lj-bCT" secondAttribute="bottom" constant="15" id="bmV-cP-gtm"/>
                         <constraint firstItem="nLB-lj-bCT" firstAttribute="leading" secondItem="2xI-Fw-Y0d" secondAttribute="leading" constant="15" id="qGi-08-hYM"/>
-                        <constraint firstItem="faZ-wJ-WrP" firstAttribute="centerX" secondItem="2xI-Fw-Y0d" secondAttribute="centerX" id="ydN-HT-lIU"/>
                     </constraints>
                 </view>
             </subviews>
@@ -209,6 +219,7 @@
         </view>
     </objects>
     <resources>
+        <image name="home_save" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

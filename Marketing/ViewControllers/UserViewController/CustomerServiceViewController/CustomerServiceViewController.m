@@ -10,6 +10,8 @@
 #import "ServiceAlertView.h"
 #import "NetworkUrl.h"
 #import "HelpModel.h"
+#import <ShareSDK/ShareSDK.h>
+#import <WXApi.h>
 
 @interface CustomerServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
@@ -63,6 +65,14 @@
 
 - (IBAction)backViewController:(id)sender{
     [self.navigationController popViewControllerAnimated:true];
+}
+
+/// 微信公众号
+/// @param sender 手势
+- (IBAction)shareToWechat:(UITapGestureRecognizer *)sender{
+    UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = @"微商营销工具";
+    [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"weixin://"]];
 }
 
 /// 联系客服弹框

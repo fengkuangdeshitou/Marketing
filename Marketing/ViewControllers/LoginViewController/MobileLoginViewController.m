@@ -7,7 +7,7 @@
 
 #import "MobileLoginViewController.h"
 
-@interface MobileLoginViewController ()
+@interface MobileLoginViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,weak)IBOutlet UITextField * tellTextfield;
 @property(nonatomic,weak)IBOutlet UITextField * codeTextfield;
@@ -23,12 +23,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.navigationController.delegate = self;
     self.timeNumber = 60;
     self.sendCodeButton.layer.borderWidth = 1;
     self.sendCodeButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.sendCodeButton.layer.cornerRadius = 14.5;
     self.sendCodeButton.layer.masksToBounds = true;
     
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    BOOL isHidden = [viewController isKindOfClass:[self class]];
+    [self.navigationController setNavigationBarHidden:isHidden animated:YES];
 }
 
 - (void)dealloc{

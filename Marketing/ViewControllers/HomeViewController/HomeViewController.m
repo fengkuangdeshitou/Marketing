@@ -30,6 +30,7 @@
 @property(nonatomic,assign)NSInteger currentFlag;
 @property(nonatomic,strong)UIView * flagView;
 @property(nonatomic,weak)IBOutlet UIView * segmentView;
+@property(nonatomic,weak)IBOutlet UIButton * saveButton;
 
 @end
 
@@ -102,6 +103,29 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
     self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.dataArray.count];
     self.currentFlag ++;
+    
+    [ImageLoader downloadImageByUrl:model.img_urls success:^(UIImage *image) {
+        float imageRatio = image.size.width / image.size.height;
+        CGFloat imageWidth = CGRectGetHeight(self.icon.frame)*imageRatio;
+        self.saveButton.frame = CGRectMake(imageWidth/2+SCREEN_WIDTH/2-11, CGRectGetMaxY(self.icon.frame)-11, 22, 22);
+    } fail:^(NSError *error) {
+        
+    }];
+    
+}
+
+/// 保存图片
+/// @param sender 按钮
+- (IBAction)saveImageToPhoto:(UIButton *)sender{
+    UIImageWriteToSavedPhotosAlbum(self.icon.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (!error) {
+        [self.view makeToast:@"保存成功"];
+    }else{
+        [self.view makeToast:@"保存失败"];
+    }
 }
 
 /// 日期切换

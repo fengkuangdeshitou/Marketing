@@ -35,6 +35,7 @@
 @property(nonatomic,weak)IBOutlet NSLayoutConstraint * navigationBarHeight;
 @property(nonatomic,weak)IBOutlet UIView * customNavigationBar;
 @property(nonatomic,weak)IBOutlet UIView * createCircleButton;
+@property(nonatomic,strong) UILabel * titleLabel;
 @property(nonatomic,strong) UIImageView * coverImageView;
 @property(nonatomic,strong) UIImageView * avatarImageView;
 
@@ -84,6 +85,16 @@
     return _avatarImageView;
 }
 
+- (UILabel *)titleLabel{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-32, StatusBarHeight, 64, NavagationBarHeight)];
+        _titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+        _titleLabel.textColor = [PreHelper colorWithHexString:@"#282828"];
+        _titleLabel.textAlignment = 1;
+    }
+    return _titleLabel;
+}
+
 - (HXPhotoManager *)photoManager {
     if (!_photoManager) {
         _photoManager = [[HXPhotoManager alloc] initWithType:HXPhotoManagerSelectedTypePhotoAndVideo];
@@ -127,7 +138,7 @@
 - (UINavigationItem *)navItem {
     if (!_navItem) {
         _navItem = [[UINavigationItem alloc] init];// hotweibo_back_icon
-        _navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage hx_imageNamed:@"hx_camera_overturn"] style:UIBarButtonItemStylePlain target:self action:@selector(cgrectCircleAction)];
+        _navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage hx_imageNamed:@"hx_camera_overturn"] style:UIBarButtonItemStylePlain target:self action:@selector(creactCircleAction)];
     }
     return _navItem;
 }
@@ -163,13 +174,19 @@
     CGFloat startPoint = 260;
     /// 结束渐变位置
     CGFloat endPoint = startPoint+UIApplication.sharedApplication.statusBarFrame.size.height;
-    if (scrollView.contentOffset.y > startPoint && scrollView.contentOffset.y < endPoint) {
+    if (scrollView.contentOffset.y >= startPoint && scrollView.contentOffset.y <= endPoint) {
         self.customNavBar.backgroundColor = [PreHelper colorWithHexString:@"#F6F6F6" alpha:(scrollView.contentOffset.y-startPoint)/(endPoint-startPoint)];
-        self.navItem.rightBarButtonItem.image = [UIImage imageNamed:@"circle_create_black"];
+        self.titleLabel.text = @"品圈";
+        self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"circle_create_black"] style:UIBarButtonItemStylePlain target:self action:@selector(creactCircleAction)];
+        self.customNavBar.tintColor = [UIColor blackColor];
     }else if (scrollView.contentOffset.y < startPoint){
         self.customNavBar.backgroundColor = [PreHelper colorWithHexString:@"#FFFFFF" alpha:0];
+        self.titleLabel.text = @"";
+        self.customNavBar.tintColor = [UIColor whiteColor];
     }else{
         self.customNavBar.backgroundColor = [PreHelper colorWithHexString:@"#F6F6F6"];
+        self.titleLabel.text = @"品圈";
+        self.customNavBar.tintColor = [UIColor blackColor];
     }
 }
 
@@ -213,6 +230,7 @@
         self.navigationBarHeight.constant = NavagationHeight;
         [self.view addSubview:self.topView];
         [self.view addSubview:self.customNavBar];
+        [self.customNavBar addSubview:self.titleLabel];
         self.tableView.contentInset = UIEdgeInsetsMake(-UIApplication.sharedApplication.statusBarFrame.size.height - 44, 0, 0, 0);
         UIView * headerView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
         headerView.backgroundColor = UIColor.whiteColor;
@@ -297,7 +315,7 @@
 }
 
 /// 发布
-- (IBAction)cgrectCircleAction{
+- (IBAction)creactCircleAction{
 //    if (!self.getLocalCompletion) {
 //        [self.photoManager getLocalModelsInFile];
 //    }

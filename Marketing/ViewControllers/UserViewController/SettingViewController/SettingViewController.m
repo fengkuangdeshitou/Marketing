@@ -68,7 +68,18 @@
         WebViewController * web = [[WebViewController alloc] initWithHtml:[NetworkUrlGetter getPrivacyPolicyUrl]];
         [self.navigationController pushViewController:web animated:YES];
     }else if (indexPath.row == 4){
-        [self logout];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否注销当前账号" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction * doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self logout];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:doneAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
     }
 }
 
