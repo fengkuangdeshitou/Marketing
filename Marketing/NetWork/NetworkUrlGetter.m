@@ -155,4 +155,8 @@
     return [[[[hostUrl stringByAppendingPathComponent:configUrl] stringByAppendingString:@"?key="] stringByAppendingString:iosAuditLoginUrl] stringByAppendingString:[DeviceTool shareInstance].appVersion];
 }
 
++ (NSString *)getFindGroupNumberUrl{
+    return [findGroupNumberUrl stringByAppendingString:@"?wxgType=group"];
+}
+
 @end

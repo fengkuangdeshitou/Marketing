@@ -24,13 +24,14 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     [self.coverImageView addGestureRecognizer:tap];
+    
 }
 
 - (void)setModel:(CircleModel *)model{
     [super setModel:model];
     self.coverImageView.image = [ImageLoader getVideoFirstViewImage:model.video_url];
-    self.coverImageViewWidthConstraint.constant = [PreHelper getWidthWithUrl:model.video_url];
-    self.coverImageViewHeightConstraint.constant = [PreHelper getHeightWithUrl:model.head_url];
+    self.coverImageViewWidthConstraint.constant = [PreHelper getVideoWidthWithUrl:model.video_url];
+    self.coverImageViewHeightConstraint.constant = [PreHelper getVideoHeightWithUrl:model.head_url];
 }
 
 - (void)handleTapGesture:(id)sender {

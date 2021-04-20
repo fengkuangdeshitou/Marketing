@@ -82,4 +82,6 @@
 
 + (NSString *)getIosAuditLoginUrl;
 
++ (NSString *)getFindGroupNumberUrl;
+
 @end

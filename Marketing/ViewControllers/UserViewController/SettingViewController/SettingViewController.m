@@ -45,7 +45,11 @@
 
 - (void)logout{
     [UserManager deleteUser];
-    [PreHelper pushToLoginController];
+    if ([[DeviceTool shareInstance].reviewStatus isEqualToString:REVIEWING]) {
+        [PreHelper pushToTabbarController];
+    }else{
+        [PreHelper pushToWechatLoginController];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

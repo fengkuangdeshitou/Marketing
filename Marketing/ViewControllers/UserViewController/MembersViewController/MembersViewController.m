@@ -131,10 +131,10 @@
                 UILabel * oldPriceLabel = [contentView viewWithTag:1002];
                 if (buyCount == 0) {
                     nowPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"sell_price"]];
-                    oldPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"old_price"]];
+                    oldPriceLabel.text = [NSString stringWithFormat:@"¥%@",item[@"old_price"]];
                 }else{
                     nowPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"frist_price"]];
-                    oldPriceLabel.text = [NSString stringWithFormat:@"%@",item[@"old_price"]];
+                    oldPriceLabel.text = [NSString stringWithFormat:@"¥%@",item[@"old_price"]];
                 }
             }
         }

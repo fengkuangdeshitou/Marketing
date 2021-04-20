@@ -23,21 +23,25 @@
         CGFloat heigit = [PreHelper getCircleContentHeight:model.text];
         return heigit > 61 ? 30 : 0.001;
     }else if(indexPath.row == 3){
-        if (model.images.count == 0) {
-            return 0.001;
-        }else if (model.images.count == 1){
-            CGFloat imageHeight = [PreHelper getHeightWithUrl:model.images.firstObject];
-            if (imageHeight > 0) {
-                return imageHeight;
-            }else{
-                return 180;
-            }
-        }else if (model.images.count > 1 && model.images.count < 4){
-            return 95;
-        }else if (model.images.count > 3 && model.images.count < 7){
-            return 180;
+        if (model.video_url.length > 0) {
+            return [PreHelper getVideoHeightWithUrl:model.video_url];
         }else{
-            return 250;
+            if (model.images.count == 0) {
+                return 0.001;
+            }else if (model.images.count == 1){
+                CGFloat imageHeight = [PreHelper getHeightWithUrl:model.images.firstObject];
+                if (imageHeight > 0) {
+                    return imageHeight;
+                }else{
+                    return 180;
+                }
+            }else if (model.images.count > 1 && model.images.count < 4){
+                return 95;
+            }else if (model.images.count > 3 && model.images.count < 7){
+                return 180;
+            }else{
+                return 250;
+            }
         }
     }else{
         return 61;

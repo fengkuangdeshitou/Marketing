@@ -65,6 +65,8 @@
 		BD410CA625FA4379007A1D5E /* SearchItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CA425FA4379007A1D5E /* SearchItemCollectionCell.xib */; };
 		BD410CAD25FA539B007A1D5E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD410CAB25FA539B007A1D5E /* SearchViewController.m */; };
 		BD410CAE25FA539B007A1D5E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD410CAC25FA539B007A1D5E /* SearchViewController.xib */; };
+		BD46BBDA262F0F5100BBBD1F /* NoDataEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46BBD9262F0F5100BBBD1F /* NoDataEmptyView.m */; };
+		BD46BBDE262F0F8C00BBBD1F /* UITableView+EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46BBDD262F0F8C00BBBD1F /* UITableView+EmptyView.m */; };
 		BD5787B22629D4A10046415A /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5787B12629D4A10046415A /* HelpModel.m */; };
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
@@ -251,6 +253,10 @@
 		BD410CAA25FA539B007A1D5E /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		BD410CAB25FA539B007A1D5E /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		BD410CAC25FA539B007A1D5E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		BD46BBD8262F0F5100BBBD1F /* NoDataEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoDataEmptyView.h; sourceTree = "<group>"; };
+		BD46BBD9262F0F5100BBBD1F /* NoDataEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoDataEmptyView.m; sourceTree = "<group>"; };
+		BD46BBDC262F0F8C00BBBD1F /* UITableView+EmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+EmptyView.h"; sourceTree = "<group>"; };
+		BD46BBDD262F0F8C00BBBD1F /* UITableView+EmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+EmptyView.m"; sourceTree = "<group>"; };
 		BD5787B02629D4A10046415A /* HelpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpModel.h; sourceTree = "<group>"; };
 		BD5787B12629D4A10046415A /* HelpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpModel.m; sourceTree = "<group>"; };
 		BD5787B5262C7A3B0046415A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -939,6 +945,8 @@
 				BDC5857C25EB531D0021F808 /* MyTabbarViewController.m */,
 				BDDEFB2025EB77BD00D7A5D7 /* CustomNavagationController.h */,
 				BDDEFB2125EB77BD00D7A5D7 /* CustomNavagationController.m */,
+				BD46BBD8262F0F5100BBBD1F /* NoDataEmptyView.h */,
+				BD46BBD9262F0F5100BBBD1F /* NoDataEmptyView.m */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -966,6 +974,8 @@
 				BDC5859525EB57180021F808 /* UIView+Extension.m */,
 				BD054388260714B100DEF83F /* UIViewController+HUD.h */,
 				BD054389260714B100DEF83F /* UIViewController+HUD.m */,
+				BD46BBDC262F0F8C00BBBD1F /* UITableView+EmptyView.h */,
+				BD46BBDD262F0F8C00BBBD1F /* UITableView+EmptyView.m */,
 				BDC5858825EB57180021F808 /* ZWPlaceHolder */,
 			);
 			path = Category;
@@ -1308,6 +1318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDC5857D25EB531D0021F808 /* MyTabbarViewController.m in Sources */,
+				BD46BBDA262F0F5100BBBD1F /* NoDataEmptyView.m in Sources */,
 				BDC265A225EBEFF000DBAA64 /* CircleStatusCell.m in Sources */,
 				BDC265A825EBF13100DBAA64 /* CircleMoreCell.m in Sources */,
 				BDC5855E25EB4C4E0021F808 /* ImageLoader.mm in Sources */,
@@ -1326,6 +1337,7 @@
 				BDC5859E25EB57180021F808 /* NSDictionary+MyDictionary.m in Sources */,
 				BDC585A225EB57180021F808 /* UIImage+YYCompress.m in Sources */,
 				BDE0A07325FF797700F40684 /* PhotoManager.m in Sources */,
+				BD46BBDE262F0F8C00BBBD1F /* UITableView+EmptyView.m in Sources */,
 				BD06B55C25FA60EE0051F873 /* DownloadAlertView.m in Sources */,
 				BD06EC2225F7C247005A8FE4 /* InvitationViewController.m in Sources */,
 				BD835F9B260E44FC00ADCDBD /* GroupModel.m in Sources */,

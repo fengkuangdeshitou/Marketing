@@ -22,10 +22,18 @@ NSString * const DATE_FORMAT_TAKE_MIN = @"yyyy-MM-dd HH:mm";
 
 NSString * const REQUEST_FAIL = @"1";
 
+NSString * const REVIEWING = @"审核中";
+
+NSString * const APPROVED = @"已通过";
+
 const CGFloat NavagationBarHeight = 44;
 
 const CGFloat DEFAULT_IMAGE_WIDTH = 120;
 
 const CGFloat DEFAULT_IMAGE_HEIGHT = 190;
+
+const CGFloat DEFAULT_VIDEO_WIDTH = 150;
+
+const CGFloat DEFAULT_VIDEO_HEIGHT = 230;
 
 @end

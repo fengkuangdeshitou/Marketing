@@ -75,10 +75,11 @@
 }
 
 - (void)getFindGroupList{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"1",@"wxgType":@"group",@"direction":@"random",@"time":@"1",@"key":self.searchBar.text,@"selectLabelList":self.selectText} success:^(NSDictionary *result) {
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",self.page],@"limit":@"1",@"wxgType":@"group",@"time":@"1",@"key":self.searchBar.text,@"selectLabelList":self.selectText} success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
+        self.currentFlag ++;
         NSArray * list = result[@"page"][@"list"];
         [self.dataArray addObjectsFromArray:[GroupModel mj_objectArrayWithKeyValuesArray:list]];
         [self formatNumber];
@@ -88,12 +89,11 @@
 }
 
 - (void)formatNumber{
-    GroupModel * model = self.dataArray[self.currentFlag];
+    GroupModel * model = self.dataArray[self.currentFlag-1];
     [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
     self.contentLabel.text = model.wxg_desc;
     self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
-    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.dataArray.count];
-    self.currentFlag ++;
+    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.currentFlag];
 }
 
 /// 获取热门分类
@@ -116,13 +116,18 @@
 - (IBAction)beforeAction:(id)sender{
     if (self.currentFlag > 1) {
         self.currentFlag--;
+        [self formatNumber];
     }
-    [self formatNumber];
 }
 
 - (IBAction)nextAction:(id)sender{
-    self.page++;
-    [self getFindGroupList];
+    if (self.currentFlag == self.dataArray.count) {
+        self.page++;
+        [self getFindGroupList];
+    }else{
+        self.currentFlag++;
+        [self formatNumber];
+    }
 }
 
 #pragma mark - UISearchBarDelegate

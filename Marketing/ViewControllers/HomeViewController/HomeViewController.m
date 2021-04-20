@@ -25,6 +25,7 @@
 @property(nonatomic,weak)IBOutlet UILabel * pageLabel;
 @property(nonatomic,weak)IBOutlet UIImageView * icon;
 @property(nonatomic,assign)NSInteger page;
+@property(nonatomic,strong)NSDictionary * numberDataDictionary;
 /// 1:今天,2:昨天,3:更早
 @property(nonatomic,assign)NSInteger time;
 @property(nonatomic,assign)NSInteger currentFlag;
@@ -79,14 +80,43 @@
     
     [[self.segmentView viewWithTag:10] addSubview:self.flagView];
     
-    [self getFindGroupList];
+    [self getFindGroupNumberData];
+    
 }
 
+/// 各类别数量
+- (void)getFindGroupNumberData{
+    [NetworkWorker networkGet:[NetworkUrlGetter getFindGroupNumberUrl] success:^(NSDictionary *result) {
+        self.numberDataDictionary = result[@"result"];
+        [self.todayButton setTitle:[NSString stringWithFormat:@"今日(%@)",self.numberDataDictionary[@"today"]] forState:UIControlStateNormal];
+        [self.yesterdayButton setTitle:[NSString stringWithFormat:@"昨日(%@)",self.numberDataDictionary[@"yesToday"]] forState:UIControlStateNormal];
+        [self.moreButton setTitle:[NSString stringWithFormat:@"更早(%@)",self.numberDataDictionary[@"earlier"]] forState:UIControlStateNormal];
+        [self getFindGroupList];
+    } failure:^(NSString *errorMessage) {
+        
+    }];
+}
+
+/// 首页数据
 - (void)getFindGroupList{
-    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"1",@"wxgType":@"group",@"direction":@"random",@"time":[NSString stringWithFormat:@"%d",self.time]} success:^(NSDictionary *result) {
+    NSString * sTime = @"";
+    NSString * eTime = @"";
+    if (self.time == 1) {
+        sTime = [self.numberDataDictionary[@"todayArea"] componentsSeparatedByString:@"#"].firstObject;
+        eTime = [self.numberDataDictionary[@"todayArea"] componentsSeparatedByString:@"#"].lastObject;
+    }else if(self.time == 2){
+        sTime = [self.numberDataDictionary[@"yesTodayArea"] componentsSeparatedByString:@"#"].firstObject;
+        eTime = [self.numberDataDictionary[@"yesTodayArea"] componentsSeparatedByString:@"#"].lastObject;
+    }else{
+        sTime = [self.numberDataDictionary[@"earlierArea"] componentsSeparatedByString:@"#"].firstObject;
+        eTime = [self.numberDataDictionary[@"earlierArea"] componentsSeparatedByString:@"#"].lastObject;
+    }
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%ld",(long)self.page],@"limit":@"1",@"wxgType":@"group",@"time":[NSString stringWithFormat:@"%d",self.time],@"sTime":sTime,@"eTime":eTime};
+    [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:params success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
         }
+        self.currentFlag ++;
         NSArray * list = result[@"page"][@"list"];
         NSArray * modelArray = [GroupModel mj_objectArrayWithKeyValuesArray:list];
         [self.dataArray addObject:modelArray.firstObject];
@@ -97,12 +127,11 @@
 }
 
 - (void)formatNumber{
-    GroupModel * model = self.dataArray[self.currentFlag];
+    GroupModel * model = self.dataArray[self.currentFlag-1];
     [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
     self.contentLabel.text = model.wxg_desc;
     self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
-    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.dataArray.count];
-    self.currentFlag ++;
+    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.currentFlag];
     
     [ImageLoader downloadImageByUrl:model.img_urls success:^(UIImage *image) {
         float imageRatio = image.size.width / image.size.height;
@@ -175,15 +204,20 @@
 - (IBAction)beforeAction:(id)sender{
     if (self.currentFlag > 1) {
         self.currentFlag--;
+        [self formatNumber];
     }
-    [self formatNumber];
 }
 
 /// 下一张
 /// @param sender 按钮
 - (IBAction)nextAction:(id)sender{
-    self.page++;
-    [self getFindGroupList];
+    if (self.currentFlag == self.dataArray.count) {
+        self.page++;
+        [self getFindGroupList];
+    }else{
+        self.currentFlag++;
+        [self formatNumber];
+    }
 }
 
 /*

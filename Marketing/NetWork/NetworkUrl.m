@@ -27,6 +27,8 @@ NSString * const iosAuditLoginUrl = @"ios_login_audit_state_";
 
 ///  首页
 NSString * const findGroupListUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/pageFindGroupList";
+/// 首页数量
+NSString * const findGroupNumberUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/initHome";
 /// 热门分类
 NSString * const hotSearchUrl = @"http://group.wexqun.com:8022/promote-server/app/wxgroup/hotSearch?wxgType=group";
 /// 获取下载地址

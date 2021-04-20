@@ -26,6 +26,8 @@ extern NSString * const codeLoginUrl;
 
 extern NSString * const findGroupListUrl;
 
+extern NSString * const findGroupNumberUrl;
+
 extern NSString * const hotSearchUrl;
 
 extern NSString * const downUrl;

@@ -104,8 +104,8 @@
 - (void)loadIosAuditStateUrl{
     [NetworkWorker networkGet:[NetworkUrlGetter getIosAuditStateUrl] success:^(NSDictionary *result) {
         [DeviceTool shareInstance].reviewStatus = result[@"str"];
-//        [DeviceTool shareInstance].reviewStatus = @"审核中";
-        if ([[DeviceTool shareInstance].reviewStatus isEqualToString:@"已通过"]) {
+//        [DeviceTool shareInstance].reviewStatus = REVIEWING;
+        if ([[DeviceTool shareInstance].reviewStatus isEqualToString:APPROVED]) {
             if ([PreHelper isLogin]) {
                 MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
                 self.window.rootViewController = tabbar;

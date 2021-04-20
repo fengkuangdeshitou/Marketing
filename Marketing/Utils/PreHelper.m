@@ -9,6 +9,7 @@
 #import "MyTabbarViewController.h"
 #import "BindingMobileViewController.h"
 #import "CustomNavagationController.h"
+#import "LoginViewController.h"
 
 @implementation PreHelper
 
@@ -75,6 +76,14 @@
     MyTabbarViewController *tabbar = [[MyTabbarViewController alloc] init];
     UIWindow *window =  [[UIApplication sharedApplication].delegate window];
     window.rootViewController = tabbar;
+    [window makeKeyAndVisible];
+}
+
++ (void)pushToWechatLoginController{
+    LoginViewController *login = [[LoginViewController alloc] init];
+    CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
+    UIWindow *window =  [[UIApplication sharedApplication].delegate window];
+    window.rootViewController = nav;
     [window makeKeyAndVisible];
 }
 
@@ -231,6 +240,42 @@
         return heightValue;
     }else{
         return DEFAULT_IMAGE_HEIGHT;
+    }
+}
+
++ (CGFloat)getVideoWidthWithUrl:(NSString *)url{
+    if ([self urlContainsWidthAndHeight:url]) {
+        NSArray * widthArray = [url componentsSeparatedByString:@"__"];
+        CGFloat widthValue = [widthArray[1] floatValue];
+        CGFloat heightValue = [widthArray[2] floatValue];
+        if (widthValue <= heightValue) {
+            widthValue = DEFAULT_VIDEO_WIDTH;
+        }else{
+            if (widthValue > (SCREEN_WIDTH-80)) {
+                CGFloat proportion = heightValue/widthValue;
+                widthValue = (DEFAULT_VIDEO_HEIGHT-15)/proportion;
+            }
+        }
+        return widthValue;
+    }else{
+        return DEFAULT_VIDEO_WIDTH;
+    }
+}
+
++ (CGFloat)getVideoHeightWithUrl:(NSString *)url{
+    if ([self urlContainsWidthAndHeight:url]) {
+        NSArray * widthArray = [url componentsSeparatedByString:@"__"];
+        CGFloat widthValue = [widthArray[1] floatValue];
+        CGFloat heightValue = [widthArray[2] floatValue];
+        if (widthValue <= heightValue) {
+            CGFloat proportion = widthValue/heightValue;
+            heightValue = DEFAULT_VIDEO_WIDTH/proportion;
+        }else{
+            heightValue = DEFAULT_VIDEO_HEIGHT;
+        }
+        return heightValue;
+    }else{
+        return DEFAULT_VIDEO_HEIGHT;
     }
 }
 

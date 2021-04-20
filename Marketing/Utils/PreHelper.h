@@ -19,6 +19,8 @@
 
 + (void)pushToTabbarController;
 
++ (void)pushToWechatLoginController;
+
 + (void)pushToLoginController;
 
 + (UIViewController *)getCurrentVC;
@@ -32,5 +34,9 @@
 + (CGFloat)getWidthWithUrl:(NSString *)url;
 
 + (CGFloat)getHeightWithUrl:(NSString *)url;
+
++ (CGFloat)getVideoWidthWithUrl:(NSString *)url;
+
++ (CGFloat)getVideoHeightWithUrl:(NSString *)url;
 
 @end
