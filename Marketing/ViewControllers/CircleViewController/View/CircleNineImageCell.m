@@ -66,15 +66,15 @@
         CGFloat imageWidth = [PreHelper getWidthWithUrl:model.images.firstObject];
         self.imageHeightConstraint.constant = imageHeight > 0 ? imageHeight : 180;
         self.imageWidthConstraint.constant = imageWidth > 0 ? imageWidth : 120;
-        [ImageLoader loadImage:[self.imagesView viewWithTag:10] url:model.images.firstObject placeholder:nil];
+        [ImageLoader loadImage:[self.imagesView viewWithTag:10] url:model.images.firstObject placeholder:[UIImage imageNamed:@"placehold1"]];
     }else if (model.images.count == 4) {
         for (int i=0; i<2; i++) {
-            [ImageLoader loadImage:[self.imagesView viewWithTag:i+10] url:model.images[i] placeholder:nil];
-            [ImageLoader loadImage:[self.imagesView viewWithTag:i+13] url:model.images[i] placeholder:nil];
+            [ImageLoader loadImage:[self.imagesView viewWithTag:i+10] url:model.images[i] placeholder:[UIImage imageNamed:@"placehold"]];
+            [ImageLoader loadImage:[self.imagesView viewWithTag:i+13] url:model.images[i] placeholder:[UIImage imageNamed:@"placehold"]];
         }
     }else{
         for (int i=0; i<model.images.count; i++) {
-            [ImageLoader loadImage:[self.imagesView viewWithTag:i+10] url:model.images[i] placeholder:nil];
+            [ImageLoader loadImage:[self.imagesView viewWithTag:i+10] url:model.images[i] placeholder:[UIImage imageNamed:@"placehold"]];
         }
     }
 }

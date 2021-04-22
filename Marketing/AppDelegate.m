@@ -12,6 +12,7 @@
 #import <LinkedME_iOS/LinkedME.h>
 #import "DetailViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import "UpdateAlertView.h"
 
 @interface AppDelegate ()
 
@@ -39,7 +40,7 @@
     
     [self loadLinkME];
     [self loadIosAuditStateUrl];
-    [self getAppUpdateVersion];
+//    [self getAppUpdateVersion];
     
     return YES;
 }
@@ -124,10 +125,40 @@
 /// 版本更新检查
 - (void)getAppUpdateVersion{
     [NetworkWorker networkGet:[NetworkUrlGetter getAppVersion] success:^(NSDictionary *result) {
-            
+        
+        NSArray * list = result[@"List"];
+        
+        if (list.count == 0) {
+            return;
+        }
+        
+        NSString * currentVersionString = [DeviceTool shareInstance].appVersion;
+        NSString * onlineVersionString = [result[@"List"] firstObject][@"title"];
+        
+        if ([currentVersionString isEqualToString:onlineVersionString]) {
+            return;
+        }
+        
+        if (currentVersionString.length < onlineVersionString.length) {
+            currentVersionString = [currentVersionString stringByAppendingString:@".0"];
+        }else if (onlineVersionString.length < currentVersionString.length){
+            onlineVersionString = [onlineVersionString stringByAppendingString:@".0"];
+        }
+        
+        NSInteger currentVersion = [currentVersionString stringByReplacingOccurrencesOfString:@"." withString:@""].integerValue;
+        NSInteger onlineVersion = [onlineVersionString stringByReplacingOccurrencesOfString:@"." withString:@""].integerValue;
+        
+        if (currentVersion < onlineVersion) {
+            [self showUpdateView:result];
+        }
+        
     } failure:^(NSString *errorMessage) {
         
     }];
+}
+
+- (void)showUpdateView:(NSDictionary *)result{
+    [UpdateAlertView showUpdateAlertViewWithData:result];
 }
 
 - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation{

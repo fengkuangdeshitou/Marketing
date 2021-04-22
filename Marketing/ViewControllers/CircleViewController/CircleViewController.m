@@ -239,7 +239,7 @@
         self.tableView.tableHeaderView = headerView;
         
         [self loadCircleFriendsBackgroundImageData];
-        [ImageLoader loadImage:self.avatarImageView url:[UserManager getUser].headimgurl placeholder:nil];
+        [ImageLoader loadImage:self.avatarImageView url:[UserManager getUser].headimgurl placeholder:[UIImage imageNamed:@"placehold"]];
     }
 
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -266,7 +266,7 @@
 /// 品圈 Header 图
 - (void)loadCircleFriendsBackgroundImageData{
     [NetworkWorker networkGet:[NetworkUrlGetter getConfigUrlWithKey:circleFriendsBackgroundUrl] success:^(NSDictionary *result) {
-        [ImageLoader loadImage:self.coverImageView url:result[@"str"] placeholder:nil];
+        [ImageLoader loadImage:self.coverImageView url:result[@"str"] placeholder:[UIImage imageNamed:@"placehold2"]];
     } failure:^(NSString *errorMessage) {
         
     }];

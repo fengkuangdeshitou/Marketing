@@ -46,7 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"赚钱";
-    
+    self.isHiddenLoadString = YES;
     self.userModel = [UserManager getUser];
     [ImageLoader loadImage:self.headerImageView url:self.userModel.headimgurl placeholder:nil];
     self.userNameLabel.text = self.userModel.nickname;

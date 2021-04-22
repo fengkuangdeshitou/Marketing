@@ -33,6 +33,8 @@
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		0F6C0CF72627DEB1007ABE5A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */; };
 		0F6C0CF82627DEB1007ABE5A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */; };
+		0FE5768526316D8200B7075D /* UpdateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5768426316D8200B7075D /* UpdateAlertView.m */; };
+		0FE5768826316D8B00B7075D /* UpdateAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5768726316D8B00B7075D /* UpdateAlertView.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
 		BD0543762600CEC200DEF83F /* EditUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */; };
 		BD0543772600CEC200DEF83F /* EditUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */; };
@@ -205,6 +207,9 @@
 		0F6C0CF42627DEB1007ABE5A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		0FE5768326316D8200B7075D /* UpdateAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateAlertView.h; sourceTree = "<group>"; };
+		0FE5768426316D8200B7075D /* UpdateAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateAlertView.m; sourceTree = "<group>"; };
+		0FE5768726316D8B00B7075D /* UpdateAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateAlertView.xib; sourceTree = "<group>"; };
 		BD0543732600CEC200DEF83F /* EditUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditUserInfoViewController.h; sourceTree = "<group>"; };
 		BD0543742600CEC200DEF83F /* EditUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditUserInfoViewController.m; sourceTree = "<group>"; };
 		BD0543752600CEC200DEF83F /* EditUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditUserInfoViewController.xib; sourceTree = "<group>"; };
@@ -535,6 +540,16 @@
 				0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */,
 			);
 			path = AboutViewController;
+			sourceTree = "<group>";
+		};
+		0FE5768226316D6F00B7075D /* UpdateAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				0FE5768326316D8200B7075D /* UpdateAlertView.h */,
+				0FE5768426316D8200B7075D /* UpdateAlertView.m */,
+				0FE5768726316D8B00B7075D /* UpdateAlertView.xib */,
+			);
+			path = UpdateAlertView;
 			sourceTree = "<group>";
 		};
 		97D523F2151D7882F0982376 /* Frameworks */ = {
@@ -898,6 +913,7 @@
 		BDC5856125EB4C740021F808 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0FE5768226316D6F00B7075D /* UpdateAlertView */,
 				BDC585AE25EB5A100021F808 /* HomeViewController */,
 				BDDEFB2425EB7B0500D7A5D7 /* CircleViewController */,
 				BDC265C125ED2A5C00DBAA64 /* ProfitableViewController */,
@@ -1199,6 +1215,7 @@
 				BDE18AAA26270A6600D80997 /* WebViewController.xib in Resources */,
 				BDDEFAFF25EB63CF00D7A5D7 /* SettingViewController.xib in Resources */,
 				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
+				0FE5768826316D8B00B7075D /* UpdateAlertView.xib in Resources */,
 				BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */,
 				BDC265D125EE5BB100DBAA64 /* ProfitImageCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
@@ -1391,6 +1408,7 @@
 				BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */,
 				BDC5855F25EB4C4E0021F808 /* NetworkWorker.m in Sources */,
 				BDC5857025EB4EE20021F808 /* GlobalState.m in Sources */,
+				0FE5768526316D8200B7075D /* UpdateAlertView.m in Sources */,
 				BD05438A260714B100DEF83F /* UIViewController+HUD.m in Sources */,
 				BDC5859B25EB57180021F808 /* NSDate+Additions.m in Sources */,
 				0F6C0CF72627DEB1007ABE5A /* AboutViewController.m in Sources */,

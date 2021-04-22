@@ -228,11 +228,6 @@
         NSLog(@"state=%ld",transaction.transactionState);
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchased:{
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideHud];
-                    });
-                });
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [self verifyPurchaseWithPaymentTransaction:transaction];
             }
@@ -302,7 +297,7 @@
                 //通常需要校验：bid，product_id，purchase_date，status
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideHud];
+                        [self applyPayNotifyWithReceipt:receiptString];
                     });
                 });
                 NSDictionary *receipt = jsonResponse[@"receipt"];
@@ -318,7 +313,7 @@
     //            }else{
     //                [defaults setBool:YES forKey:productIdentifier];
     //            }
-                [self applyPayNotifyWithReceipt:receiptString];
+                
             }else{
                 //验证失败，检查你的机器是否越狱
             }

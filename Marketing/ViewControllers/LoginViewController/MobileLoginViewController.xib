@@ -27,9 +27,9 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XA-7x-u9y">
-                    <rect key="frame" x="15" y="44" width="13" height="22"/>
+                    <rect key="frame" x="15" y="44" width="22" height="22"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="chevron.backward" catalog="system"/>
+                    <state key="normal" image="navigationBarBack"/>
                     <connections>
                         <action selector="threePartiesLogin:" destination="-1" eventType="touchUpInside" id="LkD-0y-RsN"/>
                     </connections>
@@ -204,13 +204,13 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="login_mobile_bg" width="375" height="199.5"/>
         <image name="login_mobile_code" width="20" height="20"/>
         <image name="login_mobile_icon" width="96.5" height="96.5"/>
         <image name="login_mobile_loginBg" width="300" height="45"/>
         <image name="login_mobile_phone" width="20" height="20"/>
         <image name="login_mobile_wechat" width="34" height="34"/>
+        <image name="navigationBarBack" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

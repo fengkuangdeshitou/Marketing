@@ -30,7 +30,7 @@
     [super setModel:model];
     self.titleLabel.text = model.nikename;
     self.timeLabel.text = model.add_time;
-    [ImageLoader loadImage:self.avararImageView url:model.head_url placeholder:nil];
+    [ImageLoader loadImage:self.avararImageView url:model.head_url placeholder:[UIImage imageNamed:@"placehold"]];
 }
 
 - (IBAction)headerAction:(UITapGestureRecognizer *)sender{

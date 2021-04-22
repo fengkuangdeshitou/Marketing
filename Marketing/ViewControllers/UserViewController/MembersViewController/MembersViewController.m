@@ -218,11 +218,6 @@
 /// @param queue queue
 /// @param transactions transactions
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideHud];
-        });
-    });
     for (SKPaymentTransaction * transaction in transactions) {
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchased:{
@@ -232,6 +227,11 @@
                 break;
             case SKPaymentTransactionStatePurchasing:{
                 NSLog(@"商品添加进列表");
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self showHudInView:self.view hint:@"正在付款"];
+                    });
+                });
             }
                 break;
             case SKPaymentTransactionStateRestored:{
@@ -281,16 +281,14 @@
                 //通常需要校验：bid，product_id，purchase_date，status
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideHud];
+                        [self applyPayNotifyWithReceipt:receiptString];
                     });
                 });
-                [self applyPayNotifyWithReceipt:receiptString];
             }else{
                 //验证失败，检查你的机器是否越狱
             }
         }
     }];
-    
     [task resume];
 }
 

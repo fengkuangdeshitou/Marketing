@@ -44,6 +44,8 @@ static NSString *const NoDataEmptyViewKey = @"NoDataEmptyViewKey";
         if (![self.subviews containsObject:self.emptyView]) {
             self.emptyView = [[NoDataEmptyView alloc] initWithFrame:self.bounds];
             [self addSubview:self.emptyView];
+        }else{
+            self.emptyView.hidden = NO;
         }
     }else{
         [self.emptyView removeFromSuperview];

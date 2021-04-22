@@ -128,7 +128,7 @@
 
 - (void)formatNumber{
     GroupModel * model = self.dataArray[self.currentFlag-1];
-    [ImageLoader loadImage:self.icon url:model.img_urls placeholder:nil];
+    [ImageLoader loadImage:self.icon url:model.img_urls placeholder:[UIImage imageNamed:@"placehold1"]];
     self.contentLabel.text = model.wxg_desc;
     self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
     self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.currentFlag];
