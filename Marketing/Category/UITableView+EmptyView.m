@@ -42,7 +42,8 @@ static NSString *const NoDataEmptyViewKey = @"NoDataEmptyViewKey";
     
     if (rows == 0) {
         if (![self.subviews containsObject:self.emptyView]) {
-            self.emptyView = [[NoDataEmptyView alloc] initWithFrame:self.bounds];
+            self.emptyView = [[NoDataEmptyView alloc] initWithFrame:CGRectMake(0, 0, 250, 250)];
+            self.emptyView.center = self.center;
             [self addSubview:self.emptyView];
         }else{
             self.emptyView.hidden = NO;

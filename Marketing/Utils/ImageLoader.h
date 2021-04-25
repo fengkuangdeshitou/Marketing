@@ -41,4 +41,6 @@
 
 + (UIImage*)getVideoFirstViewImage:(NSString *)path;
 
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
+
 @end

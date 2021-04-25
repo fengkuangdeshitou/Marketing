@@ -95,6 +95,14 @@
 - (void)authWithCertifyId:(NSString *)certifyId{
     [NetworkWorker networkPost:[NetworkUrlGetter getLivenessCheckUrl] params:@{@"certifyId":certifyId,@"mCertNo":self.numberTextField.text,@"mCertName":self.nameTextField.text} success:^(NSDictionary *result) {
         [self.view makeToast:@"认证成功"];
+        UserModel * user = [UserManager getUser];
+        user.cert_name = self.nameTextField.text;
+        user.cert_no = self.numberTextField.text;
+        [UserManager saveUser:user];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthemticationSuccess)]) {
+            [self.delegate onAuthemticationSuccess];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *errorMessage) {
         
     }];

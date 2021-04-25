@@ -119,7 +119,7 @@ static NetworkWorker * networkWorker = nil;
     URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NetworkWorker * network = [NetworkWorker shareInstance];
     [network.manager POST:URLString parameters:dictionary headers:network.headers constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:postData name:@"file" fileName:fileName mimeType:@"image/jpeg/video"];
+        [formData appendPartWithFileData:postData name:@"file" fileName:fileName mimeType:@"image/jpg/png/jpeg/video"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"result=%@",result);

@@ -40,7 +40,7 @@
     
     [self loadLinkME];
     [self loadIosAuditStateUrl];
-//    [self getAppUpdateVersion];
+    [self getAppUpdateVersion];
     
     return YES;
 }
@@ -132,8 +132,10 @@
             return;
         }
         
+        NSDictionary * updateInfo = list.firstObject;
+        
         NSString * currentVersionString = [DeviceTool shareInstance].appVersion;
-        NSString * onlineVersionString = [result[@"List"] firstObject][@"title"];
+        NSString * onlineVersionString = updateInfo[@"title"];
         
         if ([currentVersionString isEqualToString:onlineVersionString]) {
             return;
@@ -149,7 +151,7 @@
         NSInteger onlineVersion = [onlineVersionString stringByReplacingOccurrencesOfString:@"." withString:@""].integerValue;
         
         if (currentVersion < onlineVersion) {
-            [self showUpdateView:result];
+            [self showUpdateView:updateInfo];
         }
         
     } failure:^(NSString *errorMessage) {

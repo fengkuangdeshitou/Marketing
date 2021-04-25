@@ -17,7 +17,7 @@
 #import "CustomerServiceViewController.h"
 #import "MembersViewController.h"
 
-@interface UserViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface UserViewController ()<UITableViewDelegate,UITableViewDataSource,AuthenticationViewControllerDelegate>
 
 @property(nonatomic,weak)IBOutlet UITableView * tableView;
 @property(nonatomic,strong) NSArray * titleArray;
@@ -40,6 +40,11 @@
     [self.tableView reloadData];
 }
 
+- (void)onAuthemticationSuccess{
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         UserHeaderCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserHeaderCell class]) forIndexPath:indexPath];
@@ -50,6 +55,11 @@
         UserCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UserCell class]) forIndexPath:indexPath];
         cell.titleLabel.text = self.titleArray[indexPath.row];
         cell.icon.image = [UIImage imageNamed:[NSString stringWithFormat:@"user_title_%d",indexPath.row]];
+        if (indexPath.row == 2 && [UserManager getUser].cert_no.length > 0) {
+            cell.descLabel.text = @"已认证";
+        }else{
+            cell.descLabel.text = @"";
+        }
         return cell;
     }
 }
@@ -80,8 +90,12 @@
             circle.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:circle animated:true];
         }else if (indexPath.row == 2){
+            if ([UserManager getUser].cert_no.length > 0) {
+                return;
+            }
             AuthenticationViewController * authentication = [[AuthenticationViewController alloc] init];
             authentication.title = @"实名认证";
+            authentication.delegate = self;
             authentication.hidesBottomBarWhenPushed = true;
             [self.navigationController pushViewController:authentication animated:true];
         }else if (indexPath.row == 3){

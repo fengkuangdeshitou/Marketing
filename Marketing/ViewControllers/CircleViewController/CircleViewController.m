@@ -37,7 +37,6 @@
 @property(nonatomic,weak)IBOutlet UIView * createCircleButton;
 @property(nonatomic,strong) UILabel * titleLabel;
 @property(nonatomic,strong) UIImageView * coverImageView;
-@property(nonatomic,strong) UIImageView * avatarImageView;
 
 @property (strong, nonatomic) HXPhotoCustomNavigationBar *customNavBar;
 @property (strong, nonatomic) UINavigationItem *navItem;
@@ -68,21 +67,11 @@
 
 - (UIImageView *)coverImageView{
     if (!_coverImageView) {
-        _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 330)];
+        _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
         _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
         _coverImageView.clipsToBounds = YES;
     }
     return _coverImageView;
-}
-
-- (UIImageView *)avatarImageView{
-    if (!_avatarImageView) {
-        _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-85, 278, 70, 70)];
-        _avatarImageView.layer.cornerRadius = 8;
-        _avatarImageView.layer.masksToBounds = true;
-        _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
-    }
-    return _avatarImageView;
 }
 
 - (UILabel *)titleLabel{
@@ -171,7 +160,7 @@
 /// @param scrollView tableview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     /// 开始渐变位置
-    CGFloat startPoint = 260;
+    CGFloat startPoint = 220;
     /// 结束渐变位置
     CGFloat endPoint = startPoint+UIApplication.sharedApplication.statusBarFrame.size.height;
     if (scrollView.contentOffset.y >= startPoint && scrollView.contentOffset.y <= endPoint) {
@@ -231,15 +220,13 @@
         [self.view addSubview:self.topView];
         [self.view addSubview:self.customNavBar];
         [self.customNavBar addSubview:self.titleLabel];
-        self.tableView.contentInset = UIEdgeInsetsMake(-UIApplication.sharedApplication.statusBarFrame.size.height - 44, 0, 0, 0);
-        UIView * headerView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 350)];
+        self.tableView.contentInset = UIEdgeInsetsMake(-UIApplication.sharedApplication.statusBarFrame.size.height-44, 0, 0, 0);
+        UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.coverImageView.height)];
         headerView.backgroundColor = UIColor.whiteColor;
         [headerView addSubview:self.coverImageView];
-        [headerView addSubview:self.avatarImageView];
         self.tableView.tableHeaderView = headerView;
         
         [self loadCircleFriendsBackgroundImageData];
-        [ImageLoader loadImage:self.avatarImageView url:[UserManager getUser].headimgurl placeholder:[UIImage imageNamed:@"placehold"]];
     }
 
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

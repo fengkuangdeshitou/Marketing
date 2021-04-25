@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol AuthenticationViewControllerDelegate <NSObject>
+
+- (void)onAuthemticationSuccess;
+
+@end
+
 @interface AuthenticationViewController : UIViewController
+
+@property(nonatomic,weak)id<AuthenticationViewControllerDelegate>delegate;
 
 @end
 

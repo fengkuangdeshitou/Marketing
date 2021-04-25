@@ -32,6 +32,7 @@
 @property(nonatomic,strong)UIView * flagView;
 @property(nonatomic,weak)IBOutlet UIView * segmentView;
 @property(nonatomic,weak)IBOutlet UIButton * saveButton;
+@property(nonatomic,assign)BOOL permissions;
 
 @end
 
@@ -78,7 +79,7 @@
     UIBarButtonItem * downloadItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_download"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick)];
     self.navigationItem.rightBarButtonItem = downloadItem;
     
-    [[self.segmentView viewWithTag:10] addSubview:self.flagView];
+    [[self.segmentView viewWithTag:11] addSubview:self.flagView];
     
     [self getFindGroupNumberData];
     
@@ -212,12 +213,27 @@
 /// @param sender 按钮
 - (IBAction)nextAction:(id)sender{
     if (self.currentFlag == self.dataArray.count) {
-        self.page++;
-        [self getFindGroupList];
+        if (self.permissions == YES) {
+            self.page++;
+            [self getFindGroupList];
+        }else{
+            if (self.time == 2 && self.currentFlag == 3) {
+                // 昨天可查看3张
+                [self pushToMembersController];
+            }else if(self.time == 3 && self.currentFlag == 5){
+                // 更早可查看5张
+                [self pushToMembersController];
+            }
+        }
     }else{
         self.currentFlag++;
         [self formatNumber];
     }
+}
+
+/// 会员充值
+- (void)pushToMembersController{
+    
 }
 
 /*

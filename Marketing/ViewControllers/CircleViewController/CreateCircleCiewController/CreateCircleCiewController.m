@@ -147,8 +147,8 @@
             [photoModel getAssetURLWithSuccess:^(NSURL * _Nullable URL, HXPhotoModelMediaSubType mediaType, BOOL isNetwork, HXPhotoModel * _Nullable model) {
                 count++;
                 if (mediaType == HXPhotoModelMediaSubTypePhoto) {
-//                    NSData *imageData = [NSData dataWithContentsOfURL:URL];
-//                    UIImage *image = [UIImage imageWithData:imageData];
+                    NSData *imageData = [NSData dataWithContentsOfURL:URL];
+                    UIImage *image = [UIImage imageWithData:imageData];
 //                    UIImage *image = [UIImage imageWithContentsOfFile:URL.path];
                     // 图片
                     if (isNetwork) {
@@ -217,9 +217,9 @@
     for (NSString *key in keys) {
         // 如果有传入网络图片/视频这个URL就可能是网络/视频，注意在获取的时候区分
         id obj = self.assetURLDict[key];
+        NSSLog(@"%@", obj);
         if ([obj isKindOfClass:[NSURL class]]) {
-//            NSSLog(@"%@", obj);
-            [self uploadImageWithFilePath:((NSURL *)obj).path];
+            [self uploadImageWithFilePath:obj];
         }else if ([obj isKindOfClass:[NSDictionary class]]) {
             NSURL *videoURL = obj[@"videoURL"];
             [self uploadVideoWithFilePath:videoURL.path];
@@ -241,10 +241,12 @@
 //    }, nil);
 }
 
-- (void)uploadImageWithFilePath:(NSString *)filePath{
-    NSData * data = [NSData dataWithContentsOfFile:filePath];
-    NSString * fileName = [[filePath componentsSeparatedByString:@"/"].lastObject componentsSeparatedByString:@"."].firstObject;
-    [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:data andFileName:[ImageLoader getCreateImageName:fileName] success:^(NSDictionary *result) {
+- (void)uploadImageWithFilePath:(NSURL *)filePath{
+    NSData * ImageData = [NSData dataWithContentsOfURL:filePath];
+    UIImage *image = [UIImage imageWithData:ImageData];
+//    NSData * data = UIImageJPEGRepresentation(image, 0.3);
+    NSData * data = UIImageJPEGRepresentation([ImageLoader compressImage:image toByte:1024*512], 1);
+    [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:data andFileName:[ImageLoader getCreateImageName:nil] success:^(NSDictionary *result) {
         [self.imageUrlArray addObject:result[@"url"]];
         if (self.imageUrlArray.count == self.photoManager.afterSelectedArray.count) {
             [self createCircleWithImageUrl:[self.imageUrlArray componentsJoinedByString:@","] videoUrl:nil];
