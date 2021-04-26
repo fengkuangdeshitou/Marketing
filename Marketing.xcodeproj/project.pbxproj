@@ -33,6 +33,8 @@
 		0F67410E26007EEA00BF7315 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67410D26007EEA00BF7315 /* StoreKit.framework */; };
 		0F6C0CF72627DEB1007ABE5A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */; };
 		0F6C0CF82627DEB1007ABE5A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */; };
+		0F81C0CA26365E8A0033B952 /* MemberAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F81C0C926365E8A0033B952 /* MemberAlertView.m */; };
+		0F81C0CD26365E960033B952 /* MemberAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F81C0CC26365E960033B952 /* MemberAlertView.xib */; };
 		0FE5768526316D8200B7075D /* UpdateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5768426316D8200B7075D /* UpdateAlertView.m */; };
 		0FE5768826316D8B00B7075D /* UpdateAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5768726316D8B00B7075D /* UpdateAlertView.xib */; };
 		B5D789B87E00F0A33802097E /* Pods_Marketing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77E9DAFABF5E999D5D839BC /* Pods_Marketing.framework */; };
@@ -207,6 +209,9 @@
 		0F6C0CF42627DEB1007ABE5A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		0F6C0CF52627DEB1007ABE5A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		0F6C0CF62627DEB1007ABE5A /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		0F81C0C826365E8A0033B952 /* MemberAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberAlertView.h; sourceTree = "<group>"; };
+		0F81C0C926365E8A0033B952 /* MemberAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberAlertView.m; sourceTree = "<group>"; };
+		0F81C0CC26365E960033B952 /* MemberAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberAlertView.xib; sourceTree = "<group>"; };
 		0FE5768326316D8200B7075D /* UpdateAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateAlertView.h; sourceTree = "<group>"; };
 		0FE5768426316D8200B7075D /* UpdateAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateAlertView.m; sourceTree = "<group>"; };
 		0FE5768726316D8B00B7075D /* UpdateAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateAlertView.xib; sourceTree = "<group>"; };
@@ -606,6 +611,9 @@
 				BD06B55A25FA60EE0051F873 /* DownloadAlertView.h */,
 				BD06B55B25FA60EE0051F873 /* DownloadAlertView.m */,
 				BD06B55E25FA60F80051F873 /* DownloadAlertView.xib */,
+				0F81C0C826365E8A0033B952 /* MemberAlertView.h */,
+				0F81C0C926365E8A0033B952 /* MemberAlertView.m */,
+				0F81C0CC26365E960033B952 /* MemberAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1217,6 +1225,7 @@
 				BD410C9A25F903D8007A1D5E /* AddFriendAlertView.xib in Resources */,
 				0FE5768826316D8B00B7075D /* UpdateAlertView.xib in Resources */,
 				BD06B55F25FA60F80051F873 /* DownloadAlertView.xib in Resources */,
+				0F81C0CD26365E960033B952 /* MemberAlertView.xib in Resources */,
 				BDC265D125EE5BB100DBAA64 /* ProfitImageCell.xib in Resources */,
 				BDC5853E25EB473A0021F808 /* LaunchScreen.storyboard in Resources */,
 				BDC585AB25EB58500021F808 /* UserViewController.xib in Resources */,
@@ -1388,6 +1397,7 @@
 				0F35E74F26253E8200FCF378 /* ComplaintsModel.m in Sources */,
 				BDC5853025EB47370021F808 /* AppDelegate.m in Sources */,
 				BDC5859D25EB57180021F808 /* CALayer+YYLayer.m in Sources */,
+				0F81C0CA26365E8A0033B952 /* MemberAlertView.m in Sources */,
 				BD05437B26039D1100DEF83F /* DeviceTool.m in Sources */,
 				0F03F04125FB71BC0044C8BA /* CustomerServiceViewController.m in Sources */,
 				BDC5854125EB473A0021F808 /* main.m in Sources */,

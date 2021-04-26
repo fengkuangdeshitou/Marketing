@@ -297,6 +297,9 @@
     NSString * combo_price_id = [NSString stringWithFormat:@"%@",item[@"combo_price_id"]];
     [NetworkWorker networkPost:[NetworkUrlGetter getApplyPayNotifyUrl] params:@{@"transactionReceipt":receipt,@"comboPriceId":combo_price_id,@"productId":self.requestId} success:^(NSDictionary *result) {
         [self hideHud];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(onRechargeMemberSuccess)]) {
+            [self.delegate onRechargeMemberSuccess];
+        }
         [self.view makeToast:@"支付成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VIP_CHANGE object:nil];
         [self getMyVIPInfo];

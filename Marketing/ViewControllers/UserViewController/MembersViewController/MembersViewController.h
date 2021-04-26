@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol MembersViewControllerDelegate <NSObject>
+
+- (void)onRechargeMemberSuccess;
+
+@end
+
 @interface MembersViewController : UIViewController
+
+@property(nonatomic,weak)id<MembersViewControllerDelegate>delegate;
 
 @end
 

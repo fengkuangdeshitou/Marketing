@@ -11,8 +11,10 @@
 #import "CustomNavagationController.h"
 #import "DownloadAlertView.h"
 #import "GroupModel.h"
+#import "MemberAlertView.h"
+#import "MembersViewController.h"
 
-@interface HomeViewController ()<UISearchBarDelegate>
+@interface HomeViewController ()<UISearchBarDelegate,MemberAlertViewDelegate,MembersViewControllerDelegate>
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
 @property(nonatomic,weak)IBOutlet UIButton * beforeButton;
@@ -52,7 +54,7 @@
     
     self.currentFlag = 0;
     self.page = 1;
-    self.time = 1;
+    self.time = 2;
     
     self.beforeButton.layer.borderColor = [PreHelper colorWithHexString:COLOR_MAIN_COLOR].CGColor;
     self.beforeButton.layer.borderWidth = 1;
@@ -161,6 +163,10 @@
 /// 日期切换
 /// @param sender 按钮
 - (IBAction)segmengClick:(UIButton *)sender{
+    if (sender.tag == 10 && self.permissions == false) {
+        [self pushToMembersController];
+        return;
+    }
     for (UIView * subview in self.segmentView.subviews) {
         if ([subview isKindOfClass:[UIButton class]]) {
             ((UIButton *)subview).titleLabel.font = [UIFont systemFontOfSize:16];
@@ -223,6 +229,9 @@
             }else if(self.time == 3 && self.currentFlag == 5){
                 // 更早可查看5张
                 [self pushToMembersController];
+            }else{
+                self.page++;
+                [self getFindGroupList];
             }
         }
     }else{
@@ -233,7 +242,27 @@
 
 /// 会员充值
 - (void)pushToMembersController{
-    
+    if (![PreHelper isLogin]) {
+        if ([[DeviceTool shareInstance].reviewStatus isEqualToString:REVIEWING]) {
+            [PreHelper pushToLoginController];
+        }else{
+            [PreHelper pushToWechatLoginController];
+        }
+    }else{
+        [MemberAlertView showMemberAlertViewWithDelegate:self];
+    }
+}
+
+- (void)memberDidSelectAction{
+    MembersViewController * member = [[MembersViewController alloc] init];
+    member.title = @"会员中心";
+    member.delegate = self;
+    member.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:member animated:YES];
+}
+
+- (void)onRechargeMemberSuccess{
+    self.permissions = YES;
 }
 
 /*
