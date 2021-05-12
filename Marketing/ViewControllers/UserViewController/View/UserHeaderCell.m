@@ -7,10 +7,12 @@
 
 #import "UserHeaderCell.h"
 #import "GlobalNotification.h"
+#import "MembersViewController.h"
 
 @interface UserHeaderCell ()
 
 @property(nonatomic,weak)IBOutlet UIImageView * headerImageView;
+@property(nonatomic,weak)IBOutlet UIImageView * memberImageView;
 @property(nonatomic,weak)IBOutlet UILabel * titleLabel;
 @property(nonatomic,weak)IBOutlet UILabel * descLabel;
 @property(nonatomic,weak)IBOutlet UILabel * VIPInfoLabel;
@@ -26,6 +28,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMyVIPInfo) name:NOTIFICATION_VIP_CHANGE object:nil];
     [self getMyVIPInfo];
     
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToMember)];
+    [self.memberImageView addGestureRecognizer:tap];
+    
+}
+
+/// 会员中心
+- (void)pushToMember{
+    MembersViewController * memeber = [[MembersViewController alloc] init];
+    memeber.title = @"会员中心";
+    memeber.hidesBottomBarWhenPushed = true;
+    [[PreHelper getCurrentVC].navigationController pushViewController:memeber animated:YES];
 }
 
 /// 获取 VIP 信息

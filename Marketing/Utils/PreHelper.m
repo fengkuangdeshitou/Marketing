@@ -218,6 +218,9 @@
             if (widthValue > (SCREEN_WIDTH-80)) {
                 CGFloat proportion = heightValue/widthValue;
                 widthValue = (DEFAULT_IMAGE_HEIGHT-15)/proportion;
+                if (widthValue < DEFAULT_IMAGE_WIDTH) {
+                    widthValue = DEFAULT_IMAGE_WIDTH;
+                }
             }
         }
         return widthValue;
@@ -234,6 +237,9 @@
         if (widthValue <= heightValue) {
             CGFloat proportion = widthValue/heightValue;
             heightValue = DEFAULT_IMAGE_WIDTH/proportion;
+            if (heightValue < DEFAULT_IMAGE_HEIGHT) {
+                heightValue = DEFAULT_IMAGE_HEIGHT;
+            }
         }else{
             heightValue = DEFAULT_IMAGE_HEIGHT;
         }

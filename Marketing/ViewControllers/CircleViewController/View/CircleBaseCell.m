@@ -29,12 +29,7 @@
             if (model.images.count == 0) {
                 return 0.001;
             }else if (model.images.count == 1){
-                CGFloat imageHeight = [PreHelper getHeightWithUrl:model.images.firstObject];
-                if (imageHeight > 0) {
-                    return imageHeight;
-                }else{
-                    return 180;
-                }
+                return [PreHelper getHeightWithUrl:model.images.firstObject];
             }else if (model.images.count > 1 && model.images.count < 4){
                 return 95;
             }else if (model.images.count > 3 && model.images.count < 7){

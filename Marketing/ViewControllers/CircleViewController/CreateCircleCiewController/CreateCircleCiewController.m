@@ -75,12 +75,17 @@
     self.photoView.previewShowDeleteButton = YES;
     self.photoView.manager = self.photoManager;
     
+    self.textView.text = K_UD_READ(@"draft");
+    
 }
 
 - (void)backClick {
     if (self.photoManager.afterSelectedArray.count) {
         HXWeakSelf
         hx_showAlert(self, @"将此次编辑保留?", nil, @"不保留", @"保留", ^{
+            if (self.textView.text.length > 0) {
+                K_UD_SAVE(@"", @"draft");
+            }
             [weakSelf.photoManager deleteLocalModelsInFile];
             [weakSelf back];
         }, ^{
@@ -90,6 +95,9 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.view hx_handleLoading];
                     if (success) {
+                        if (self.textView.text.length > 0) {
+                            K_UD_SAVE(self.textView.text, @"draft");
+                        }
                         [weakSelf back];
                     }else {
                         [weakSelf.view hx_showImageHUDText:@"保存失败"];
@@ -99,6 +107,9 @@
         });
     }else {
         // 清空草稿
+        if (self.textView.text.length > 0) {
+            K_UD_SAVE(@"", @"draft");
+        }
         [self.photoManager deleteLocalModelsInFile];
         [self back];
     }
@@ -110,6 +121,10 @@
 }
 - (void)didPublishClick:(UIButton *)button {
     // 发布的时候也清空草稿
+    [self.view endEditing:YES];
+    if (self.textView.text.length > 0) {
+        K_UD_SAVE(@"", @"draft");
+    }
     [self.photoManager deleteLocalModelsInFile];
     self.assetURLDict = [NSMutableDictionary dictionary];
     self.imageUrlArray = [[NSMutableArray alloc] init];
@@ -131,7 +146,7 @@
                     count++;
                     // 可以直接通过manager取地址，不过如果中间获取失败了可能为nil
                     // 为nil的情况需要单独处理
-                    [weakSelf.assetURLDict setObject:imageURL forKey:model.selectIndexStr];
+                    [weakSelf.assetURLDict setObject:videoURL forKey:model.selectIndexStr];
                     if (count == weakSelf.photoManager.afterSelectedCount) {
                         [weakSelf.view hx_handleLoading];
                         [weakSelf fetchAssetURLCompletion];
@@ -217,9 +232,10 @@
     for (NSString *key in keys) {
         // 如果有传入网络图片/视频这个URL就可能是网络/视频，注意在获取的时候区分
         id obj = self.assetURLDict[key];
-        NSSLog(@"%@", obj);
+        NSSLog(@"url=====%@", self.assetURLDict);
         if ([obj isKindOfClass:[NSURL class]]) {
-            [self uploadImageWithFilePath:obj];
+            NSURL * url = (NSURL *)obj;
+            [self uploadImageWithFilePath:url];
         }else if ([obj isKindOfClass:[NSDictionary class]]) {
             NSURL *videoURL = obj[@"videoURL"];
             [self uploadVideoWithFilePath:videoURL.path];
@@ -244,8 +260,11 @@
 - (void)uploadImageWithFilePath:(NSURL *)filePath{
     NSData * ImageData = [NSData dataWithContentsOfURL:filePath];
     UIImage *image = [UIImage imageWithData:ImageData];
-//    NSData * data = UIImageJPEGRepresentation(image, 0.3);
-    NSData * data = UIImageJPEGRepresentation([ImageLoader compressImage:image toByte:1024*512], 1);
+    NSData * data = UIImageJPEGRepresentation(image, 0.3);
+    if (!data) {
+        data = UIImageJPEGRepresentation([ImageLoader getVideoFirstViewImage:filePath], 0.3);
+    }
+//    NSData * data = UIImageJPEGRepresentation([ImageLoader compressImage:image toByte:1024*512], 1);
     [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:data andFileName:[ImageLoader getCreateImageName:nil] success:^(NSDictionary *result) {
         [self.imageUrlArray addObject:result[@"url"]];
         if (self.imageUrlArray.count == self.photoManager.afterSelectedArray.count) {

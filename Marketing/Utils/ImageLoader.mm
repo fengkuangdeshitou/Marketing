@@ -253,8 +253,7 @@
     [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholder];
 }
 
-+ (UIImage*)getVideoFirstViewImage:(NSString *)path {
-    NSURL * url = [[NSURL alloc] initWithString:path];
++ (UIImage*)getVideoFirstViewImage:(NSURL *)url {
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
     AVAssetImageGenerator *assetGen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
     

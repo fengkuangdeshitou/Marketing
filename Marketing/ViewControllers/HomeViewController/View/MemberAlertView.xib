@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,6 +19,7 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member_alert_bg" translatesAutoresizingMaskIntoConstraints="NO" id="tQT-BG-V9x">
                             <rect key="frame" x="0.0" y="0.0" width="280" height="337"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="Z6v-8V-hWG"/>
                                 <constraint firstAttribute="width" secondItem="tQT-BG-V9x" secondAttribute="height" multiplier="74:89" id="Zko-xt-pIb"/>
@@ -71,10 +71,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eG-kH-ALd">
-                            <rect key="frame" x="50" y="312" width="180" height="49"/>
+                            <rect key="frame" x="60" y="288" width="160" height="49"/>
                             <color key="backgroundColor" red="0.96902757880000001" green="0.92097562550000001" blue="0.87688916920000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="180" id="MDm-9q-nCR"/>
+                                <constraint firstAttribute="width" constant="160" id="MDm-9q-nCR"/>
                                 <constraint firstAttribute="height" constant="49" id="xe0-IS-9CP"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -89,7 +89,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="tQT-BG-V9x" firstAttribute="top" secondItem="54f-Wh-7gs" secondAttribute="top" id="10M-h2-JKJ"/>
                         <constraint firstItem="3eG-kH-ALd" firstAttribute="centerX" secondItem="54f-Wh-7gs" secondAttribute="centerX" id="3xI-jb-nnf"/>
@@ -100,7 +100,7 @@
                         <constraint firstItem="Y5K-Yb-jPP" firstAttribute="centerX" secondItem="54f-Wh-7gs" secondAttribute="centerX" id="Tz6-gP-Qr6"/>
                         <constraint firstItem="ZfA-z5-dEw" firstAttribute="centerX" secondItem="54f-Wh-7gs" secondAttribute="centerX" id="Xwb-YM-Kkf"/>
                         <constraint firstItem="sfJ-hf-VCd" firstAttribute="centerX" secondItem="54f-Wh-7gs" secondAttribute="centerX" id="f3P-7x-ZWZ"/>
-                        <constraint firstAttribute="bottom" secondItem="3eG-kH-ALd" secondAttribute="bottom" constant="-24" id="hIS-OI-GTw"/>
+                        <constraint firstAttribute="bottom" secondItem="3eG-kH-ALd" secondAttribute="bottom" id="hIS-OI-GTw"/>
                         <constraint firstItem="tQT-BG-V9x" firstAttribute="leading" secondItem="54f-Wh-7gs" secondAttribute="leading" id="jc2-6o-9o6"/>
                         <constraint firstItem="ZfA-z5-dEw" firstAttribute="top" secondItem="sfJ-hf-VCd" secondAttribute="bottom" constant="35" id="lCd-bo-9PV"/>
                         <constraint firstItem="50U-Ig-Jxz" firstAttribute="centerX" secondItem="54f-Wh-7gs" secondAttribute="centerX" id="xxq-Vg-829"/>
@@ -119,8 +119,5 @@
     </objects>
     <resources>
         <image name="member_alert_bg" width="444" height="534"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

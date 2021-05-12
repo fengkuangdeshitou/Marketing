@@ -39,7 +39,7 @@
 
 + (BOOL)stringContainsEmoji:(NSString *)string;
 
-+ (UIImage*)getVideoFirstViewImage:(NSString *)path;
++ (UIImage*)getVideoFirstViewImage:(NSURL *)path;
 
 + (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
 

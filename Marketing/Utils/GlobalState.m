@@ -28,9 +28,9 @@ NSString * const APPROVED = @"已通过";
 
 const CGFloat NavagationBarHeight = 44;
 
-const CGFloat DEFAULT_IMAGE_WIDTH = 120;
+const CGFloat DEFAULT_IMAGE_WIDTH = 130;
 
-const CGFloat DEFAULT_IMAGE_HEIGHT = 190;
+const CGFloat DEFAULT_IMAGE_HEIGHT = 200;
 
 const CGFloat DEFAULT_VIDEO_WIDTH = 150;
 

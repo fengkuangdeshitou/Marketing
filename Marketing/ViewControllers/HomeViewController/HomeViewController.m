@@ -93,7 +93,8 @@
         self.numberDataDictionary = result[@"result"];
         [self.todayButton setTitle:[NSString stringWithFormat:@"今日(%@)",self.numberDataDictionary[@"today"]] forState:UIControlStateNormal];
         [self.yesterdayButton setTitle:[NSString stringWithFormat:@"昨日(%@)",self.numberDataDictionary[@"yesToday"]] forState:UIControlStateNormal];
-        [self.moreButton setTitle:[NSString stringWithFormat:@"更早(%@)",self.numberDataDictionary[@"earlier"]] forState:UIControlStateNormal];
+        // self.numberDataDictionary[@"earlier"]
+        [self.moreButton setTitle:[NSString stringWithFormat:@"更早(9999+)"] forState:UIControlStateNormal];
         [self getFindGroupList];
     } failure:^(NSString *errorMessage) {
         
@@ -133,7 +134,9 @@
     GroupModel * model = self.dataArray[self.currentFlag-1];
     [ImageLoader loadImage:self.icon url:model.img_urls placeholder:[UIImage imageNamed:@"placehold1"]];
     self.contentLabel.text = model.wxg_desc;
-    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+//    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布于 %@",model.nickname,[model.add_time substringWithRange:NSMakeRange(5, model.add_time.length-5)]];
+    
     self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.currentFlag];
     
     [ImageLoader downloadImageByUrl:model.img_urls success:^(UIImage *image) {

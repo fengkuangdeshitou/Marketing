@@ -29,7 +29,7 @@
 
 - (void)setModel:(CircleModel *)model{
     [super setModel:model];
-    self.coverImageView.image = [ImageLoader getVideoFirstViewImage:model.video_url];
+    self.coverImageView.image = [ImageLoader getVideoFirstViewImage:[NSURL URLWithString:model.video_url]];
     self.coverImageViewWidthConstraint.constant = [PreHelper getVideoWidthWithUrl:model.video_url];
     self.coverImageViewHeightConstraint.constant = [PreHelper getVideoHeightWithUrl:model.head_url];
 }
