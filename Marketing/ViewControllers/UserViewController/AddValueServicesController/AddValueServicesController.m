@@ -13,7 +13,7 @@
 
 @property(nonatomic,weak)IBOutlet UIButton * downloadButton;
 @property(nonatomic,weak)IBOutlet UIButton * createButton;
-
+@property(nonatomic,weak)IBOutlet NSLayoutConstraint * heightConstraint;
 @property(nonatomic,weak)IBOutlet UILabel * remainingDownloadLabel;
 @property(nonatomic,weak)IBOutlet UILabel * remainingCreateLabel;
 @property(nonatomic,strong)UIView * flagView;

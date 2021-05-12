@@ -7,40 +7,17 @@
 
 #import "CircleNineImageCell.h"
 #import "UIImageView+WebCache.h"
-#import "HXPhotoPicker.h"
+#import "YBImageBrowser.h"
 
 @interface CircleNineImageCell ()
 
 @property(nonatomic,weak)IBOutlet NSLayoutConstraint * imageWidthConstraint;
 @property(nonatomic,weak)IBOutlet NSLayoutConstraint * imageHeightConstraint;
-@property(nonatomic,strong)HXPhotoManager *photoManager;
 @property(nonatomic,weak)IBOutlet UIView * imagesView;
 
 @end
 
 @implementation CircleNineImageCell
-
-- (HXPhotoManager *)photoManager{
-    if (!_photoManager) {
-        _photoManager = [HXPhotoManager managerWithType:HXPhotoManagerSelectedTypePhotoAndVideo];
-    }
-    _photoManager.configuration.allowPreviewDirectLoadOriginalImage = YES;
-    HXWeakSelf
-    // 跳转预览界面时动画起始的view
-    _photoManager.configuration.customPreviewFromView = ^UIView *(NSInteger currentIndex) {
-        return [weakSelf.imagesView viewWithTag:currentIndex+10];
-    };
-    // 跳转预览界面时展现动画的image
-    _photoManager.configuration.customPreviewFromImage = ^UIImage *(NSInteger currentIndex) {
-        UIImageView * imageView = [weakSelf.imagesView viewWithTag:currentIndex+10];
-        return imageView.image;
-    };
-    // 退出预览界面时终点view
-    _photoManager.configuration.customPreviewToView = ^UIView *(NSInteger currentIndex) {
-        return [weakSelf.imagesView viewWithTag:currentIndex+10];;
-    };
-    return _photoManager;
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -80,15 +57,17 @@
 }
 
 - (void)imageDetail:(UITapGestureRecognizer *)sender{
-    [self.photoManager clearSelectedList];
     NSMutableArray * imageModelArray = [[NSMutableArray alloc] init];
     for (int i=0; i<self.model.images.count; i++) {
-        HXCustomAssetModel *assetModel = [HXCustomAssetModel assetWithNetworkImageURL:[NSURL URLWithString:self.model.images[i]] selected:YES];
-        [imageModelArray addObject:assetModel];
+        YBIBImageData * data = [YBIBImageData new];
+        data.imageURL = [NSURL URLWithString:self.model.images[i]];
+        data.projectiveView = [self.imagesView viewWithTag:i+10];
+        [imageModelArray addObject:data];
     }
-    [self.photoManager addCustomAssetModel:imageModelArray];
-    [[PreHelper getCurrentVC] hx_presentPreviewPhotoControllerWithManager:self.photoManager previewStyle:HXPhotoViewPreViewShowStyleDark showBottomPageControl:NO currentIndex:sender.view.tag-10];
-    
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = imageModelArray;
+    browser.currentPage = sender.view.tag-10;
+    [browser show];
 }
 
 @end

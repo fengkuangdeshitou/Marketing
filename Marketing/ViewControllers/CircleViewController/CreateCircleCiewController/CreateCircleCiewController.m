@@ -244,8 +244,8 @@
 - (void)uploadImageWithFilePath:(NSURL *)filePath{
     NSData * ImageData = [NSData dataWithContentsOfURL:filePath];
     UIImage *image = [UIImage imageWithData:ImageData];
-//    NSData * data = UIImageJPEGRepresentation(image, 0.3);
-    NSData * data = UIImageJPEGRepresentation([ImageLoader compressImage:image toByte:1024*512], 1);
+    NSData * data = UIImageJPEGRepresentation(image, 0.2);
+//    NSData * data = UIImageJPEGRepresentation([ImageLoader compressImage:image toByte:1024*512], 1);
     [NetworkWorker networkPost:[NetworkUrlGetter getUploadImgUrl] formPostData:data andFileName:[ImageLoader getCreateImageName:nil] success:^(NSDictionary *result) {
         [self.imageUrlArray addObject:result[@"url"]];
         if (self.imageUrlArray.count == self.photoManager.afterSelectedArray.count) {
