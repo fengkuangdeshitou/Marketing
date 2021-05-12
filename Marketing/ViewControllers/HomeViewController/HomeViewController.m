@@ -30,7 +30,6 @@
 @property(nonatomic,strong)NSDictionary * numberDataDictionary;
 /// 1:今天,2:昨天,3:更早
 @property(nonatomic,assign)NSInteger time;
-@property(nonatomic,assign)NSInteger currentFlag;
 @property(nonatomic,strong)UIView * flagView;
 @property(nonatomic,weak)IBOutlet UIView * segmentView;
 @property(nonatomic,weak)IBOutlet UIButton * saveButton;
@@ -52,7 +51,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.currentFlag = 0;
     self.page = 1;
     self.time = 2;
     
@@ -95,14 +93,14 @@
         [self.yesterdayButton setTitle:[NSString stringWithFormat:@"昨日(%@)",self.numberDataDictionary[@"yesToday"]] forState:UIControlStateNormal];
         // self.numberDataDictionary[@"earlier"]
         [self.moreButton setTitle:[NSString stringWithFormat:@"更早(9999+)"] forState:UIControlStateNormal];
-        [self getFindGroupList];
+        [self getFindGroupListWithFlag:self.page];
     } failure:^(NSString *errorMessage) {
         
     }];
 }
 
 /// 首页数据
-- (void)getFindGroupList{
+- (void)getFindGroupListWithFlag:(NSInteger)flag{
     NSString * sTime = @"";
     NSString * eTime = @"";
     if (self.time == 1) {
@@ -119,11 +117,13 @@
     [NetworkWorker networkPost:[NetworkUrlGetter getFindGroupListUrl] params:params success:^(NSDictionary *result) {
         if (self.page == 1) {
             self.dataArray = [[NSMutableArray alloc] init];
+            for (int i=0; i<10000; i++) {
+                [self.dataArray addObject:@""];
+            }
         }
-        self.currentFlag ++;
         NSArray * list = result[@"page"][@"list"];
         NSArray * modelArray = [GroupModel mj_objectArrayWithKeyValuesArray:list];
-        [self.dataArray addObject:modelArray.firstObject];
+        [self.dataArray replaceObjectAtIndex:self.page withObject:modelArray.firstObject];
         [self formatNumber];
     } failure:^(NSString *errorMessage) {
         [self.view makeToast:errorMessage];
@@ -131,14 +131,13 @@
 }
 
 - (void)formatNumber{
-    GroupModel * model = self.dataArray[self.currentFlag-1];
+    GroupModel * model = self.dataArray[self.page];
     [ImageLoader loadImage:self.icon url:model.img_urls placeholder:[UIImage imageNamed:@"placehold1"]];
     self.contentLabel.text = model.wxg_desc;
-//    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
-    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布于 %@",model.nickname,[model.add_time substringWithRange:NSMakeRange(5, model.add_time.length-5)]];
-    
-    self.pageLabel.text = [NSString stringWithFormat:@"%d/999",self.currentFlag];
-    
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+    self.pageLabel.text = [NSString stringWithFormat:@"%ld",self.page];
+    self.pageLabel.layer.borderWidth = 1;
+    self.pageLabel.layer.borderColor = [PreHelper colorWithHexString:COLOR_NAVIGATION_TITLE_COLOR].CGColor;
     [ImageLoader downloadImageByUrl:model.img_urls success:^(UIImage *image) {
         float imageRatio = image.size.width / image.size.height;
         CGFloat imageWidth = CGRectGetHeight(self.icon.frame)*imageRatio;
@@ -187,8 +186,7 @@
         self.time = 3;
     }
     self.page = 1;
-    self.currentFlag = 0;
-    [self getFindGroupList];
+    [self getFindGroupListWithFlag:self.page];
 }
 
 /// 下载
@@ -212,35 +210,72 @@
 /// 上一张
 /// @param sender 按钮
 - (IBAction)beforeAction:(id)sender{
-    if (self.currentFlag > 1) {
-        self.currentFlag--;
-        [self formatNumber];
+    if (self.page-1 > 0) {
+        id obj = self.dataArray[self.page-1];
+        if ([obj isKindOfClass:[NSString class]]) {
+            [self getFindGroupListWithFlag:self.page-1];
+        }else{
+            self.page--;
+            [self formatNumber];
+        }
     }
 }
 
 /// 下一张
 /// @param sender 按钮
 - (IBAction)nextAction:(id)sender{
-    if (self.currentFlag == self.dataArray.count) {
-        if (self.permissions == YES) {
-            self.page++;
-            [self getFindGroupList];
-        }else{
-            if (self.time == 2 && self.currentFlag == 3) {
-                // 昨天可查看3张
-                [self pushToMembersController];
-            }else if(self.time == 3 && self.currentFlag == 5){
-                // 更早可查看5张
-                [self pushToMembersController];
+    if (self.permissions == YES) {
+        if (self.page+1 < self.dataArray.count) {
+            id obj = self.dataArray[self.page+1];
+            if ([obj isKindOfClass:[NSString class]]) {
+                self.page++;
+                [self getFindGroupListWithFlag:self.page+1];
             }else{
                 self.page++;
-                [self getFindGroupList];
+                [self formatNumber];
             }
         }
     }else{
-        self.currentFlag++;
-        [self formatNumber];
+        if (self.time == 2 && self.page == 3) {
+            // 昨天可查看3张
+            [self pushToMembersController];
+        }else if(self.time == 3 && self.page == 5){
+            // 更早可查看5张
+            [self pushToMembersController];
+        }else{
+            id obj = self.dataArray[self.page+1];
+            if ([obj isKindOfClass:[NSString class]]) {
+                self.page ++;
+                [self getFindGroupListWithFlag:self.page+1];
+            }else{
+                self.page++;
+                [self formatNumber];
+            }
+        }
     }
+}
+
+- (IBAction)inpunNumber:(UITapGestureRecognizer *)sender{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.placeholder = @"跳转至";
+        textField.textAlignment = 1;
+    }];
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction * done = [UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (self.permissions) {
+            self.page = alert.textFields.firstObject.text.integerValue;
+            [self getFindGroupListWithFlag:self.page];
+        }else{
+            [self pushToMembersController];
+        }
+    }];
+    [alert addAction:cancel];
+    [alert addAction:done];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /// 会员充值

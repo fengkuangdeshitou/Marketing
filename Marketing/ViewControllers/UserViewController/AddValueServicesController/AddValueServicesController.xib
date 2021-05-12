@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="createButton" destination="Isg-cw-3ZV" id="P7h-se-hxo"/>
                 <outlet property="downloadButton" destination="JPV-Ne-8da" id="VPh-S1-rdD"/>
+                <outlet property="heightConstraint" destination="rK7-MU-UTG" id="Uat-68-Jgh"/>
                 <outlet property="memberBackgroundView" destination="gAc-II-TDQ" id="GwV-Vr-RRr"/>
                 <outlet property="remainingCreateLabel" destination="imb-h1-vuw" id="GVK-ah-rbE"/>
                 <outlet property="remainingDownloadLabel" destination="51f-qh-DQD" id="kCn-iY-xwN"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-g7-3fF">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="311"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jmx-hH-yTB">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -292,11 +293,11 @@
                                 <constraint firstAttribute="trailing" secondItem="Isg-cw-3ZV" secondAttribute="trailing" id="xi3-Ns-jc4"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmv-Ui-lt6">
-                            <rect key="frame" x="0.0" y="223" width="414" height="72"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmv-Ui-lt6">
+                            <rect key="frame" x="0.0" y="223" width="414" height="0.0"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-Iv-y1W">
-                                    <rect key="frame" x="30" y="13.5" width="146" height="45"/>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-Iv-y1W">
+                                    <rect key="frame" x="30" y="-22.5" width="146" height="45"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -307,8 +308,8 @@
                                         <action selector="wechatAction:" destination="-1" eventType="touchUpInside" id="whv-f2-5Rb"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0G-Aa-Ueb">
-                                    <rect key="frame" x="238" y="13.5" width="146" height="45"/>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0G-Aa-Ueb">
+                                    <rect key="frame" x="238" y="-22.5" width="146" height="45"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -325,12 +326,12 @@
                                 <constraint firstItem="CHR-Iv-y1W" firstAttribute="centerY" secondItem="Rmv-Ui-lt6" secondAttribute="centerY" id="9a5-px-eEK"/>
                                 <constraint firstItem="Q0G-Aa-Ueb" firstAttribute="centerY" secondItem="Rmv-Ui-lt6" secondAttribute="centerY" id="cwP-sC-vwA"/>
                                 <constraint firstItem="CHR-Iv-y1W" firstAttribute="leading" secondItem="Rmv-Ui-lt6" secondAttribute="leading" constant="30" id="krM-JN-Tlq"/>
-                                <constraint firstAttribute="height" constant="72" id="rK7-MU-UTG"/>
+                                <constraint firstAttribute="height" id="rK7-MU-UTG"/>
                                 <constraint firstAttribute="trailing" secondItem="Q0G-Aa-Ueb" secondAttribute="trailing" constant="30" id="saA-KD-PaM"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjv-aE-HU5">
-                            <rect key="frame" x="0.0" y="303" width="414" height="8"/>
+                            <rect key="frame" x="0.0" y="231" width="414" height="8"/>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="8" id="rqd-iv-l3Q"/>
@@ -355,7 +356,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qZ-dV-mVk">
-                    <rect key="frame" x="30" y="326" width="354" height="49"/>
+                    <rect key="frame" x="30" y="254" width="354" height="49"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.74901960784313726" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="jBE-Ga-3Ox"/>

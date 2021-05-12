@@ -260,7 +260,7 @@
 - (void)uploadImageWithFilePath:(NSURL *)filePath{
     NSData * ImageData = [NSData dataWithContentsOfURL:filePath];
     UIImage *image = [UIImage imageWithData:ImageData];
-    NSData * data = UIImageJPEGRepresentation(image, 0.3);
+    NSData * data = UIImageJPEGRepresentation(image, 0.2);
     if (!data) {
         data = UIImageJPEGRepresentation([ImageLoader getVideoFirstViewImage:filePath], 0.3);
     }
