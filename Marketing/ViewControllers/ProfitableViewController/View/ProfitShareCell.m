@@ -54,7 +54,7 @@
     UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.model.text;
     self.params = [[NSMutableDictionary alloc] init];
-    [self.params SSDKSetupWeChatParamsByText:self.model.text title:self.model.text url:nil thumbImage:nil image:[NSURL URLWithString:self.model.imgurl] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil sourceFileExtension:nil sourceFileData:nil type:SSDKContentTypeAuto forPlatformSubType:platformType];
+    [self.params SSDKSetupWeChatParamsByText:self.model.text title:self.model.text url:nil thumbImage:nil image:[NSURL URLWithString:self.model.imgurl] musicFileURL:nil extInfo:nil fileData:nil emoticonData:nil sourceFileExtension:nil sourceFileData:nil type:SSDKContentTypeImage forPlatformSubType:platformType];
     [ShareSDK share:platformType parameters:self.params onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
             
     }];

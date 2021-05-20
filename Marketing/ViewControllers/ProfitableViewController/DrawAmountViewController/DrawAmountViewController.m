@@ -68,6 +68,12 @@
         [self.view makeToast:@"请输入提现金额"];
         return;
     }
+    
+    if (self.textfield.text.integerValue < 100) {
+        [self.view makeToast:@"提现金额最低100"];
+        return;
+    }
+    
     [NetworkWorker networkGet:[NetworkUrlGetter getMyDrawUrlWithMbBankId:self.model.mb_bank_id money:self.textfield.text] success:^(NSDictionary *result) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(onDeawAmountSuccess)]) {
             [self.delegate onDeawAmountSuccess];

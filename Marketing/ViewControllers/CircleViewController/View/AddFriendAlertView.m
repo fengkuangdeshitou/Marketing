@@ -51,7 +51,7 @@
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
         [self addGestureRecognizer:tap];
         
-        UILongPressGestureRecognizer * longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveToPhoto)];
+        UILongPressGestureRecognizer * longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveToPhoto:)];
         [self.avatarImageView addGestureRecognizer:longpress];
     }
     return self;
@@ -104,8 +104,10 @@
 }
 
 /// 保存到相册
-- (void)saveToPhoto{
-    UIImageWriteToSavedPhotosAlbum(self.avatarImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+- (void)saveToPhoto:(UILongPressGestureRecognizer *)tap{
+    if (tap.state == UIGestureRecognizerStateEnded) {
+        UIImageWriteToSavedPhotosAlbum(self.avatarImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
 }
 
 -(void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {

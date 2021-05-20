@@ -76,6 +76,8 @@
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
+		BD7CC1BC2656C33700BC1A95 /* WechatTimelineAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7CC1BB2656C33700BC1A95 /* WechatTimelineAlertView.m */; };
+		BD7CC1BF2656C34400BC1A95 /* WechatTimelineAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7CC1BE2656C34400BC1A95 /* WechatTimelineAlertView.xib */; };
 		BD835F7F260CEAD800ADCDBD /* GlobalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */; };
 		BD835F95260E379000ADCDBD /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F94260E379000ADCDBD /* InvitationModel.m */; };
 		BD835F9B260E44FC00ADCDBD /* GroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD835F9A260E44FC00ADCDBD /* GroupModel.m */; };
@@ -279,6 +281,9 @@
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
 		BD73BCDE26079B3F00ADD55F /* BankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
 		BD73BCDF26079B3F00ADD55F /* BankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
+		BD7CC1BA2656C33700BC1A95 /* WechatTimelineAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatTimelineAlertView.h; sourceTree = "<group>"; };
+		BD7CC1BB2656C33700BC1A95 /* WechatTimelineAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatTimelineAlertView.m; sourceTree = "<group>"; };
+		BD7CC1BE2656C34400BC1A95 /* WechatTimelineAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WechatTimelineAlertView.xib; sourceTree = "<group>"; };
 		BD835F7D260CEAD800ADCDBD /* GlobalNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalNotification.h; sourceTree = "<group>"; };
 		BD835F7E260CEAD800ADCDBD /* GlobalNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalNotification.m; sourceTree = "<group>"; };
 		BD835F93260E379000ADCDBD /* InvitationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationModel.h; sourceTree = "<group>"; };
@@ -830,6 +835,9 @@
 				BD410C9525F903CC007A1D5E /* AddFriendAlertView.h */,
 				BD410C9625F903CC007A1D5E /* AddFriendAlertView.m */,
 				BD410C9925F903D8007A1D5E /* AddFriendAlertView.xib */,
+				BD7CC1BA2656C33700BC1A95 /* WechatTimelineAlertView.h */,
+				BD7CC1BB2656C33700BC1A95 /* WechatTimelineAlertView.m */,
+				BD7CC1BE2656C34400BC1A95 /* WechatTimelineAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1255,6 +1263,7 @@
 				BD06EC2A25F7C6C6005A8FE4 /* InvitationListCell.xib in Resources */,
 				BDC2658025EBD50600DBAA64 /* ComplaintReasonHeaderCell.xib in Resources */,
 				BDC5853925EB47370021F808 /* Main.storyboard in Resources */,
+				BD7CC1BF2656C34400BC1A95 /* WechatTimelineAlertView.xib in Resources */,
 				0F28A32425F895D10001B38E /* APBToygerFacade.bundle in Resources */,
 				BDDEFB2925EB7B1900D7A5D7 /* CircleViewController.xib in Resources */,
 				BDC265A925EBF13100DBAA64 /* CircleMoreCell.xib in Resources */,
@@ -1377,6 +1386,7 @@
 				BDDEFB1C25EB761600D7A5D7 /* UserInfoHeaderCell.m in Sources */,
 				BDDEFB0C25EB6E9400D7A5D7 /* UserInfoViewController.m in Sources */,
 				0F28A29B25F7421D0001B38E /* AddValueServicesController.m in Sources */,
+				BD7CC1BC2656C33700BC1A95 /* WechatTimelineAlertView.m in Sources */,
 				BDC585AA25EB58500021F808 /* UserViewController.m in Sources */,
 				BD0543822603AC4100DEF83F /* UserModel.m in Sources */,
 				BD410C9125F8FD2E007A1D5E /* BindingAliViewController.m in Sources */,

@@ -54,7 +54,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSArray * titleArray = @[@"以图搜图",@"无限发布",@"无限群发",@"无限工具箱",@"发布视频"];
+    NSArray * titleArray = @[@"无限群码",@"无限发布",@"无限人脉",@"发布视频"];
     for (int i=0; i<titleArray.count; i++) {
         UIView * contentView = [[UIView alloc] initWithFrame:CGRectMake((((SCREEN_WIDTH-38*2-50*4)/3)+50)*(i%4), 95*(i/4), 50, 75)];
         

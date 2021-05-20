@@ -45,7 +45,11 @@
             [self.actionButton setTitle:@"立即购买" forState:UIControlStateNormal];
         }
         self.titleLabel.text = [NSString stringWithFormat:@"您的下载次数为%ld",self.count];
-        self.urlLabel.text = result[@"str"];
+        if ([UserManager getUser].token) {
+            self.urlLabel.text = [NSString stringWithFormat:@"%@?token=%@",result[@"str"],[UserManager getUser].token];
+        }else{
+            self.urlLabel.text = result[@"str"];
+        }
         [self show];
     } failure:^(NSString *errorMessage) {
         [self makeToast:errorMessage];

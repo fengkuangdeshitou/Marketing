@@ -79,7 +79,7 @@
     UIBarButtonItem * downloadItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_download"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick)];
     self.navigationItem.rightBarButtonItem = downloadItem;
     
-    [[self.segmentView viewWithTag:11] addSubview:self.flagView];
+//    [[self.segmentView viewWithTag:11] addSubview:self.flagView];
     
     [self getFindGroupNumberData];
     
@@ -93,7 +93,7 @@
         [self.yesterdayButton setTitle:[NSString stringWithFormat:@"昨日(%@)",self.numberDataDictionary[@"yesToday"]] forState:UIControlStateNormal];
         // self.numberDataDictionary[@"earlier"]
         [self.moreButton setTitle:[NSString stringWithFormat:@"更早(9999+)"] forState:UIControlStateNormal];
-        [self getFindGroupListWithFlag:self.page];
+        [self segmengClick:self.yesterdayButton];
     } failure:^(NSString *errorMessage) {
         
     }];
@@ -134,7 +134,7 @@
     GroupModel * model = self.dataArray[self.page];
     [ImageLoader loadImage:self.icon url:model.img_urls placeholder:[UIImage imageNamed:@"placehold1"]];
     self.contentLabel.text = model.wxg_desc;
-    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发表于%@",model.nickname,[PreHelper dateFromString:model.add_time]];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布于 %@",model.nickname,[model.add_time substringWithRange:NSMakeRange(5, model.add_time.length-5)]];
     self.pageLabel.text = [NSString stringWithFormat:@"%ld",self.page];
     self.pageLabel.layer.borderWidth = 1;
     self.pageLabel.layer.borderColor = [PreHelper colorWithHexString:COLOR_NAVIGATION_TITLE_COLOR].CGColor;
