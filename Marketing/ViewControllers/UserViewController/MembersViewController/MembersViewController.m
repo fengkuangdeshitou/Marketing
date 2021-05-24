@@ -74,7 +74,7 @@
     [self exchangeMemberTime:[self.memberBackgroundView viewWithTag:10].gestureRecognizers.firstObject];
     
     self.userModel = [UserManager getUser];
-    [ImageLoader loadImage:self.avararImageView url:self.userModel.headimgurl placeholder:nil];
+    [ImageLoader loadImage:self.avararImageView url:self.userModel.headimgurl placeholder:[UIImage imageNamed:@"placehold"]];
     [self getConfig];
     [self getMyVIPInfo];
     [self getPriceList];

@@ -13,6 +13,7 @@
 #import "DetailViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "UpdateAlertView.h"
+#import <UMCommon/UMCommon.h>
 
 @interface AppDelegate ()
 
@@ -32,6 +33,8 @@
     MyTabbarViewController * tabbar = [[MyTabbarViewController alloc] init];
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
+    
+    [UMConfigure initWithAppkey:@"60ab5c95c9aacd3bd4e48e78" channel:@"App Store"];
     
     //9a36d88e4c646b80f6870e4e1cf0c165
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {

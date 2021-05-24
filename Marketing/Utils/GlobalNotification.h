@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 会员信息更新通知
 extern NSString * const NOTIFICATION_VIP_CHANGE;
+/// 登录成功更新通知
+extern NSString * const NOTIFICATION_LOGIN_SUCCESS;
 
 @end
 

@@ -191,6 +191,10 @@
 
 /// 下载
 - (void)rightItemClick{
+    if (![PreHelper isLogin]) {
+        [PreHelper pushToLoginController];
+        return;
+    }
     [DownloadAlertView showDownloadAlertView];
 }
 

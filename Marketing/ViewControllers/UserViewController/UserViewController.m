@@ -16,6 +16,7 @@
 #import "SettingViewController.h"
 #import "CustomerServiceViewController.h"
 #import "MembersViewController.h"
+#import "GlobalNotification.h"
 
 @interface UserViewController ()<UITableViewDelegate,UITableViewDataSource,AuthenticationViewControllerDelegate>
 
@@ -33,13 +34,20 @@
     
     self.title = @"个人中心";
     self.titleArray = @[@"增值服务",@"我的发布",@"实名认证",@"绑定手机",@"联系客服",@"设置"];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction) name:NOTIFICATION_LOGIN_SUCCESS object:nil];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserHeaderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserHeaderCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([UserCell class])];
     self.userModel = [UserManager getUser];
     [self.tableView reloadData];
 }
 
+/// 登录成功
+- (void)loginSuccessAction{
+    self.userModel = [UserManager getUser];
+    [self.tableView reloadData];
+}
+
+/// 绑定回调
 - (void)onAuthemticationSuccess{
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -146,6 +154,10 @@
 
 /// 会员中心
 - (void)membersAction{
+    if (![PreHelper isLogin]) {
+        [PreHelper pushToLoginController];
+        return;
+    }
     MembersViewController * memeber = [[MembersViewController alloc] init];
     memeber.title = @"会员中心";
     memeber.hidesBottomBarWhenPushed = true;

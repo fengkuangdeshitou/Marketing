@@ -29,7 +29,7 @@
 
 - (void)setModel:(ShareModel *)model{
     _model = model;
-    [ImageLoader loadImage:self.coverImageView url:model.imgurl placeholder:nil];
+    [ImageLoader loadImage:self.coverImageView url:model.imgurl placeholder:[UIImage imageNamed:@"placehold1"]];
     self.coverImageViewWidthConstraint.constant = [PreHelper getWidthWithUrl:model.imgurl];
     self.coverImageViewHeightConstraint.constant = [PreHelper getHeightWithUrl:model.imgurl];
 }

@@ -14,6 +14,7 @@
 @property(nonatomic,weak)IBOutlet UITextField * textfield;
 @property(nonatomic,weak)IBOutlet UILabel * balanceLabel;
 @property(nonatomic,weak)IBOutlet UILabel * bankNameLabel;
+@property(nonatomic,weak)IBOutlet UIImageView * icon;
 
 @end
 
@@ -23,14 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.bankNameLabel.text = [NSString stringWithFormat:@"%@  %@",self.model.bank_user,self.model.bank_no];
+    [ImageLoader loadImage:self.icon url:self.model.icon_url placeholder:[UIImage imageNamed:@"placehold"]];
+    
     UIBarButtonItem * history = [[UIBarButtonItem alloc] initWithTitle:@"提现记录" style:UIBarButtonItemStylePlain target:self action:@selector(drawAmountHistory)];
     self.navigationItem.rightBarButtonItem = history;
     
-}
-
-- (void)setModel:(BankModel *)model{
-    _model = model;
-    self.bankNameLabel.text = [NSString stringWithFormat:@"%@  %@",self.model.bank_user,self.model.bank_no];
 }
 
 /// 添加账号

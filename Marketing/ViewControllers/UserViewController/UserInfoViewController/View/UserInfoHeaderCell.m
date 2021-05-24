@@ -31,7 +31,7 @@
 
 - (void)setModel:(UserModel *)model{
     _model = model;
-    [ImageLoader loadImage:self.headerImageView url:model.headimgurl placeholder:nil];
+    [ImageLoader loadImage:self.headerImageView url:model.headimgurl placeholder:[UIImage imageNamed:@"placehold"]];
 }
 
 - (void)changeAvatar{

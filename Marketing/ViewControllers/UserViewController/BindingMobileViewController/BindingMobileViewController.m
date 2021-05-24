@@ -6,6 +6,7 @@
 //
 
 #import "BindingMobileViewController.h"
+#import "GlobalNotification.h"
 
 @interface BindingMobileViewController ()
 
@@ -90,6 +91,7 @@
             UserModel * model = [UserModel mj_objectWithKeyValues:result[@"member"]];
             model.token = result[@"token"];
             [UserManager saveUser:model];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_SUCCESS object:nil];
             [self.navigationController popViewControllerAnimated:YES];
         } failure:^(NSString *errorMessage) {
             [self.view makeToast:errorMessage];

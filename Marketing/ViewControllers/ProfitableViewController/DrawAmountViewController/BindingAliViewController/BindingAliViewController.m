@@ -30,12 +30,14 @@
         [self.view makeToast:@"请输入账号"];
         return;
     }
-    [NetworkWorker networkPost:[NetworkUrlGetter getAddBankUrl] params:@{@"bankName":@"支付宝",@"bankNo":self.accountTextField.text,@"bankUser":self.nameTextField.text} success:^(NSDictionary *result) {
+    NSString * url = @"http://file.weceinfo.com/img/assets/alipay_icon.png";
+    [NetworkWorker networkPost:[NetworkUrlGetter getAddBankUrl] params:@{@"bankName":@"支付宝",@"bankNo":self.accountTextField.text,@"bankUser":self.nameTextField.text,@"alipay_icon":url,@"iconUrl":url} success:^(NSDictionary *result) {
         [self.view makeToast:@"绑定成功"];
         BankModel * model = [[BankModel alloc] init];
         model.bank_user = self.nameTextField.text;
         model.bank_no = self.accountTextField.text;
         model.mb_bank_id = result[@"mbBankId"];
+        model.icon_url = url;
         if (self.delegate && [self.delegate respondsToSelector:@selector(onBindAliSuccessWithModel:)]) {
             [self.delegate onBindAliSuccessWithModel:model];
         }

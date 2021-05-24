@@ -35,6 +35,10 @@
 
 /// 会员中心
 - (void)pushToMember{
+    if (![PreHelper isLogin]) {
+        [PreHelper pushToLoginController];
+        return;
+    }
     MembersViewController * memeber = [[MembersViewController alloc] init];
     memeber.title = @"会员中心";
     memeber.hidesBottomBarWhenPushed = true;

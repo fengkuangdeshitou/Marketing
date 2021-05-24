@@ -71,7 +71,7 @@
 /// @param sender 手势
 - (IBAction)shareToWechat:(UITapGestureRecognizer *)sender{
     UIPasteboard * pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"微商营销工具";
+    pasteboard.string = @"wsyxgj01";
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:@"weixin://"]];
 }
 

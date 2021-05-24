@@ -48,7 +48,7 @@
     self.title = @"赚钱";
     self.isHiddenLoadString = YES;
     self.userModel = [UserManager getUser];
-    [ImageLoader loadImage:self.headerImageView url:self.userModel.headimgurl placeholder:nil];
+    [ImageLoader loadImage:self.headerImageView url:self.userModel.headimgurl placeholder:[UIImage imageNamed:@"placehold"]];
     self.userNameLabel.text = self.userModel.nickname;
     
     [self addShadowWithView:self.todayView];
@@ -61,11 +61,11 @@
     
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getMyBankType];
         [self loadShareTextData];
     }];
     
     [self loadMyMoneyData];
-    [self getMyBankType];
     [self.tableView.mj_header beginRefreshing];
     
 }
@@ -101,7 +101,8 @@
     [NetworkWorker networkGet:[NetworkUrlGetter getMyBankUrl] success:^(NSDictionary *result) {
         self.isBindAli = [result[@"List"] count] > 0;
         if (self.isBindAli) {
-            self.model = [BankModel mj_objectArrayWithKeyValuesArray:result[@"List"]].firstObject;
+            NSDictionary * bank = [result[@"List"] firstObject];
+            self.model = [BankModel mj_objectWithKeyValues:bank];
         }
     } failure:^(NSString *errorMessage) {
         
@@ -129,8 +130,9 @@
 }
 
 /// 绑定回调
-- (void)onBindAliSuccess{
+- (void)onBindAliSuccessWithModel:(BankModel *)model{
     self.isBindAli = YES;
+    self.model = model;
 }
 
 /// 提现成功回调

@@ -20,5 +20,7 @@ pod 'SJVideoPlayer'
 pod 'mob_sharesdk'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
 pod 'YBImageBrowser'
+pod 'UMCommon'
+pod 'UMDevice'
 
 end
