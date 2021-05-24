@@ -41,68 +41,68 @@
         [platformsRegister setupWeChatWithAppId:@"wxc8c23f591003b7ff" appSecret:nil universalLink:@"https://oxqkw.share2dlink.com/"];
     }];
     
-    [self loadLinkME];
+    [self loadLinkMEWithLaunchOptions:launchOptions];
     [self loadIosAuditStateUrl];
     [self getAppUpdateVersion];
     
     return YES;
 }
 
-- (void)loadLinkME{
+- (void)loadLinkMEWithLaunchOptions:(NSDictionary *)launchOptions{
     LinkedME* linkedme = [LinkedME getInstance];
     //设置重试次数
-//    [linkedme setMaxRetries:60];
+    [linkedme setMaxRetries:60];
     //设置重试间隔时间
-//    [linkedme setRetryInterval:1];
+    [linkedme setRetryInterval:1];
     //打印日志
-//    [linkedme setDebug];
-    
+    [linkedme setDebug];
+    //关闭剪切板匹配功能
     [linkedme disableClipboardMatch];
     
-//    DetailViewController * detail = [[DetailViewController alloc] init];
-//    [linkedme registerDeepLinkController:detail forKey:@"DetailViewController"];
-//    //获取跳转参数
-//    [linkedme initSessionWithLaunchOptions:launchOptions automaticallyDisplayDeepLinkController:NO deepLinkHandler:^(NSDictionary* params, NSError* error) {
-//        if (!error) {
-//            //防止传递参数出错取不到数据,导致App崩溃这里一定要用try catch
-//            @try {
-//                NSLog(@"LinkedME finished init with params = %@",[params description]);
-//                //获取标题
-//                NSString *title = [params objectForKey:@"$og_title"];
-//                NSString *tag = params[@"$control"][@"View"];
-//
-//                if (title.length >0 && tag.length >0) {
-//
-//                    //[自动跳转]使用自动跳转
-//                    //SDK提供的跳转方法
-//                    /**
-//                     *  pushViewController : 类名
-//                     *  storyBoardID : 需要跳转的页面的storyBoardID
-//                     *  animated : 是否开启动画
-//                     *  customValue : 传参
-//                     *
-//                     *warning  需要在被跳转页中实现次方法 - (void)configureControlWithData:(NSDictionary *)data;
-//                     */
-//
-//                    //[LinkedME pushViewController:title storyBoardID:@"detailView" animated:YES customValue:@{@"tag":tag} completion:^{
-//
-//                    //}];
-//
-//                    //自定义跳转
-//                    detail.openUrl = params[@"$control"][@"ViewId"];
-//                    [[LinkedME getViewController] showViewController:detail sender:nil];
-//
-//                }
-//
-//            } @catch (NSException *exception) {
-//
-//            } @finally {
-//
-//            }
-//        } else {
-//            NSLog(@"LinkedME failed init: %@", error);
-//        }
-//    }];
+    DetailViewController * detail = [[DetailViewController alloc] init];
+    [linkedme registerDeepLinkController:detail forKey:@"DetailViewController"];
+    //获取跳转参数
+    [linkedme initSessionWithLaunchOptions:launchOptions automaticallyDisplayDeepLinkController:NO deepLinkHandler:^(NSDictionary* params, NSError* error) {
+        if (!error) {
+            //防止传递参数出错取不到数据,导致App崩溃这里一定要用try catch
+            @try {
+                NSLog(@"LinkedME finished init with params = %@",[params description]);
+                //获取标题
+                NSString *title = [params objectForKey:@"$og_title"];
+                NSString *tag = params[@"$control"][@"View"];
+
+                if (title.length >0 && tag.length >0) {
+
+                    //[自动跳转]使用自动跳转
+                    //SDK提供的跳转方法
+                    /**
+                     *  pushViewController : 类名
+                     *  storyBoardID : 需要跳转的页面的storyBoardID
+                     *  animated : 是否开启动画
+                     *  customValue : 传参
+                     *
+                     *warning  需要在被跳转页中实现次方法 - (void)configureControlWithData:(NSDictionary *)data;
+                     */
+
+                    //[LinkedME pushViewController:title storyBoardID:@"detailView" animated:YES customValue:@{@"tag":tag} completion:^{
+
+                    //}];
+
+                    //自定义跳转
+                    detail.openUrl = params[@"$control"][@"ViewId"];
+                    [[LinkedME getViewController] showViewController:detail sender:nil];
+
+                }
+
+            } @catch (NSException *exception) {
+
+            } @finally {
+
+            }
+        } else {
+            NSLog(@"LinkedME failed init: %@", error);
+        }
+    }];
 }
 
 - (void)loadIosAuditStateUrl{
@@ -118,7 +118,6 @@
                 CustomNavagationController * nav = [[CustomNavagationController alloc] initWithRootViewController:login];
                 self.window.rootViewController = nav;
             }
-            [self loadLinkME];
         }
     } failure:^(NSString *errorMessage) {
         
