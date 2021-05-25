@@ -167,20 +167,20 @@
 
 - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation{
     //判断是否是通过LinkedME的UrlScheme唤起App
-    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
+//    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
         return [[LinkedME getInstance] handleDeepLink:url];
-    }
+//    }
     
-    return YES;
+//    return YES;
 }
 
 - (BOOL)application:(UIApplication*)application continueUserActivity:(NSUserActivity*)userActivity restorationHandler:(void (^)(NSArray*))restorationHandler{
     
     //判断是否是通过LinkedME的Universal Links唤起App
-    if ([[userActivity.webpageURL description] rangeOfString:@"lkme.cc"].location != NSNotFound) {
+//    if ([[userActivity.webpageURL description] rangeOfString:@"lkme.cc"].location != NSNotFound) {
         return  [[LinkedME getInstance] continueUserActivity:userActivity];
-    }
-    
+//    }
+//
     return YES;
 }
 
@@ -188,10 +188,10 @@
     NSLog(@"opened app from URL %@", [url description]);
     
     //判断是否是通过LinkedME的UrlScheme唤起App
-    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
+//    if ([[url description] rangeOfString:@"click_id"].location != NSNotFound) {
         return [[LinkedME getInstance] handleDeepLink:url];
-    }
-    return YES;
+//    }
+//    return YES;
 }
 
 @end
