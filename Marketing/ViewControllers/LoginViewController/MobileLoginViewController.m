@@ -94,7 +94,9 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:[[DeviceTool shareInstance] mj_JSONObject]];
     [params setValue:self.codeTextfield.text forKey:@"code"];
     [params setValue:self.tellTextfield.text forKey:@"phone"];
-    [params setValue:@"" forKey:@"sceneParams"];/// 深度链参数
+    [params setValue:[DeviceTool shareInstance].sceneParams forKey:@"sceneParams"];/// 深度链参数
+    [params setValue:[DeviceTool shareInstance].h5Url forKey:@"h5Url"];
+    NSLog(@"params=%@",params);
     [NetworkWorker networkPost:[NetworkUrlGetter getCodeLoginUrl] params:params success:^(NSDictionary *result) {
         UserModel * model = [UserModel mj_objectWithKeyValues:result[@"member"]];
         model.token = result[@"token"];

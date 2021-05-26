@@ -49,6 +49,10 @@ static DeviceTool *_device = nil;
     return @"App Store";
 }
 
+- (NSString *)sceneParams{
+    return @"";
+}
+
 - (void)setReviewStatus:(NSString *)reviewStatus{
     K_UD_SAVE(reviewStatus, K_REVIEWSTATUS);
 }

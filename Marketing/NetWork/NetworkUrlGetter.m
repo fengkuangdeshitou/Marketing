@@ -16,7 +16,7 @@
 }
 
 + (NSString *)getWechatLoginWithCode:(NSString *)code sceneParams:(NSString *)scene;{
-    return [NSString stringWithFormat:@"%@/%@?code=%@&sceneParams=%@&getChannel=%@&deviceId=%@&brand=%@&model=%@",hostUrl,wechatLoginUrl,code,scene,[DeviceTool shareInstance].getChannel,[DeviceTool shareInstance].deviceId,[DeviceTool shareInstance].brand,[DeviceTool shareInstance].model];
+    return [NSString stringWithFormat:@"%@/%@?code=%@&sceneParams=%@&getChannel=%@&deviceId=%@&brand=%@&model=%@&h5Url=%@",hostUrl,wechatLoginUrl,code,scene,[DeviceTool shareInstance].getChannel,[DeviceTool shareInstance].deviceId,[DeviceTool shareInstance].brand,[DeviceTool shareInstance].model,[DeviceTool shareInstance].h5Url];
 }
 
 + (NSString *)getVerificationCodeUrlWithTell:(NSString *)tell{

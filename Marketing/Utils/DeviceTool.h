@@ -31,6 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// 审核状态
 @property(nonatomic,copy)NSString * reviewStatus;
 
+/// 深度链接
+@property(nonatomic,copy)NSString * sceneParams;
+
+/// 深度链接h5Url
+@property(nonatomic,copy)NSString * h5Url;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
