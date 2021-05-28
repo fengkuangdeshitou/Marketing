@@ -24,12 +24,20 @@
 - (void)setModel:(ShareModel *)model{
     _model = model;
     self.titleLabel.text = [NSString stringWithFormat:@"文案%@:",[self formatNumberWithValue:model.index+1]];
-    self.contentLabel.text = model.text;
+    if ([model.text containsString:@"http"]) {
+        NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:model.text];
+        NSArray * arrar = [model.text componentsSeparatedByString:@"http"];
+        NSString * url = arrar.lastObject;
+        [string addAttribute:NSForegroundColorAttributeName value:[PreHelper colorWithHexString:@"#5798FF"] range:NSMakeRange(model.text.length-url.length-4, url.length+4)];
+        self.contentLabel.attributedText = string;
+    }else{
+        self.contentLabel.text = model.text;
+    }
 }
 
 - (NSString *)formatNumberWithValue:(NSInteger)value{
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        /// 拼写输出中文
+    /// 拼写输出中文
     formatter.numberStyle = kCFNumberFormatterSpellOutStyle;
     /// 如果不设置locle 跟随系统语言
     formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];

@@ -80,9 +80,20 @@
     self.navigationItem.rightBarButtonItem = downloadItem;
     
 //    [[self.segmentView viewWithTag:11] addSubview:self.flagView];
-    
+    [self getVIPInfo];
     [self getFindGroupNumberData];
     
+}
+
+/// 获取VIP信息
+- (void)getVIPInfo{
+    [NetworkWorker networkGet:[NetworkUrlGetter getMyVipUrl] success:^(NSDictionary *result) {
+        if ([result[@"vip"] isKindOfClass:[NSDictionary class]]) {
+            self.permissions = YES;
+        }
+    } failure:^(NSString *errorMessage) {
+        
+    }];
 }
 
 /// 各类别数量
