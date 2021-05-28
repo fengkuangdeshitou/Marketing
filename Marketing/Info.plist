@@ -68,6 +68,8 @@
 	<string>微商营销工具虚要访问你的麦克风已发表品圈</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>微商营销工具需要访问你的相册用已上传图片</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>微商营销工具需要访问你的位置信息向您提供地区筛选功能服务</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
