@@ -11,10 +11,10 @@
 @implementation NetworkUrl
 
 #ifdef DEBUG
-NSString * const hostUrl = @"http://yinxiao-api.wecein.com:8033/yinxiao-server";
+NSString * const hostUrl = @"http://group.wexqun.com:8034/yx-server";
 NSString * const ApplePayUrl = @"https://sandbox.itunes.apple.com/verifyReceipt";
 #else
-NSString * const hostUrl = @"http://yinxiao-api.wecein.com:8033/yinxiao-server";
+NSString * const hostUrl = @"http://group.wexqun.com:8034/yx-server";
 NSString * const ApplePayUrl = @"https://buy.itunes.apple.com/verifyReceipt";
 #endif
 
