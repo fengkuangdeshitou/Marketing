@@ -85,11 +85,12 @@
                           WithTitle:@"品圈"
                           imageName:@"tabbar_circle_normal"
                   selectedImageName:@"tabbar_circle_selected"];
-
-    [self addOneChildViewController:[[CustomNavagationController alloc]initWithRootViewController:[[ProfitableViewController alloc]init]]
-            WithTitle:@"赚钱"
-            imageName:@"tabbar_money_normal"
-    selectedImageName:@"tabbar_money_selected"];
+    if ([[DeviceTool shareInstance].reviewStatus isEqualToString:APPROVED]) {
+        [self addOneChildViewController:[[CustomNavagationController alloc]initWithRootViewController:[[ProfitableViewController alloc]init]]
+                WithTitle:@"赚钱"
+                imageName:@"tabbar_money_normal"
+        selectedImageName:@"tabbar_money_selected"];
+    }
 
 
     [self addOneChildViewController:[[CustomNavagationController alloc]initWithRootViewController:[[UserViewController alloc]init]]
@@ -133,19 +134,19 @@
     [self addChildViewController:viewController];
 }
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    CustomNavagationController * nav = (CustomNavagationController *)viewController;
-    if ([nav.topViewController isKindOfClass:[CircleViewController class]] || [nav.topViewController isKindOfClass:[ProfitableViewController class]]) {
-        if (![PreHelper isLogin]) {
-            [PreHelper pushToLoginController];
-            return NO;
-        }else{
-            return YES;
-        }
-    }else{
-        return YES;
-    }
-}
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+//    CustomNavagationController * nav = (CustomNavagationController *)viewController;
+//    if ([nav.topViewController isKindOfClass:[CircleViewController class]] || [nav.topViewController isKindOfClass:[ProfitableViewController class]]) {
+//        if (![PreHelper isLogin]) {
+//            [PreHelper pushToLoginController];
+//            return NO;
+//        }else{
+//            return YES;
+//        }
+//    }else{
+//        return YES;
+//    }
+//}
 
 //这个方法可以抽取到 UIImage 的分类中
 - (UIImage *)imageWithColor:(UIColor *)color
