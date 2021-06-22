@@ -73,6 +73,8 @@
 		BD46BBDA262F0F5100BBBD1F /* NoDataEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46BBD9262F0F5100BBBD1F /* NoDataEmptyView.m */; };
 		BD46BBDE262F0F8C00BBBD1F /* UITableView+EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD46BBDD262F0F8C00BBBD1F /* UITableView+EmptyView.m */; };
 		BD5787B22629D4A10046415A /* HelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5787B12629D4A10046415A /* HelpModel.m */; };
+		BD656CCB268226A600C93226 /* TermsServiceAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD656CCA268226A600C93226 /* TermsServiceAlertView.m */; };
+		BD656CCE268226B000C93226 /* TermsServiceAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD656CCD268226B000C93226 /* TermsServiceAlertView.xib */; };
 		BD6C922C25FC7507009C5D1F /* CreateCircleCiewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */; };
 		BD6C922D25FC7507009C5D1F /* CreateCircleCiewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */; };
 		BD73BCE026079B3F00ADD55F /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD73BCDF26079B3F00ADD55F /* BankModel.m */; };
@@ -276,6 +278,9 @@
 		BD5787B12629D4A10046415A /* HelpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpModel.m; sourceTree = "<group>"; };
 		BD5787B5262C7A3B0046415A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		BD5787B7262C7A430046415A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BD656CC9268226A600C93226 /* TermsServiceAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TermsServiceAlertView.h; sourceTree = "<group>"; };
+		BD656CCA268226A600C93226 /* TermsServiceAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TermsServiceAlertView.m; sourceTree = "<group>"; };
+		BD656CCD268226B000C93226 /* TermsServiceAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsServiceAlertView.xib; sourceTree = "<group>"; };
 		BD6C922925FC7507009C5D1F /* CreateCircleCiewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateCircleCiewController.h; sourceTree = "<group>"; };
 		BD6C922A25FC7507009C5D1F /* CreateCircleCiewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateCircleCiewController.m; sourceTree = "<group>"; };
 		BD6C922B25FC7507009C5D1F /* CreateCircleCiewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCircleCiewController.xib; sourceTree = "<group>"; };
@@ -622,6 +627,9 @@
 				0F81C0C826365E8A0033B952 /* MemberAlertView.h */,
 				0F81C0C926365E8A0033B952 /* MemberAlertView.m */,
 				0F81C0CC26365E960033B952 /* MemberAlertView.xib */,
+				BD656CC9268226A600C93226 /* TermsServiceAlertView.h */,
+				BD656CCA268226A600C93226 /* TermsServiceAlertView.m */,
+				BD656CCD268226B000C93226 /* TermsServiceAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1248,6 +1256,7 @@
 				BDC2659625EBEBED00DBAA64 /* CircleHeaderCell.xib in Resources */,
 				BDDEFB4625EBA6F500D7A5D7 /* MembersViewController.xib in Resources */,
 				0F35E79A2625B00B00FCF378 /* CircleVideoCell.xib in Resources */,
+				BD656CCE268226B000C93226 /* TermsServiceAlertView.xib in Resources */,
 				BDC585B925EB5C590021F808 /* UserCell.xib in Resources */,
 				0F6C0CF82627DEB1007ABE5A /* AboutViewController.xib in Resources */,
 				0F28A32625F895D10001B38E /* BioAuthEngine.bundle in Resources */,
@@ -1358,6 +1367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDC5857D25EB531D0021F808 /* MyTabbarViewController.m in Sources */,
+				BD656CCB268226A600C93226 /* TermsServiceAlertView.m in Sources */,
 				BD46BBDA262F0F5100BBBD1F /* NoDataEmptyView.m in Sources */,
 				BDC265A225EBEFF000DBAA64 /* CircleStatusCell.m in Sources */,
 				BDC265A825EBF13100DBAA64 /* CircleMoreCell.m in Sources */,
@@ -1602,7 +1612,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1695,7 +1705,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = Marketing/Marketing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = VA4HD34922;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

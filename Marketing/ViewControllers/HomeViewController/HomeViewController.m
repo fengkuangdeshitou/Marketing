@@ -13,6 +13,7 @@
 #import "GroupModel.h"
 #import "MemberAlertView.h"
 #import "MembersViewController.h"
+#import "TermsServiceAlertView.h"
 
 @interface HomeViewController ()<UISearchBarDelegate,MemberAlertViewDelegate,MembersViewControllerDelegate>
 
@@ -82,6 +83,9 @@
 //    [[self.segmentView viewWithTag:11] addSubview:self.flagView];
     [self getVIPInfo];
     [self getFindGroupNumberData];
+    if ([[DeviceTool shareInstance].reviewStatus isEqualToString:REVIEWING]) {
+        [TermsServiceAlertView showTermsServiceAlertView];
+    }
     
 }
 
